@@ -7,7 +7,7 @@ public class botListener extends ListenerAdapter{
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getMessage().getContent().startsWith("~") && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
-            Main.handleCommand(Main.parser.parse(e.getMessage().getContent().toLowerCase(), e));
+            Main.handleCommand(Main.parser.parse(e.getMessage().getContent()/*.toLowerCase()*/, e));
         }
     }
 

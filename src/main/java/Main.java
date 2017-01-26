@@ -1,14 +1,14 @@
-import commands.Cat;
+import commands.*;
+import net.dv8tion.jda.core.entities.Game;
 import utils.CommandParser;
-import commands.Command;
-import commands.Ping;
 import listeners.readyListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import utils.SECRETS;
+import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
 import java.util.HashMap;
@@ -27,13 +27,14 @@ public class Main {
         builder.setAudioEnabled(false);
         builder.setAutoReconnect(true);
         builder.setEnableShutdownHook(true);
-        builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
+
+        builder.setStatus(STATICS.STATUS);
+        builder.setGame(STATICS.GAME);
 
         builder.addListener(new readyListener());
         builder.addListener(new botListener());
 
-        commands.put("ping", new Ping());
-        commands.put("cat", new Cat());
+        initializeCommands();
 
         try {
             JDA jda = builder.buildBlocking();
@@ -44,6 +45,20 @@ public class Main {
         } catch (RateLimitedException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void initializeCommands() {
+
+        commands.put("ping", new Ping());
+        commands.put("cat", new Cat());
+        commands.put("8ball", new EightBall());
+        commands.put("clear", new Clear());
+        commands.put("bjoke", new BJoke());
+        commands.put("bj", new BJoke());
+        commands.put("c", new BJokeCancle());
+        commands.put("help", new Help());
+        commands.put("info", new Info());
 
     }
 
