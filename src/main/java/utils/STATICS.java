@@ -5,7 +5,7 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class STATICS {
 
-    public static String VERSION = "v1.2.0b";
+    public static String VERSION = "v1.3.0b";
 
     public static String PREFIX = "~";
 

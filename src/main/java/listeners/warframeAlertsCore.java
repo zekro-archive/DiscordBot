@@ -1,7 +1,6 @@
 package listeners;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,6 +42,32 @@ public class warframeAlertsCore {
     }
 
     static boolean checkForListUpdate() throws IOException {
+
+        String currentList = "";
+
+        for (String[] a : getFilteredAlerts(getFilter(), getAlerts())) {
+            for (String b : a) {
+                currentList += b + "; ";
+            }
+        }
+
+        if (currentList.equals(APIALERTLIST)) {
+            //System.out.println("false");
+            return false;
+        } else {
+
+            APIALERTLIST = "";
+            for (String[] a : getFilteredAlerts(getFilter(), getAlerts())) {
+                for (String b : a) {
+                    APIALERTLIST += b + "; ";
+                }
+            }
+
+            //System.out.println("true");
+            return true;
+        }
+
+        /*
         URL url = new URL("https://deathsnacks.com/wf/data/alerts_raw.txt");
         Scanner scanner = new Scanner(url.openStream());
 
@@ -62,21 +87,7 @@ public class warframeAlertsCore {
             }
             return true;
         }
-    }
-
-    static void outputMessage() {
-
-        for (String[] e : getAlerts()) {
-            System.out.println(
-                    e[1] + " (" + e[2] + ")" +
-                            " | " + e[3] +
-                            " | " + e[4] +
-                            " | " + "Lvl: " + e[5] + "-" + e[6] +
-                            " | " + "Loot: " + e[9] +
-                            " | " + "Finish: " + unixTimeFormat(Long.parseLong(e[8]))
-            );
-        }
-
+        */
     }
 
     static ArrayList<String[]> getFilteredAlerts(String[] filter, ArrayList<String[]> alerts) {
@@ -93,16 +104,32 @@ public class warframeAlertsCore {
 
     static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
 
-        String output = "\n\n**WARFRAME ALERTS**\n\n";
+        DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
+        Date currentDate = new Date();
+
+        String output = "-------------------------------------------------------------- \n \n" +
+                ":small_red_triangle_down:  **WARFRAME ALERTS** :small_red_triangle_down: *" + dateFormatCurrent.format(currentDate) + "* \n\n";
+
         for (String[] e : alertsList) {
 
-            output +=   "Mission: " + e[1] + " (" + e[2] + ")" + "\n" +
-                        "Mission type: " + e[3] + "\n" +
-                        "Fraction: " + e[4] + "\n" +
-                        "Level: " + e[5] + " - " + e[6] + "\n" +
-                        "Loot: **" + e[9] + "**\n" +
-                        "Expires: **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
-            ;
+
+            try {
+                output +=   "Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "Mission type:   " + e[3] + " **" + e[10] + "**\n" +
+                            "Fraction:   " + e[4] + "\n" +
+                            "Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "Loot:   **" + e[9] + "**\n" +
+                            "Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
+                ;
+            } catch (Exception exeption) {
+                output +=   "Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "Mission type:   " + e[3] + "\n" +
+                            "Fraction:   " + e[4] + "\n" +
+                            "Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "Loot:   **" + e[9] + "**\n" +
+                            "Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
+                ;
+            }
 
 
             /*System.out.println(

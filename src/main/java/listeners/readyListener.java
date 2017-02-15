@@ -19,10 +19,8 @@ public class readyListener extends ListenerAdapter{
     @Override
     public void onReady(ReadyEvent event) {
 
-        System.out.println(event.getJDA().getGuilds().get(1));
-        String alertsServerID = "266589518537162762";
+        String alertsServerID = event.getJDA().getGuilds().get(1).getId(); //"266589518537162762"
         String alertsChannelName = "warframealerts";
-
 
         Timer timer = new Timer();
         TimerTask timerAction = new TimerTask() {
@@ -44,7 +42,7 @@ public class readyListener extends ListenerAdapter{
             }
         };
 
-        timer.schedule(timerAction, 0, 1000);
+        timer.schedule(timerAction, 0, 10000);
 
 
 
