@@ -1,31 +1,24 @@
 package commands;
 
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import net.dv8tion.jda.core.managers.GuildController;
-import net.dv8tion.jda.core.managers.GuildManager;
-
-import java.awt.*;
-import java.time.OffsetDateTime;
-import java.util.Collection;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class BJoke implements Command {
 
-    public static final String HELP = "USAGE: ~bjoke @user OR ~bj @user";
+    static final String HELP = "USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
+    static boolean called = false;
+    static Member victim;
+
 
     public boolean called(String[] args, MessageReceivedEvent event) {
 
         return false;
     }
 
-    public int sec = 10;
+    int sec = 10;
 
     public void action(String[] args, final MessageReceivedEvent event) {
 
@@ -36,9 +29,11 @@ public class BJoke implements Command {
             return;
         }
 
-        GuildController gc = new GuildController(event.getGuild());
+        try {
 
-        Member victim;
+        } catch (Exception e) {}
+
+        GuildController gc = new GuildController(event.getGuild());
 
         try {
             victim = event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
@@ -47,7 +42,7 @@ public class BJoke implements Command {
             return;
         }
 
-
+        called = true;
         event.getTextChannel().sendMessage(
                 event.getMessage().getMentionedUsers().get(0).getAsMention() + " hat einen schlechten Witz gerissen!\n\n" +
                         "Wenn nach 10 Sekunden keiner lacht (wenn doch: '~c') wird er vom Voice Channel gekickt!\n"
@@ -62,25 +57,32 @@ public class BJoke implements Command {
                     event.getMessage().getTextChannel().sendMessage(sec + "...").queue();
                     sec--;
                 } else if (!BJokeCancle.canceled) {
+
+                    called = false;
                     event.getMessage().getTextChannel().sendMessage(
                             "Haha, " + event.getMessage().getMentionedUsers().get(0).getAsMention() + ", nieman hat über deinen schlechten Witz gelacht!"
                     ).queue();
 
                     gc.moveVoiceMember(victim, event.getGuild().getVoiceChannels().get(0)).queue();
+
+
                     try {
-                        gc.setNickname(victim, victim.getNickname() + " der Unlustige").queue();
+                        gc.setNickname(victim, victim.getEffectiveName() + " der Unlustige").queue();
                     } catch (PermissionException e) {
                         event.getMessage().getTextChannel().sendMessage("[ERROR] Can't modify a member with higher or equal highest role than the bot!").queue();
                     }
                     timer.cancel();
+                    sec = 10;
                 } else {
                     timer.cancel();
+                    sec = 10;
                 }
             }
         }, 0, 1000);
 
 
         BJokeCancle.canceled = false;
+        sec = 10;
 
 
     }

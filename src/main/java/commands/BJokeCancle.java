@@ -13,7 +13,17 @@ public class BJokeCancle implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        canceled = true;
+        if (BJoke.called) {
+            if (BJoke.victim.getUser().getName() == event.getAuthor().getName()) {
+                event.getTextChannel().sendMessage(
+                        "Du kannst dich nicht selbst aus deinem Schicksal befreien, " + BJoke.victim.getUser().getName() + "!"
+                ).queue();
+            } else {
+                canceled = true;
+            }
+        } else {
+            canceled = true;
+        }
     }
 
     @Override

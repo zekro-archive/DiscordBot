@@ -1,6 +1,7 @@
 package commands;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 public class Info implements Command {
     @Override
@@ -11,7 +12,7 @@ public class Info implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         event.getTextChannel().sendMessage(
-                "**zekroBot** JDA Discord Bot - v1.0.2b\n\n" +
+                "**zekroBot** JDA Discord Bot - " + STATICS.VERSION + "\n\n" +
                 "http://zekrodev.jimdo.com\n" +
                 "http://github.com/zekrotja/DiscordBot\n\n" +
                 "*© 2017 zekro*"

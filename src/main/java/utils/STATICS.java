@@ -5,9 +5,13 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class STATICS {
 
+    public static String VERSION = "v1.2.0b";
+
+    public static String PREFIX = "~";
+
     public static Game GAME = new Game() {
         public String getName() {
-            return "Currently in development.";
+            return VERSION + " | Currently in development.";
         }
 
         public String getUrl() {
