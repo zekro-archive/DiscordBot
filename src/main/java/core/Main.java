@@ -1,7 +1,6 @@
 package core;
 
 import commands.*;
-import listeners.warframeAlertsCore;
 import utils.CommandParser;
 import listeners.readyListener;
 import net.dv8tion.jda.core.AccountType;
@@ -61,6 +60,7 @@ public class Main {
         commands.put("help", new Help());
         commands.put("info", new Info());
         commands.put("prefix", new Prefix());
+        commands.put("alerts", new Alerts());
 
     }
 

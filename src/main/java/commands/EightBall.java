@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class EightBall implements Command {
 
+    public static String HELP = ":warning:  USAGE: ` ~8ball <question> to ask the magic 8ball a special question!`";
+
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
     }
@@ -41,6 +43,6 @@ public class EightBall implements Command {
     }
 
     public String help() {
-        return null;
+        return HELP;
     }
 }

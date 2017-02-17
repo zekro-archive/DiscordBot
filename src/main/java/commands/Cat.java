@@ -17,6 +17,8 @@ public class Cat implements Command {
         return false;
     }
 
+    static String HELP = ":warning:  USAGE: ` ~cat ` to post a single cat picture or use ` ~cat spam <time preiod in seconds> ` to post periodically cat pictures (stop with ` ~c `) =^..^=";
+
     int counter = 0;
     public void action(String[] args, MessageReceivedEvent event) {
 
@@ -42,7 +44,7 @@ public class Cat implements Command {
                 event.getTextChannel().sendMessage("Please enter a period over 9 seconds to avoid overspam.").queue();
                 return;
             } else if (!args[0].equals("spam")) {
-                event.getTextChannel().sendMessage("Enter ` ~cat ` to post a single cat picture or use ` ~cat spam <time preiod in seconds> ` to post periodically cat pictures (stop with ` ~c `)").queue();
+                event.getTextChannel().sendMessage(help()).queue();
             }
 
         } catch (Exception e) {
@@ -55,7 +57,7 @@ public class Cat implements Command {
     }
 
     public String help() {
-        return null;
+        return HELP;
     }
 
     private static String readAll(Reader rd) throws IOException {

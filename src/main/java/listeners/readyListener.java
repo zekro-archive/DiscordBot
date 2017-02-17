@@ -1,6 +1,8 @@
 package listeners;
 
+import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import core.xmlParser;
@@ -28,10 +30,22 @@ public class readyListener extends ListenerAdapter{
             public void run() {
                 try {
 
-                    if (warframeAlertsCore.checkForListUpdate() && warframeAlertsCore.getFilteredAlerts(warframeAlertsCore.getFilter(), warframeAlertsCore.getAlerts()).size() != 0) {
+                    if (warframeAlertsCore.checkForListUpdate() && warframeAlertsCore.getFilteredAlerts(warframeAlertsCore.getFilter(), warframeAlertsCore.getCounterFilter(), warframeAlertsCore.getAlerts()).size() != 0) {
+
+                        MessageHistory history = new MessageHistory(event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0));
+                        List<Message> msgs;
+
+                        try {
+                            msgs = history.retrievePast(1).block();
+                            event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0).deleteMessageById(msgs.get(0).getId()).queue();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                         event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0).sendMessage(
-                                warframeAlertsCore.getAlertsAsMessage(warframeAlertsCore.getFilteredAlerts(warframeAlertsCore.getFilter(), warframeAlertsCore.getAlerts()))
+                                warframeAlertsCore.getAlertsAsMessage(warframeAlertsCore.getFilteredAlerts(warframeAlertsCore.getFilter(), warframeAlertsCore.getCounterFilter(), warframeAlertsCore.getAlerts()))
                         ).queue();
+
                     }
 
                 } catch (IOException e) {

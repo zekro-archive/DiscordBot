@@ -8,7 +8,8 @@ import java.util.*;
 
 public class BJoke implements Command {
 
-    static final String HELP = "USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
+    static String HELP = ":warning:  USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
+
     static boolean called = false;
     static Member victim;
 
@@ -25,7 +26,7 @@ public class BJoke implements Command {
         try {
             String a = args[0];
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(HELP).queue();
+            event.getTextChannel().sendMessage(help()).queue();
             return;
         }
 
@@ -38,7 +39,7 @@ public class BJoke implements Command {
         try {
             victim = event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(HELP).queue();
+            event.getTextChannel().sendMessage(help()).queue();
             return;
         }
 
