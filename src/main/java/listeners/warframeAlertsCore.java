@@ -3,6 +3,8 @@ package listeners;
 import java.io.*;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +101,7 @@ public class warframeAlertsCore {
         return filter;
     }
 
+
     public static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
 
         DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
@@ -115,7 +118,7 @@ public class warframeAlertsCore {
                             "|  Fraction:   " + e[4] + "\n" +
                             "|  Level:   " + e[5] + " - " + e[6] + "\n" +
                             "|  Loot:   **" + e[9] + "**\n" +
-                            "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "**\n\n"
+                            "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "**\n\n"
                 ;
             } catch (Exception exception) {
                 output +=   "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
@@ -123,7 +126,7 @@ public class warframeAlertsCore {
                             "|  Fraction:   " + e[4] + "\n" +
                             "|  Level:   " + e[5] + " - " + e[6] + "\n" +
                             "|  Loot:   **" + e[9] + "**\n" +
-                            "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
+                            "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "** \n\n"
                 ;
             }
 
@@ -132,15 +135,62 @@ public class warframeAlertsCore {
         output += "\n**Item Information**\n\n";
 
         for (String[] e : alertsList) {
+            if (e[9].contains("-"))
             output += "http://warframe.wikia.com/wiki/" + transToLink(e[9]) + "\n\n";
         }
 
         return output;
     }
 
+
+    /* NORMAL
+    public static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
+
+        DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
+        Date currentDate = new Date();
+
+        String output = ":small_red_triangle_down:  **WARFRAME ALERTS** :small_red_triangle_down: *" + dateFormatCurrent.format(currentDate) + "* \n\n";
+
+        for (String[] e : alertsList) {
+
+
+            try {
+                output +=   "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                        "|  Mission type:   " + e[3] + " **" + e[10] + "**\n" +
+                        "|  Fraction:   " + e[4] + "\n" +
+                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                        "|  Loot:   **" + e[9] + "**\n" +
+                        "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "**\n\n"
+                ;
+            } catch (Exception exception) {
+                output +=   "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                        "|  Mission type:   " + e[3] + "\n" +
+                        "|  Fraction:   " + e[4] + "\n" +
+                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                        "|  Loot:   **" + e[9] + "**\n" +
+                        "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
+                ;
+            }
+
+        }
+
+        output += "\n**Item Information**\n\n";
+
+        for (String[] e : alertsList) {
+            if (e[9].contains("-"))
+                output += "http://warframe.wikia.com/wiki/" + transToLink(e[9]) + "\n\n";
+        }
+
+        return output;
+    }
+    */
+
+
     public static String transToLink(String input) {
 
-        String out = input.split("-")[1].substring(1);
+        String out = "";
+
+        out = input.split("-")[1].substring(1);
 
         if (input.contains("Blueprint")) {
             out = out.substring(0, out.length() - 10);
@@ -149,5 +199,19 @@ public class warframeAlertsCore {
         out = out.replaceAll(" ", "_");
 
         return out;
+    }
+
+    public static String getTimeDiff(long dateInUnix) {
+
+        Date dateForm = new Date();
+
+        long diffSec = dateInUnix - (dateForm.getTime() / 1000);
+        float diffMin = diffSec / 60f;
+        double seconds = Math.floor((diffMin - Math.floor(diffMin)) * 60);
+
+        if ((int)seconds != 0)
+            return (int)Math.floor(diffMin) + " min. " + (int)seconds + " sec.";
+        else
+            return (int)Math.floor(diffMin) + " min. ";
     }
 }

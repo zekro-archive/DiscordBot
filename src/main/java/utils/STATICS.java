@@ -5,13 +5,13 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class STATICS {
 
-    public static String VERSION = "v1.3.5b";
+    public static String VERSION = "v1.5.1b";
 
     public static String PREFIX = "~";
 
     public static Game GAME = new Game() {
         public String getName() {
-            return VERSION + " | zekro.jimdo.com";
+            return "with boobs.";
         }
 
         public String getUrl() {
@@ -23,6 +23,10 @@ public class STATICS {
         }
     };
 
+    public static String[] botPermRoles = {"Bot Commander", "Moderator", "Admin", "Owner"};
+
     public static OnlineStatus STATUS = OnlineStatus.ONLINE;
+
+    public static boolean enableWarframeAlerts = true;
 
 }

@@ -1,5 +1,6 @@
 package commands;
 
+import core.coreCommands;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import core.xmlParser;
 import org.xml.sax.SAXException;
@@ -16,6 +17,13 @@ public class Prefix implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+
+        if (!coreCommands.checkPermission(event)) {
+            event.getTextChannel().sendMessage(
+                    ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
+            ).queue();
+            return;
+        }
 
         try {
             System.out.println(args[0]);

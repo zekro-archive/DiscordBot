@@ -3,6 +3,8 @@ package commands;
 import listeners.warframeAlertsCore;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.text.ParseException;
+
 public class Alerts implements Command {
 
     public static String HELP = ":warning:  USAGE: ` ~alerts ` for posting full list of alerts / ` ~alerts filter ` for open GDocs-Doscument for filters";
@@ -13,7 +15,7 @@ public class Alerts implements Command {
     }
 
     @Override
-    public void action(String[] args, MessageReceivedEvent event) {
+    public void action(String[] args, MessageReceivedEvent event) throws ParseException {
 
         if (args.length > 0) {
             if (args[0].equals("filter")) {

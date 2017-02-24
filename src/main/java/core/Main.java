@@ -11,6 +11,7 @@ import utils.SECRETS;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
+import java.text.ParseException;
 import java.util.HashMap;
 
 public class Main {
@@ -61,10 +62,14 @@ public class Main {
         commands.put("info", new Info());
         commands.put("prefix", new Prefix());
         commands.put("alerts", new Alerts());
+        commands.put("maintenancesd", new MaintenanceSD());
+        commands.put("testcmd", new testCMD());
+        commands.put("ttt", new TTT());
+        commands.put("say", new Say());
 
     }
 
-    public static void handleCommand(CommandParser.CommandContainer cmd) {
+    public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException {
         if (commands.containsKey(cmd.invoke)) {
 
             boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);

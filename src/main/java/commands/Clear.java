@@ -1,10 +1,13 @@
 package commands;
 
+import core.coreCommands;
 import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import net.dv8tion.jda.core.managers.GuildController;
 import net.dv8tion.jda.core.requests.RestAction;
 
 import java.util.Collection;
@@ -18,6 +21,13 @@ public class Clear implements Command {
     static String HELP = ":warning:  USAGE: ` ~clear <amount ob messages (>2)> to clear an amount of chat messages`";
 
     public void action(String[] args, MessageReceivedEvent event) {
+
+        if (!coreCommands.checkPermission(event)) {
+            event.getTextChannel().sendMessage(
+                    ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
+            ).queue();
+            return;
+        }
 
         if (args.length == 0) {
             event.getTextChannel().sendMessage(help()).queue();
