@@ -31,8 +31,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="74" column="80" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
+            <state relative-caret-position="1207">
+              <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,40 +40,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="botListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/core/botListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="warframeAlertsCore.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="warframeAlertsCore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/listeners/warframeAlertsCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="79" column="27" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+            <state relative-caret-position="680">
+              <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
               <folding>
+                <element signature="docComment;method#getAlerts#0;class#warframeAlertsCore#0" expanded="false" />
                 <element signature="method#getAlerts#0;class#warframeAlertsCore#0" expanded="false" />
-                <element signature="method#unixTimeFormat#0;class#warframeAlertsCore#0" expanded="false" />
-                <element signature="method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#checkForListUpdate#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#checkForListUpdate#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getFilter#0;class#warframeAlertsCore#0" expanded="false" />
                 <element signature="method#getFilter#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getCounterFilter#0;class#warframeAlertsCore#0" expanded="false" />
                 <element signature="method#getCounterFilter#0;class#warframeAlertsCore#0" expanded="false" />
-                <element signature="method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getTimeToAppear#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#getTimeToAppear#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getTimeDiff#0;class#warframeAlertsCore#0" expanded="false" />
                 <element signature="method#getTimeDiff#0;class#warframeAlertsCore#0" expanded="false" />
-                <marker date="1487948578018" expanded="false" signature="4355:5908" placeholder="{...}" />
+                <element signature="docComment;method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#getAlertsAsMessage#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#getAlertsAsMessage#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="docComment;method#pasteAlertsInChat#0;class#warframeAlertsCore#0" expanded="false" />
+                <element signature="method#pasteAlertsInChat#0;class#warframeAlertsCore#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="STATICS.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="readyListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/listeners/readyListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reconnectListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/listeners/reconnectListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="STATICS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+            <state relative-caret-position="85">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListenerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="478">
+              <caret line="142" column="52" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -115,16 +149,22 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/testCMD.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/Clear.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/Prefix.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/coreCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/TTT.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/Help.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/Say.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/Alerts.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/botListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listeners/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listeners/botListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/coreCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listeners/voiceChannelListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/Update.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/TTT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listeners/reconnectListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/readyListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/listeners/guildEvents.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/warframeAlertsCore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
       </list>
     </option>
   </component>
@@ -196,15 +236,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="DiscordBot" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -382,7 +426,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="D:/Sync/Dropbox/Sonstiges/online_files/Discord Bot Builds" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -691,11 +735,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2434663" sideWeight="0.5028653" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2338377" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23796424" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17983074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1586742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -748,7 +792,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -757,65 +801,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/entities/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Help.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/botListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/BJoke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="20" column="71" selection-start-line="20" selection-start-column="71" selection-end-line="20" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/entities/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/readyListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -826,7 +811,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/botListener.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/botListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
@@ -917,7 +902,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/botListener.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/botListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
@@ -969,13 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/util/function/Predicate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/xmlParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -987,13 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1039,37 +1010,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/coreCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/TTT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Clear.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="29" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Help.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/Say.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1077,42 +1017,118 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/test.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/util/function/Predicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Help.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/voiceChannelListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/botListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/coreCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/Alerts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="29" column="86" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Clear.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="27" column="11" selection-start-line="24" selection-start-column="8" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/TTT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Update.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/JDA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6726">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/events/ReadyEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/net/dv8tion/jda/3.0.ALPHA_65/jda-3.0.ALPHA_65-sources.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="142" column="52" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/guildEvents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/reconnectListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/listeners/readyListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/botListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="74" column="80" selection-start-line="74" selection-start-column="80" selection-end-line="74" selection-end-column="80" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1121,18 +1137,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/listeners/warframeAlertsCore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="79" column="27" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+        <state relative-caret-position="680">
+          <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
           <folding>
+            <element signature="docComment;method#getAlerts#0;class#warframeAlertsCore#0" expanded="false" />
             <element signature="method#getAlerts#0;class#warframeAlertsCore#0" expanded="false" />
-            <element signature="method#unixTimeFormat#0;class#warframeAlertsCore#0" expanded="false" />
-            <element signature="method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#checkForListUpdate#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#checkForListUpdate#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getFilter#0;class#warframeAlertsCore#0" expanded="false" />
             <element signature="method#getFilter#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getCounterFilter#0;class#warframeAlertsCore#0" expanded="false" />
             <element signature="method#getCounterFilter#0;class#warframeAlertsCore#0" expanded="false" />
-            <element signature="method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#getFilteredAlerts#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getTimeToAppear#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#getTimeToAppear#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getTimeDiff#0;class#warframeAlertsCore#0" expanded="false" />
             <element signature="method#getTimeDiff#0;class#warframeAlertsCore#0" expanded="false" />
-            <marker date="1487948578018" expanded="false" signature="4355:5908" placeholder="{...}" />
+            <element signature="docComment;method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#transToLink#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#getAlertsAsMessage#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#getAlertsAsMessage#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="docComment;method#pasteAlertsInChat#0;class#warframeAlertsCore#0" expanded="false" />
+            <element signature="method#pasteAlertsInChat#0;class#warframeAlertsCore#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1195,7 +1241,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

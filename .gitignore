@@ -1,3 +1,4 @@
 src/main/java/SECRETS.java
 target/classes/utils/SECRETS.class
 src/main/java/utils/SECRETS.java
+target/test-classes/utils/SECRETS.class

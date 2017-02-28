@@ -1,6 +1,9 @@
 package core;
 
 import commands.*;
+import listeners.botListener;
+import listeners.reconnectListener;
+import listeners.voiceChannelListener;
 import utils.CommandParser;
 import listeners.readyListener;
 import net.dv8tion.jda.core.AccountType;
@@ -27,13 +30,15 @@ public class Main {
         builder.setToken(SECRETS.TOKEN);
         builder.setAudioEnabled(false);
         builder.setAutoReconnect(true);
-        builder.setEnableShutdownHook(true);
+        //builder.setEnableShutdownHook(true);
 
         builder.setStatus(STATICS.STATUS);
         builder.setGame(STATICS.GAME);
 
         builder.addListener(new readyListener());
         builder.addListener(new botListener());
+        builder.addListener(new reconnectListener());
+        builder.addListener(new voiceChannelListener());
 
         initializeCommands();
 
@@ -60,7 +65,6 @@ public class Main {
         commands.put("c", new BJokeCancle());
         commands.put("help", new Help());
         commands.put("info", new Info());
-        commands.put("prefix", new Prefix());
         commands.put("alerts", new Alerts());
         commands.put("maintenancesd", new MaintenanceSD());
         commands.put("testcmd", new testCMD());

@@ -17,10 +17,17 @@ import java.util.*;
 public class warframeAlertsCore {
 
     public static String APIALERTLIST = "";
-    static String alertsServerID = "266589518537162762";
-    static String alertsChannelName = "warframealerts";
+    static String alertsServerID = STATICS.warframeAlertsServerID;
+    static String alertsChannelName = STATICS.warframeAlertsChannel;
 
+
+    /**
+     * Get all alerts of the API-Alerts-List.
+     * @return ArrayList<String[]>
+     */
     public static ArrayList<String[]> getAlerts() {
+
+        //System.out.println(getTimeToAppear(1488302994));
 
         ArrayList<String[]> output = new ArrayList<>();
 
@@ -41,13 +48,12 @@ public class warframeAlertsCore {
         return output;
     }
 
-    public static String unixTimeFormat(long timeStamp) {
-
-        Date time = new Date(timeStamp * 1000);
-        DateFormat df = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
-        return df.format(time);
-    }
-
+    /**
+     * Check if Alerts appeared or disappeared in the Alerts list.
+     * Check if only an Alert disappeared from the list.
+     * @return boolean[]
+     * @throws IOException
+     */
     public static boolean[] checkForListUpdate() throws IOException {
 
         boolean isUpdate = false;
@@ -93,18 +99,11 @@ public class warframeAlertsCore {
         return out;
     }
 
-    public static ArrayList<String[]> getFilteredAlerts(String[] filter, String[] counterFilter, ArrayList<String[]> alerts) {
-
-        ArrayList<String[]> output = new ArrayList<>();
-        for (String[] e : alerts) {
-            if (Arrays.stream(filter).parallel().anyMatch(e[9]::contains) && !Arrays.stream(counterFilter).parallel().anyMatch(e[9]::contains)) {
-                output.add(e);
-            }
-        }
-
-        return output;
-    }
-
+    /**
+     * Get item filter for alerts out of a google docs document.
+     * @return String[]
+     * @throws IOException
+     */
     public static String[] getFilter() throws IOException {
         //URL url = new URL("https://dl.dropboxusercontent.com/s/wvaumg7lxc27hr5/dcbot_waframealertconfig.txt");
         URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY&exportFormat=txt");
@@ -113,6 +112,12 @@ public class warframeAlertsCore {
         return filter;
     }
 
+
+    /**
+     * Get the counter filter for items out of the same google docs document
+     * @return String[]
+     * @throws IOException
+     */
     public static String[] getCounterFilter() throws IOException {
         //URL url = new URL("https://dl.dropboxusercontent.com/s/wvaumg7lxc27hr5/dcbot_waframealertconfig.txt");
         URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY&exportFormat=txt");
@@ -124,46 +129,81 @@ public class warframeAlertsCore {
         return filter;
     }
 
-    public static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
 
-        DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
-        Date currentDate = new Date();
+    /**
+     * Get the filtered Alerts list.
+     * @param filter
+     * @param counterFilter
+     * @param alerts
+     * @return ArrayList<String[]>
+     */
+    public static ArrayList<String[]> getFilteredAlerts(String[] filter, String[] counterFilter, ArrayList<String[]> alerts) {
 
-        String output = ":small_red_triangle_down:  **WARFRAME ALERTS** :small_red_triangle_down: *" + dateFormatCurrent.format(currentDate) + "* \n\n";
-
-        for (String[] e : alertsList) {
-
-
-            try {
-                output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
-                        "|  Mission type:   " + e[3] + " **" + e[10] + "**\n" +
-                        "|  Fraction:   " + e[4] + "\n" +
-                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
-                        "|  Loot:   **" + e[9] + "**\n" +
-                        "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "**\n\n"
-                ;
-            } catch (Exception exception) {
-                output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
-                        "|  Mission type:   " + e[3] + "\n" +
-                        "|  Fraction:   " + e[4] + "\n" +
-                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
-                        "|  Loot:   **" + e[9] + "**\n" +
-                        "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "** \n\n"
-                ;
+        ArrayList<String[]> output = new ArrayList<>();
+        for (String[] e : alerts) {
+            if (Arrays.stream(filter).parallel().anyMatch(e[9]::contains) && !Arrays.stream(counterFilter).parallel().anyMatch(e[9]::contains)) {
+                output.add(e);
             }
-
         }
 
-        output += "\n**Item Information**\n\n";
 
-        for (String[] e : alertsList) {
-            if (e[9].contains("-"))
-                output += "http://warframe.wikia.com/wiki/" + transToLink(e[9]) + "\n\n";
-        }
 
         return output;
     }
 
+    /**
+     * Get the time until an Alert will appear as playable in the game.
+     * @param dateInUnix
+     * @return String
+     */
+    public static String getTimeToAppear(long dateInUnix) {
+
+        Date dateForm = new Date();
+
+        long diffSec = -((dateForm.getTime() / 1000) - dateInUnix);
+        float diffMin = diffSec / 60f;
+        double seconds = Math.floor((diffMin - Math.floor(diffMin)) * 60);
+
+        String out = (int) Math.floor(diffMin) + " min. ";
+
+        if ((int) seconds != 0)
+            out += (int) seconds + " sec.";
+
+        if (diffSec < 0)
+            out = null;
+
+        return out;
+    }
+
+    /**
+     * Get the time until an Alert will disappear in the list.
+     * @param dateInUnix
+     * @return String
+     */
+    public static String getTimeDiff(long dateInUnix) {
+
+        Date dateForm = new Date();
+
+        long diffSec = dateInUnix - (dateForm.getTime() / 1000);
+        float diffMin = diffSec / 60f;
+        double seconds = Math.floor((diffMin - Math.floor(diffMin)) * 60);
+
+        String out = (int) Math.floor(diffMin) + " min. ";
+
+        if ((int) seconds != 0)
+            out += (int) seconds + " sec.";
+
+        if (diffMin < 5)
+            out += "               :warning:";
+
+        return out;
+    }
+
+    /**
+     * Get the item as link of the warframe wiki.
+     * @param input
+     * @return String
+     */
     public static String transToLink(String input) {
 
         String out = "";
@@ -179,23 +219,80 @@ public class warframeAlertsCore {
         return out;
     }
 
-    public static String getTimeDiff(long dateInUnix) {
+    /**
+     * Get the filtered alerts list as message to post into the chat.
+     * @param alertsList
+     * @return String
+     */
+    public static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
 
-        Date dateForm = new Date();
+        DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
+        Date currentDate = new Date();
 
-        long diffSec = dateInUnix - (dateForm.getTime() / 1000);
-        float diffMin = diffSec / 60f;
-        double seconds = Math.floor((diffMin - Math.floor(diffMin)) * 60);
+        String output = ":small_red_triangle_down:  **WARFRAME ALERTS** :small_red_triangle_down: *" + dateFormatCurrent.format(currentDate) + "* \n\n";
 
-        String out = (int) Math.floor(diffMin) + " min. ";
+        for (String[] e : alertsList) {
 
-        if ((int) seconds != 0)
-            out += (int) seconds + " sec.";
+            if (getTimeToAppear(Long.parseLong(e[7])) != null) {
 
-        return out;
+                //System.out.println(getTimeDiff(Long.parseLong(e[7])));
+                try {
+                    output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "|  Mission type:   " + e[3] + " **" + e[10] + "**\n" +
+                            "|  Fraction:   " + e[4] + "\n" +
+                            "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "|  Loot:   **" + e[9] + "**\n" +
+                            "|  Appears:   **- " + getTimeToAppear(Long.parseLong(e[7])) + "**\n\n"
+                    ;
+                } catch (Exception exception) {
+                    output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "|  Mission type:   " + e[3] + "\n" +
+                            "|  Fraction:   " + e[4] + "\n" +
+                            "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "|  Loot:   **" + e[9] + "**\n" +
+                            "|  Appears:   **- " + getTimeToAppear(Long.parseLong(e[7])) + "** \n\n"
+                    ;
+                }
+
+            } else {
+
+                try {
+                    output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "|  Mission type:   " + e[3] + " **" + e[10] + "**\n" +
+                            "|  Fraction:   " + e[4] + "\n" +
+                            "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "|  Loot:   **" + e[9] + "**\n" +
+                            "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "**\n\n"
+                    ;
+                } catch (Exception exception) {
+                    output += "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
+                            "|  Mission type:   " + e[3] + "\n" +
+                            "|  Fraction:   " + e[4] + "\n" +
+                            "|  Level:   " + e[5] + " - " + e[6] + "\n" +
+                            "|  Loot:   **" + e[9] + "**\n" +
+                            "|  Expires:   **" + getTimeDiff(Long.parseLong(e[8])) + "** \n\n"
+                    ;
+                }
+
+            }
+        }
+
+        output += "\n**Item Information**\n\n";
+
+        for (String[] e : alertsList) {
+            if (e[9].contains("-"))
+                output += "http://warframe.wikia.com/wiki/" + transToLink(e[9]) + "\n\n";
+        }
+
+        return output;
     }
 
+    /**
+     * Finally post the filtered and compiled message in the current chat.
+     * @param event
+     */
     public static void pasteAlertsInChat(ReadyEvent event) {
+
         try {
 
             // Normal Update when new alerts appear
@@ -247,46 +344,4 @@ public class warframeAlertsCore {
         }
     }
 
-
-    /* NORMAL
-    public static String getAlertsAsMessage(ArrayList<String[]> alertsList) {
-
-        DateFormat dateFormatCurrent = new SimpleDateFormat("HH:mm:ss z (dd/MM)");
-        Date currentDate = new Date();
-
-        String output = ":small_red_triangle_down:  **WARFRAME ALERTS** :small_red_triangle_down: *" + dateFormatCurrent.format(currentDate) + "* \n\n";
-
-        for (String[] e : alertsList) {
-
-
-            try {
-                output +=   "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
-                        "|  Mission type:   " + e[3] + " **" + e[10] + "**\n" +
-                        "|  Fraction:   " + e[4] + "\n" +
-                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
-                        "|  Loot:   **" + e[9] + "**\n" +
-                        "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "**\n\n"
-                ;
-            } catch (Exception exception) {
-                output +=   "|  Mission:   " + e[1] + " (" + e[2] + ")" + "\n" +
-                        "|  Mission type:   " + e[3] + "\n" +
-                        "|  Fraction:   " + e[4] + "\n" +
-                        "|  Level:   " + e[5] + " - " + e[6] + "\n" +
-                        "|  Loot:   **" + e[9] + "**\n" +
-                        "|  Expires:   **" + unixTimeFormat(Long.parseLong(e[8])) + "** \n\n"
-                ;
-            }
-
-        }
-
-        output += "\n**Item Information**\n\n";
-
-        for (String[] e : alertsList) {
-            if (e[9].contains("-"))
-                output += "http://warframe.wikia.com/wiki/" + transToLink(e[9]) + "\n\n";
-        }
-
-        return output;
-    }
-    */
 }

@@ -1,31 +1,26 @@
 package listeners;
 
-import net.dv8tion.jda.core.MessageHistory;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.ReadyEvent;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import core.xmlParser;
-import org.xml.sax.SAXException;
 import utils.STATICS;
 
-import javax.xml.transform.TransformerException;
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class readyListener extends ListenerAdapter{
 
+    public static Timer timerOnReady = new Timer();
+    public static TimerTask timerAction;
+
     @Override
     public void onReady(ReadyEvent event) {
 
+        if (!STATICS.enableWarframeAlerts && !System.getProperty("os.name").contains("Windows")) {
+            System.out.println("[INFO] System: " + System.getProperty("os.name") + " detected - enabled warframe alerts.");
+            STATICS.enableWarframeAlerts = true;
+        }
 
-        Timer timer = new Timer();
-        TimerTask timerAction = new TimerTask() {
+        timerAction = new TimerTask() {
             @Override
             public void run() {
 
@@ -34,8 +29,9 @@ public class readyListener extends ListenerAdapter{
             }
         };
 
-        timer.schedule(timerAction, 0, 10000);
+        timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
 
+        /* Some code for experimenting around with prefix settings
         File f = new File("servers");
 
         if (!f.exists())
@@ -72,7 +68,7 @@ public class readyListener extends ListenerAdapter{
                     e.printStackTrace();
                 }
             }
-        }
+        */
 
     }
 }
