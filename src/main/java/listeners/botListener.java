@@ -14,7 +14,7 @@ public class botListener extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getMessage().getContent().startsWith(STATICS.PREFIX) && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
             try {
-                Main.handleCommand(Main.parser.parse(e.getMessage().getContent()/*.toLowerCase()*/, e));
+                Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }

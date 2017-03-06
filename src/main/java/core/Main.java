@@ -4,7 +4,6 @@ import commands.*;
 import listeners.botListener;
 import listeners.reconnectListener;
 import listeners.voiceChannelListener;
-import utils.CommandParser;
 import listeners.readyListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -70,6 +69,8 @@ public class Main {
         commands.put("testcmd", new testCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
+        commands.put("poll", new Vote());
+        commands.put("vote", new Vote());
 
     }
 

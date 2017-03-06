@@ -9,16 +9,36 @@ import java.util.TimerTask;
 
 public class readyListener extends ListenerAdapter{
 
-    public static Timer timerOnReady = new Timer();
+    public static Timer timerOnReady;
     public static TimerTask timerAction;
+    public static ReadyEvent readyEvent;
+
+    public static void restartWarframeAlertsCore() {
+        timerOnReady.cancel();
+        timerAction = new TimerTask() {
+            @Override
+            public void run() {
+
+                warframeAlertsCore.pasteAlertsInChat(readyEvent);
+
+            }
+        };
+        timerOnReady = new Timer();
+        timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
+    }
+
 
     @Override
     public void onReady(ReadyEvent event) {
+
+        readyEvent = event;
 
         if (!STATICS.enableWarframeAlerts && !System.getProperty("os.name").contains("Windows")) {
             System.out.println("[INFO] System: " + System.getProperty("os.name") + " detected - enabled warframe alerts.");
             STATICS.enableWarframeAlerts = true;
         }
+
+        timerOnReady = new Timer();
 
         timerAction = new TimerTask() {
             @Override

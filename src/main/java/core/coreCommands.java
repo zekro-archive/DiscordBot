@@ -15,12 +15,6 @@ public class coreCommands {
                 userHasPermission = true;
         }
 
-        /* Only for single Strings as Role
-        for ( Role r : event.getGuild().getMember(event.getAuthor()).getRoles() ) {
-            if (r.getName().contains(STATICS.defaultRole))
-                userHasPermission = true;
-        }
-        */
         return userHasPermission;
     }
 }
