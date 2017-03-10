@@ -8,18 +8,18 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.6.5.0";
+    public static String VERSION = "v1.7.0.1";
 
     public static String PREFIX = "~";
 
     public static OnlineStatus STATUS = OnlineStatus.ONLINE;
 
-    public static Game GAME = new Game() {
+    public static Game GAME = new Game()  {
         public String getName() {
-            return "with boobs.";
+            return "with boobs. | zekro.de";
         }
         public String getUrl() {
-            return "http://zekro.jimdo.com";
+            return "http://zekro.de";
         }
         public GameType getType() {
             return GameType.DEFAULT;
@@ -36,7 +36,7 @@ public class STATICS {
 
     public static String warframeAlertsServerID = "266589518537162762";
 
-    public static boolean enableWarframeAlerts = true;
+    public static boolean enableWarframeAlerts = false;
 
 
 

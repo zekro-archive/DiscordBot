@@ -2,6 +2,7 @@ package commands;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class Vote implements Command {
 
     static boolean voteActive = false;
-    static ArrayList<String[]> votes = new ArrayList<>();
+    static ArrayList<ArrayList<String>> votes = new ArrayList<>();
     static ArrayList<String> voteStrings;
     static String[] voteArgs;
     static String voteHeading;
@@ -27,9 +28,7 @@ public class Vote implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException {
 
-        event.getTextChannel().sendMessage(":warning:  Das ist leider momentan noch etwas... nennen wir es \"bugy\"... :^)").queue();
-
-        if (args.length > 0 && false) {
+        if (args.length > 0) {
 
             /**
              * Create a poll.
@@ -54,6 +53,7 @@ public class Vote implements Command {
                 String voteStringsAsOutput = "";
                 int index = 0;
                 for ( String s : voteStrings.subList(2, voteArgs.length) ) {
+                    votes.add(index, new ArrayList<>());
                     index++;
                     voteStringsAsOutput += "**[" + index + "]** " + s + "\n";
                 }
@@ -64,8 +64,10 @@ public class Vote implements Command {
 
                 voteActive = true;
 
-            } else if (args[0].equals("create") && args.length > 0)
+            } else if (args[0].equals("create") && args.length > 0) {
                 event.getTextChannel().sendMessage(":warning:  There is already a running poll! Please close that before opening another one.").queue();
+                return;
+            }
 
 
             /**
@@ -73,18 +75,19 @@ public class Vote implements Command {
              */
             if (args[0].equals("vote") && args.length > 1 && voteActive) {
 
-                if (!votes.contains(event.getAuthor().getId())) {
-                    String[] vote = { event.getAuthor().getId(), args[1] };
-                    votes.add(vote);
+                int voteIndex = Integer.parseInt(args[1]) - 1;
+
+                if (!getHasUserVoted(event.getAuthor().getName(), votes)) {
+                    votes.get(voteIndex).add(event.getAuthor().getName());
                 } else
                     event.getTextChannel().sendMessage(":warning:  Sorry, but you only can vote once!").queue();
 
 
 
-            } else if (args[0].equals("vote") && args.length > 1 && !voteActive)
+            } else if (args[0].equals("vote") && args.length > 1 && !voteActive) {
                 event.getTextChannel().sendMessage(":warning:  Currently there is no poll open! Create one with ` ~vote create |<Heading>|<Answer1>|<Answer2>|... `!").queue();
-
-
+                return;
+            }
 
             /**
              * Get the current stats of an active poll.
@@ -95,16 +98,39 @@ public class Vote implements Command {
                 int index = 0;
                 for ( String s : voteStrings.subList(2, voteArgs.length) ) {
                     index++;
-                    voteStringsAsOutput += "**[" + index + "]** " + s + "\n";
+                    voteStringsAsOutput += "**[" + index + "]** " + s + " - **` " + votes.get(index - 1).size() + " `**\n";
                 }
 
                 event.getTextChannel().sendMessage(
                         ":ballot_box_with_check:  **[OPEN VOTE] **" + voteHeading + "\n\n" + voteStringsAsOutput
                 ).queue();
 
-            } else if (args[0].equals("vote") && args.length > 1 && !voteActive)
+            } else if (args[0].equals("stats") && args.length > 1 && !voteActive) {
                 event.getTextChannel().sendMessage(":warning:  Currently there is no poll open! Create one with ` ~vote create |<Heading>|<Answer1>|<Answer2>|... `!").queue();
+                return;
+            }
 
+
+            if (args[0].equals("close") && args.length > 0 && voteActive) {
+
+                String voteStringsAsOutput = "";
+                int index = 0;
+                for ( String s : voteStrings.subList(2, voteArgs.length) ) {
+                    index++;
+                    voteStringsAsOutput += "**[" + index + "]** " + s + " - **` " + votes.get(index - 1).size() + " `**\n";
+                }
+
+                event.getTextChannel().sendMessage(
+                        ":stop_button:  **[VOTE CLOSED] **" + voteHeading + "\n\n" + voteStringsAsOutput
+                ).queue();
+
+                voteActive = false;
+                votes = new ArrayList<>();
+
+            } else if (args[0].equals("close") && args.length > 1 && !voteActive) {
+                event.getTextChannel().sendMessage(":warning:  Currently there is no poll open to end! Create one with ` ~vote create |<Heading>|<Answer1>|<Answer2>|... `!").queue();
+                return;
+            }
         }
 
     }
@@ -118,4 +144,17 @@ public class Vote implements Command {
     public String help() {
         return null;
     }
+
+
+    static boolean getHasUserVoted(String username, ArrayList<ArrayList<String>> votesList) {
+
+        for ( ArrayList<String> as : votesList ) {
+            if (as.contains(username))
+                return true;
+        }
+
+        return false;
+
+    }
+
 }
