@@ -71,6 +71,7 @@ public class Main {
         commands.put("say", new Say());
         commands.put("poll", new Vote());
         commands.put("vote", new Vote());
+        commands.put("stats", new Stats());
 
     }
 

@@ -1,8 +1,8 @@
 package commands;
 
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -19,6 +19,7 @@ public class Vote implements Command {
     static ArrayList<String> voteStrings;
     static String[] voteArgs;
     static String voteHeading;
+    static User voteCreator;
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -36,6 +37,8 @@ public class Vote implements Command {
             if (args[0].equals("create") && args.length > 1 && !voteActive) {
 
                 votes = new ArrayList<>();
+
+                voteCreator = event.getAuthor();
 
                 String argString = "";
                 for ( String s : args ) {
@@ -79,8 +82,22 @@ public class Vote implements Command {
 
                 if (!getHasUserVoted(event.getAuthor().getName(), votes)) {
                     votes.get(voteIndex).add(event.getAuthor().getName());
-                } else
+                } else {
                     event.getTextChannel().sendMessage(":warning:  Sorry, but you only can vote once!").queue();
+                    return;
+                }
+
+
+                String voteStringsAsOutput = "";
+                int index = 0;
+                for ( String s : voteStrings.subList(2, voteArgs.length) ) {
+                    index++;
+                    voteStringsAsOutput += "**[" + index + "]** " + s + " - **` " + votes.get(index - 1).size() + " `**\n";
+                }
+
+                event.getTextChannel().sendMessage(
+                        ":ballot_box_with_check:  **[OPEN VOTE] **" + voteHeading + "\n\n" + voteStringsAsOutput
+                ).queue();
 
 
 
@@ -112,6 +129,15 @@ public class Vote implements Command {
 
 
             if (args[0].equals("close") && args.length > 0 && voteActive) {
+
+                if (    voteCreator != event.getAuthor()
+                        && !event.getMember().getRoles().contains(event.getGuild().getRolesByName("Owner", true).get(0))
+                        && !event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0))
+                        && !event.getMember().getRoles().contains(event.getGuild().getRolesByName("Moderator", true).get(0))
+                ) {
+                    event.getTextChannel().sendMessage(":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you are not allowed to close a vote you did not created!").queue();
+                    return;
+                }
 
                 String voteStringsAsOutput = "";
                 int index = 0;
