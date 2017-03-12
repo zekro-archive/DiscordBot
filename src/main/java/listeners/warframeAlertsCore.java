@@ -1,6 +1,7 @@
 package listeners;
 
 import net.dv8tion.jda.core.MessageHistory;
+import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
@@ -293,54 +294,60 @@ public class warframeAlertsCore {
      */
     public static void pasteAlertsInChat(ReadyEvent event) {
 
-        try {
+        for ( Guild g : event.getJDA().getGuilds() ) {
 
-            // Normal Update when new alerts appear
-            if (checkForListUpdate()[0] && !checkForListUpdate()[1] && getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()).size() != 0 && STATICS.enableWarframeAlerts) {
+            try {
 
-                MessageHistory history = new MessageHistory(event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0));
-                List<Message> msgs;
+                if (g.getTextChannelsByName(alertsChannelName, false).size() > 0) {
 
-                //System.out.println("LÖSCHEN - " + checkForListUpdate()[1] );
+                    // Normal Update when new alerts appear
+                    if (checkForListUpdate()[0] && !checkForListUpdate()[1] && getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()).size() != 0 && STATICS.enableWarframeAlerts) {
 
-                try {
+                        MessageHistory history = new MessageHistory(g.getTextChannelsByName(alertsChannelName, false).get(0));
+                        List<Message> msgs;
 
-                    msgs = history.retrievePast(1).block();
-                    event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0).deleteMessageById(msgs.get(0).getId()).queue();
+                        //System.out.println("LÖSCHEN - " + checkForListUpdate()[1] );
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                        try {
+
+                            msgs = history.retrievePast(1).block();
+                            g.getTextChannelsByName(alertsChannelName, false).get(0).deleteMessageById(msgs.get(0).getId()).queue();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        g.getTextChannelsByName(alertsChannelName, false).get(0).sendMessage(
+                                getAlertsAsMessage(getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()))
+                        ).queue();
+
+                    }
+
+                    // Updating times, updating list without notification in discord if an alert disappears from list
+                    else if (getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()).size() != 0 && STATICS.enableWarframeAlerts) {
+
+                        MessageHistory history = new MessageHistory(g.getTextChannelsByName(alertsChannelName, false).get(0));
+                        List<Message> msgs;
+
+                        //System.out.println("EDITIEREN");
+
+                        try {
+
+                            msgs = history.retrievePast(1).block();
+                            msgs.get(0).editMessage(
+                                    getAlertsAsMessage(getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()))
+                            ).queue();
+
+                        } catch (RateLimitedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
-                event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0).sendMessage(
-                        getAlertsAsMessage(getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()))
-                ).queue();
-
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            // Updating times, updating list without notification in discord if an alert disappears from list
-            else if (getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()).size() != 0 && STATICS.enableWarframeAlerts) {
-
-                MessageHistory history = new MessageHistory(event.getJDA().getGuildById(alertsServerID).getTextChannelsByName(alertsChannelName, false).get(0));
-                List<Message> msgs;
-
-                //System.out.println("EDITIEREN");
-
-                try {
-
-                    msgs = history.retrievePast(1).block();
-                    msgs.get(0).editMessage(
-                            getAlertsAsMessage(getFilteredAlerts(getFilter(), getCounterFilter(), getAlerts()))
-                    ).queue();
-
-                } catch (RateLimitedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

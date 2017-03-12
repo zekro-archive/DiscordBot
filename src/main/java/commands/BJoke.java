@@ -30,10 +30,6 @@ public class BJoke implements Command {
             return;
         }
 
-        try {
-
-        } catch (Exception e) {}
-
         GuildController gc = new GuildController(event.getGuild());
 
         try {

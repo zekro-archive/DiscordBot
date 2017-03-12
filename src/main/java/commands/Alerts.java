@@ -20,30 +20,29 @@ public class Alerts implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException {
 
-        if (args.length > 0) {
-            if (args[0].equals("filter")) {
+        switch (args.length > 0 ? args[0] : "") {
+
+            case "filter":
                 event.getTextChannel().sendMessage(
                         ":pencil: https://docs.google.com/document/d/13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY/edit"
                 ).queue();
-            }
+                break;
 
-            else if (args[0].equals("restart")) {
-
+            case "restart":
                 if (!coreCommands.checkPermission(event)) {
                     event.getTextChannel().sendMessage(
                             ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
                     ).queue();
                     return;
                 }
-
                 restartWarframeAlertsCore();
                 event.getTextChannel().sendMessage("Restarting complete.").queue();
-            }
+                break;
+
+            case "":
+                event.getTextChannel().sendMessage(warframeAlertsCore.getAlertsAsMessage(warframeAlertsCore.getAlerts())).queue();
+
         }
-        else
-            event.getTextChannel().sendMessage(warframeAlertsCore.getAlertsAsMessage(warframeAlertsCore.getAlerts())).queue();
-
-
     }
 
     @Override

@@ -43,6 +43,7 @@ public class Help implements Command {
                         "` ~clear `  -  Clear an specific amount of messages in chat\n" +
                         "` ~ttt `  -  Get server name and password of our TTT server" +
                         "` ~say `  -  Say something with the bot's chat voice" +
+                        "` ~vote `  -  Say something with the bot's chat voice" +
                         "` ~info `  -  Info\n" +
                         "` ~help <command> `  -  Get more information about command"
         ).queue();

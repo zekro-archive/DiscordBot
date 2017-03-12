@@ -8,7 +8,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.8.0.0";
+    public static String VERSION = "v1.9.0.2";
 
     public static String PREFIX = "~";
 
@@ -51,6 +51,8 @@ public class STATICS {
     public static String voiceLogChannel = "voicelog";
 
     public static boolean commandConsoleOutout = true;
+
+    public static String TEMP_FILE = "/tmp.temp";
 
 
 

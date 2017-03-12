@@ -65,7 +65,6 @@ public class Main {
         commands.put("help", new Help());
         commands.put("info", new Info());
         commands.put("alerts", new Alerts());
-        commands.put("maintenancesd", new MaintenanceSD());
         commands.put("testcmd", new testCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
