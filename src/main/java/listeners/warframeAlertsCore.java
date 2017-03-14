@@ -106,8 +106,9 @@ public class warframeAlertsCore {
      * @throws IOException
      */
     public static String[] getFilter() throws IOException {
-        //URL url = new URL("https://dl.dropboxusercontent.com/s/wvaumg7lxc27hr5/dcbot_waframealertconfig.txt");
-        URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY&exportFormat=txt");
+        URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=" +
+                STATICS.DOCID_warframeAlertsFilter +
+                "&exportFormat=txt");
         Scanner scanner = new Scanner(url.openStream());
         String[] filter = scanner.nextLine().split(",");
         return filter;
@@ -120,8 +121,9 @@ public class warframeAlertsCore {
      * @throws IOException
      */
     public static String[] getCounterFilter() throws IOException {
-        //URL url = new URL("https://dl.dropboxusercontent.com/s/wvaumg7lxc27hr5/dcbot_waframealertconfig.txt");
-        URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY&exportFormat=txt");
+        URL url = new URL("https://docs.google.com/feeds/download/documents/export/Export?id=" +
+                STATICS.DOCID_warframeAlertsFilter +
+                "&exportFormat=txt");
         Scanner scanner = new Scanner(url.openStream());
         scanner.nextLine();
         scanner.nextLine();

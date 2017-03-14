@@ -7,7 +7,7 @@ import utils.STATICS;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class readyListener extends ListenerAdapter{
+public class readyListener extends ListenerAdapter {
 
     public static Timer timerOnReady;
     public static TimerTask timerAction;

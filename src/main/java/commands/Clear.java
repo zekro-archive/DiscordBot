@@ -3,14 +3,8 @@ package commands;
 import core.coreCommands;
 import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageChannel;
-import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
-import net.dv8tion.jda.core.managers.GuildController;
-import net.dv8tion.jda.core.requests.RestAction;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Clear implements Command {

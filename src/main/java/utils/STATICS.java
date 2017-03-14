@@ -8,7 +8,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.9.0.2";
+    public static String VERSION = "v1.10.0.0";
 
     public static String PREFIX = "~";
 
@@ -16,7 +16,7 @@ public class STATICS {
 
     public static Game GAME = new Game()  {
         public String getName() {
-            return "with boobs. | zekro.de";
+            return "with boobs. | dev.zekro.de | v." + VERSION;
         }
         public String getUrl() {
             return "http://zekro.de";
@@ -45,14 +45,17 @@ public class STATICS {
     public static String[] botPermRoles = {"Bot Commander", "Moderator", "Admin", "Owner"};
 
 
+    //########## GOOGLE DOCS ID'S ##########//
 
-    //######### OTHER SETTINGS #########//
+    public static String DOCID_warframeAlertsFilter = "13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY";
+
+    public static String DOCID_jokes = "1fWHPIrZKHSXBsF5SWO3ZEHmecItVppYvM39pm7Rvssk";
+
+    //########### OTHER SETTINGS ###########//
 
     public static String voiceLogChannel = "voicelog";
 
     public static boolean commandConsoleOutout = true;
-
-    public static String TEMP_FILE = "/tmp.temp";
 
 
 

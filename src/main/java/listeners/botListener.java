@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 public class botListener extends ListenerAdapter{
@@ -19,6 +20,8 @@ public class botListener extends ListenerAdapter{
                 if (STATICS.commandConsoleOutout)
                     System.out.println(coreCommands.getCurrentSystemTime() + " [Info] [Commands]: Command '" + e.getMessage().getContent() + "' was executed by '" + e.getAuthor() + "' (" + e.getGuild().getName() + ")!");
             } catch (ParseException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
                 e1.printStackTrace();
             }
         }

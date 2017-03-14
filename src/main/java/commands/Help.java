@@ -1,6 +1,5 @@
 package commands;
 
-import javafx.scene.control.Alert;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.HashMap;

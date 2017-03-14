@@ -1,10 +1,7 @@
 package core;
 
 import commands.*;
-import listeners.botListener;
-import listeners.reconnectListener;
-import listeners.voiceChannelListener;
-import listeners.readyListener;
+import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -13,10 +10,13 @@ import utils.SECRETS;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 
 public class Main {
+
+    static JDABuilder builder;
 
     public static final CommandParser parser = new CommandParser();
 
@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JDABuilder builder = new JDABuilder(AccountType.BOT);
+        builder = new JDABuilder(AccountType.BOT);
 
         builder.setToken(SECRETS.TOKEN);
         builder.setAudioEnabled(false);
@@ -34,11 +34,7 @@ public class Main {
         builder.setStatus(STATICS.STATUS);
         builder.setGame(STATICS.GAME);
 
-        builder.addListener(new readyListener());
-        builder.addListener(new botListener());
-        builder.addListener(new reconnectListener());
-        builder.addListener(new voiceChannelListener());
-
+        initializeListeners();
         initializeCommands();
 
         try {
@@ -71,10 +67,21 @@ public class Main {
         commands.put("poll", new Vote());
         commands.put("vote", new Vote());
         commands.put("stats", new Stats());
+        commands.put("joke", new Joke());
 
     }
 
-    public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException {
+    public static void initializeListeners() {
+
+        builder.addListener(new readyListener());
+        builder.addListener(new botListener());
+        builder.addListener(new reconnectListener());
+        builder.addListener(new voiceChannelListener());
+        //builder.addListener(new guildJoinListener());
+
+    }
+
+    public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
         if (commands.containsKey(cmd.invoke)) {
 
             boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);
@@ -85,7 +92,6 @@ public class Main {
             } else {
                 commands.get(cmd.invoke).executed(safe, cmd.event);
             }
-
 
         }
     }
