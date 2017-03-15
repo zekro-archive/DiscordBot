@@ -1,4 +1,5 @@
-## zekrosBot
+# Project: "zekrosBot"
+-----
 
 ### Commands
 
