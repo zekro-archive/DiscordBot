@@ -36,6 +36,7 @@ public class Main {
 
         initializeListeners();
         initializeCommands();
+        //settings.initializeSettings();
 
         try {
             JDA jda = builder.buildBlocking();
@@ -55,6 +56,7 @@ public class Main {
         commands.put("cat", new Cat());
         commands.put("8ball", new EightBall());
         commands.put("clear", new Clear());
+        commands.put("purge", new Clear());
         commands.put("bjoke", new BJoke());
         commands.put("bj", new BJoke());
         commands.put("c", new BJokeCancle());
@@ -68,6 +70,10 @@ public class Main {
         commands.put("vote", new Vote());
         commands.put("stats", new Stats());
         commands.put("joke", new Joke());
+        commands.put("userinfo", new UserInfo());
+        commands.put("user", new UserInfo());
+        commands.put("nudge", new Stups());
+        commands.put("stups", new Stups());
 
     }
 
@@ -77,7 +83,8 @@ public class Main {
         builder.addListener(new botListener());
         builder.addListener(new reconnectListener());
         builder.addListener(new voiceChannelListener());
-        //builder.addListener(new guildJoinListener());
+        builder.addListener(new guildJoinListener());
+        builder.addListener(new privateMessageListener());
 
     }
 

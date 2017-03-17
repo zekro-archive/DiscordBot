@@ -8,9 +8,9 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.10.0.0";
+    public static String VERSION = "v1.11.1.2";
 
-    public static String PREFIX = "~";
+    public static String PREFIX = "-";
 
     public static OnlineStatus STATUS = OnlineStatus.ONLINE;
 

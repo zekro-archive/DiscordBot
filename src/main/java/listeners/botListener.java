@@ -14,6 +14,13 @@ public class botListener extends ListenerAdapter{
 
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
+
+        if (e.getMessage().getContent().startsWith("~") && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
+            e.getTextChannel().sendMessage(
+                    ":warning:  Willst du, " + e.getAuthor().getAsMention() + ", dass ich dir antworte? Dann nutze bitte den neuen Präfix **` - `** (\"Minus\"/\"Strich\")!"
+            ).queue();
+        }
+
         if (e.getMessage().getContent().startsWith(STATICS.PREFIX) && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
             try {
                 Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));

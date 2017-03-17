@@ -1,10 +1,19 @@
 package commands;
 
+import core.Main;
+import net.dv8tion.jda.core.MessageHistory;
+import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Help implements Command {
+
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -30,22 +39,35 @@ public class Help implements Command {
             return;
         }
 
-        event.getTextChannel().sendMessage(
-                        "**__GENERAL COMMANDS:__** \n\n" +
-                        "` ~ping `  -  Pong!\n" +
-                        "` ~cat `  -  =^..^=\n" +
-                        "` ~8ball `  -  Ask the holy 8ball for a decision!\n" +
-                        "` ~clear `  -  *No function yet*\n" +
-                        "` ~bjoke ` alt: ` ~bj `  -  Special fun tool for special guys :^)\n" +
-                        "` ~c `  -  Cancels ~bjoke command\n" +
-                        "` ~alerts `  -  Paste list of current warframe alerts\n" +
-                        "` ~clear `  -  Clear an specific amount of messages in chat\n" +
-                        "` ~ttt `  -  Get server name and password of our TTT server" +
-                        "` ~say `  -  Say something with the bot's chat voice" +
-                        "` ~vote `  -  Say something with the bot's chat voice" +
-                        "` ~info `  -  Info\n" +
-                        "` ~help <command> `  -  Get more information about command"
-        ).queue();
+        event.getMessage().deleteMessage().queue();
+
+        ArrayList<String> cmdInvokes = new ArrayList<>();
+        ArrayList<String> cmdHelp = new ArrayList<>();
+        Main.commands.forEach((s, command) -> cmdInvokes.add(s));
+        Main.commands.forEach((s, command) -> cmdHelp.add(command.help() != null ? " - " + command.help().replace(":warning:  USAGE: ", "") : ""));
+        String commandsInvokesAsMessageString = "";
+        int index = 0;
+        for ( String s : cmdInvokes ) {
+            commandsInvokesAsMessageString += "**-" + s + "**" + cmdHelp.get(index) + "\n";
+            index++;
+        }
+
+        try {
+
+            PrivateChannel pc = event.getMember().getUser().openPrivateChannel().block();
+            pc.sendMessage(
+                    "__**COMMAD LIST**__\n\n" +
+                    commandsInvokesAsMessageString + "\n\n" +
+                    "If you want a full list of commands with description, please take a look there:\n" +
+                    ":point_right:   http://zekrosbot.zekro.de"
+            ).queue();
+
+
+        } catch (RateLimitedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override

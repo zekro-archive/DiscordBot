@@ -26,15 +26,7 @@ public class Say implements Command {
         String serverID = event.getGuild().getId();
         String channel = event.getTextChannel().getName();
 
-        MessageHistory history = new MessageHistory(event.getJDA().getGuildById(serverID).getTextChannelsByName(channel, false).get(0));
-        List<Message> msgs;
-
-        try {
-            msgs = history.retrievePast(1).block();
-            event.getJDA().getGuildById(serverID).getTextChannelsByName(channel, false).get(0).deleteMessageById(msgs.get(0).getId()).queue();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        event.getMessage().deleteMessage().queue();
 
         String output = "";
         if (args.length > 0) {
