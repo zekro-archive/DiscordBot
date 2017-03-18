@@ -3,18 +3,12 @@ package utils;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
-/**
- * Created by zekro on 18.03.2017 / 01:29
- * DiscordBot / utils
- * © zekro 2017
- */
-
 public class STATICS {
 
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.11.1.2";
+    public static String VERSION = "v1.13.1.4";
 
     public static String PREFIX = "-";
 
@@ -22,7 +16,7 @@ public class STATICS {
 
     public static Game GAME = new Game()  {
         public String getName() {
-            return "with boobs. | dev.zekro.de | v." + VERSION;
+            return "with boobs. | -help | " + VERSION;
         }
         public String getUrl() {
             return "http://zekro.de";

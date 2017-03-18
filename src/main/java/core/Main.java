@@ -1,8 +1,6 @@
 package core;
 
 import commands.*;
-import commands.chatutil.*;
-import commands.utility.*;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -15,12 +13,6 @@ import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
-
-/**
- * Created by zekro on 18.03.2017 / 01:29
- * DiscordBot / core
- * © zekro 2017
- */
 
 public class Main {
 

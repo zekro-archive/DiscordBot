@@ -8,13 +8,6 @@ import java.util.Timer;
 
 import static listeners.readyListener.restartWarframeAlertsCore;
 
-/**
- * Created by zekro on 18.03.2017 / 01:29
- * DiscordBot / listener
- * © zekro 2017
- */
-
-
 public class reconnectListener extends ListenerAdapter {
 
     @Override

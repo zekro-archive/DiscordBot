@@ -10,12 +10,6 @@ import utils.STATICS;
 import java.io.IOException;
 import java.text.ParseException;
 
-/**
- * Created by zekro on 18.03.2017 / 01:29
- * DiscordBot / listener
- * © zekro 2017
- */
-
 public class botListener extends ListenerAdapter{
 
     @Override

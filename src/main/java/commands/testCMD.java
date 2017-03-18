@@ -3,12 +3,8 @@ package commands;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 /**
- * Created by zekro on 18.03.2017 / 01:29
- * DiscordBot / commands
- * © zekro 2017
+ * Created by Ringo Hoffmann on 20.02.2017.
  */
-
-
 public class testCMD implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -27,6 +23,11 @@ public class testCMD implements Command {
 
     @Override
     public String help() {
+        return null;
+    }
+
+    @Override
+    public String description() {
         return null;
     }
 }
