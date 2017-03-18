@@ -13,9 +13,9 @@ import java.io.File;
 import java.util.HashMap;
 
 /**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / core
  * © zekro 2017
- *
- * @author zekro
  */
 
 public class settings {

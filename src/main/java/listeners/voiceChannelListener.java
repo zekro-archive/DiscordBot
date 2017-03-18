@@ -7,6 +7,13 @@ import utils.STATICS;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / listener
+ * © zekro 2017
+ */
+
+
 public class voiceChannelListener extends ListenerAdapter {
 
     public String logChannel = STATICS.voiceLogChannel;

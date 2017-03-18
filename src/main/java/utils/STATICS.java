@@ -3,6 +3,12 @@ package utils;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
+/**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / utils
+ * © zekro 2017
+ */
+
 public class STATICS {
 
 

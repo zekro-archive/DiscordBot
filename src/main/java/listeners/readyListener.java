@@ -1,11 +1,19 @@
 package listeners;
 
+import core.warframeAlertsCore;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+/**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / listener
+ * © zekro 2017
+ */
+
 
 public class readyListener extends ListenerAdapter {
 

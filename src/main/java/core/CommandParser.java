@@ -5,6 +5,14 @@ import utils.STATICS;
 
 import java.util.ArrayList;
 
+/**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / core
+ * © zekro 2017
+ */
+
+
+
 public class CommandParser {
     public CommandContainer parse(String rw, MessageReceivedEvent e) {
 

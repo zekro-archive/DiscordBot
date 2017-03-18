@@ -5,10 +5,11 @@ import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
+ * Created by zekro on 18.03.2017 / 01:29
+ * DiscordBot / listener
  * © zekro 2017
- *
- * @author zekro
  */
+
 
 public class guildJoinListener extends ListenerAdapter {
 

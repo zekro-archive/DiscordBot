@@ -1,5 +1,6 @@
-package commands;
+package commands.utility;
 
+import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 /**
@@ -9,24 +10,24 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
  */
 
 
-public class testCMD implements Command {
-    @Override
+public class Ping implements Command {
+
+    private final String HELP = "USAGE: ~ping";
+
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
     }
 
-    @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        System.out.println(event.getGuild().getMember(event.getAuthor()).getRoles());
+        event.getTextChannel().sendMessage("Pong!").queue();
     }
 
-    @Override
     public void executed(boolean success, MessageReceivedEvent event) {
 
     }
 
-    @Override
     public String help() {
-        return null;
+
+        return HELP;
     }
 }
