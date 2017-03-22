@@ -1,7 +1,7 @@
 package commands;
 
-import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import core.coreCommands;
@@ -40,10 +40,10 @@ public class Clear implements Command {
                 List<Message> msgs;
 
                 try {
-                    msgs = history.retrievePast(Integer.parseInt(args[0])).block();
+                    msgs = history.retrievePast(Integer.parseInt(args[0])).complete();
                     event.getTextChannel().deleteMessages(msgs).queue();
 
-                    msgs = history.retrievePast(2).block();
+                    msgs = history.retrievePast(2).complete();
                     event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
 
                     event.getTextChannel().sendMessage(args[0]+ " Messages deleted!").queue();
@@ -58,10 +58,10 @@ public class Clear implements Command {
                 List<Message> msgs;
 
                 try {
-                    msgs = history.retrievePast(1).block();
+                    msgs = history.retrievePast(1).complete();
                     event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
 
-                    msgs = history.retrievePast(2).block();
+                    msgs = history.retrievePast(2).complete();
                     event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
 
                     event.getTextChannel().sendMessage(args[0]+ " Message deleted!").queue();
@@ -92,7 +92,7 @@ public class Clear implements Command {
         try {
             Thread.sleep(5000);
 
-            msgs = historyAfter.retrievePast(1).block();
+            msgs = historyAfter.retrievePast(1).complete();
             event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
         } catch (Exception e) {
             e.printStackTrace();

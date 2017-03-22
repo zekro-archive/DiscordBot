@@ -15,7 +15,7 @@ public class privateMessageListener extends ListenerAdapter {
 
         PrivateChannel pc = null;
         try {
-            pc = event.getAuthor().openPrivateChannel().block();
+            pc = event.getAuthor().openPrivateChannel().complete();
             pc.sendMessage(
                     ":warning:  Hey! Please don't send private messages to the bot's account! Sorry, but nobody will receive them. :crying_cat_face: "
             ).queue();

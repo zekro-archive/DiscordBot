@@ -46,16 +46,12 @@ public class Stups implements Command {
                     message += "\"";
                 }
 
-                try {
-                    PrivateChannel pc = event.getMessage().getMentionedUsers().get(0).openPrivateChannel().block();
-                    pc.sendMessage(
-                            ":point_right:  **Stups!** (von " + event.getAuthor().getAsMention() + ")" + message
-                    ).queue();
-                } catch (RateLimitedException e) {
-                    e.printStackTrace();
-                }
+                PrivateChannel pc = event.getMessage().getMentionedUsers().get(0).openPrivateChannel().complete();
+                pc.sendMessage(
+                        ":point_right:  **Stups!** (von " + event.getAuthor().getAsMention() + ")" + message
+                ).queue();
 
-                event.getMessage().deleteMessage().queue();
+                event.getMessage().delete().queue();
             }
         } else
             event.getTextChannel().sendMessage(

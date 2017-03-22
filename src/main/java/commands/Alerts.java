@@ -1,7 +1,7 @@
 package commands;
 
 import core.coreCommands;
-import listeners.warframeAlertsCore;
+import core.warframeAlertsCore;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.text.ParseException;

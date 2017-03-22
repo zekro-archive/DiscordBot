@@ -12,7 +12,7 @@ public class Info implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         event.getTextChannel().sendMessage(
-                "**zekroBot** JDA Discord Bot - " + STATICS.VERSION + "\n\n" +
+                "**zekroBot** JDA Discord Bot - v." + STATICS.VERSION + "\n\n" +
                 "http://dev.zekro.de\n" +
                 "http://github.zekro.de/DiscordBot\n\n" +
                 "*© 2017 zekro*"

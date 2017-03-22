@@ -2,7 +2,6 @@ package commands;
 
 import com.sun.xml.internal.ws.api.pipe.ServerTubeAssemblerContext;
 import core.Main;
-import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -42,7 +41,7 @@ public class Help implements Command {
             return;
         }
 
-        event.getMessage().deleteMessage().queue();
+        event.getMessage().delete().queue();
 
         ArrayList<String> cmdInvokes = new ArrayList<>();
         ArrayList<String> cmdHelp = new ArrayList<>();
@@ -57,7 +56,7 @@ public class Help implements Command {
 
         try {
 
-            PrivateChannel pc = event.getMember().getUser().openPrivateChannel().block();
+            PrivateChannel pc = event.getMember().getUser().openPrivateChannel().complete();
             pc.sendMessage(
                     "__**COMMAD LIST**__\n\n" +
                     commandsInvokesAsMessageString + "\n\n" +

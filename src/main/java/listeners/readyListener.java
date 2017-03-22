@@ -1,5 +1,7 @@
 package listeners;
 
+import core.update;
+import core.warframeAlertsCore;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
@@ -20,6 +22,8 @@ public class readyListener extends ListenerAdapter {
             public void run() {
 
                 warframeAlertsCore.pasteAlertsInChat(readyEvent);
+                update.getUpdate(readyEvent);
+
 
             }
         };
@@ -45,50 +49,12 @@ public class readyListener extends ListenerAdapter {
             public void run() {
 
                 warframeAlertsCore.pasteAlertsInChat(event);
+                update.getUpdate(readyEvent);
 
             }
         };
 
         timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
-
-        /* Some code for experimenting around with prefix settings
-        File f = new File("servers");
-
-        if (!f.exists())
-            f.mkdir();
-
-        List<Guild> serverList = event.getJDA().getGuilds();
-        for (Guild g : serverList) {
-
-            String path = "servers/" + g.getName().toString();
-            String settingsPath = path + "/settings.xml";
-
-            File fg = new File(path);
-            if (!fg.exists())
-                fg.mkdir();
-
-            fg = new File(settingsPath);
-            if (!fg.exists()) {
-                try {
-
-                    xmlParser.createXML(settingsPath);
-
-                } catch (TransformerException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-
-                    System.out.println(xmlParser.readXML(settingsPath).get("prefix"));
-                    STATICS.PREFIX = xmlParser.readXML(settingsPath).get("prefix");
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (SAXException e) {
-                    e.printStackTrace();
-                }
-            }
-        */
 
     }
 }

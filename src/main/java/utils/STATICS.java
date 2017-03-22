@@ -8,7 +8,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "v1.13.1.4";
+    public static String VERSION = "1.14.0.0";
 
     public static String PREFIX = "-";
 
@@ -16,7 +16,7 @@ public class STATICS {
 
     public static Game GAME = new Game()  {
         public String getName() {
-            return "with boobs. | -help | " + VERSION;
+            return "ゼクロ | -help | v." + VERSION;
         }
         public String getUrl() {
             return "http://zekro.de";

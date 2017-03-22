@@ -3,7 +3,6 @@ package core;
 import commands.*;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.SECRETS;
@@ -39,7 +38,7 @@ public class Main {
         //settings.initializeSettings();
 
         try {
-            JDA jda = builder.buildBlocking();
+            builder.buildBlocking();
         } catch (LoginException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

@@ -1,7 +1,6 @@
 package commands;
 
 import core.coreCommands;
-import net.dv8tion.jda.core.MessageHistory;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -26,7 +25,7 @@ public class Say implements Command {
         String serverID = event.getGuild().getId();
         String channel = event.getTextChannel().getName();
 
-        event.getMessage().deleteMessage().queue();
+        event.getMessage().delete().queue();
 
         String output = "";
         if (args.length > 0) {
