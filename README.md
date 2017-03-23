@@ -1,4 +1,4 @@
-# Project: "ゼクロー ボット (zekroBot)"
+# Project: "ゼクロ ボット (zekroBot)"
 -----
 
 ### Installation
