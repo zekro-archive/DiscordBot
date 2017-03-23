@@ -9,8 +9,8 @@ import platform
 import sys
 
 updateURL = "https://github.com/zekroTJA/DiscordBot/blob/master/out/artifacts/DiscordBot_jar/DiscordBot.jar?raw=true"
-updateScriptURL = "https://github.com/zekroTJA/DiscordBot/blob/master/update.py"
-startFileURL = "https://github.com/zekroTJA/DiscordBot/blob/master/startfile.sh"
+updateScriptURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/update.py"
+startFileURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/startfile.sh"
 
 intsallPath = "Programs/zekroBot/"
 
