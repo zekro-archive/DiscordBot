@@ -9,7 +9,10 @@ import utils.SECRETS;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -21,7 +24,22 @@ public class Main {
 
     public static HashMap<String, Command> commands = new HashMap<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        File file_TOKEN = new File("api_token.txt");
+        Path file_TOKEN_path = file_TOKEN.toPath();
+        if (!file_TOKEN.exists()) {
+            file_TOKEN.createNewFile();
+            System.out.println("PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'api_token.txt' AND RESTART!");
+            System.exit(0);
+        }
+        else if (Files.readAllLines(file_TOKEN_path).get(0).length() < 1) {
+            System.out.println("PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'api_token.txt' AND RESTART!");
+            System.exit(0);
+        }
+        else {
+            SECRETS.TOKEN = Files.readAllLines(file_TOKEN_path).get(0);
+        }
 
         builder = new JDABuilder(AccountType.BOT);
 

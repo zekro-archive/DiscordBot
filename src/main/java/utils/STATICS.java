@@ -8,7 +8,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.14.0.7";
+    public static String VERSION = "1.14.2.0";
 
     public static String PREFIX = "-";
 
