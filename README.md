@@ -12,4 +12,6 @@ cd ~ && wget "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/insta
 
 [Command List](https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing)
 
+<div>
 <iframe src="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/pubhtml?widget=true&amp;headers=false"></iframe>
+<div\>
