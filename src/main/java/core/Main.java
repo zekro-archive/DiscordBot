@@ -73,6 +73,7 @@ public class Main {
         commands.put("user", new UserInfo());
         commands.put("nudge", new Stups());
         commands.put("stups", new Stups());
+        commands.put("update", new Update());
 
     }
 

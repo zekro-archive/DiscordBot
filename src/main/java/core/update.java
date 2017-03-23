@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,7 +22,7 @@ public class update {
 
     private static String versionURL = "https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt";
 
-    private static boolean checkIfUpdate() {
+    public static boolean checkIfUpdate() {
 
         String version = STATICS.VERSION;
 
@@ -42,9 +43,8 @@ public class update {
     }
 
 
-    public static void getUpdate(ReadyEvent event) {
+    public static void getUpdate(List<Guild> guilds) {
 
-        System.out.println(checkIfUpdate());
         if (checkIfUpdate()) {
 
             File f = new File("update.py");
@@ -55,11 +55,13 @@ public class update {
 
             try {
 
-                for ( Guild g : event.getJDA().getGuilds() ) {
-                    g.getTextChannelsByName("general", true).get(0).sendMessage(":warning:   The bot will be shut down for a short while for updating! Bye... :^)");
+                for ( Guild g : guilds ) {
+                    try {
+                        g.getTextChannelsByName("general", true).get(0).sendMessage(":warning:   The bot will be shut down for a short while for updating! C U :kissing_heart:").queue();
+                    } catch (Exception e) {}
                 }
 
-                Runtime.getRuntime().exec("python update.py");
+                Runtime.getRuntime().exec("screen python update.py");
                 System.exit(0);
 
             } catch (IOException e) {

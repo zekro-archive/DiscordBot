@@ -22,7 +22,7 @@ public class readyListener extends ListenerAdapter {
             public void run() {
 
                 warframeAlertsCore.pasteAlertsInChat(readyEvent);
-                update.getUpdate(readyEvent);
+                update.getUpdate(readyEvent.getJDA().getGuilds());
 
 
             }
@@ -49,7 +49,7 @@ public class readyListener extends ListenerAdapter {
             public void run() {
 
                 warframeAlertsCore.pasteAlertsInChat(event);
-                update.getUpdate(readyEvent);
+                update.getUpdate(readyEvent.getJDA().getGuilds());
 
             }
         };
