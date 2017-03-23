@@ -13,8 +13,9 @@ public class Info implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         event.getTextChannel().sendMessage(
                 "**zekroBot** JDA Discord Bot - v." + STATICS.VERSION + "\n\n" +
-                "http://dev.zekro.de\n" +
-                "http://github.zekro.de/DiscordBot\n\n" +
+                "Webpage: http://dev.zekro.de\n" +
+                "Readme/Changelogs: http://github.zekro.de/DiscordBot/blob/master/README.md\n" +
+                "Github Repository: http://github.zekro.de/DiscordBot\n\n" +
                 "*© 2017 zekro*"
         ).queue();
     }

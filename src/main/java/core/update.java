@@ -57,7 +57,7 @@ public class update {
 
                 for ( Guild g : guilds ) {
                     try {
-                        g.getTextChannelsByName("general", true).get(0).sendMessage(":warning:   The bot will be shut down for a short while for updating! C U :kissing_heart:").queue();
+                        g.getTextChannelsByName("general", true).get(0).sendMessage(":warning:   The bot will be shut down for a short while for updating! C U later :kissing_heart: \n\n :clipboard:  CHANGELOGS: http://github.zekro.de/DiscordBot/blob/master/README.md").queue();
                     } catch (Exception e) {}
                 }
 

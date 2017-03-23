@@ -18,3 +18,11 @@ cd ~ && bash zb && nano Programs/zekroBot/api_token.txt
 ### Commands
 
 <a href="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing" target="_blank"><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/1033926355/original/GoogleSheets.png" width="200"/></a>
+
+### Latest Changelogs
+
+| Verion  | Changes |
+|--|--|
+| 1.14.2.1 | Updated updating service, changed some stuff in API token handling |
+| 1.14.1.0 | Added installation script, new admin command "-stop" |
+| 1.14.0.0 | Updated JDA, added auto update service |
