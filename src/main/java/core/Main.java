@@ -1,6 +1,11 @@
 package core;
 
 import commands.*;
+import commands.administration.Restart;
+import commands.administration.Update;
+import commands.administration.testCMD;
+import commands.chat.*;
+import commands.essentials.*;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -9,10 +14,7 @@ import utils.SECRETS;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -26,19 +28,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        File file_TOKEN = new File("api_token.txt");
-        Path file_TOKEN_path = file_TOKEN.toPath();
-        if (!file_TOKEN.exists()) {
-            file_TOKEN.createNewFile();
-            System.out.println("PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'api_token.txt' AND RESTART!");
+        settings.loadSettings();
+        if (!settings.testForToken()) {
+            System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
             System.exit(0);
-        }
-        else if (Files.readAllLines(file_TOKEN_path).get(0).length() < 1) {
-            System.out.println("PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'api_token.txt' AND RESTART!");
-            System.exit(0);
-        }
-        else {
-            SECRETS.TOKEN = Files.readAllLines(file_TOKEN_path).get(0);
         }
 
         builder = new JDABuilder(AccountType.BOT);
@@ -92,6 +85,7 @@ public class Main {
         commands.put("nudge", new Stups());
         commands.put("stups", new Stups());
         commands.put("update", new Update());
+        commands.put("restart", new Restart());
 
     }
 

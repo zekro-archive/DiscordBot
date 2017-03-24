@@ -8,15 +8,17 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.14.2.1";
+    public static String VERSION = "1.15.0.0";
 
     public static String PREFIX = "-";
 
     public static OnlineStatus STATUS = OnlineStatus.ONLINE;
 
+    public static String CUSTOM_MESSAGE = "ゼクロ";
+
     public static Game GAME = new Game()  {
         public String getName() {
-            return "ゼクロ | -help | v." + VERSION;
+            return CUSTOM_MESSAGE + " | -help | v." + VERSION;
         }
         public String getUrl() {
             return "http://zekro.de";
@@ -33,8 +35,6 @@ public class STATICS {
     public static int refreshTime = 10;
 
     public static String warframeAlertsChannel = "warframealerts";
-
-    public static String warframeAlertsServerID = "266589518537162762";
 
     public static boolean enableWarframeAlerts = false;
 

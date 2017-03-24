@@ -10,6 +10,8 @@ import sys
 
 updateURL = "https://github.com/zekroTJA/DiscordBot/blob/master/out/artifacts/DiscordBot_jar/DiscordBot.jar?raw=true"
 updateScriptURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/update.py"
+restartScriptURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/restart.py"
+settingsURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/SETTINGS.txt"
 startFileURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/startfile.sh"
 
 intsallPath = "Programs/zekroBot/"
@@ -31,9 +33,17 @@ urllib.urlretrieve(updateURL, intsallPath + "DiscordBot.jar")
 print "\n[INFO] Downloading 'update.py'..."
 urllib.urlretrieve(updateScriptURL, intsallPath + "update.py")
 
+print "\n[INFO] Downloading 'restart.py'..."
+urllib.urlretrieve(restartScriptURL, intsallPath + "restart.py")
+
+print "\n[INFO] Downloading 'SETTINGS.txt'..."
+urllib.urlretrieve(settingsURL, intsallPath + "SETTINGS.txt")
+
 print "\n[INFO] Downloading 'zb' (Startfile)..."
 urllib.urlretrieve(startFileURL, "update.py")
 
 print "\n[INFO] Installation finished!"
+
+os.system("sudo nano SETTINGS.txt")
 
 sys.exit(0)

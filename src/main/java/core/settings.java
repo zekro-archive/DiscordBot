@@ -1,16 +1,16 @@
 package core;
 
-import com.sun.scenario.effect.impl.prism.ps.PPSBlend_REDPeer;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.Game;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+
+import com.moandjiezana.toml.Toml;
+import com.moandjiezana.toml.TomlWriter;
+import utils.SECRETS;
 import utils.STATICS;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.stream.Collector;
 
 /**
  * © zekro 2017
@@ -20,86 +20,66 @@ import java.util.HashMap;
 
 public class settings {
 
-    private static String xmlFile = "settings.xml";
-    private static String[] defRoles = {""};
+    private static File sfile = new File("SETTINGS.txt");
+    private static TomlWriter tomlw = new TomlWriter();
+    private static Toml toml;
 
-    private static String PREFIX                       = readXmlNodes().get("PREFIX");
-    private static String WA_CHANNEL                   = readXmlNodes().get("WA_CHANNEL");
-    private static String DOCID_WARFRAMEALERTSFILTER   = readXmlNodes().get("DOCID_WARFRAMEALERTSFILTER");
-    private static String DOCID_JOKES                  = readXmlNodes().get("DOCID_JOKES");
-    private static String VOICELOG_CHANNEL             = readXmlNodes().get("VOICELOG_CHANNEL");
-    private static String COMMAND_CONSOLE_OUTPUT       = readXmlNodes().get("COMMAND_CONSOLE_OUTPUT");
-
-
-    private static Game GAME                           = new Game() {
-
-        @Override
-        public String getName() {
-            return readXmlNodes().get("GAME");
-        }
-
-        @Override
-        public String getUrl() {
-            return null;
-        }
-
-        @Override
-        public GameType getType() {
-            return GameType.DEFAULT;
-        }
-    };
-    private static int WA_REFRESHTIME                  = Integer.parseInt(readXmlNodes().get("WA_REFRESHTIME"));
-    private static OnlineStatus ONLINE_STATUS          = parseOnlineStatus(readXmlNodes().get("ONLINE_STATUS"));
-    private static String[] PERMISSION_ROLES           = readXmlNodes().get("PERMISSION_ROLES").split(",").length > 0 ? readXmlNodes().get("PERMISSION_ROLES").split(",") : defRoles;
-
-
-    public static OnlineStatus parseOnlineStatus(String in) {
-
-        switch (in) {
-
-            case "online":
-                return OnlineStatus.ONLINE;
-
-            case "idle":
-                return OnlineStatus.IDLE;
-
-            case "do not distrub":
-                return OnlineStatus.DO_NOT_DISTURB;
-
-        }
-
-        return OnlineStatus.ONLINE;
+    public static class SCONT {
+        static final String TOKEN = "TOKEN";
+        static final String PREFIX = "CMD_PREFIX";
+        static final String CUSTOM_MESSAGE = "CUSTOM_PLAYING_MESSAGE";
+        static final String VOICE_LOG_TEXTCHANNEL = "VOICE_LOG_TEXTCHANNEL";
+        static final String WARFRAME_ALERTS_TEXTCHANNEL = "WARFRAME_ALERTS_TEXTCHANNEL";
+        static final String WARFRAME_ALERTS_REFRESHTIME = "WARFRAME_ALERTS_REFRESHTIME";
+        static final String PERMISSION_ROLES = "PERMISSION_ROLES";
+        static final String DOCID_WARFRAME_ALERTS_FILTER = "DOCID_WARFRAME_ALERTS_FILTER";
+        static final String DOCID_JOKES = "DOCID_JOKES";
+        static final String COMMAND_CONSOLE_OUTPUT = "COMMAND_CONSOLE_OUTPUT";
     }
 
-    public static HashMap<String, String> readXmlNodes() {
+    public static boolean testForToken() {
+        return (toml.getString(SCONT.TOKEN).length() > 0);
+    }
 
-        HashMap<String, String> out = new HashMap<>();
+    public static void loadSettings() throws IOException {
 
-        try {
+        if (!sfile.exists()) {
 
-            File fXmlFile = new File(xmlFile);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
-            doc.getDocumentElement().normalize();
+            Map<String, Object> map = new HashMap<>();
 
-            NodeList nList = doc.getElementsByTagName("settings").item(0).getChildNodes();
+            map.put(SCONT.COMMAND_CONSOLE_OUTPUT, true);
+            map.put(SCONT.DOCID_JOKES, "");
+            map.put(SCONT.DOCID_WARFRAME_ALERTS_FILTER, "");
+            map.put(SCONT.PERMISSION_ROLES, "Admin, Moderator, Owner");
+            map.put(SCONT.WARFRAME_ALERTS_REFRESHTIME, 10);
+            map.put(SCONT.WARFRAME_ALERTS_TEXTCHANNEL, "");
+            map.put(SCONT.VOICE_LOG_TEXTCHANNEL, "");
+            map.put(SCONT.CUSTOM_MESSAGE, "ゼクロ");
+            map.put(SCONT.PREFIX, "-");
+            map.put(SCONT.TOKEN, "");
 
-            for (int i = 0; i < nList.getLength(); i++) {
-                out.put(nList.item(i).getNodeName(), nList.item(i).getTextContent());
-            }
+            tomlw.write(map, new File("SETTINGS.txt"));
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+
+            toml = new Toml().read(sfile);
+
+            SECRETS.TOKEN = toml.getString(SCONT.TOKEN);
+            STATICS.PREFIX = toml.getString(SCONT.PREFIX);
+            STATICS.CUSTOM_MESSAGE = toml.getString(SCONT.CUSTOM_MESSAGE);
+            STATICS.warframeAlertsChannel = toml.getString(SCONT.WARFRAME_ALERTS_TEXTCHANNEL);
+            STATICS.refreshTime = Math.toIntExact(toml.getLong(SCONT.WARFRAME_ALERTS_REFRESHTIME));
+            STATICS.botPermRoles = toml.getString(SCONT.PERMISSION_ROLES).split(",");
+            STATICS.DOCID_warframeAlertsFilter = toml.getString(SCONT.DOCID_WARFRAME_ALERTS_FILTER);
+            STATICS.DOCID_jokes = toml.getString(SCONT.DOCID_JOKES);
+            STATICS.commandConsoleOutout = toml.getBoolean(SCONT.COMMAND_CONSOLE_OUTPUT);
+
         }
 
-        return out;
     }
 
-    public static void initializeSettings() {
 
-        STATICS.PREFIX = PREFIX;
 
-    }
+
 
 }

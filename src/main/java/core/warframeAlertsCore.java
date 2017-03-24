@@ -15,7 +15,6 @@ import java.util.*;
 public class warframeAlertsCore {
 
     public static String APIALERTLIST = "";
-    static String alertsServerID = STATICS.warframeAlertsServerID;
     static String alertsChannelName = STATICS.warframeAlertsChannel;
 
 
