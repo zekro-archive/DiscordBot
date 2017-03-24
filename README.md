@@ -7,12 +7,10 @@ If you want to install this bot for yourself, use this command on your linux sys
 ```bash
 cd ~ && wget "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/install.py" && python install.py && rm install.py
 ```
+Included in the installation, there will be a settings file in the bots direction named *SETTINGS.txt*. Open it and enter yout Discord API token, you will get from <a href="https://discordapp.com/developers/applications/me" target="_blank">this page<a/>.
 
-After running the bot first time, it will generate a text file *'~/Programs/zekroBot/**api_token.txt**'*. You need to enter your API Token from your Bot you'll get from <a href="https://discordapp.com/developers/applications/me" target="_blank">this page<a/>. Then run the bot a secont time.
-
-You also can simply use this command below (after installation above!):
 ```bash
-cd ~ && bash zb && nano Programs/zekroBot/api_token.txt
+sudo nano ~/Programs/zekroBot/SETTINGS.txt
 ```
 
 -----
