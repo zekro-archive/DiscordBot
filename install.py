@@ -44,6 +44,6 @@ urllib.urlretrieve(startFileURL, "update.py")
 
 print "\n[INFO] Installation finished!"
 
-os.system("sudo nano SETTINGS.txt")
+os.system("cd ~ && sudo nano Programs/zekroBot/SETTINGS.txt")
 
 sys.exit(0)
