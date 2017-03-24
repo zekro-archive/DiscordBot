@@ -23,8 +23,9 @@ cd ~ && bash zb && nano Programs/zekroBot/api_token.txt
 -----
 ### Latest Changelogs
 
-| Verion  | Changes |
+| Version  | Changes |
 |--|--|
+| 1.15.0.1 | Added restart command, updated code structure |
 | 1.14.2.1 | Updated updating service, changed some stuff in API token handling |
 | 1.14.1.0 | Added installation script, new admin command "-stop" |
 | 1.14.0.0 | Updated JDA, added auto update service |

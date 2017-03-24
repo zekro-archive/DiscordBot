@@ -24,9 +24,9 @@ public class Restart implements Command {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         if (
-                event.getMember().getRoles().contains(event.getGuild().getRolesByName("Developer", false))
-             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", false))
-             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Owner", false))
+                event.getMember().getRoles().contains(event.getGuild().getRolesByName("Developer", false).get(0))
+             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", false).get(0))
+             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Owner", false).get(0))
         ) {
 
             event.getTextChannel().sendMessage(":warning:  Bot will restart now...").queue();
