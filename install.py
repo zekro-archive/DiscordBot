@@ -40,10 +40,9 @@ print "\n[INFO] Downloading 'SETTINGS.txt'..."
 urllib.urlretrieve(settingsURL, intsallPath + "SETTINGS.txt")
 
 print "\n[INFO] Downloading 'zb' (Startfile)..."
-urllib.urlretrieve(startFileURL, "update.py")
+urllib.urlretrieve(startFileURL, "zb")
 
 print "\n[INFO] Installation finished!"
-
-os.system("cd ~ && sudo nano Programs/zekroBot/SETTINGS.txt")
+print "\n[INFO] Please open the file '~/Programs/zekroBot/SETTINGS.txt' and enter your Discord API token!"
 
 sys.exit(0)
