@@ -7,37 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec8a6ed-933b-4b23-bc5d-d18f42bea619" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/DiscordBot_jar/DiscordBot.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/commands/Help.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install.py" afterPath="$PROJECT_DIR$/install.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/update.py" afterPath="$PROJECT_DIR$/update.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiscordBot.iml" afterPath="$PROJECT_DIR$/DiscordBot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" afterPath="$PROJECT_DIR$/src/main/java/core/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/settings.java" afterPath="$PROJECT_DIR$/src/main/java/core/settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/warframeAlertsCore.java" afterPath="$PROJECT_DIR$/src/main/java/core/warframeAlertsCore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" afterPath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Alerts.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Alerts.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/BJoke.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/BJoke.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/BJokeCancle.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/BJokeCancle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Cat.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Clear.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Clear.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/EightBall.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/EightBall.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Info.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Joke.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Joke.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Ping.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Ping.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Say.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Say.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Stats.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Stats.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Stop.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Stop.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Stups.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Stups.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/TTT.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/TTT.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Update.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Update.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/UserInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/Vote.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Vote.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/commands/testCMD.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/DiscordBot_jar.xml" />
     </list>
     <ignored path="DiscordBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -625,8 +596,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="C:/Python27/python.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
@@ -909,7 +880,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1456" height="886" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -921,12 +891,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.50564176" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2822165" sideWeight="0.49435824" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2822165" sideWeight="0.49435824" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21180555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21180555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1350,6 +1320,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
