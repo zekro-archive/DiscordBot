@@ -3,14 +3,11 @@ package core;
 
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
-import utils.SECRETS;
 import utils.STATICS;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.*;
-import java.util.stream.Collector;
 
 /**
  * © zekro 2017
@@ -64,7 +61,7 @@ public class settings {
 
             toml = new Toml().read(sfile);
 
-            SECRETS.TOKEN = toml.getString(SCONT.TOKEN);
+            STATICS.TOKEN = toml.getString(SCONT.TOKEN);
             STATICS.PREFIX = toml.getString(SCONT.PREFIX);
             STATICS.CUSTOM_MESSAGE = toml.getString(SCONT.CUSTOM_MESSAGE);
             STATICS.warframeAlertsChannel = toml.getString(SCONT.WARFRAME_ALERTS_TEXTCHANNEL);

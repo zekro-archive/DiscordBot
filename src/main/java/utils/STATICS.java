@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.Game;
 
 public class STATICS {
 
+    public static String TOKEN = "";
 
     //######### GENERAL BOT SETTINGS #########//
 

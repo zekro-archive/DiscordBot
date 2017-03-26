@@ -6,11 +6,11 @@ import commands.administration.Update;
 import commands.administration.testCMD;
 import commands.chat.*;
 import commands.essentials.*;
+import commands.guildAdministration.Kick;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
-import utils.SECRETS;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
@@ -36,7 +36,7 @@ public class Main {
 
         builder = new JDABuilder(AccountType.BOT);
 
-        builder.setToken(SECRETS.TOKEN);
+        builder.setToken(STATICS.TOKEN);
         builder.setAudioEnabled(false);
         builder.setAutoReconnect(true);
         //builder.setEnableShutdownHook(true);
@@ -86,6 +86,7 @@ public class Main {
         commands.put("stups", new Stups());
         commands.put("update", new Update());
         commands.put("restart", new Restart());
+        commands.put("kick", new Kick());
 
     }
 
