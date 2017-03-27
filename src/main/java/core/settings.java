@@ -32,6 +32,7 @@ public class settings {
         static final String DOCID_WARFRAME_ALERTS_FILTER = "DOCID_WARFRAME_ALERTS_FILTER";
         static final String DOCID_JOKES = "DOCID_JOKES";
         static final String COMMAND_CONSOLE_OUTPUT = "COMMAND_CONSOLE_OUTPUT";
+        static final String KICK_VOICE_CHANNEL = "KICK_VOICE_CHANNEL";
     }
 
     public static boolean testForToken() {
@@ -54,6 +55,7 @@ public class settings {
             map.put(SCONT.CUSTOM_MESSAGE, "ゼクロ");
             map.put(SCONT.PREFIX, "-");
             map.put(SCONT.TOKEN, "");
+            map.put(SCONT.KICK_VOICE_CHANNEL, "");
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
@@ -66,11 +68,11 @@ public class settings {
             STATICS.CUSTOM_MESSAGE = toml.getString(SCONT.CUSTOM_MESSAGE);
             STATICS.warframeAlertsChannel = toml.getString(SCONT.WARFRAME_ALERTS_TEXTCHANNEL);
             STATICS.refreshTime = Math.toIntExact(toml.getLong(SCONT.WARFRAME_ALERTS_REFRESHTIME));
-            STATICS.botPermRoles = toml.getString(SCONT.PERMISSION_ROLES).split(",");
+            STATICS.botPermRoles = toml.getString(SCONT.PERMISSION_ROLES).split(", ");
             STATICS.DOCID_warframeAlertsFilter = toml.getString(SCONT.DOCID_WARFRAME_ALERTS_FILTER);
             STATICS.DOCID_jokes = toml.getString(SCONT.DOCID_JOKES);
             STATICS.commandConsoleOutout = toml.getBoolean(SCONT.COMMAND_CONSOLE_OUTPUT);
-
+            STATICS.KICK_VOICE_CHANNEL = toml.getString(SCONT.KICK_VOICE_CHANNEL);
         }
 
     }

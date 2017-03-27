@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.16.0.0";
+    public static String VERSION = "1.17.0.0";
 
     public static String PREFIX = "-";
 
@@ -58,7 +58,6 @@ public class STATICS {
 
     public static boolean commandConsoleOutout = true;
 
-
-
+    public static String KICK_VOICE_CHANNEL = "";
 
 }

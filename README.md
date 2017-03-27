@@ -23,6 +23,8 @@ sudo nano ~/Programs/zekroBot/SETTINGS.txt
 
 | Version  | Changes |
 |--|--|
+| 1.17.0.0 | Added vkick command |
+| 1.16.0.0 | Added kick command, changed some things in settings handling |
 | 1.15.0.1 | Added restart command, updated code structure |
 | 1.14.2.1 | Updated updating service, changed some stuff in API token handling |
 | 1.14.1.0 | Added installation script, new admin command "-stop" |

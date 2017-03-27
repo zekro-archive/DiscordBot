@@ -7,6 +7,7 @@ import commands.administration.testCMD;
 import commands.chat.*;
 import commands.essentials.*;
 import commands.guildAdministration.Kick;
+import commands.guildAdministration.VoiceKick;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -27,6 +28,12 @@ public class Main {
     public static HashMap<String, Command> commands = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
+
+        /*
+
+            Command um jemanden aus dem Vociechannel in die Lobby oder AFK-Channel kicken.
+
+         */
 
         settings.loadSettings();
         if (!settings.testForToken()) {
@@ -87,6 +94,7 @@ public class Main {
         commands.put("update", new Update());
         commands.put("restart", new Restart());
         commands.put("kick", new Kick());
+        commands.put("vkick", new VoiceKick());
 
     }
 

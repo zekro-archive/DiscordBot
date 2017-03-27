@@ -5,6 +5,8 @@ import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import net.dv8tion.jda.core.managers.GuildController;
+import utils.STATICS;
+
 import java.util.*;
 
 public class BJoke implements Command {
@@ -23,6 +25,10 @@ public class BJoke implements Command {
     int sec = 10;
 
     public void action(String[] args, final MessageReceivedEvent event) {
+
+        VoiceChannel kickToChannel = event.getGuild().getAfkChannel();
+        if (event.getGuild().getVoiceChannelsByName(STATICS.KICK_VOICE_CHANNEL, true).size() > 1)
+            kickToChannel = event.getGuild().getVoiceChannelsByName(STATICS.KICK_VOICE_CHANNEL, true).get(0);
 
         try {
             String a = args[0];
@@ -48,6 +54,8 @@ public class BJoke implements Command {
         ).queue();
 
         Timer timer = new Timer();
+
+        VoiceChannel finalKickToChannel = kickToChannel;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -61,7 +69,7 @@ public class BJoke implements Command {
                             "Haha, " + event.getMessage().getMentionedUsers().get(0).getAsMention() + ", nieman hat über deinen schlechten Witz gelacht!"
                     ).queue();
 
-                    gc.moveVoiceMember(victim, event.getGuild().getVoiceChannels().get(0)).queue();
+                    gc.moveVoiceMember(victim, finalKickToChannel).queue();
 
 
                     try {
