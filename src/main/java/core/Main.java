@@ -11,6 +11,7 @@ import commands.guildAdministration.VoiceKick;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.STATICS;
 
@@ -29,11 +30,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        /*
-
-            Command um jemanden aus dem Vociechannel in die Lobby oder AFK-Channel kicken.
-
-         */
+        startArgumentHandler.args = args;
 
         settings.loadSettings();
         if (!settings.testForToken()) {

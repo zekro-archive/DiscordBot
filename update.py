@@ -23,7 +23,7 @@ else:
 urllib.urlretrieve(updateURL, fileName)
 
 if platform.system() == "Linux":
-    os.system("sudo screen -L -S zekroBot java -jar DiscordBot.jar")
+    os.system("sudo screen -L -S zekroBot java -jar DiscordBot.jar -update")
 else:
     os.system("java -jar DiscordBot.jar")
 

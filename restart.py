@@ -12,7 +12,7 @@ import sys
 time.sleep(3)
 
 if platform.system() == "Linux":
-    os.system("sudo screen -L -S zekroBot java -jar DiscordBot.jar")
+    os.system("sudo screen -L -S zekroBot java -jar DiscordBot.jar -restart")
 else:
     os.system("java -jar DiscordBot.jar")
 
