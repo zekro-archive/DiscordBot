@@ -10,6 +10,8 @@ import utils.STATICS;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static listeners.tttServerListener.testOnlineState;
+
 public class readyListener extends ListenerAdapter {
 
     static Timer timerOnReady;
@@ -24,7 +26,7 @@ public class readyListener extends ListenerAdapter {
 
                 warframeAlertsCore.pasteAlertsInChat(readyEvent);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
-
+                testOnlineState(readyEvent.getJDA().getGuilds());
 
             }
         };
@@ -82,6 +84,7 @@ public class readyListener extends ListenerAdapter {
 
                 warframeAlertsCore.pasteAlertsInChat(event);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
+                testOnlineState(readyEvent.getJDA().getGuilds());
 
             }
         };

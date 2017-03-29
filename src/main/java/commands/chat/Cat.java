@@ -95,9 +95,16 @@ public class Cat implements Command {
             json = readJsonFromUrl("http://random.cat/meow");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        String outputMessage = json.get("file").toString();
+        String outputMessage = null;
+        try {
+            outputMessage = json.get("file").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         event.getTextChannel().sendMessage(outputMessage).queue();
     }

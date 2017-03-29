@@ -33,6 +33,8 @@ public class settings {
         static final String DOCID_JOKES = "DOCID_JOKES";
         static final String COMMAND_CONSOLE_OUTPUT = "COMMAND_CONSOLE_OUTPUT";
         static final String KICK_VOICE_CHANNEL = "KICK_VOICE_CHANNEL";
+        static final String TTT_SERVER_IP = "TTT_SERVER_IP";
+        static final String TTT_SERVER_PORT = "TTT_SERVER_PORT";
     }
 
     public static boolean testForToken() {
@@ -73,6 +75,8 @@ public class settings {
             STATICS.DOCID_jokes = toml.getString(SCONT.DOCID_JOKES);
             STATICS.commandConsoleOutout = toml.getBoolean(SCONT.COMMAND_CONSOLE_OUTPUT);
             STATICS.KICK_VOICE_CHANNEL = toml.getString(SCONT.KICK_VOICE_CHANNEL);
+            STATICS.TTT_SERVER_IP = toml.getString(SCONT.TTT_SERVER_IP);
+            STATICS.TTT_SERVER_PORT = Math.toIntExact(toml.getLong(SCONT.TTT_SERVER_PORT));
         }
 
     }

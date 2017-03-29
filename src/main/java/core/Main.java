@@ -6,12 +6,12 @@ import commands.administration.Update;
 import commands.administration.testCMD;
 import commands.chat.*;
 import commands.essentials.*;
+import commands.etc.tttServerStatus;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.VoiceKick;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.STATICS;
 
@@ -92,6 +92,7 @@ public class Main {
         commands.put("restart", new Restart());
         commands.put("kick", new Kick());
         commands.put("vkick", new VoiceKick());
+        commands.put("tttserver", new tttServerStatus());
 
     }
 

@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.17.1.0";
+    public static String VERSION = "1.18.0.3";
 
     public static String PREFIX = "-";
 
@@ -59,5 +59,10 @@ public class STATICS {
     public static boolean commandConsoleOutout = true;
 
     public static String KICK_VOICE_CHANNEL = "";
+
+    public static String TTT_SERVER_IP = "";
+
+    public static int TTT_SERVER_PORT = 27015;
+
 
 }
