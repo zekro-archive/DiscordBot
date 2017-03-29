@@ -1,11 +1,7 @@
-# Project: "zekroBot"
+# Project: "zekroBot" 
+Current version: ```1.18.0.4```
+
 -----
-
-<object data="https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt" type="text/plain"
-width="500" style="height: 300px">
-<a href="https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt">No Support?</a>
-</object>
-
 ### Installation
 
 If you want to install this bot for yourself, use this command on your linux system to install:
