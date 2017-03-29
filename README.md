@@ -23,6 +23,7 @@ sudo nano ~/Programs/zekroBot/SETTINGS.txt
 
 | Version  | Changes |
 |--|--|
+| 1.18.0.5 | Added command -tttserver, added TTT Server online status listener |
 | 1.17.0.0 | Added vkick command |
 | 1.16.0.0 | Added kick command, changed some things in settings handling |
 | 1.15.0.1 | Added restart command, updated code structure |
