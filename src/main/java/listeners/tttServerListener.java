@@ -39,7 +39,7 @@ public class tttServerListener {
             }
 
         } catch (TimeoutException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             online = false;
 
         } catch (SteamCondenserException e) {

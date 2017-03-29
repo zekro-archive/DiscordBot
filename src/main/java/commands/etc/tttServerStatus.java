@@ -34,12 +34,12 @@ public class tttServerStatus implements Command {
             ).queue();
 
         } catch (TimeoutException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             event.getTextChannel().sendMessage(
                     "TTT Server is currently offline."
             ).queue();
         } catch (SteamCondenserException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             event.getTextChannel().sendMessage(
                     "TTT Server is currently offline."
             ).queue();
