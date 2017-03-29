@@ -1,6 +1,11 @@
 # Project: "zekroBot"
 -----
 
+<object data="https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt" type="text/plain"
+width="500" style="height: 300px">
+<a href="https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt">No Support?</a>
+</object>
+
 ### Installation
 
 If you want to install this bot for yourself, use this command on your linux system to install:
@@ -23,7 +28,7 @@ sudo nano ~/Programs/zekroBot/SETTINGS.txt
 
 | Version  | Changes |
 |--|--|
-| 1.18.0.5 | Added command -tttserver, added TTT Server online status listener |
+| 1.18.0.4 | Added command -tttserver, added TTT Server online status listener |
 | 1.17.0.0 | Added vkick command |
 | 1.16.0.0 | Added kick command, changed some things in settings handling |
 | 1.15.0.1 | Added restart command, updated code structure |
