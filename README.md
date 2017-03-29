@@ -1,5 +1,7 @@
 # Project: "zekroBot" 
+
 Current version: ```1.18.0.4```
+</br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 -----
 ### Features
