@@ -15,7 +15,6 @@ settingsURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/SETT
 startFileURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/startfile.sh"
 
 DEFintsallPath = "Programs/zekroBot/"
-installPath = ""
 
 
 class bcolors:
@@ -40,7 +39,8 @@ print "##############################\n" \
       "##############################\n\n"
 
 print "Please enter a path to install. Enter nothing for default path (~/Programs/zekroBot/)..."
-installPath = raw_input() + "/"
+installPath = raw_input()
+installPath += "/"
 
 if installPath == "":
     installPath = DEFintsallPath
