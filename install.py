@@ -101,7 +101,7 @@ except:
 
 print "\n" + bcolors.ENDC + "Creating 'zb' (Startfile)..."
 f = open("zb", "w")
-f.write("cd " + installPath)
+f.write("cd " + installPath + "\n")
 f.write("screen -L -S zekroBot java -jar DiscordBot.jar")
 f.close()
 print messages.COMPLETED
