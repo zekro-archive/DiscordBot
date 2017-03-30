@@ -32,6 +32,18 @@ Included in the installation, there will be a settings file in the bots directio
 sudo nano ~/Programs/zekroBot/SETTINGS.txt
 ```
 
+If everything of the installation is done, start the bot with:
+```bash
+bash zb
+```
+
+Finally, you can add the bot to your server.
+Replace "ENTERYOURIDHERE" with your id you got from the API Page.
+<img src="http://image.prntscr.com/image/20c2b10a189049eeab0191452483838a.png"/>
+```
+https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
+```
+
 -----
 ### Commands
 
