@@ -5,32 +5,47 @@
 
 # GENERAL SERVER SETTINGS #
 
-    TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.C7xNRQ.EfDf76cob2ezZZqrobcJvw0_1Kc"
-    CMD_PREFIX = "-"
-    CUSTOM_PLAYING_MESSAGE = "ゼクロ"
-    COMMAND_CONSOLE_OUTPUT = true
+    # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
+        TOKEN = ""
+    # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
+        CMD_PREFIX = "-"
+    # Custom message shown as "Now Playing: ..." text
+        CUSTOM_PLAYING_MESSAGE = "ゼクロ"
+    # Log entered command in console of the bot
+        COMMAND_CONSOLE_OUTPUT = true
 
 # PERMISSION SETTINGS #
 
-    PERMISSION_ROLES = "Admin, Moderator, Owner, Bot Commander"
+    # List roles that can use Moderator+ Commands
+        PERMISSION_ROLES = "Admin, Moderator, Owner, Bot Commander"
 
 # SOURCES SETTINGS (GOOGLE DOCS) #
 
-    DOCID_WARFRAME_ALERTS_FILTER = ""
-    DOCID_JOKES = ""
+    # Create a Google Docs Doc for this, publish it and enter doc id here
+        DOCID_WARFRAME_ALERTS_FILTER = ""
+    # Same here as above
+        DOCID_JOKES = ""
 
 # CHANNEL SETTINGS #
 
-    VOICE_LOG_TEXTCHANNEL = ""
-    KICK_VOICE_CHANNEL = "Lobby"
+    # Text channel for voice log
+        VOICE_LOG_TEXTCHANNEL = ""
+    # Alternative voice channel vor vkicks
+        KICK_VOICE_CHANNEL = "Lobby"
 
 # WARFRAME ALERTS SETTINGS #
 
-    WARFRAME_ALERTS_REFRESHTIME = 10
-    WARFRAME_ALERTS_TEXTCHANNEL = ""
+    # Refresh of alerts list in seconds
+        WARFRAME_ALERTS_REFRESHTIME = 10
+    # Text channel for warframe alerts list
+        WARFRAME_ALERTS_TEXTCHANNEL = ""
 
 # OTHER SETTINGS #
 
-    TTT_SERVER_IP = ""
-    TTT_SERVER_PORT = 27015
+    # THIS IS STILL IN ALPHA TESTING PHASE!
+
+    # Static server IP of TTT server
+        TTT_SERVER_IP = ""
+    # Port of server (defaultly 27015)
+        TTT_SERVER_PORT = 27015
 
