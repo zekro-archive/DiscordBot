@@ -30,6 +30,7 @@ class bcolors:
 class messages:
     DL_FAIL = bcolors.FAIL + "An error occured while downloading! Please check your network connection!" + bcolors.ENDC
     DL_COMPLETED = bcolors.OKGREEN + "Download completed." + bcolors.ENDC
+    COMPLETED = bcolors.OKGREEN + "Completed." + bcolors.ENDC
 
 
 print "##############################\n" \
@@ -98,12 +99,13 @@ try:
 except:
     print messages.DL_FAIL
 
-print "\n" + bcolors.ENDC + "Downloading 'zb' (Startfile)..."
-try:
-    urllib.urlretrieve(startFileURL, "zb")
-    print messages.DL_COMPLETED
-except:
-    print messages.DL_FAIL
+print "\n" + bcolors.ENDC + "Creating 'zb' (Startfile)..."
+f = open("zb", "w")
+f.write("cd " + installPath)
+f.write("screen -L -S zekroBot java -jar DiscordBot.jar")
+f.close()
+print messages.COMPLETED
+
 
 print "\n" + bcolors.OKGREEN + "Installation finished!"
 
