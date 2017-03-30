@@ -49,7 +49,7 @@ if installPath == "":
 else:
     if not os.path.exists(installPath):
         print "Entered path " + installPath + " does not exist. Create path now?"
-        if raw_input("(y/n)") == "y":
+        if raw_input("(y/n):") == "y":
             os.makedirs(installPath)
             print "Path created."
         else:
@@ -62,14 +62,14 @@ if platform.system() != "Linux":
     print "\n[ERROR] Please only use that installation script on Linux based system!"
     sys.exit(0)
 
-print "\nDownloading/Updating screen package..."
+print "\n" + bcolors.ENDC + "Downloading/Updating screen package..."
 os.system("sudo apt-get install screen")
 
 if not os.path.exists(installPath):
-    print "\n[INFO] Creating path..."
+    print "\n" + bcolors.ENDC + "Creating path..."
     os.makedirs(installPath)
 
-print "\nDownloading 'DiscordBot.jar'..."
+print "\n" + bcolors.ENDC + "Downloading 'DiscordBot.jar'..."
 try:
     urllib.urlretrieve(updateURL, installPath + "DiscordBot.jar")
     print messages.DL_COMPLETED
@@ -77,28 +77,28 @@ except:
     print messages.DL_FAIL
 
 
-print "\nDownloading 'update.py'..."
+print "\n" + bcolors.ENDC + "Downloading 'update.py'..."
 try:
     urllib.urlretrieve(updateScriptURL, installPath + "update.py")
     print messages.DL_COMPLETED
 except:
     print messages.DL_FAIL
 
-print "\nDownloading 'restart.py'..."
+print "\n" + bcolors.ENDC + "Downloading 'restart.py'..."
 try:
     urllib.urlretrieve(restartScriptURL, installPath + "restart.py")
     print messages.DL_COMPLETED
 except:
     print messages.DL_FAIL
 
-print "\nDownloading 'SETTINGS.txt'..."
+print "\n" + bcolors.ENDC + "Downloading 'SETTINGS.txt'..."
 try:
     urllib.urlretrieve(settingsURL, installPath + "SETTINGS.txt")
     print messages.DL_COMPLETED
 except:
     print messages.DL_FAIL
 
-print "\nDownloading 'zb' (Startfile)..."
+print "\n" + bcolors.ENDC + "Downloading 'zb' (Startfile)..."
 try:
     urllib.urlretrieve(startFileURL, "zb")
     print messages.DL_COMPLETED
@@ -107,8 +107,8 @@ except:
 
 print "\n" + bcolors.OKGREEN + "Installation finished!"
 
-print "\nDo you want to open SETTINS.txt now?"
-if raw_input() == "y":
+print "\n" + bcolors.ENDC + "Do you want to open SETTINS.txt now?"
+if raw_input("(y/n):") == "y":
     os.system("sudo nano " + installPath + "/SETTINGS.txt")
 else:
     print "\n" + bcolors.OKBLUE + "Please open the file '~/Programs/zekroBot/SETTINGS.txt' \n" \
