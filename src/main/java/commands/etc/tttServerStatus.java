@@ -1,7 +1,9 @@
 package commands.etc;
 
 import com.github.koraktor.steamcondenser.exceptions.SteamCondenserException;
+import com.github.koraktor.steamcondenser.steam.servers.GameServer;
 import com.github.koraktor.steamcondenser.steam.servers.GoldSrcServer;
+import com.github.koraktor.steamcondenser.steam.servers.MasterServer;
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;

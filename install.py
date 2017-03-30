@@ -14,35 +14,104 @@ restartScriptURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master
 settingsURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/SETTINGS.txt"
 startFileURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/startfile.sh"
 
-intsallPath = "Programs/zekroBot/"
+DEFintsallPath = "Programs/zekroBot/"
+installPath = ""
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+class messages:
+    DL_FAIL = bcolors.FAIL + "An error occured while downloading! Please check your network connection!"
+    DL_COMPLETED = bcolors.OKGREEN + "Download completed."
+
+
+print "##############################\n" \
+      "# " + bcolors.BOLD + "ZEKROS DISCORD BOT" + bcolors.ENDC + "         #\n" \
+      "# INSTALLATION               #\n" \
+      "# (C) 2017 by zekro          #\n" \
+      "##############################\n\n"
+
+print "Please enter a path to install. Enter nothing for default path (~/Programs/zekroBot/)..."
+installPath = raw_input()
+
+if installPath == "":
+    installPath = DEFintsallPath
+    print "Default path chosen."
+
+else:
+    if not os.path.exists(installPath):
+        print "Entered path " + installPath + " does not exist. Create path now?"
+        if raw_input("(y/n)") == "y":
+            os.makedirs(installPath)
+            print "Path created."
+        else:
+            sys.exit(0);
+    else:
+        print "Path " + installPath + " chosen."
+
 
 if platform.system() != "Linux":
     print "\n[ERROR] Please only use that installation script on Linux based system!"
     sys.exit(0)
 
-print "\n[INFO] Downloading/Updating screen package..."
+print "\nDownloading/Updating screen package..."
 os.system("sudo apt-get install screen")
 
-if not os.path.exists(intsallPath):
+if not os.path.exists(installPath):
     print "\n[INFO] Creating path..."
-    os.makedirs(intsallPath)
+    os.makedirs(installPath)
 
-print "\n[INFO] Downloading 'DiscordBot.jar'..."
-urllib.urlretrieve(updateURL, intsallPath + "DiscordBot.jar")
+print "\nDownloading 'DiscordBot.jar'..."
+try:
+    urllib.urlretrieve(updateURL, installPath + "DiscordBot.jar")
+    print messages.DL_COMPLETED
+except:
+    print messages.DL_FAIL
 
-print "\n[INFO] Downloading 'update.py'..."
-urllib.urlretrieve(updateScriptURL, intsallPath + "update.py")
 
-print "\n[INFO] Downloading 'restart.py'..."
-urllib.urlretrieve(restartScriptURL, intsallPath + "restart.py")
+print "\nDownloading 'update.py'..."
+try:
+    urllib.urlretrieve(updateScriptURL, installPath + "update.py")
+    print messages.DL_COMPLETED
+except:
+    print messages.DL_FAIL
 
-print "\n[INFO] Downloading 'SETTINGS.txt'..."
-urllib.urlretrieve(settingsURL, intsallPath + "SETTINGS.txt")
+print "\nDownloading 'restart.py'..."
+try:
+    urllib.urlretrieve(restartScriptURL, installPath + "restart.py")
+    print messages.DL_COMPLETED
+except:
+    print messages.DL_FAIL
 
-print "\n[INFO] Downloading 'zb' (Startfile)..."
-urllib.urlretrieve(startFileURL, "zb")
+print "\nDownloading 'SETTINGS.txt'..."
+try:
+    urllib.urlretrieve(settingsURL, installPath + "SETTINGS.txt")
+    print messages.DL_COMPLETED
+except:
+    print messages.DL_FAIL
 
-print "\n[INFO] Installation finished!"
-print "\n[INFO] Please open the file '~/Programs/zekroBot/SETTINGS.txt' and enter your Discord API token!"
+print "\nDownloading 'zb' (Startfile)..."
+try:
+    urllib.urlretrieve(startFileURL, "zb")
+    print messages.DL_COMPLETED
+except:
+    print messages.DL_FAIL
+
+print "\n" + bcolors.OKGREEN + "Installation finished!"
+
+print "\nDo you want to open SETTINS.txt now?"
+if raw_input() == "y":
+    os.system("sudo nano " + installPath + "/SETTINGS.txt")
+else:
+    print "\n" + bcolors.OKBLUE + "Please open the file '~/Programs/zekroBot/SETTINGS.txt' \n" \
+                                  "and enter your Discord API token!"
 
 sys.exit(0)
