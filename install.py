@@ -29,18 +29,18 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 class messages:
-    DL_FAIL = bcolors.FAIL + "An error occured while downloading! Please check your network connection!"
-    DL_COMPLETED = bcolors.OKGREEN + "Download completed."
+    DL_FAIL = bcolors.FAIL + "An error occured while downloading! Please check your network connection!" + bcolors.ENDC
+    DL_COMPLETED = bcolors.OKGREEN + "Download completed." + bcolors.ENDC
 
 
 print "##############################\n" \
-      "# " + bcolors.BOLD + "ZEKROS DISCORD BOT" + bcolors.ENDC + "         #\n" \
+      "# " + bcolors.BOLD + bcolors.OKBLUE + "ZEKROS DISCORD BOT" + bcolors.ENDC + "         #\n" \
       "# INSTALLATION               #\n" \
       "# (C) 2017 by zekro          #\n" \
       "##############################\n\n"
 
 print "Please enter a path to install. Enter nothing for default path (~/Programs/zekroBot/)..."
-installPath = raw_input()
+installPath = raw_input() + "/"
 
 if installPath == "":
     installPath = DEFintsallPath
