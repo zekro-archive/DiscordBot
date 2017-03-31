@@ -12,11 +12,6 @@ public class TTT implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        if (!event.getGuild().getId().equals("266589518537162762")) {
-            event.getTextChannel().sendMessage(":warning:  Sorry, but this command is not available on this guild! :(").queue();
-            return;
-        }
-
         event.getTextChannel().sendMessage(
                 ":regional_indicator_t: :regional_indicator_t: :regional_indicator_t:\n\n" +
                 "Servername:    ` GrandHarzer `\n" +

@@ -4,6 +4,7 @@ import commands.Command;
 import core.coreCommands;
 import core.warframeAlertsCore;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.text.ParseException;
 
@@ -25,7 +26,7 @@ public class Alerts implements Command {
 
             case "filter":
                 event.getTextChannel().sendMessage(
-                        ":pencil: https://docs.google.com/document/d/13O2lZ_UemLDkCV8425XHOPSZ3aVoeYmV5cF_vLQAyEY/edit"
+                        ":pencil: https://docs.google.com/document/d/" + STATICS.DOCID_warframeAlertsFilter + "/edit"
                 ).queue();
                 break;
 

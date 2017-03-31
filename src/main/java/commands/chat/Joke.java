@@ -58,6 +58,16 @@ public class Joke implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
+        if (args.length > 0) {
+            if (args[0].equals("doc")) {
+                event.getTextChannel().sendMessage(
+                        ":pencil: https://docs.google.com/document/d/" + STATICS.DOCID_jokes + "/edit"
+                ).queue();
+                return;
+            }
+        }
+
+
         Random rand = new Random();
 
         ArrayList<String> jokeCont = getJokes();
