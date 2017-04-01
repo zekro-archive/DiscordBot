@@ -45,7 +45,7 @@ public class update {
 
     public static void getUpdate(List<Guild> guilds) {
 
-        if (checkIfUpdate()) {
+        if (checkIfUpdate() && STATICS.autoUpdate) {
 
             File f = new File("update.py");
             if (!f.exists() || f.isDirectory()) {

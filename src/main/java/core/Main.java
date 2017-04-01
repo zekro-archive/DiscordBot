@@ -9,6 +9,7 @@ import commands.essentials.*;
 import commands.etc.tttServerStatus;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.VoiceKick;
+import commands.music.Music;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -41,7 +42,7 @@ public class Main {
         builder = new JDABuilder(AccountType.BOT);
 
         builder.setToken(STATICS.TOKEN);
-        builder.setAudioEnabled(false);
+        builder.setAudioEnabled(true);
         builder.setAutoReconnect(true);
         //builder.setEnableShutdownHook(true);
 
@@ -93,6 +94,7 @@ public class Main {
         commands.put("kick", new Kick());
         commands.put("vkick", new VoiceKick());
         commands.put("tttserver", new tttServerStatus());
+        commands.put("music", new Music());
 
     }
 
