@@ -61,7 +61,11 @@ public class update {
                     } catch (Exception e) {}
                 }
 
-                Runtime.getRuntime().exec("screen python update.py");
+                if (System.getProperty("os.name") == "Linux")
+                    Runtime.getRuntime().exec("screen python update.py");
+                else
+                    Runtime.getRuntime().exec("wincmd.exe -update");
+
                 System.exit(0);
 
             } catch (IOException e) {

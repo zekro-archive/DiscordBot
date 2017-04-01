@@ -30,7 +30,12 @@ public class Restart implements Command {
         ) {
 
             event.getTextChannel().sendMessage(":warning:  Bot will restart now...").queue();
-            Runtime.getRuntime().exec("screen python restart.py");
+
+            if (System.getProperty("os.name") == "Linux")
+                Runtime.getRuntime().exec("screen python restart.py");
+            else
+                Runtime.getRuntime().exec("wincmd.exe -restart");
+
             System.exit(0);
 
         } else {
