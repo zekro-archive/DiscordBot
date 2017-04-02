@@ -61,7 +61,7 @@ public class update {
                     } catch (Exception e) {}
                 }
 
-                if (System.getProperty("os.name") == "Linux")
+                if (System.getProperty("os.name").toLowerCase().contains("linux"))
                     Runtime.getRuntime().exec("screen python update.py");
                 else
                     Runtime.getRuntime().exec("wincmd.exe -update");
