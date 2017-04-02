@@ -261,7 +261,7 @@ public class Music implements Command {
 
                         if (isDj(event.getMember())) {
                             getTrackManager(guild).shuffleQueue();
-                            //chat.sendMessage("\u2705 Shuffled the queue!");
+                            event.getTextChannel().sendMessage(":musical_note:  Shuffled queue.  :twisted_rightwards_arrows: ").queue();
                         } else {
                             //chat.sendMessage("\u26D4 You don't have the permission to do that!");
                         }
