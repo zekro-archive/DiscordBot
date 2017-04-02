@@ -14,7 +14,7 @@
     # Log entered command in console of the bot
         COMMAND_CONSOLE_OUTPUT = true
     # Automatically check for updates
-        AUTO_UPDATE = true
+        AUTO_UPDATE = false
 
 # PERMISSION SETTINGS #
 
