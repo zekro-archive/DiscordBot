@@ -1,6 +1,6 @@
 # Project: "zekroBot" 
 
-Current version: ```1.18.0.4```
+Current version: ```1.19.0.0```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 -----
@@ -16,6 +16,8 @@ Current version: ```1.18.0.4```
 
 - **Voicelog** </br> Do you want to have a nice voice channel log like in teamspeak chat? So just create a text channel (name definable in SETTINGS.txt) and the bot will log all voice channel activity in that channel.
 </br><img src="http://image.prntscr.com/image/2aef2f6f55de4aaaa806fe2fbf57988d.png"/>
+
+- **Music (STILL IN BETA)** </br> Yay! Now you can also play msuic with the bot! But Iäs still in a beta phase so its still kind of buggy :^)
 
 - **TTT Server Listener** </br> You can enter your Gmod Server IP and port in the settings file to auto send a message when the server is online for members. Also usable with command `-tttserver`.
 
@@ -54,6 +56,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Version  | Changes |
 |--|--|
+| 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
 | 1.18.0.4 | Added command -tttserver, added TTT Server online status listener |
 | 1.17.0.0 | Added vkick command |
 | 1.16.0.0 | Added kick command, changed some things in settings handling |
