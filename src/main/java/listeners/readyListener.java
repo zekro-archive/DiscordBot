@@ -26,7 +26,8 @@ public class readyListener extends ListenerAdapter {
 
                 warframeAlertsCore.pasteAlertsInChat(readyEvent);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
-                testOnlineState(readyEvent.getJDA().getGuilds());
+                if (STATICS.TTT_SERVER_IP != "")
+                    testOnlineState(readyEvent.getJDA().getGuilds());
 
             }
         };
@@ -84,7 +85,8 @@ public class readyListener extends ListenerAdapter {
 
                 warframeAlertsCore.pasteAlertsInChat(event);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
-                testOnlineState(readyEvent.getJDA().getGuilds());
+                if (STATICS.TTT_SERVER_IP != "")
+                    testOnlineState(readyEvent.getJDA().getGuilds());
 
             }
         };

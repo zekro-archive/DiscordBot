@@ -23,7 +23,6 @@ public class tttServerListener {
         GoldSrcServer server;
         try {
 
-            System.out.println(online);
             server = new GoldSrcServer(STATICS.TTT_SERVER_IP, STATICS.TTT_SERVER_PORT);
             server.initialize();
 

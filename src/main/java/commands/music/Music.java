@@ -3,8 +3,6 @@ package commands.music;
 import audioCore.AudioInfo;
 import audioCore.AudioPlayerSendHandler;
 import audioCore.TrackManager;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -15,12 +13,10 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import commands.Command;
-import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import org.apache.http.HttpResponse;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -33,7 +29,9 @@ import java.util.*;
  */
 public class Music implements Command {
 
-    private static final int PLAYLIST_LIMIT = 200;
+    private static String clueURL = "https://youtu.be/IITW4P52gC4";
+
+    private static final int PLAYLIST_LIMIT = 500;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
 
@@ -45,12 +43,6 @@ public class Music implements Command {
     private static final String QUEUE_DESCRIPTION = "%s **|>**  %s\n%s\n%s %s\n%s";
     private static final String QUEUE_INFO = "Info about the Queue: (Size - %d)";
     private static final String ERROR = "Error while loading \"%s\"";
-
-    private void tryToDelete(Message m) {
-        if (m.getGuild().getSelfMember().hasPermission(m.getTextChannel(), Permission.MESSAGE_MANAGE)) {
-            m.delete().queue();
-        }
-    }
 
     private boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
@@ -86,7 +78,7 @@ public class Music implements Command {
         guild.getAudioManager().closeAudioConnection();
     }
 
-    private void loadTrack(String identifier, Member author, Message msg, MessageReceivedEvent event) {
+    public void loadTrack(String identifier, Member author, Message msg, MessageReceivedEvent event) {
 
 
         Guild guild = author.getGuild();
@@ -123,7 +115,6 @@ public class Music implements Command {
             public void loadFailed(FriendlyException exception) {
             }
         });
-        tryToDelete(msg);
     }
 
     private boolean isDj(Member member) {
@@ -134,20 +125,20 @@ public class Music implements Command {
         return getTrackManager(member.getGuild()).getTrackInfo(getPlayer(member.getGuild()).getPlayingTrack()).getAuthor().equals(member);
     }
 
-    //private boolean isIdle(MessageSender chat, Guild guild) {
-    //    if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
-    //        chat.sendMessage("No music is being played at the moment!");
-    //        return true;
-    //    }
-    //    return false;
-    //}
+    private boolean isIdle(Guild guild, MessageReceivedEvent event) {
+        if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
+            event.getTextChannel().sendMessage("No music is being played at the moment!").queue();
+            return true;
+        }
+        return false;
+    }
 
     private void forceSkipTrack(Guild guild) {
         getPlayer(guild).stopTrack();
     }
 
     private void sendHelpMessage(MessageReceivedEvent event) {
-
+        event.getTextChannel().sendMessage(help()).queue();
     }
 
     private String buildQueueMessage(AudioInfo info) {
@@ -170,11 +161,10 @@ public class Music implements Command {
         return s.isEmpty() ? "N/A" : s;
     }
 
-
-
     public Music() {
         AudioSourceManagers.registerRemoteSources(myManager);
     }
+
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -190,90 +180,57 @@ public class Music implements Command {
                 break;
 
             case 1:
+            case 2:
                 switch (args[0].toLowerCase()) {
+
                     case "help":
-                    case "commands":
-                        //sendHelpMessage(chat);
+                        sendHelpMessage(event);
                         break;
 
                     case "now":
                     case "current":
                     case "nowplaying":
                     case "info": // Display song info
-                        if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) { // No song is playing
-                            //chat.sendMessage("No song is being played at the moment! *It's your time to shine..*");
+                        if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
+                            event.getTextChannel().sendMessage(":musical_note:  No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
-                            //chat.sendEmbed("Track Info", String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
-                            //        "\n\u23F1 **|>** `[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`",
-                            //        "\n" + MIC, getOrNull(track.getInfo().author),
-                            //        "\n\uD83C\uDFA7 **|>**  " + MessageUtil.userDiscrimSet(getTrackManager(guild).getTrackInfo(track).getAuthor().getUser())));
+                            event.getTextChannel().sendMessage(":musical_note:  **TRACK INFO**\n\n" + String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
+                                    "\n\u23F1 **|>** `[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`",
+                                    "\n" + MIC, getOrNull(track.getInfo().author),
+                                    "\n\uD83C\uDFA7 **|>**  " )).queue();
                         }
                         break;
 
                     case "queue":
                         if (!hasPlayer(guild) || getTrackManager(guild).getQueuedTracks().isEmpty()) {
-                            //chat.sendMessage("The queue is empty! Load a song with **"
-                            //        + MessageUtil.stripFormatting(Info.PREFIX) + "music play**!");
+                            event.getTextChannel().sendMessage(":musical_note:  The queue ist currently empty!").queue();
                         } else {
+
+                            int SideNumbInput = 1;
+                            if (args.length > 1)
+                                SideNumbInput = Integer.parseInt(args[1]);
+
                             StringBuilder sb = new StringBuilder();
                             Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
-                            queue.forEach(audioInfo -> sb.append(buildQueueMessage(audioInfo)));
-                            String embedTitle = String.format(QUEUE_INFO, queue.size());
+                            ArrayList<String> tracks = new ArrayList<>();
+                            queue.forEach(audioInfo -> tracks.add(buildQueueMessage(audioInfo)));
+                            List<String> tracksSublist = tracks.subList((SideNumbInput-1)*20, (SideNumbInput-1)*20+20);
+                            tracksSublist.forEach(s -> sb.append(s));
+                            int sideNumbAll = tracks.size() / 20;
+                            int sideNumb = SideNumbInput;
 
-                            if (sb.length() <= 1960) {
-                                //chat.sendEmbed(embedTitle, "**>** " + sb.toString());
-                            } else /* if (sb.length() <= 20000) */ {
-                                try {
-                                    sb.setLength(sb.length() - 1);
-                                    HttpResponse response = (HttpResponse) Unirest.post("https://hastebin.com/documents").body(sb.toString()).asString();
-                                    //chat.sendEmbed(embedTitle, "[Click here for a detailed list](https://hastebin.com/"
-                                    //        + new JSONObject(response.getBody().toString()).getString("key") + ")");
-                                } catch (UnirestException ex) {
-                                    ex.printStackTrace();
-                                }
-                                /*
-                            } else {
-                                e.getChannel().sendTyping().queue();
-                                File qFile = new File("queue.txt");
-                                try {
-                                    FileUtils.write(qFile, sb.toString(), "UTF-8", false);
-                                    e.getChannel().sendFile(qFile, qFile.getName(), null).queue();
-                                } catch (IOException ex) {
-                                    ex.printStackTrace();
-                                }
-                                if (!qFile.delete()) { // Delete the queue file after we're done
-                                    qFile.deleteOnExit();
-                                }
-                                */
-                            }
+                            event.getTextChannel().sendMessage(
+                                    ":musical_note:  **QUEUE**\n\n" +
+                                    "*[" + queue.size() + " Tracks | Side " + sideNumb + "/" + sideNumbAll + "]*\n\n" +
+                                    sb
+                            ).queue();
+
                         }
                         break;
 
                     case "skip":
-
-                        if (isCurrentDj(event.getMember())) {
-                            forceSkipTrack(guild);
-                        } else {
-                            AudioInfo info = getTrackManager(guild).getTrackInfo(getPlayer(guild).getPlayingTrack());
-                            if (info.hasVoted(event.getAuthor())) {
-                                //chat.sendMessage("\u26A0 You've already voted to skip this song!");
-                            } else {
-                                int votes = info.getSkips();
-                                if (votes >= 3) { // Skip on 4th vote
-                                    getPlayer(guild).stopTrack();
-                                    //chat.sendMessage("\u23E9 Skipping current track.");
-                                } else {
-                                    info.addSkip(event.getAuthor());
-                                    tryToDelete(event.getMessage());
-                                    //chat.sendMessage("**" + MessageUtil.userDiscrimSet(e.getAuthor()) + "** has voted to skip this track! [" + (votes + 1) + "/4]");
-                                }
-                            }
-                        }
-                        break;
-
-                    case "forceskip":
-                        //if (isIdle(chat, guild)) return;
+                        if (isIdle(guild, event)) return;
 
                         if (isCurrentDj(event.getMember()) || isDj(event.getMember())) {
                             forceSkipTrack(guild);
@@ -281,6 +238,13 @@ public class Music implements Command {
                             //chat.sendMessage("You don't have permission to do that!\n"
                             //        + "Use **" + MessageUtil.stripFormatting(Info.PREFIX) + "music skip** to cast a vote!");
                         }
+                        break;
+
+                    case "stop":
+
+                        getTrackManager(guild).purgeQueue();
+                        forceSkipTrack(guild);
+
                         break;
 
                     case "reset":
@@ -293,7 +257,7 @@ public class Music implements Command {
                         break;
 
                     case "shuffle":
-                        //if (isIdle(chat, guild)) return;
+                        if (isIdle(guild, event)) return;
 
                         if (isDj(event.getMember())) {
                             getTrackManager(guild).shuffleQueue();
@@ -301,6 +265,10 @@ public class Music implements Command {
                         } else {
                             //chat.sendMessage("\u26D4 You don't have the permission to do that!");
                         }
+                        break;
+
+                    case "clue":
+                        loadTrack(clueURL, event.getMember(), event.getMessage(), event);
                         break;
                 }
 
@@ -313,9 +281,22 @@ public class Music implements Command {
 
                     case "play": // Play a track
                         if (args.length <= 1) {
-                            //chat.sendMessage("Please include a valid source.");
+                            event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
                             loadTrack(input, event.getMember(), event.getMessage(), event);
+
+                            new java.util.Timer().schedule(
+                                    new java.util.TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            int tracks = getTrackManager(guild).getQueuedTracks().size();
+                                            event.getTextChannel().sendMessage(
+                                                    ":musical_note:  Queued `" + tracks + "` Tracks."
+                                            ).queue();
+                                        }
+                                    },
+                                    3000
+                            );
                         }
                         break;
                 }
@@ -330,7 +311,15 @@ public class Music implements Command {
 
     @Override
     public String help() {
-        return null;
+        return
+                ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
+                "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
+                "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
+                "` -music queue <Side>`  -  Show the current music queue\n" +
+                "` -music skip `  -  Skip the current track in queue\n" +
+                "` -music now `  -  Show info about the now playing track\n" +
+                "` -music stop `  -  Stop the music player"
+        ;
     }
 
     @Override

@@ -95,6 +95,7 @@ public class Main {
         commands.put("vkick", new VoiceKick());
         commands.put("tttserver", new tttServerStatus());
         commands.put("music", new Music());
+        commands.put("m", new Music());
 
     }
 
