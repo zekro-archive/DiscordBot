@@ -17,7 +17,7 @@ Current version: ```1.19.0.0```
 - **Voicelog** </br> Do you want to have a nice voice channel log like in teamspeak chat? So just create a text channel (name definable in SETTINGS.txt) and the bot will log all voice channel activity in that channel.
 </br><img src="http://image.prntscr.com/image/2aef2f6f55de4aaaa806fe2fbf57988d.png"/>
 
-- **Music (STILL IN BETA)** </br> Yay! Now you can also play msuic with the bot! But Iäs still in a beta phase so its still kind of buggy :^)
+- **Music** </br> Yay! Now you can also play msuic with the command `-music play <yt-url>` (or `-m play <yt-url>`)! Get more information about in in commands document or use `-music help`.
 
 - **TTT Server Listener** </br> You can enter your Gmod Server IP and port in the settings file to auto send a message when the server is online for members. Also usable with command `-tttserver`.
 
@@ -56,6 +56,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Version  | Changes |
 |--|--|
+| 1.19.4.0 | Updated music command so it's now usable :^) |
 | 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
 | 1.18.0.4 | Added command -tttserver, added TTT Server online status listener |
 | 1.17.0.0 | Added vkick command |
