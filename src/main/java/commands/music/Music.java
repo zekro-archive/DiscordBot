@@ -197,7 +197,8 @@ public class Music implements Command {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
                             event.getTextChannel().sendMessage(":musical_note:  **TRACK INFO**\n\n" + String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
                                     "\n\u23F1 **|>** `[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`",
-                                    "\n" + MIC, getOrNull(track.getInfo().author))).queue();
+                                    "\n" + MIC, getOrNull(track.getInfo().author),
+                                    "\n\uD83C\uDFA7 **|>**  " )).queue();
                         }
                         break;
 
