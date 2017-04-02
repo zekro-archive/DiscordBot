@@ -1,6 +1,6 @@
 # Project: "zekroBot" 
 
-Current version: ```1.19.0.0```
+Current version: ```1.19.4.2```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 -----
