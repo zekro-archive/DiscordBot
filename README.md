@@ -54,8 +54,9 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Latest Changelogs
 
-| Version  | Changes |
+| Released Version  | Changes |
 |--|--|
+| **1.19.4.2** | Bugfixes in music player, optimizations stuff |
 | 1.19.4.0 | Updated music command so it's now usable :^) |
 | 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
 | 1.18.0.4 | Added command -tttserver, added TTT Server online status listener |
