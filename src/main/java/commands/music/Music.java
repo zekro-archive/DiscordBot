@@ -31,6 +31,8 @@ public class Music implements Command {
 
     private static String clueURL = "https://youtu.be/IITW4P52gC4";
 
+    private static final String NOTE = ":musical_note:  ";
+
     private static final int PLAYLIST_LIMIT = 500;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
@@ -165,7 +167,6 @@ public class Music implements Command {
         AudioSourceManagers.registerRemoteSources(myManager);
     }
 
-
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -175,6 +176,7 @@ public class Music implements Command {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         Guild guild = event.getGuild();
+
         switch (args.length) {
             case 0: // Show help message
                 break;
@@ -192,10 +194,10 @@ public class Music implements Command {
                     case "nowplaying":
                     case "info": // Display song info
                         if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
-                            event.getTextChannel().sendMessage(":musical_note:  No music currently playing!").queue();
+                            event.getTextChannel().sendMessage(NOTE + "No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
-                            event.getTextChannel().sendMessage(":musical_note:  **TRACK INFO**\n\n" + String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
+                            event.getTextChannel().sendMessage(NOTE + "**TRACK INFO**\n\n" + String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
                                     "\n\u23F1 **|>** `[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`",
                                     "\n" + MIC, getOrNull(track.getInfo().author),
                                     "\n\uD83C\uDFA7 **|>**  " )).queue();
@@ -204,7 +206,7 @@ public class Music implements Command {
 
                     case "queue":
                         if (!hasPlayer(guild) || getTrackManager(guild).getQueuedTracks().isEmpty()) {
-                            event.getTextChannel().sendMessage(":musical_note:  The queue ist currently empty!").queue();
+                            event.getTextChannel().sendMessage(NOTE + "The queue ist currently empty!").queue();
                         } else {
 
                             int SideNumbInput = 1;
@@ -221,7 +223,7 @@ public class Music implements Command {
                             int sideNumb = SideNumbInput;
 
                             event.getTextChannel().sendMessage(
-                                    ":musical_note:  **QUEUE**\n\n" +
+                                    NOTE + "**QUEUE**\n\n" +
                                     "*[" + queue.size() + " Tracks | Side " + sideNumb + "/" + sideNumbAll + "]*\n\n" +
                                     sb
                             ).queue();
@@ -262,9 +264,24 @@ public class Music implements Command {
 
                         if (isDj(event.getMember())) {
                             getTrackManager(guild).shuffleQueue();
-                            event.getTextChannel().sendMessage(":musical_note:  Shuffled queue.  :twisted_rightwards_arrows: ").queue();
+                            event.getTextChannel().sendMessage(NOTE + "Shuffled queue.  :twisted_rightwards_arrows: ").queue();
                         } else {
                             //chat.sendMessage("\u26D4 You don't have the permission to do that!");
+                        }
+                        break;
+
+                    case "pause":
+                    case "resume":
+                        if (getPlayer(guild).isPaused()) {
+                            getPlayer(guild).setPaused(false);
+                            event.getTextChannel().sendMessage(
+                                    NOTE + "Player resumed."
+                            ).queue();
+                        } else {
+                            getPlayer(guild).setPaused(true);
+                            event.getTextChannel().sendMessage(
+                                    NOTE + "Player paused."
+                            ).queue();
                         }
                         break;
 
@@ -286,17 +303,18 @@ public class Music implements Command {
                         } else {
                             loadTrack(input, event.getMember(), event.getMessage(), event);
 
-                            new java.util.Timer().schedule(
+
+                            new Timer().schedule(
                                     new java.util.TimerTask() {
                                         @Override
                                         public void run() {
                                             int tracks = getTrackManager(guild).getQueuedTracks().size();
                                             event.getTextChannel().sendMessage(
-                                                    ":musical_note:  Queued `" + tracks + "` Tracks."
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
                                             ).queue();
                                         }
                                     },
-                                    3000
+                                    5000
                             );
                         }
                         break;
