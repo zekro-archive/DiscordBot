@@ -36,6 +36,7 @@ public class settings {
         static final String TTT_SERVER_IP = "TTT_SERVER_IP";
         static final String TTT_SERVER_PORT = "TTT_SERVER_PORT";
         static final String AUTO_UPDATE = "AUTO_UPDATE";
+        static final String MUSIC_CHANNEL = "MUSIC_CHANNEL";
     }
 
     public static boolean testForToken() {
@@ -60,6 +61,7 @@ public class settings {
             map.put(SCONT.TOKEN, "");
             map.put(SCONT.KICK_VOICE_CHANNEL, "");
             map.put(SCONT.AUTO_UPDATE, "true");
+            map.put(SCONT.MUSIC_CHANNEL, "mucke");
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
@@ -80,6 +82,7 @@ public class settings {
             STATICS.TTT_SERVER_IP = toml.getString(SCONT.TTT_SERVER_IP);
             STATICS.TTT_SERVER_PORT = Math.toIntExact(toml.getLong(SCONT.TTT_SERVER_PORT));
             STATICS.autoUpdate = toml.getBoolean(SCONT.AUTO_UPDATE);
+            STATICS.musicChannel = toml.getString(SCONT.MUSIC_CHANNEL);
         }
 
     }

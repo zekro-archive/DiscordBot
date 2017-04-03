@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.5.0";
+    public static String VERSION = "1.19.6.0";
 
     public static String PREFIX = "-";
 
@@ -55,6 +55,8 @@ public class STATICS {
     //########### OTHER SETTINGS ###########//
 
     public static String voiceLogChannel = "voicelog";
+
+    public static String musicChannel = "mucke";
 
     public static boolean commandConsoleOutout = true;
 

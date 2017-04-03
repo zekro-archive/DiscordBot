@@ -30,6 +30,8 @@
 
 # CHANNEL SETTINGS #
 
+    # Music channel for displaying now playing info
+        MUSIC_CHANNEL = "mucke"
     # Text channel for voice log
         VOICE_LOG_TEXTCHANNEL = ""
     # Alternative voice channel vor vkicks

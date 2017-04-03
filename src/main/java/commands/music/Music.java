@@ -7,10 +7,14 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.event.AudioEvent;
+import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
+import com.sedmelluq.discord.lavaplayer.player.event.AudioEventListener;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import commands.Command;
 import net.dv8tion.jda.core.entities.Guild;
@@ -32,6 +36,8 @@ public class Music implements Command {
     private static String clueURL = "https://youtu.be/IITW4P52gC4";
 
     private static final String NOTE = ":musical_note:  ";
+
+    private static Guild guild;
 
     private static final int PLAYLIST_LIMIT = 500;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
@@ -163,6 +169,31 @@ public class Music implements Command {
         return s.isEmpty() ? "N/A" : s;
     }
 
+    private AudioEventListener audioEventListener = new AudioEventAdapter() {
+        @Override
+        public void onTrackStart(AudioPlayer player, AudioTrack track) {
+
+            if (guild.getTextChannelsByName("mucke", true).size() > 0) {
+                guild.getTextChannelsByName("mucke", true).get(0).getManager().setTopic(
+                        "NOW: " + track.getInfo().title
+                ).queue();
+
+                guild.getTextChannelsByName("mucke", true).get(0).sendMessage(
+                        NOTE + "**Now playing** \n" + "*[" + getTimestamp(track.getDuration()) + "]* `  " + track.getInfo().title + "  `\n"
+                ).queue();
+            }
+        }
+
+        @Override
+        public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+            if (guild.getTextChannelsByName("mucke", true).size() > 0) {
+                guild.getTextChannelsByName("mucke", true).get(0).getManager().setTopic(
+                        "-music help"
+                ).queue();
+            }
+        }
+    };
+
     public Music() {
         AudioSourceManagers.registerRemoteSources(myManager);
     }
@@ -175,7 +206,10 @@ public class Music implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        Guild guild = event.getGuild();
+        guild = event.getGuild();
+
+        getPlayer(guild).removeListener(audioEventListener);
+        getPlayer(guild).addListener(audioEventListener);
 
         switch (args.length) {
             case 0: // Show help message
