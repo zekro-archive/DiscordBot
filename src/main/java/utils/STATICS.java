@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.6.0";
+    public static String VERSION = "1.19.7.0";
 
     public static String PREFIX = "-";
 
@@ -44,6 +44,8 @@ public class STATICS {
     //######### PERMISSION SETTINGS #########//
 
     public static String[] botPermRoles = {"Bot Commander", "Moderator", "Admin", "Owner"};
+
+    public static String guildJoinRole = "";
 
 
     //########## GOOGLE DOCS ID'S ##########//

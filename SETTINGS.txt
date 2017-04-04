@@ -6,7 +6,7 @@
 # GENERAL SERVER SETTINGS #
 
     # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
-        TOKEN = ""
+        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.C8VAMA.Kg2_4W7tCCy0le9Op_AtbtC_g7k"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "-"
     # Custom message shown as "Now Playing: ..." text
@@ -20,6 +20,8 @@
 
     # List roles that can use Moderator+ Commands
         PERMISSION_ROLES = "Admin, Moderator, Owner, Bot Commander"
+    # Automatically assign that role to joined users (Let free for nothing)
+        GUILD_JOIN_ROLE = "Member"
 
 # SOURCES SETTINGS (GOOGLE DOCS) #
 

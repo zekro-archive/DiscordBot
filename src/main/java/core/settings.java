@@ -37,6 +37,7 @@ public class settings {
         static final String TTT_SERVER_PORT = "TTT_SERVER_PORT";
         static final String AUTO_UPDATE = "AUTO_UPDATE";
         static final String MUSIC_CHANNEL = "MUSIC_CHANNEL";
+        static final String GUILD_JOIN_ROLE = "GUILD_JOIN_ROLE";
     }
 
     public static boolean testForToken() {
@@ -62,6 +63,7 @@ public class settings {
             map.put(SCONT.KICK_VOICE_CHANNEL, "");
             map.put(SCONT.AUTO_UPDATE, "true");
             map.put(SCONT.MUSIC_CHANNEL, "mucke");
+            map.put(SCONT.GUILD_JOIN_ROLE, "Member");
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
@@ -83,6 +85,7 @@ public class settings {
             STATICS.TTT_SERVER_PORT = Math.toIntExact(toml.getLong(SCONT.TTT_SERVER_PORT));
             STATICS.autoUpdate = toml.getBoolean(SCONT.AUTO_UPDATE);
             STATICS.musicChannel = toml.getString(SCONT.MUSIC_CHANNEL);
+            STATICS.guildJoinRole = toml.getString(SCONT.GUILD_JOIN_ROLE);
         }
 
     }

@@ -21,6 +21,7 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -173,12 +174,12 @@ public class Music implements Command {
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
 
-            if (guild.getTextChannelsByName("mucke", true).size() > 0) {
-                guild.getTextChannelsByName("mucke", true).get(0).getManager().setTopic(
+            if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
+                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
                         "NOW: " + track.getInfo().title
                 ).queue();
 
-                guild.getTextChannelsByName("mucke", true).get(0).sendMessage(
+                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).sendMessage(
                         NOTE + "**Now playing** \n" + "*[" + getTimestamp(track.getDuration()) + "]* `  " + track.getInfo().title + "  `\n"
                 ).queue();
             }
@@ -186,8 +187,8 @@ public class Music implements Command {
 
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
-            if (guild.getTextChannelsByName("mucke", true).size() > 0) {
-                guild.getTextChannelsByName("mucke", true).get(0).getManager().setTopic(
+            if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
+                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
                         "-music help"
                 ).queue();
             }
