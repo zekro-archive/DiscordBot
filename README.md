@@ -71,3 +71,11 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 | 1.14.2.1 | Updated updating service, changed some stuff in API token handling |
 | 1.14.1.0 | Added installation script, new admin command "-stop" |
 | 1.14.0.0 | Updated JDA, added auto update service |
+
+-----
+### Used libraries
+
+- <a href="https://github.com/DV8FromTheWorld/JDA">JDA</a>
+- <a href="https://github.com/mwanji/toml4j">Toml4j</a>
+- <a href="https://github.com/sedmelluq/lavaplayer">lavaplayer</a>
+- <a href="https://github.com/koraktor/steam-condenser-java">steam-condenser</a>
