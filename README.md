@@ -56,11 +56,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-<<<<<<< HEAD
 | **1.19.6.0** | Added now playing functions to music player |
-=======
 | **1.19.5.0** | Added Pasue/Resume function to music bor |
->>>>>>> origin/master
 | 1.19.4.2 | Bugfixes in music player, optimizations stuff |
 | 1.19.4.0 | Updated music command so it's now usable :^) |
 | 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
