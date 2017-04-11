@@ -1,6 +1,6 @@
 # Project: "zekroBot" 
 
-Current version: ```1.19.6.0```
+Current version: ```1.19.7.1```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 -----
@@ -56,8 +56,9 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| **1.19.6.0** | Added now playing functions to music player |
-| **1.19.5.0** | Added Pasue/Resume function to music bor |
+| **1.19.7.1** | Updated some things in music player, bugfixes |
+| 1.19.6.0 | Added now playing functions to music player |
+| 1.19.5.0 | Added Pasue/Resume function to music bor |
 | 1.19.4.2 | Bugfixes in music player, optimizations stuff |
 | 1.19.4.0 | Updated music command so it's now usable :^) |
 | 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
