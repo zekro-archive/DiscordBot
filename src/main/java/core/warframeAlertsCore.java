@@ -145,8 +145,6 @@ public class warframeAlertsCore {
             }
         }
 
-
-
         return output;
     }
 

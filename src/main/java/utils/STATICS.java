@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.7.0";
+    public static String VERSION = "1.19.7.1";
 
     public static String PREFIX = "-";
 
@@ -37,7 +37,7 @@ public class STATICS {
 
     public static String warframeAlertsChannel = "warframealerts";
 
-    public static boolean enableWarframeAlerts = false;
+    public static boolean enableWarframeAlerts = true;
 
 
 
