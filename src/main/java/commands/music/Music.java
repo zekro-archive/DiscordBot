@@ -212,7 +212,7 @@ public class Music implements Command {
         getPlayer(guild).removeListener(audioEventListener);
         getPlayer(guild).addListener(audioEventListener);
 
-        getPlayer(guild).setVolume(STATICS.music_volume);
+        //getPlayer(guild).setVolume(STATICS.music_volume);
 
         switch (args.length) {
             case 0: // Show help message
