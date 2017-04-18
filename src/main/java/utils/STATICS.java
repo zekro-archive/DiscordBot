@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.7.1";
+    public static String VERSION = "1.19.8.0";
 
     public static String PREFIX = "-";
 
@@ -69,6 +69,8 @@ public class STATICS {
     public static int TTT_SERVER_PORT = 27015;
 
     public static boolean autoUpdate = true;
+
+    public static int music_volume = 10;
 
 
 }
