@@ -32,6 +32,7 @@ import java.util.*;
  * DiscordBot/commands.music
  * © zekro 2017
  */
+
 public class Music implements Command {
 
     private static String clueURL = "https://youtu.be/IITW4P52gC4";
@@ -40,18 +41,14 @@ public class Music implements Command {
 
     private static Guild guild;
 
-    private static final int PLAYLIST_LIMIT = 500;
+    private static final int PLAYLIST_LIMIT = 1000;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
 
     private static final String CD = "\uD83D\uDCBF";
-    private static final String DVD = "\uD83D\uDCC0";
     private static final String MIC = "\uD83C\uDFA4 **|>** ";
 
-    private static final String QUEUE_TITLE = "__%s has added %d new track%s to the Queue:__";
     private static final String QUEUE_DESCRIPTION = "%s **|>**  %s\n%s\n%s %s\n%s";
-    private static final String QUEUE_INFO = "Info about the Queue: (Size - %d)";
-    private static final String ERROR = "Error while loading \"%s\"";
 
     private boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
@@ -87,11 +84,61 @@ public class Music implements Command {
         guild.getAudioManager().closeAudioConnection();
     }
 
-    public void loadTrack(String identifier, Member author, Message msg, MessageReceivedEvent event) {
+    public void loadTrackNext(String identifier, Member author, Message msg) {
 
 
         Guild guild = author.getGuild();
-        getPlayer(guild); // Make sure this guild has a player.
+        getPlayer(guild);
+
+        msg.getTextChannel().sendTyping().queue();
+        myManager.loadItemOrdered(guild, identifier, new AudioLoadResultHandler() {
+
+            @Override
+            public void trackLoaded(AudioTrack track) {
+
+                AudioInfo currentTrack = getTrackManager(guild).getQueuedTracks().iterator().next();
+                Set<AudioInfo> queuedTracks = getTrackManager(guild).getQueuedTracks();
+                queuedTracks.remove(currentTrack);
+                getTrackManager(guild).purgeQueue();
+                getTrackManager(guild).queue(currentTrack.getTrack(), author);
+                getTrackManager(guild).queue(track, author);
+                queuedTracks.forEach(audioInfo -> getTrackManager(guild).queue(audioInfo.getTrack(), author));
+            }
+
+            @Override
+            public void playlistLoaded(AudioPlaylist playlist) {
+                if (playlist.getSelectedTrack() != null) {
+                    trackLoaded(playlist.getSelectedTrack());
+                } else if (playlist.isSearchResult()) {
+                    trackLoaded(playlist.getTracks().get(0));
+                } else {
+                    AudioInfo currentTrack = getTrackManager(guild).getQueuedTracks().iterator().next();
+                    Set<AudioInfo> queuedTracks = getTrackManager(guild).getQueuedTracks();
+                    queuedTracks.remove(currentTrack);
+                    getTrackManager(guild).purgeQueue();
+                    getTrackManager(guild).queue(currentTrack.getTrack(), author);
+                    for (int i = 0; i < Math.min(playlist.getTracks().size(), PLAYLIST_LIMIT); i++) {
+                        getTrackManager(guild).queue(playlist.getTracks().get(i), author);
+                    }
+                    queuedTracks.forEach(audioInfo -> getTrackManager(guild).queue(audioInfo.getTrack(), author));
+                }
+            }
+
+            @Override
+            public void noMatches() {
+            }
+
+            @Override
+            public void loadFailed(FriendlyException exception) {
+            }
+        });
+    }
+
+    public void loadTrack(String identifier, Member author, Message msg) {
+
+
+        Guild guild = author.getGuild();
+        getPlayer(guild);
 
         msg.getTextChannel().sendTyping().queue();
         myManager.loadItemOrdered(guild, identifier, new AudioLoadResultHandler() {
@@ -253,10 +300,16 @@ public class Music implements Command {
                             StringBuilder sb = new StringBuilder();
                             Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
                             ArrayList<String> tracks = new ArrayList<>();
+                            List<String> tracksSublist;
                             queue.forEach(audioInfo -> tracks.add(buildQueueMessage(audioInfo)));
-                            List<String> tracksSublist = tracks.subList((SideNumbInput-1)*20, (SideNumbInput-1)*20+20);
+
+                            if (tracks.size() > 20)
+                                tracksSublist = tracks.subList((SideNumbInput-1)*20, (SideNumbInput-1)*20+20);
+                            else
+                                tracksSublist = tracks;
+
                             tracksSublist.forEach(s -> sb.append(s));
-                            int sideNumbAll = tracks.size() / 20;
+                            int sideNumbAll = tracks.size() >= 20 ? tracks.size() / 20 : 1;
                             int sideNumb = SideNumbInput;
 
                             event.getTextChannel().sendMessage(
@@ -269,13 +322,13 @@ public class Music implements Command {
                         break;
 
                     case "skip":
-                        if (isIdle(guild, event)) return;
-
                         if (isCurrentDj(event.getMember()) || isDj(event.getMember())) {
-                            forceSkipTrack(guild);
+                            for (int skip = (args.length > 1 ? Integer.parseInt(args[1]) : 1); skip > 0; skip--) {
+                                if (isIdle(guild, event)) return;
+                                forceSkipTrack(guild);
+                            }
                         } else {
-                            //chat.sendMessage("You don't have permission to do that!\n"
-                            //        + "Use **" + MessageUtil.stripFormatting(Info.PREFIX) + "music skip** to cast a vote!");
+                            event.getTextChannel().sendMessage(":warning:  Sorry, but you need to be a DJ to skip tracks!").queue();
                         }
                         break;
 
@@ -323,7 +376,7 @@ public class Music implements Command {
                         break;
 
                     case "clue":
-                        loadTrack(clueURL, event.getMember(), event.getMessage(), event);
+                        loadTrack(clueURL, event.getMember(), event.getMessage());
                         break;
                 }
 
@@ -332,13 +385,12 @@ public class Music implements Command {
                 switch (args[0].toLowerCase()) {
                     case "ytplay": // Query YouTube for a music video
                         input = "ytsearch: " + input;
-                        // no break;
 
                     case "play": // Play a track
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
-                            loadTrack(input, event.getMember(), event.getMessage(), event);
+                            loadTrack(input, event.getMember(), event.getMessage());
 
 
                             new Timer().schedule(
@@ -355,6 +407,28 @@ public class Music implements Command {
                             );
                         }
                         break;
+
+                    case "queuenext":
+                        if (args.length <= 1) {
+                            event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
+                        } else {
+                            loadTrackNext(input, event.getMember(), event.getMessage());
+
+                            new Timer().schedule(
+                                    new java.util.TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            int tracks = getTrackManager(guild).getQueuedTracks().size();
+                                            event.getTextChannel().sendMessage(
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
+                                            ).queue();
+                                        }
+                                    },
+                                    5000
+                            );
+                        }
+                        break;
+
                 }
                 break;
         }
@@ -370,6 +444,7 @@ public class Music implements Command {
         return
                 ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
                 "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
+                "` -music queuenext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`" +
                 "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
                 "` -music queue <Side>`  -  Show the current music queue\n" +
                 "` -music skip `  -  Skip the current track in queue\n" +
