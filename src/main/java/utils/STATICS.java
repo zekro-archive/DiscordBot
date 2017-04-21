@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.9.0";
+    public static String VERSION = "1.19.10.0";
 
     public static String PREFIX = "-";
 
@@ -71,6 +71,8 @@ public class STATICS {
     public static boolean autoUpdate = true;
 
     public static int music_volume = 10;
+
+    public static boolean musicCommandsOnlyInMusicChannel = false;
 
 
 }

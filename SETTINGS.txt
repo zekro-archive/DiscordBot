@@ -15,8 +15,8 @@
         COMMAND_CONSOLE_OUTPUT = true
     # Automatically check for updates
         AUTO_UPDATE = false
-    # Standard Music Palayer Volume (in percent)
-        MUSIC_VOLUME = 1
+    # Only allow members to use music commands in music channel
+        MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false
 
 # PERMISSION SETTINGS #
 

@@ -21,6 +21,7 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.requests.RestAction;
 import utils.STATICS;
 
 import java.io.IOException;
@@ -44,11 +45,6 @@ public class Music implements Command {
     private static final int PLAYLIST_LIMIT = 1000;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
-
-    private static final String CD = "\uD83D\uDCBF";
-    private static final String MIC = "\uD83C\uDFA4 **|>** ";
-
-    private static final String QUEUE_DESCRIPTION = "%s **|>**  %s\n%s\n%s %s\n%s";
 
     private boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
@@ -217,15 +213,21 @@ public class Music implements Command {
         return s.isEmpty() ? "N/A" : s;
     }
 
+    private String getAudioInfo(AudioTrack track) {
+        return
+            ":cd:  " + getOrNull(track.getInfo().title) + "\n" +
+            ":stopwatch:  " + "`[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]` \n" +
+            ":microphone:  " + getOrNull(track.getInfo().author) + "\n"
+        ;
+    }
+
     private AudioEventListener audioEventListener = new AudioEventAdapter() {
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
-
             if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
-                        "NOW: " + track.getInfo().title
+                        track.getInfo().title
                 ).queue();
-
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).sendMessage(
                         NOTE + "**Now playing** \n" + "*[" + getTimestamp(track.getDuration()) + "]* `  " + track.getInfo().title + "  `\n"
                 ).queue();
@@ -234,11 +236,19 @@ public class Music implements Command {
 
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
-            if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
-                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
-                        "-music help"
-                ).queue();
-            }
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (player.getPlayingTrack() == null) {
+                        if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
+                            guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
+                                    "-music help"
+                            ).queue();
+                        }
+                    }
+                }
+            }, 500);
+
         }
     };
 
@@ -254,6 +264,18 @@ public class Music implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
+        if (STATICS.musicCommandsOnlyInMusicChannel && !event.getTextChannel().getName().equals(STATICS.musicChannel)) {
+            Message msg = event.getTextChannel().sendMessage(":warning:  " + event.getAuthor().getAsMention() + ", please only send music commands in the #" + STATICS.musicChannel + " channel!").complete();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    msg.delete().queue();
+                    event.getMessage().delete().queue();
+                }
+            }, 3000);
+            return;
+        }
+
         guild = event.getGuild();
 
         getPlayer(guild).removeListener(audioEventListener);
@@ -262,7 +284,8 @@ public class Music implements Command {
         //getPlayer(guild).setVolume(STATICS.music_volume);
 
         switch (args.length) {
-            case 0: // Show help message
+            case 0:
+                sendHelpMessage(event);
                 break;
 
             case 1:
@@ -276,15 +299,14 @@ public class Music implements Command {
                     case "now":
                     case "current":
                     case "nowplaying":
-                    case "info": // Display song info
+                    case "info":
                         if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
                             event.getTextChannel().sendMessage(NOTE + "No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
-                            event.getTextChannel().sendMessage(NOTE + "**TRACK INFO**\n\n" + String.format(QUEUE_DESCRIPTION, CD, getOrNull(track.getInfo().title),
-                                    "\n\u23F1 **|>** `[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`",
-                                    "\n" + MIC, getOrNull(track.getInfo().author),
-                                    "\n\uD83C\uDFA7 **|>**  " )).queue();
+                            event.getTextChannel().sendMessage(
+                                    ":musical_note:   **CURRENT TRACK INFO**   :musical_note: \n\n" + getAudioInfo(track)
+                            ).queue();
                         }
                         break;
 
@@ -362,6 +384,8 @@ public class Music implements Command {
 
                     case "pause":
                     case "resume":
+                    case "r":
+                    case "p":
                         if (getPlayer(guild).isPaused()) {
                             getPlayer(guild).setPaused(false);
                             event.getTextChannel().sendMessage(
