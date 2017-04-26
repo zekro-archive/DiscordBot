@@ -7,7 +7,6 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
-import com.sedmelluq.discord.lavaplayer.player.event.AudioEvent;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventListener;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
@@ -21,10 +20,9 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.requests.RestAction;
 import utils.STATICS;
 
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.util.*;
 
@@ -399,6 +397,85 @@ public class Music implements Command {
                         }
                         break;
 
+
+                    case "save":
+
+                        String input = STATICS.input;
+
+                        if (input == null || input.length() <= 0) {
+                            event.getTextChannel().sendMessage(":warning: Sorry, but no playlist is currently in queue to save!").queue();
+                            return;
+                        } else if (args.length < 2) {
+                            event.getTextChannel().sendMessage(":warning: Please enter a valid name for your playlist!").queue();
+                            return;
+                        }
+
+                        File saveFile = new File("saves_playlists\\" + args[1]);
+                        saveFile.getParentFile().mkdirs();
+
+                        PrintWriter writer = new PrintWriter(saveFile);
+                        writer.write(input);
+                        writer.close();
+
+                        event.getTextChannel().sendMessage(NOTE + "  Playlist \"" + args[1] + "\" successfully saved!").queue();
+
+                        break;
+
+                    case "listsaved":
+
+                        try {
+
+                            File[] saves = new File("saves_playlists\\").listFiles();
+                            StringBuilder list = new StringBuilder();
+
+                            if (saves.length > 0) {
+                                Arrays.stream(saves).forEach(file -> list.append("- **" + file.getName() + "**\n"));
+                                event.getTextChannel().sendMessage(
+                                        NOTE + "   **SAVED PLAYLISTS**   " + NOTE + "\n\n" + list.toString()
+                                ).queue();
+                            } else {
+                                event.getTextChannel().sendMessage(":warning:  Sorry, but there are no playlists saved yet!").queue();
+                            }
+
+                        } catch (Exception e) {
+                            event.getTextChannel().sendMessage(":warning:  Sorry, but there are no playlists saved yet!").queue();
+                        }
+
+                        break;
+
+
+                    case "load":
+
+                        if (args.length < 2) {
+                            event.getTextChannel().sendMessage(":warning: Please enter a valid name for your playlist you want to load!").queue();
+                            return;
+                        }
+
+                        try {
+                            File savedFile = new File("saves_playlists\\" + args[1]);
+                            BufferedReader reader = new BufferedReader(new FileReader(savedFile));
+                            String out = reader.readLine();
+
+                            loadTrack(out, event.getMember(), event.getMessage());
+
+                            new Timer().schedule(
+                                    new java.util.TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            int tracks = getTrackManager(guild).getQueuedTracks().size();
+                                            event.getTextChannel().sendMessage(
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
+                                            ).queue();
+                                        }
+                                    },
+                                    5000
+                            );
+                        } catch (Exception e) {
+                            event.getTextChannel().sendMessage(":wanring:  Sorry, bit the playlist \"" + args[1] + "\" does not exist!").queue();
+                        }
+                        break;
+
+
                     case "clue":
                         loadTrack(clueURL, event.getMember(), event.getMessage());
                         break;
@@ -406,16 +483,17 @@ public class Music implements Command {
 
             default:
                 String input = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
+                if (input != null && input.contains("http"))
+                    STATICS.input = input;
+
                 switch (args[0].toLowerCase()) {
                     case "ytplay": // Query YouTube for a music video
                         input = "ytsearch: " + input;
-
                     case "play": // Play a track
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
                             loadTrack(input, event.getMember(), event.getMessage());
-
 
                             new Timer().schedule(
                                     new java.util.TimerTask() {
