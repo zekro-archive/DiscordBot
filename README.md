@@ -1,6 +1,6 @@
 # Project: "zekroBot" 
 
-Current version: ```1.19.11.0```
+Current version: ```1.19.11.4```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 -----
@@ -56,7 +56,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| 1.19.11.0 | Added playlist saving/loading to music command |
+| 1.19.11.4 | Added playlist saving/loading to music command |
 | 1.19.10.0 | Improved some music command methods, fixed some now playing bugs, added setting to allow users only to post music commands in music channel |
 | 1.19.9.0 | Added multiple skips and "queuenext" command to audio player |
 | 1.19.8.0 | Essential performance improvements |
