@@ -17,6 +17,7 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -37,6 +38,13 @@ public class Main {
         if (!settings.testForToken()) {
             System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
             System.exit(0);
+        }
+
+        File savePath = new File("saves_playlists");
+        if (!savePath.exists() || !savePath.isDirectory()) {
+            System.out.println(
+                    savePath.mkdir() ? "[INFO] Path \"saves_playlists\" successfully created!" : "[ERROR] Failed to create path \"saves_playlists\"!"
+            );
         }
 
         builder = new JDABuilder(AccountType.BOT);

@@ -410,8 +410,8 @@ public class Music implements Command {
                             return;
                         }
 
-                        File saveFile = new File("saves_playlists\\" + args[1]);
-                        saveFile.getParentFile().mkdirs();
+                        File saveFile = new File("saves_playlists/" + args[1]);
+                        //saveFile.getParentFile().mkdirs();
 
                         PrintWriter writer = new PrintWriter(saveFile);
                         writer.write(input);
@@ -422,10 +422,12 @@ public class Music implements Command {
                         break;
 
                     case "listsaved":
+                    case "list":
+                    case "saved":
 
                         try {
 
-                            File[] saves = new File("saves_playlists\\").listFiles();
+                            File[] saves = new File("saves_playlists/").listFiles();
                             StringBuilder list = new StringBuilder();
 
                             if (saves.length > 0) {
