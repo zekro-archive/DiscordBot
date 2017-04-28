@@ -86,5 +86,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Mentions
 Special thanks to <a href="https://github.com/jagrosh">@jagrosh</a> for helping me with fixing the combatibility bug of lava player on linux system.
+
 Also a special thanks to Sophie, who helped me a lot developing some features of that bot and better performance coding. <3
+
 Another lovely thanks to all of our "Trupp Lätzl"-Discord members and team for testing the bot and using it.
