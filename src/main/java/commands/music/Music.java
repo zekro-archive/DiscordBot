@@ -279,7 +279,8 @@ public class Music implements Command {
         getPlayer(guild).removeListener(audioEventListener);
         getPlayer(guild).addListener(audioEventListener);
 
-        //getPlayer(guild).setVolume(STATICS.music_volume);
+        if (STATICS.music_volume > 0)
+            getPlayer(guild).setVolume(STATICS.music_volume);
 
         switch (args.length) {
             case 0:
@@ -411,7 +412,6 @@ public class Music implements Command {
                         }
 
                         File saveFile = new File("saves_playlists/" + args[1]);
-                        //saveFile.getParentFile().mkdirs();
 
                         PrintWriter writer = new PrintWriter(saveFile);
                         writer.write(input);

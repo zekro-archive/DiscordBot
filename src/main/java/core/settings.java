@@ -39,6 +39,7 @@ public class settings {
         static final String MUSIC_CHANNEL = "MUSIC_CHANNEL";
         static final String GUILD_JOIN_ROLE = "GUILD_JOIN_ROLE";
         static final String MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = "MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL";
+        static final String MUSIC_VOLUME = "MUSIC_VOLUME";
     }
 
     public static boolean testForToken() {
@@ -66,6 +67,7 @@ public class settings {
             map.put(SCONT.MUSIC_CHANNEL, "mucke");
             map.put(SCONT.GUILD_JOIN_ROLE, "Member");
             map.put(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL, false);
+            map.put(SCONT.MUSIC_VOLUME, 0);
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
@@ -89,6 +91,7 @@ public class settings {
             STATICS.musicChannel = toml.getString(SCONT.MUSIC_CHANNEL);
             STATICS.guildJoinRole = toml.getString(SCONT.GUILD_JOIN_ROLE);
             STATICS.musicCommandsOnlyInMusicChannel = toml.getBoolean(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL);
+            STATICS.music_volume = Math.toIntExact(toml.getLong(SCONT.MUSIC_VOLUME));
         }
     }
 }

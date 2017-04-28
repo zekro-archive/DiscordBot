@@ -1,4 +1,4 @@
-#########################
+﻿#########################
 # SETTINGS FILE FOR BOT #
 #  PLEASE DON'T DELETE  #
 #########################
@@ -17,6 +17,8 @@
         AUTO_UPDATE = false
     # Only allow members to use music commands in music channel
         MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false
+    # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)
+        MUSIC_VOLUME = 0
 
 # PERMISSION SETTINGS #
 
