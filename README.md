@@ -4,7 +4,7 @@ Current version: ```1.19.12.0```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
-<a href="http://discord.zekro.de"><img src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" width="32"/></a>
+<br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" hight="32"/></a>
 
 -----
 ### Features
