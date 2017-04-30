@@ -16,15 +16,18 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
+import java.awt.*;
 import java.io.*;
 import java.text.ParseException;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by zekro on 01.04.2017 / 10:37
@@ -226,8 +229,11 @@ public class Music implements Command {
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
                         track.getInfo().title
                 ).queue();
+                EmbedBuilder eb = new EmbedBuilder()
+                        .setColor(Color.CYAN)
+                        .setDescription(NOTE + "*[" + getTimestamp(track.getDuration()) + "]*  " + track.getInfo().title);
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).sendMessage(
-                        NOTE + "**Now playing** \n" + "*[" + getTimestamp(track.getDuration()) + "]* `  " + track.getInfo().title + "  `\n"
+                        eb.build()
                 ).queue();
             }
         }
@@ -276,6 +282,8 @@ public class Music implements Command {
 
         guild = event.getGuild();
 
+        EmbedBuilder eb = new EmbedBuilder();
+
         getPlayer(guild).removeListener(audioEventListener);
         getPlayer(guild).addListener(audioEventListener);
 
@@ -303,8 +311,9 @@ public class Music implements Command {
                             event.getTextChannel().sendMessage(NOTE + "No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
+                            eb.setColor(Color.orange).setDescription(":musical_note:   **CURRENT TRACK INFO**   :musical_note:" + "\n\n" + getAudioInfo(track));
                             event.getTextChannel().sendMessage(
-                                    ":musical_note:   **CURRENT TRACK INFO**   :musical_note: \n\n" + getAudioInfo(track)
+                                    eb.build()
                             ).queue();
                         }
                         break;
@@ -333,10 +342,14 @@ public class Music implements Command {
                             int sideNumbAll = tracks.size() >= 20 ? tracks.size() / 20 : 1;
                             int sideNumb = SideNumbInput;
 
-                            event.getTextChannel().sendMessage(
+                            eb.setColor(Color.GREEN).setDescription(
                                     NOTE + "**QUEUE**\n\n" +
                                     "*[" + queue.size() + " Tracks | Side " + sideNumb + "/" + sideNumbAll + "]*\n\n" +
                                     sb
+                            );
+
+                            event.getTextChannel().sendMessage(
+                                  eb.build()
                             ).queue();
 
                         }
@@ -454,7 +467,7 @@ public class Music implements Command {
                         }
 
                         try {
-                            File savedFile = new File("saves_playlists\\" + args[1]);
+                            File savedFile = new File("saves_playlists/" + args[1]);
                             BufferedReader reader = new BufferedReader(new FileReader(savedFile));
                             String out = reader.readLine();
 
@@ -473,7 +486,8 @@ public class Music implements Command {
                                     5000
                             );
                         } catch (Exception e) {
-                            event.getTextChannel().sendMessage(":wanring:  Sorry, bit the playlist \"" + args[1] + "\" does not exist!").queue();
+                            e.printStackTrace();
+                            event.getTextChannel().sendMessage(":warning:  Sorry, bit the playlist \"" + args[1] + "\" does not exist!").queue();
                         }
                         break;
 

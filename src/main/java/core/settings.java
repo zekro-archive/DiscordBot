@@ -6,6 +6,7 @@ import com.moandjiezana.toml.TomlWriter;
 import utils.STATICS;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -40,6 +41,7 @@ public class settings {
         static final String GUILD_JOIN_ROLE = "GUILD_JOIN_ROLE";
         static final String MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = "MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL";
         static final String MUSIC_VOLUME = "MUSIC_VOLUME";
+        static final String DISCORD_JOIN_MESSAGE = "DISCORD_JOIN_MESSAGE";
     }
 
     public static boolean testForToken() {
@@ -68,12 +70,13 @@ public class settings {
             map.put(SCONT.GUILD_JOIN_ROLE, "Member");
             map.put(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL, false);
             map.put(SCONT.MUSIC_VOLUME, 0);
+            map.put(SCONT.DISCORD_JOIN_MESSAGE, ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:");
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
         } else {
 
-            toml = new Toml().read(sfile);
+            toml = new Toml().read(new FileInputStream(sfile));
 
             STATICS.TOKEN = toml.getString(SCONT.TOKEN);
             STATICS.PREFIX = toml.getString(SCONT.PREFIX);
@@ -92,6 +95,7 @@ public class settings {
             STATICS.guildJoinRole = toml.getString(SCONT.GUILD_JOIN_ROLE);
             STATICS.musicCommandsOnlyInMusicChannel = toml.getBoolean(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL);
             STATICS.music_volume = Math.toIntExact(toml.getLong(SCONT.MUSIC_VOLUME));
+            STATICS.discordJoinMessage = toml.getString(SCONT.DISCORD_JOIN_MESSAGE);
         }
     }
 }

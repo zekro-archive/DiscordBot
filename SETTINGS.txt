@@ -1,4 +1,4 @@
-﻿#########################
+#########################
 # SETTINGS FILE FOR BOT #
 #  PLEASE DON'T DELETE  #
 #########################
@@ -10,7 +10,7 @@
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "-"
     # Custom message shown as "Now Playing: ..." text
-        CUSTOM_PLAYING_MESSAGE = "ゼクロ"
+        CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
         COMMAND_CONSOLE_OUTPUT = true
     # Automatically check for updates
@@ -49,6 +49,15 @@
         WARFRAME_ALERTS_REFRESHTIME = 10
     # Text channel for warframe alerts list
         WARFRAME_ALERTS_TEXTCHANNEL = ""
+
+
+# MESSAGE SETTINGS #
+
+       # Message, that appears, if user joins discord first time
+       # "[USER]" stand for the @user - mention
+       # "[GUILD]" stand for the guild name
+           DISCORD_JOIN_MESSAGE = ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:"
+
 
 # OTHER SETTINGS #
 

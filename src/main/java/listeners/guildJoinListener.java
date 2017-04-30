@@ -17,8 +17,12 @@ public class guildJoinListener extends ListenerAdapter {
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
         event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
-                ":heart: Willkommen auf unserem Discord-Server , " + event.getMember().getAsMention() + "! :heart:"
+            STATICS.discordJoinMessage.replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
         ).queue();
+
+        //event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
+        //        ":heart: Willkommen auf unserem Discord-Server , " + event.getMember().getAsMention() + "! :heart:"
+        //).queue();
 
         if (!STATICS.guildJoinRole.equals(""))
             if (event.getGuild().getRolesByName(STATICS.guildJoinRole, true).size() > 0) {

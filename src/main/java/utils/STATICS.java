@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.12.0";
+    public static String VERSION = "1.19.13.0";
 
     public static String PREFIX = "-";
 
@@ -75,6 +75,8 @@ public class STATICS {
     public static String input;
 
     public static int music_volume = 0;
+
+    public static String discordJoinMessage = ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:";
 
 
 }
