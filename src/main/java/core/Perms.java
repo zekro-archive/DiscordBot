@@ -18,10 +18,10 @@ public class Perms {
 
     public static boolean test(MessageReceivedEvent event) {
 
-        boolean userHasPermission = true;
+        boolean userNotPermitted = true;
         for ( Role r : event.getGuild().getMember(event.getAuthor()).getRoles() ) {
             if (Arrays.stream(STATICS.botPermRoles).parallel().anyMatch(r.getName()::contains))
-                userHasPermission = false;
+                userNotPermitted = false;
         }
 
         StringBuilder sb = new StringBuilder();
@@ -30,9 +30,9 @@ public class Perms {
                 .setColor(Color.RED)
                 .setDescription(":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permission to use this command! \nOne of these roles required: " + sb.toString().substring(0, sb.length() - 1));
 
-        event.getTextChannel().sendMessage(eb.build()).queue();
+        if (userNotPermitted) event.getTextChannel().sendMessage(eb.build()).queue();
 
-        return userHasPermission;
+        return userNotPermitted;
     }
 
 }
