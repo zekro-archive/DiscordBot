@@ -1,6 +1,7 @@
 package commands.administration;
 
 import commands.Command;
+import core.Perms;
 import core.coreCommands;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -23,12 +24,7 @@ public class Stop implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (!coreCommands.checkPermission(event)) {
-            event.getTextChannel().sendMessage(
-                    ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
-            ).queue();
-            return;
-        }
+        if (Perms.test(event)) return;
 
         event.getTextChannel().sendMessage(":warning: :mobile_phone_off:   " + event.getAuthor().getAsMention() + " shut down " + event.getJDA().getSelfUser().getAsMention() + " because of maintenance or an unexpected behavior.").queue();
         System.exit(0);

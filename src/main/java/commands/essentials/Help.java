@@ -2,9 +2,11 @@ package commands.essentials;
 
 import commands.Command;
 import core.Main;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -17,6 +19,8 @@ import java.util.*;
 public class Help implements Command {
 
 
+    EmbedBuilder eb = new EmbedBuilder();
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -28,11 +32,17 @@ public class Help implements Command {
         if (args.length > 0) {
             if (Main.commands.containsKey(args[0]))
                 if (Main.commands.get(args[0]).help() != null)
-                    event.getTextChannel().sendMessage(Main.commands.get(args[0]).help()).queue();
+                    event.getTextChannel().sendMessage(
+                            eb.setColor(new Color(22, 138, 233)).setDescription(Main.commands.get(args[0]).help()).build()
+                    ).queue();
                 else
-                    event.getTextChannel().sendMessage(":warning:  There are currently no information for the command ` -" + args[0] + " ` !").queue();
+                    event.getTextChannel().sendMessage(
+                            eb.setColor(Color.red).setDescription(":warning:  There are currently no information for the command  *-" + args[0] + "* !").build()
+                    ).queue();
             else
-                event.getTextChannel().sendMessage(":warning:  The command list does not contains information for the command ` -" + args[0] + " ` !").queue();
+                event.getTextChannel().sendMessage(
+                        eb.setColor(Color.red).setDescription(":warning:  The command list does not contains information for the command *-" + args[0] + "* !").build()
+                ).queue();
             return;
         }
 
@@ -48,17 +58,6 @@ public class Help implements Command {
         cmds.forEach((s, s2) -> commandsInvokesAsMessageString.append(
                 ":white_small_square:  **" + s + "**   -   `" + s2 + "`\n"
         ));
-
-        //ArrayList<String> cmdInvokes = new ArrayList<>();
-        //ArrayList<String> cmdHelp = new ArrayList<>();
-        //Main.commands.forEach((s, command) -> cmdInvokes.add(s));
-        //Main.commands.forEach((s, command) -> cmdHelp.add(command.description() != null ? " *-   " + command.description() + "*" : ""));
-        //String commandsInvokesAsMessageString = "";
-        //int index = 0;
-        //for ( String s : cmdInvokes ) {
-        //    commandsInvokesAsMessageString += "**" + STATICS.PREFIX + s + "**  " + cmdHelp.get(index) + "\n";
-        //    index++;
-        //}
 
         try {
 

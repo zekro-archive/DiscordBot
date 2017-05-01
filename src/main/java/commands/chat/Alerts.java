@@ -1,6 +1,7 @@
 package commands.chat;
 
 import commands.Command;
+import core.Perms;
 import core.coreCommands;
 import core.warframeAlertsCore;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -31,12 +32,7 @@ public class Alerts implements Command {
                 break;
 
             case "restart":
-                if (!coreCommands.checkPermission(event)) {
-                    event.getTextChannel().sendMessage(
-                            ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
-                    ).queue();
-                    return;
-                }
+                if (Perms.test(event)) return;
                 restartWarframeAlertsCore();
                 event.getTextChannel().sendMessage("Restarting complete.").queue();
                 break;

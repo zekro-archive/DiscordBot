@@ -1,10 +1,14 @@
 package commands.administration;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 
 /**
  * Created by zekro on 24.03.2017 / 19:49
@@ -39,9 +43,11 @@ public class Restart implements Command {
             System.exit(0);
 
         } else {
-            event.getTextChannel().sendMessage(
-                    ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
-            ).queue();
+            EmbedBuilder eb = new EmbedBuilder()
+                    .setColor(Color.RED)
+                    .setDescription(":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permission to use this command! \nOne of these roles required: " + "Owner, Admin, Developer");
+
+            event.getTextChannel().sendMessage(eb.build()).queue();
         }
 
     }

@@ -1,6 +1,7 @@
 package commands.chat;
 
 import commands.Command;
+import core.Perms;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -79,12 +80,7 @@ public class Clear implements Command {
 
     public void action(String[] args, MessageReceivedEvent event) {
 
-        if (!coreCommands.checkPermission(event)) {
-            event.getTextChannel().sendMessage(
-                    ":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permissions to use this command!"
-            ).queue();
-            return;
-        }
+        if (Perms.test(event)) return;
 
         if (args.length > 0 && getNumberOfArg(args[0]) > 0) {
             clearNumb(event, args);

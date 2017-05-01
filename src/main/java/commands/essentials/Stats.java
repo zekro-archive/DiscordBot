@@ -1,11 +1,19 @@
 package commands.essentials;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.text.ParseException;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * © zekro 2017
@@ -14,23 +22,45 @@ import java.text.ParseException;
  */
 public class Stats implements Command {
 
-    static int getMembersOnline(MessageReceivedEvent event, String... role) {
+    private long getOnlineMembers(Guild guild) {
+        return guild.getMembers().stream()
+                .filter(member -> !member.getOnlineStatus().equals(OnlineStatus.OFFLINE))
+                .filter(member -> !member.getUser().isBot())
+                .count();
+    }
 
-        int count = 0;
+    private long getMembers(Guild guild) {
+        return guild.getMembers().stream().filter(member -> !member.getUser().isBot()).count();
+    }
 
-        if (role.length > 0) {
-            for ( Member m : event.getGuild().getMembersWithRoles(event.getGuild().getRolesByName(role[0], true).get(0)) ) {
-                if (!m.getOnlineStatus().equals(OnlineStatus.OFFLINE))
-                    count ++;
+    private HashMap<Role, Map.Entry<Integer, Integer>> getRoleMembersCount(Guild guild) {
+
+        HashMap<Role, Map.Entry<Integer, Integer>> out = new HashMap<>();
+
+        for (Role role : guild.getRoles()) {
+            int count = 0;
+            int countOnline = 0;
+            for (Member member : guild.getMembers()) {
+                if (member.getRoles().contains(role)) {
+                    count++;
+                    if (!member.getOnlineStatus().equals(OnlineStatus.OFFLINE)) {
+                        countOnline++;
+                    }
+                }
             }
-        } else {
-            for ( Member m : event.getGuild().getMembers() ) {
-                if (!m.getOnlineStatus().equals(OnlineStatus.OFFLINE))
-                    count ++;
-            }
+            out.put(role, new AbstractMap.SimpleEntry<>(count, countOnline));
         }
 
-        return count;
+        return out;
+    }
+
+    private String getRoleInfos(HashMap<Role, Map.Entry<Integer, Integer>> map) {
+        StringBuilder sb = new StringBuilder();
+        map.forEach((role, integerIntegerEntry) -> {
+            if (map.get(role).getKey() != 0)
+                sb.append("      - **" + role.getName() + ":**    " + map.get(role).getKey() + "  (Online: " + map.get(role).getValue() + ")" + "\n");
+        });
+        return sb.toString();
     }
 
 
@@ -42,21 +72,16 @@ public class Stats implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException {
 
-
-
+        Guild guild = event.getGuild();
         event.getTextChannel().sendMessage(
-                ":loudspeaker:  **SERVER STATS**  of Voice Server:  " + event.getGuild().getName() + "\n\n" +
-                "Server ID:    " + event.getGuild().getId() + "\n" +
-                "Server Owner:   " + event.getGuild().getOwner().getEffectiveName() + " (" + event.getGuild().getOwner().getOnlineStatus() + ") \n" +
-                "Members:    " + (event.getGuild().getMembers().size() - event.getGuild().getMembersWithRoles(event.getGuild().getRolesByName("Aushilfen", true).get(0)).size()) + "\n" +
-                "Currently Online:    " + (getMembersOnline(event) - getMembersOnline(event, "Aushilfen")) + "\n" +
-                "   - Admins:   " + getMembersOnline(event, "Admin") + "\n" +
-                "   - Mods:   " + getMembersOnline(event, "Moderator") + "\n" +
-                "   - Member:   " + getMembersOnline(event, "Member") + "\n" +
-                "   - Bots:   " + getMembersOnline(event, "Aushilfen") + "\n"
-
-
+                "*" + guild.getName() + "*  -  **SERVER STATS**\n\n" +
+                        " - **Server Name:**    " + guild.getName() + "\n" +
+                        " - **Server ID:**    " + guild.getId() + "\n" +
+                        " - **Server Owner:**    " + guild.getOwner().getAsMention() + " (" + guild.getOwner().getOnlineStatus().toString() + ") " + "\n" +
+                        " - **Members:**    " + getMembers(guild) + " (Online: " + getOnlineMembers(guild) + ")" + "\n" +
+                        " - **Roles:** " + "\n" + getRoleInfos(getRoleMembersCount(guild))
         ).queue();
+
     }
 
     @Override
