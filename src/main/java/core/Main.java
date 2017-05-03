@@ -2,10 +2,12 @@ package core;
 
 import commands.*;
 import commands.administration.Restart;
+import commands.administration.Stop;
 import commands.administration.Update;
 import commands.administration.testCMD;
 import commands.chat.*;
 import commands.essentials.*;
+import commands.etc.Dev;
 import commands.etc.tttServerStatus;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.VoiceKick;
@@ -104,6 +106,8 @@ public class Main {
         commands.put("tttserver", new tttServerStatus());
         commands.put("music", new Music());
         commands.put("m", new Music());
+        commands.put("dev", new Dev());
+        commands.put("stop", new Stop());
 
     }
 

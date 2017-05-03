@@ -52,7 +52,7 @@ public class Help implements Command {
         Main.commands.forEach((s, command) -> cmds.put(s, command.description()));
         StringBuilder commandsInvokesAsMessageString = new StringBuilder();
 
-        String[] ignorers = {"c", "m", "bj", "ttt", "userinfo"};
+        String[] ignorers = {"c", "m", "bj", "ttt", "userinfo", "dev"};
         Arrays.stream(ignorers).forEach(s -> cmds.remove(s));
 
         cmds.forEach((s, s2) -> commandsInvokesAsMessageString.append(
