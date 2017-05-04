@@ -1,6 +1,6 @@
 # Project: "zekroBot" 
 
-Current version: ```1.19.14.2```
+Current version: ```1.19.15.0```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
@@ -59,6 +59,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
+| 1.19.15.0 | Overworked permission system, added command for my private dev server :^) |
 | 1.19.14.2 | Improved some message designs, overworked server stats command |
 | 1.19.12.0 | Better compatibility to linux systems, added volume setting in config file |
 | 1.19.11.4 | Added playlist saving/loading to music command |
