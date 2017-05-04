@@ -269,7 +269,7 @@ public class Music implements Command {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         if (STATICS.musicCommandsOnlyInMusicChannel && !event.getTextChannel().getName().equals(STATICS.musicChannel)) {
-            Message msg = event.getTextChannel().sendMessage(":warning:  " + event.getAuthor().getAsMention() + ", please only send music commands in the #" + STATICS.musicChannel + " channel!").complete();
+            Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(":warning:  " + event.getAuthor().getAsMention() + ", please only send music commands in the #" + STATICS.musicChannel + " channel!").build()).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

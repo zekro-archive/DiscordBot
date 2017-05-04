@@ -3,9 +3,9 @@ package core;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.MSGS;
 import utils.STATICS;
 
-import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -26,9 +26,9 @@ public class Perms {
 
         StringBuilder sb = new StringBuilder();
         Arrays.stream(STATICS.botPermRoles).forEach(s -> sb.append(s + ", "));
-        EmbedBuilder eb = new EmbedBuilder()
-                .setColor(Color.RED)
-                .setDescription(":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permission to use this command! \nOne of these roles required: " + sb.toString().substring(0, sb.length() - 1));
+        EmbedBuilder eb = MSGS.error
+                .addField("Error Type", "Missing permissions.", false)
+                .addField("Description", "You need at least one of the following roles to access that command:\n" + sb.toString().substring(0, sb.toString().length() - 2), false);
 
         if (userNotPermitted) event.getTextChannel().sendMessage(eb.build()).queue();
 

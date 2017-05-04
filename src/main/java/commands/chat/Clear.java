@@ -2,13 +2,18 @@ package commands.chat;
 
 import commands.Command;
 import core.Perms;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import core.coreCommands;
+import utils.MSGS;
 
+import java.awt.*;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by zekro on 18.03.2017 / 01:29
@@ -26,7 +31,8 @@ public class Clear implements Command {
 
     public static String HELP = ":warning:  USAGE: ` ~clear <amount ob messages (>2)> to clear an amount of chat messages`";
 
-    private int getNumberOfArg(String arg) {
+
+    private int getInt(String arg) {
 
         try {
             return Integer.parseInt(arg);
@@ -36,80 +42,61 @@ public class Clear implements Command {
 
     }
 
-    private void clearNumb(MessageReceivedEvent event, String[] args) {
-
-
-        if (Integer.parseInt(args[0]) > 1) {
-
-            MessageHistory history = new MessageHistory(event.getTextChannel());
-            List<Message> msgs;
-
-            try {
-                msgs = history.retrievePast(Integer.parseInt(args[0])).complete();
-                event.getTextChannel().deleteMessages(msgs).queue();
-
-                msgs = history.retrievePast(2).complete();
-                event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
-
-                event.getTextChannel().sendMessage(args[0]+ " Messages deleted!").queue();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } else if (Integer.parseInt(args[0]) == 1) {
-
-            MessageHistory history = new MessageHistory(event.getTextChannel());
-            List<Message> msgs;
-
-            try {
-                msgs = history.retrievePast(1).complete();
-                event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
-
-                msgs = history.retrievePast(2).complete();
-                event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
-
-                event.getTextChannel().sendMessage(args[0]+ " Message deleted!").queue();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
     public void action(String[] args, MessageReceivedEvent event) {
 
         if (Perms.test(event)) return;
 
-        if (args.length > 0 && getNumberOfArg(args[0]) > 0) {
-            clearNumb(event, args);
-        }
-
-
-        //if (args.length == 0) {
-        //    event.getTextChannel().sendMessage(help()).queue();
-        //} else if (Integer.parseInt(args[0]) < 2) {
-        //    event.getTextChannel().sendMessage(help()).queue();
-        //}
-
-
-        MessageHistory history = new MessageHistory(event.getTextChannel());
-        List<Message> msgs;
-
-        MessageHistory historyAfter = new MessageHistory(event.getTextChannel());
-
         try {
-            Thread.sleep(5000);
+            MessageHistory history = new MessageHistory(event.getTextChannel());
+            List<Message> msgs;
 
-            msgs = historyAfter.retrievePast(1).complete();
-            event.getTextChannel().deleteMessageById(msgs.get(0).getId()).queue();
+            if (args.length < 1 || (args.length > 0 ? getInt(args[0]) : 1) == 1 && (args.length > 0 ? getInt(args[0]) : 1) < 2) {
+
+                event.getMessage().delete().queue();
+                msgs = history.retrievePast(2).complete();
+                msgs.get(0).delete().queue();
+
+                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                        "Successfully deleted last message!"
+                ).build()).complete();
+
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        answer.delete().queue();
+                    }
+                }, 3000);
+
+            } else if (getInt(args[0]) <= 100) {
+
+                event.getMessage().delete().queue();
+                msgs = history.retrievePast(getInt(args[0])).complete();
+                event.getTextChannel().deleteMessages(msgs).queue();
+
+                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                        "Successfully deleted " + args[0] + " messages!"
+                ).build()).complete();
+
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        answer.delete().queue();
+                    }
+                }, 3000);
+            } else {
+                event.getTextChannel().sendMessage(MSGS.error
+                        .addField("Error Type", "Message value out of bounds.", false)
+                        .addField("Description", "The entered number if messages can not be more than 100 messages!", false)
+                        .build()
+                ).queue();
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            event.getTextChannel().sendMessage(MSGS.error
+                    .addField("Error Type", e.getLocalizedMessage(), false)
+                    .addField("Message", e.getMessage(), false)
+                    .build()
+            ).queue();
         }
-
-
-
 
     }
 

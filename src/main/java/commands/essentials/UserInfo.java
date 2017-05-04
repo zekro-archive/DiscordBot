@@ -1,10 +1,12 @@
 package commands.essentials;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,7 +44,7 @@ public class UserInfo implements Command {
         String DISCRIMINATOR = memb.getUser().getDiscriminator();
         String STATUS = memb.getOnlineStatus().getKey();
         String ROLES = "";
-        String GAME = "";
+        String GAME;
         String AVATAR = memb.getUser().getAvatarUrl();
 
         try {
@@ -59,17 +61,17 @@ public class UserInfo implements Command {
         else
             ROLES = "No roles on this server.";
 
-        event.getTextChannel().sendMessage(
-                ":spy:   **User information for " + memb.getUser().getName() + ":**\n\n" +
-                "Name:   **" + NAME + "**\n" +
-                "User:   **" + NAME + "#" + DISCRIMINATOR + "**\n" +
-                "ID:   **" + ID + "**\n" +
-                "Curr. Status:   **" + STATUS + "**\n" +
-                "Curr. Game:   **" + GAME + "**\n" +
-                "Roles:   **" + ROLES + "**\n" +
-                "Guild Joined:   **" + GUILD_JOIN_DATE + "**\n" +
-                "Discord Joined:   **" + DISCORD_JOINED_DATE + "**\n" +
-                "Avatar-URL:   *" + AVATAR + "*\n"
+        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN)
+                .setDescription(":spy:   **User information for " + memb.getUser().getName() + ":**")
+                .addField("Name", NAME, false)
+                .addField("User", NAME + "#" + DISCRIMINATOR, false)
+                .addField("ID", ID, false)
+                .addField("Current Status", STATUS, false)
+                .addField("Current Game", GAME, false)
+                .addField("Roles", ROLES, false)
+                .addField("Guild Joined", GUILD_JOIN_DATE, false)
+                .addField("Discord Joined", DISCORD_JOINED_DATE, false)
+                .addField("Avatar-URL", AVATAR, false).build()
         ).queue();
 
     }
