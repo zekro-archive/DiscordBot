@@ -62,7 +62,7 @@ public class update {
                 }
 
                 if (System.getProperty("os.name").toLowerCase().contains("linux"))
-                    Runtime.getRuntime().exec("screen python update.py");
+                    Runtime.getRuntime().exec("sudo screen sudo python update.py");
                 else
                     Runtime.getRuntime().exec("wincmd.exe -update");
 

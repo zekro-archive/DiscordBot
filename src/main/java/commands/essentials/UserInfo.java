@@ -63,6 +63,7 @@ public class UserInfo implements Command {
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN)
                 .setDescription(":spy:   **User information for " + memb.getUser().getName() + ":**")
+                .setThumbnail(AVATAR)
                 .addField("Name", NAME, false)
                 .addField("User", NAME + "#" + DISCRIMINATOR, false)
                 .addField("ID", ID, false)
@@ -71,7 +72,9 @@ public class UserInfo implements Command {
                 .addField("Roles", ROLES, false)
                 .addField("Guild Joined", GUILD_JOIN_DATE, false)
                 .addField("Discord Joined", DISCORD_JOINED_DATE, false)
-                .addField("Avatar-URL", AVATAR, false).build()
+                .addField("Avatar-URL", AVATAR, false)
+                .build()
+
         ).queue();
 
     }

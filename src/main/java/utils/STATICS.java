@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.18.0";
+    public static String VERSION = "1.19.18.1";
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
@@ -34,7 +34,6 @@ public class STATICS {
             return GameType.DEFAULT;
         }
     };
-
 
 
     //######### WARFRAME ALERTS SETTINGS #########//
