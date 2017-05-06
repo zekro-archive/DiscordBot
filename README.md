@@ -59,6 +59,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
+| 1.19.18.0 | Overworked Info Command |
+| 1.19.17.0 | Overworked some more messages, especially in music command |
 | 1.19.15.0 | Overworked permission system, added command for my private dev server :^) |
 | 1.19.14.2 | Improved some message designs, overworked server stats command |
 | 1.19.12.0 | Better compatibility to linux systems, added volume setting in config file |

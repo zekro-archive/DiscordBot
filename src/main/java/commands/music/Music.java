@@ -229,9 +229,16 @@ public class Music implements Command {
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
                         track.getInfo().title
                 ).queue();
+
+                Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
+                ArrayList<AudioInfo> tracks = new ArrayList<>();
+                queue.forEach(audioInfo -> tracks.add(audioInfo));
+
                 EmbedBuilder eb = new EmbedBuilder()
                         .setColor(Color.CYAN)
-                        .setDescription(NOTE + "*[" + getTimestamp(track.getDuration()) + "]*  " + track.getInfo().title);
+                        .setDescription(NOTE + "   **Now Playing**   ")
+                        .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
+                        .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
                 guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).sendMessage(
                         eb.build()
                 ).queue();
@@ -240,6 +247,7 @@ public class Music implements Command {
 
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -311,7 +319,13 @@ public class Music implements Command {
                             event.getTextChannel().sendMessage(NOTE + "No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
-                            eb.setColor(Color.orange).setDescription(":musical_note:   **CURRENT TRACK INFO**   :musical_note:" + "\n\n" + getAudioInfo(track));
+                            AudioTrackInfo info = track.getInfo();
+                            eb
+                                    .setColor(Color.orange)
+                                    .setDescription(":musical_note:   **Current Track Info**")
+                                    .addField(":cd:  Title", info.title, false)
+                                    .addField(":stopwatch:  Duration", "`[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]`", false)
+                                    .addField(":microphone:  Channel / Author", info.author, false);
                             event.getTextChannel().sendMessage(
                                     eb.build()
                             ).queue();

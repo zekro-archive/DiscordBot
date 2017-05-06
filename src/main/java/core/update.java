@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class update {
 
-    private static String versionURL = "https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt";
+    public static String versionURL = "https://dl.dropboxusercontent.com/s/kkiugb66b31o5vw/current_version.txt";
 
     public static boolean checkIfUpdate() {
 
