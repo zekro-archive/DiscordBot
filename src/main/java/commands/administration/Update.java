@@ -8,6 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import java.io.IOException;
 import java.text.ParseException;
 import core.update;
+import utils.STATICS;
 
 /**
  * Created by zekro on 22.03.2017 / 17:13
@@ -25,7 +26,7 @@ public class Update implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (Perms.test(event)) return;
+        if (core.Perms.check(2, event)) return;
 
         if (!core.update.checkIfUpdate()) {
             event.getTextChannel().sendMessage(
@@ -45,11 +46,16 @@ public class Update implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -update";
     }
 
     @Override
     public String description() {
         return "Update discord bot.";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.administration;
     }
 }

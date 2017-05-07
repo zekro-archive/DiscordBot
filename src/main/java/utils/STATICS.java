@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.19.18.1";
+    public static String VERSION = "1.20.1.0";
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
@@ -48,7 +48,8 @@ public class STATICS {
 
     //######### PERMISSION SETTINGS #########//
 
-    public static String[] botPermRoles = {"Bot Commander", "Moderator", "Admin", "Owner"};
+    public static String[] PERMS = {"Bot Commander", "Moderator", "Admin", "Owner"};
+    public static String[] FULLPERMS = {"Admin", "Owner"};
 
     public static String guildJoinRole = "";
 
@@ -82,6 +83,15 @@ public class STATICS {
     public static int music_volume = 0;
 
     public static String discordJoinMessage = ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:";
+
+    public class CMDTYPE {
+        public static final String administration = "Administration";
+        public static final String chatutils = "Chat Utilities";
+        public static final String essentials = "Essentials";
+        public static final String etc = "Etc";
+        public static final String music = "Music";
+        public static final String guildadmin = "Guild Administration";
+    }
 
 
 }

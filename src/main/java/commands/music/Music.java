@@ -191,7 +191,9 @@ public class Music implements Command {
     }
 
     private void sendHelpMessage(MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage(help()).queue();
+        event.getTextChannel().sendMessage(
+                new EmbedBuilder().setColor(new Color(22, 138, 233)).setDescription(help()).build()
+        ).queue();
     }
 
     private String buildQueueMessage(AudioInfo info) {
@@ -576,11 +578,14 @@ public class Music implements Command {
         return
                 ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
                 "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
-                "` -music queuenext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`" +
+                "` -music queuenext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
                 "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
                 "` -music queue <Side>`  -  Show the current music queue\n" +
                 "` -music skip `  -  Skip the current track in queue\n" +
                 "` -music now `  -  Show info about the now playing track\n" +
+                "` -music save <name> `  -  Save playing playlist in a file\n" +
+                "` -music list `  -  Get a list of saved playlists\n" +
+                "` -music load <name> `  -  play a saved list\n" +
                 "` -music stop `  -  Stop the music player"
         ;
     }
@@ -588,5 +593,10 @@ public class Music implements Command {
     @Override
     public String description() {
         return null;
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.music;
     }
 }

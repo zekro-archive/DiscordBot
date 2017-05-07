@@ -4,6 +4,7 @@ import commands.Command;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -233,12 +234,23 @@ public class Vote implements Command {
 
     @Override
     public String help() {
-        return null;
+        return
+                "USAGE: \n" +
+                "`  -vote create |<Title>|<Poss1>|<Poss2>|...  `  -  create a vote\n" +
+                "`  -vote vote <index of Poss>  `  -  vote for a possibility\n" +
+                "`  -vote stats  `  -  get stats of a current vote\n" +
+                "`  -vote close  `  -  close a current vote"
+                ;
     }
 
     @Override
     public String description() {
         return "Create polls";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 
 }

@@ -10,6 +10,7 @@ import commands.essentials.*;
 import commands.etc.Dev;
 import commands.etc.tttServerStatus;
 import commands.guildAdministration.Kick;
+import commands.guildAdministration.Moveall;
 import commands.guildAdministration.VoiceKick;
 import commands.music.Music;
 import listeners.*;
@@ -108,6 +109,8 @@ public class Main {
         commands.put("m", new Music());
         commands.put("dev", new Dev());
         commands.put("stop", new Stop());
+        commands.put("moveall", new Moveall());
+        commands.put("mvall", new Moveall());
 
     }
 

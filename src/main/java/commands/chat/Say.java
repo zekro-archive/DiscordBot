@@ -5,6 +5,7 @@ import core.Perms;
 import core.coreCommands;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Say implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        if (Perms.test(event)) return;
+        if (core.Perms.check(1, event)) return;
 
         String serverID = event.getGuild().getId();
         String channel = event.getTextChannel().getName();
@@ -41,11 +42,16 @@ public class Say implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -say <message>";
     }
 
     @Override
     public String description() {
         return "Say something as the bot in chat";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

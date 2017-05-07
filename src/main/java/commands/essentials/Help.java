@@ -5,6 +5,7 @@ import core.Main;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.awt.*;
 import java.util.*;
@@ -50,12 +51,54 @@ public class Help implements Command {
 
         Map<String, String> cmds = new TreeMap<>();
         Main.commands.forEach((s, command) -> cmds.put(s, command.description()));
-        StringBuilder commandsInvokesAsMessageString = new StringBuilder();
+        StringBuilder ciams = new StringBuilder();
 
         String[] ignorers = {"c", "m", "bj", "ttt", "userinfo", "dev"};
         Arrays.stream(ignorers).forEach(s -> cmds.remove(s));
 
-        cmds.forEach((s, s2) -> commandsInvokesAsMessageString.append(
+        //ciams.append("**" + STATICS.CMDTYPE.administration + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.administration))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+        //
+        //ciams.append("**" + STATICS.CMDTYPE.chatutils + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.chatutils))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+        //
+        //ciams.append("**" + STATICS.CMDTYPE.essentials + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.essentials))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+        //
+        //ciams.append("**" + STATICS.CMDTYPE.etc + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.etc))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+        //
+        //ciams.append("**" + STATICS.CMDTYPE.guildadmin + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.guildadmin))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+        //
+        //ciams.append("**" + STATICS.CMDTYPE.music + "**\n");
+        //cmds.keySet().stream()
+        //        .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.music))
+        //        .forEach(s1 -> ciams.append(
+        //                ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+        //        ));
+
+        cmds.forEach((s, s2) -> ciams.append(
                 ":white_small_square:  **" + s + "**   -   `" + s2 + "`\n"
         ));
 
@@ -66,12 +109,14 @@ public class Help implements Command {
                     ":clipboard:  __**COMMAD LIST**__  :clipboard: \n\n" +
                             "If you want a full list of commands with description, please take a look there:\n" +
                             ":point_right:   **http://zekrosbot.zekro.de**\n\n" +
-                            commandsInvokesAsMessageString
+                            ciams.toString()
 
             ).queue();
 
 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -89,5 +134,10 @@ public class Help implements Command {
     @Override
     public String description() {
         return "\"Ich brauch keine Hilfe...\" :D";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.essentials;
     }
 }

@@ -36,6 +36,7 @@ public class Info implements Command {
         event.getTextChannel().sendMessage(
                 new EmbedBuilder()
                         .setColor(Color.MAGENTA)
+                        .setThumbnail("https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/zekroBot%20Logo%20-%20round.png")
                         .setDescription(":robot:   __**zekroBot** JDA Discord Bot__")
                         .addField("Current Version", STATICS.VERSION, true)
                         .addField("Latest Version", version, true)
@@ -77,11 +78,16 @@ public class Info implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -info";
     }
 
     @Override
     public String description() {
         return "Get info about that bot";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.essentials;
     }
 }

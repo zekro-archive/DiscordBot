@@ -5,6 +5,7 @@ import commands.chat.BJokeCancle;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.STATICS;
 
 import java.io.*;
 import java.net.URL;
@@ -19,7 +20,10 @@ public class Cat implements Command {
         return false;
     }
 
-    public static String HELP = ":warning:  USAGE: ` ~cat ` to post a single cat picture or use ` ~cat spam <time preiod in seconds> ` to post periodically cat pictures (stop with ` ~c `) =^..^=";
+    public static String HELP =
+            "USAGE: \n" +
+            "` ~cat ` to post a single cat picture\n" +
+            "` ~cat spam <time preiod in seconds> ` to post periodically cat pictures (stop with ` ~c `) =^..^=";
 
     int counter = 0;
     public void action(String[] args, MessageReceivedEvent event) {
@@ -65,6 +69,11 @@ public class Cat implements Command {
     @Override
     public String description() {
         return "=^..^=";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 
     private static String readAll(Reader rd) throws IOException {

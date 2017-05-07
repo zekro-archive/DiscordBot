@@ -5,6 +5,7 @@ import core.Perms;
 import core.coreCommands;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,6 +13,7 @@ import java.text.ParseException;
 /**
  * Created by Ringo Hoffmann on 26.03.2017.
  */
+
 public class Kick implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -20,7 +22,8 @@ public class Kick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
-        if (Perms.test(event)) return;
+
+        if (core.Perms.check(1, event)) return;
 
         String reason = "none";
         if (args.length > 1) {
@@ -58,6 +61,11 @@ public class Kick implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Kick a member from the server.";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.guildadmin;
     }
 }

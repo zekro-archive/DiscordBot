@@ -23,7 +23,7 @@ public class VoiceKick implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (Perms.test(event)) return;
+        if (core.Perms.check(1, event)) return;
 
         GuildController gc = new GuildController(event.getGuild());
 
@@ -59,11 +59,16 @@ public class VoiceKick implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -vkick <@user1> <@user2> ...";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Kick (multiple) people out of your voice channel";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.guildadmin;
     }
 }

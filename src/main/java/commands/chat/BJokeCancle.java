@@ -3,6 +3,7 @@ package commands.chat;
 import commands.Command;
 import commands.chat.BJoke;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 public class BJokeCancle implements Command {
 
@@ -41,5 +42,10 @@ public class BJokeCancle implements Command {
     @Override
     public String description() {
         return null;
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

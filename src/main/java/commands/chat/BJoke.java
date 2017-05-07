@@ -11,7 +11,7 @@ import java.util.*;
 
 public class BJoke implements Command {
 
-    public static String HELP = ":warning:  USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
+    public static String HELP = "USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
 
     static boolean called = false;
     static Member victim;
@@ -104,5 +104,10 @@ public class BJoke implements Command {
     @Override
     public String description() {
         return "Kick someone out of the voice channel after a bad joke";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

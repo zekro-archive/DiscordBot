@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.awt.*;
 import java.io.IOException;
@@ -86,12 +87,17 @@ public class UserInfo implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -userinfo <@user>";
     }
 
     @Override
     public String description() {
         return "Get some info about a user";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.essentials;
     }
 
 }

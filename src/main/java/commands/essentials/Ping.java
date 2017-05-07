@@ -36,5 +36,10 @@ public class Ping implements Command {
         return "Pong!";
     }
 
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.essentials;
+    }
+
 
 }

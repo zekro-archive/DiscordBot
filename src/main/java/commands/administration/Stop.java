@@ -4,6 +4,7 @@ import commands.Command;
 import core.Perms;
 import core.coreCommands;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -24,7 +25,7 @@ public class Stop implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (Perms.test(event)) return;
+        if (core.Perms.check(2, event)) return;
 
         event.getTextChannel().sendMessage(":warning: :mobile_phone_off:   " + event.getAuthor().getAsMention() + " shut down " + event.getJDA().getSelfUser().getAsMention() + " because of maintenance or an unexpected behavior.").queue();
         System.exit(0);
@@ -37,11 +38,16 @@ public class Stop implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -stop";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Emergency stop the bot.";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.administration;
     }
 }

@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.awt.*;
 import java.text.ParseException;
@@ -91,11 +92,16 @@ public class Stats implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -stats";
     }
 
     @Override
     public String description() {
         return "Get stats of the server";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.essentials;
     }
 }

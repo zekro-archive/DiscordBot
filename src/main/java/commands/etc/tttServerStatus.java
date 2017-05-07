@@ -64,4 +64,9 @@ public class tttServerStatus implements Command {
     public String description() {
         return null;
     }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.etc;
+    }
 }

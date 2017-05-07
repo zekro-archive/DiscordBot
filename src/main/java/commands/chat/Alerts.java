@@ -13,7 +13,11 @@ import static listeners.readyListener.restartWarframeAlertsCore;
 
 public class Alerts implements Command {
 
-    public static String HELP = ":warning:  USAGE: ` ~alerts ` for posting full list of alerts / ` ~alerts filter ` for open GDocs-Doscument for filters / ` ~alerts restart ` for restarting the warframe alerts core (Mods & Admins only)";
+    public static String HELP =
+            "USAGE: \n" +
+            "` -alerts ` for posting full list of alerts\n" +
+            "` ~alerts filter ` for open GDocs-Doscument for filters\n" +
+            "` ~alerts restart ` for restarting the warframe alerts core (Mods & Admins only)";
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -32,7 +36,7 @@ public class Alerts implements Command {
                 break;
 
             case "restart":
-                if (Perms.test(event)) return;
+                if (core.Perms.check(1, event)) return;
                 restartWarframeAlertsCore();
                 event.getTextChannel().sendMessage("Restarting complete.").queue();
                 break;
@@ -56,5 +60,10 @@ public class Alerts implements Command {
     @Override
     public String description() {
         return "Show a list of current warframe alerts / edit warframe alerts filters";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

@@ -2,6 +2,7 @@ package commands.chat;
 
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 public class TTT implements Command {
     @Override
@@ -39,5 +40,10 @@ public class TTT implements Command {
     @Override
     public String description() {
         return null;
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

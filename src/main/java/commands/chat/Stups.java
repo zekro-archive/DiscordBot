@@ -4,6 +4,7 @@ import commands.Command;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -70,11 +71,16 @@ public class Stups implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -stups <@user> Message";
     }
 
     @Override
     public String description() {
         return "Give someone a nudge";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

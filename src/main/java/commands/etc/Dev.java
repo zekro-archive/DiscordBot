@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.awt.*;
 import java.io.IOException;
@@ -104,5 +105,10 @@ public class Dev implements Command {
     @Override
     public String description() {
         return null;
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.etc;
     }
 }

@@ -9,6 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import core.coreCommands;
 import utils.MSGS;
+import utils.STATICS;
 
 import java.awt.*;
 import java.util.List;
@@ -29,7 +30,7 @@ public class Clear implements Command {
         return false;
     }
 
-    public static String HELP = ":warning:  USAGE: ` ~clear <amount ob messages (>2)> to clear an amount of chat messages`";
+    public static String HELP = "USAGE: ` ~clear <amount ob messages (>2)> to clear an amount of chat messages`";
 
 
     private int getInt(String arg) {
@@ -44,7 +45,7 @@ public class Clear implements Command {
 
     public void action(String[] args, MessageReceivedEvent event) {
 
-        if (Perms.test(event)) return;
+        if (core.Perms.check(1, event)) return;
 
         try {
             MessageHistory history = new MessageHistory(event.getTextChannel());
@@ -111,5 +112,10 @@ public class Clear implements Command {
     @Override
     public String description() {
         return "Bulk delete chat messages";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

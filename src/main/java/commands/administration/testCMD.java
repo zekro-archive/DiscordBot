@@ -2,10 +2,12 @@ package commands.administration;
 
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 /**
  * Created by Ringo Hoffmann on 20.02.2017.
  */
+
 public class testCMD implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -30,5 +32,10 @@ public class testCMD implements Command {
     @Override
     public String description() {
         return null;
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.administration;
     }
 }

@@ -2,6 +2,7 @@ package commands.chat;
 
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.util.Random;
 
@@ -50,5 +51,10 @@ public class EightBall implements Command {
     @Override
     public String description() {
         return "Ask the bot a question with yes/no answer";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

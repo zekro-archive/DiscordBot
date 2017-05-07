@@ -42,6 +42,7 @@ public class settings {
         static final String MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = "MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL";
         static final String MUSIC_VOLUME = "MUSIC_VOLUME";
         static final String DISCORD_JOIN_MESSAGE = "DISCORD_JOIN_MESSAGE";
+        static final String FULL_PERMISSION_ROLES = "FULL_PERMISSION_ROLES";
     }
 
     public static boolean testForToken() {
@@ -71,6 +72,7 @@ public class settings {
             map.put(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL, false);
             map.put(SCONT.MUSIC_VOLUME, 0);
             map.put(SCONT.DISCORD_JOIN_MESSAGE, ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:");
+            map.put(SCONT.FULL_PERMISSION_ROLES, "Admin, Owner");
 
             tomlw.write(map, new File("SETTINGS.txt"));
 
@@ -83,7 +85,7 @@ public class settings {
             STATICS.CUSTOM_MESSAGE = toml.getString(SCONT.CUSTOM_MESSAGE);
             STATICS.warframeAlertsChannel = toml.getString(SCONT.WARFRAME_ALERTS_TEXTCHANNEL);
             STATICS.refreshTime = Math.toIntExact(toml.getLong(SCONT.WARFRAME_ALERTS_REFRESHTIME));
-            STATICS.botPermRoles = toml.getString(SCONT.PERMISSION_ROLES).split(", ");
+            STATICS.PERMS = toml.getString(SCONT.PERMISSION_ROLES).split(", ");
             STATICS.DOCID_warframeAlertsFilter = toml.getString(SCONT.DOCID_WARFRAME_ALERTS_FILTER);
             STATICS.DOCID_jokes = toml.getString(SCONT.DOCID_JOKES);
             STATICS.commandConsoleOutout = toml.getBoolean(SCONT.COMMAND_CONSOLE_OUTPUT);
@@ -96,6 +98,7 @@ public class settings {
             STATICS.musicCommandsOnlyInMusicChannel = toml.getBoolean(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL);
             STATICS.music_volume = Math.toIntExact(toml.getLong(SCONT.MUSIC_VOLUME));
             STATICS.discordJoinMessage = toml.getString(SCONT.DISCORD_JOIN_MESSAGE);
+            STATICS.FULLPERMS = toml.getString(SCONT.FULL_PERMISSION_ROLES).split(", ");
         }
     }
 }

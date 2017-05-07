@@ -88,11 +88,16 @@ public class Joke implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -joke";
     }
 
     @Override
     public String description() {
         return "Get a random joke out of a gdocs doc";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.chatutils;
     }
 }

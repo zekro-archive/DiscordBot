@@ -27,28 +27,16 @@ public class Restart implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (
-                event.getMember().getRoles().contains(event.getGuild().getRolesByName("Developer", false).get(0))
-             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", false).get(0))
-             || event.getMember().getRoles().contains(event.getGuild().getRolesByName("Owner", false).get(0))
-        ) {
+        if (core.Perms.check(2, event)) return;
 
-            event.getTextChannel().sendMessage(":warning:  Bot will restart now...").queue();
+        event.getTextChannel().sendMessage(":warning:  Bot will restart now...").queue();
 
-            if (System.getProperty("os.name").toLowerCase().contains("linux"))
-                Runtime.getRuntime().exec("sudo screen sudo python restart.py");
-            else
-                Runtime.getRuntime().exec("wincmd.exe -restart");
+        if (System.getProperty("os.name").toLowerCase().contains("linux"))
+            Runtime.getRuntime().exec("sudo screen sudo python restart.py");
+        else
+            Runtime.getRuntime().exec("wincmd.exe -restart");
 
-            System.exit(0);
-
-        } else {
-            EmbedBuilder eb = new EmbedBuilder()
-                    .setColor(Color.RED)
-                    .setDescription(":warning:  Sorry, " + event.getAuthor().getAsMention() + ", you don't have the permission to use this command! \nOne of these roles required: " + "Owner, Admin, Developer");
-
-            event.getTextChannel().sendMessage(eb.build()).queue();
-        }
+        System.exit(0);
 
     }
 
@@ -59,11 +47,16 @@ public class Restart implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USAGE: -restart";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Restart the bot.";
+    }
+
+    @Override
+    public String commandType() {
+        return STATICS.CMDTYPE.administration;
     }
 }
