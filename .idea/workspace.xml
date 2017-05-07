@@ -11,40 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec8a6ed-933b-4b23-bc5d-d18f42bea619" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/DiscordBot_jar/DiscordBot.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SETTINGS.txt" afterPath="$PROJECT_DIR$/SETTINGS.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/Command.java" afterPath="$PROJECT_DIR$/src/main/java/commands/Command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Stop.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Stop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/administration/Update.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/Update.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java" afterPath="$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Alerts.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Alerts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/BJoke.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/BJoke.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/BJokeCancle.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/BJokeCancle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Clear.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Clear.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/EightBall.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/EightBall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Joke.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Joke.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Say.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Say.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Stups.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Stups.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/TTT.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/TTT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Vote.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Vote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/Info.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/Ping.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Ping.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/Stats.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Stats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/UserInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/etc/Dev.java" afterPath="$PROJECT_DIR$/src/main/java/commands/etc/Dev.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/etc/tttServerStatus.java" afterPath="$PROJECT_DIR$/src/main/java/commands/etc/tttServerStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/Kick.java" afterPath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/Kick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" afterPath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/music/Music.java" afterPath="$PROJECT_DIR$/src/main/java/commands/music/Music.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" afterPath="$PROJECT_DIR$/src/main/java/core/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Perms.java" afterPath="$PROJECT_DIR$/src/main/java/core/Perms.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/settings.java" afterPath="$PROJECT_DIR$/src/main/java/core/settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/update.java" afterPath="$PROJECT_DIR$/src/main/java/core/update.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" afterPath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LATESTVERSION.txt" afterPath="$PROJECT_DIR$/LATESTVERSION.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="DiscordBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/SETTINGS.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -1189,8 +1158,8 @@
         <state relative-caret-position="510">
           <caret line="38" column="45" lean-forward="false" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
           <folding>
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="false" />
+            <element signature="e#869#870#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1237,8 +1206,8 @@
         <state relative-caret-position="663">
           <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
           <folding>
-            <element signature="e#1186#1187#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="false" />
+            <element signature="e#1234#1235#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1248,8 +1217,8 @@
         <state relative-caret-position="848">
           <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
           <folding>
-            <element signature="e#2083#2084#0" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
+            <element signature="e#2083#2084#0" expanded="false" />
+            <element signature="e#2131#2132#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1270,8 +1239,8 @@
         <state relative-caret-position="765">
           <caret line="57" column="41" lean-forward="false" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="false" />
+            <element signature="e#1375#1376#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1294,10 +1263,10 @@
         <state relative-caret-position="729">
           <caret line="54" column="41" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
           <folding>
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1271#1272#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="false" />
+            <element signature="e#1116#1117#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1319#1320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1307,10 +1276,10 @@
         <state relative-caret-position="848">
           <caret line="83" column="41" lean-forward="false" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
           <folding>
-            <element signature="e#2038#2039#0" expanded="true" />
-            <element signature="e#2092#2093#0" expanded="true" />
-            <element signature="e#2235#2236#0" expanded="true" />
-            <element signature="e#2283#2284#0" expanded="true" />
+            <element signature="e#2038#2039#0" expanded="false" />
+            <element signature="e#2092#2093#0" expanded="false" />
+            <element signature="e#2235#2236#0" expanded="false" />
+            <element signature="e#2283#2284#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1320,8 +1289,8 @@
         <state relative-caret-position="646">
           <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
           <folding>
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="false" />
+            <element signature="e#1705#1706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1377,10 +1346,10 @@
         <state relative-caret-position="848">
           <caret line="104" column="42" lean-forward="false" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
           <folding>
-            <element signature="e#3204#3205#0" expanded="true" />
-            <element signature="e#3242#3243#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3437#3438#0" expanded="true" />
+            <element signature="e#3204#3205#0" expanded="false" />
+            <element signature="e#3242#3243#0" expanded="false" />
+            <element signature="e#3388#3389#0" expanded="false" />
+            <element signature="e#3437#3438#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1425,10 +1394,10 @@
         <state relative-caret-position="848">
           <caret line="68" column="8" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="42" />
           <folding>
-            <element signature="e#1961#1962#0" expanded="true" />
-            <element signature="e#2016#2017#0" expanded="true" />
-            <element signature="e#2065#2066#0" expanded="true" />
-            <element signature="e#2114#2115#0" expanded="true" />
+            <element signature="e#1961#1962#0" expanded="false" />
+            <element signature="e#2016#2017#0" expanded="false" />
+            <element signature="e#2065#2066#0" expanded="false" />
+            <element signature="e#2114#2115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1509,7 +1478,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1517,7 +1486,7 @@
     <entry file="file://$PROJECT_DIR$/SETTINGS.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding />
         </state>
       </provider>
