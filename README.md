@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/logo%20-%20title.png" />
 <br/>
 
-Current version: ```1.19.15.0```
+Current version: ```1.20.1.0```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
@@ -60,6 +60,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
+| 1.20.1.0 | better messages, overworked user info command, overworked clear command |
 | 1.19.18.0 | Overworked Info Command |
 | 1.19.17.0 | Overworked some more messages, especially in music command |
 | 1.19.15.0 | Overworked permission system, added command for my private dev server :^) |
