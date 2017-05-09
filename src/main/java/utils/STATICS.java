@@ -9,7 +9,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.20.1.0";
+    public static String VERSION = "1.20.2.0";
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
