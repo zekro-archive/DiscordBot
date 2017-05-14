@@ -1,10 +1,13 @@
 package listeners;
 
+import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
+
+import java.util.ArrayList;
 
 /**
  * © zekro 2017
@@ -19,10 +22,6 @@ public class guildJoinListener extends ListenerAdapter {
         event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
             STATICS.discordJoinMessage.replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
         ).queue();
-
-        //event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
-        //        ":heart: Willkommen auf unserem Discord-Server , " + event.getMember().getAsMention() + "! :heart:"
-        //).queue();
 
         if (!STATICS.guildJoinRole.equals(""))
             if (event.getGuild().getRolesByName(STATICS.guildJoinRole, true).size() > 0) {

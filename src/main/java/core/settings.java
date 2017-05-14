@@ -3,6 +3,7 @@ package core;
 
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
+import net.dv8tion.jda.core.entities.Guild;
 import utils.STATICS;
 
 import java.io.File;
@@ -17,6 +18,7 @@ import java.util.*;
  */
 
 public class settings {
+
 
     private static File sfile = new File("SETTINGS.txt");
     private static TomlWriter tomlw = new TomlWriter();
@@ -101,4 +103,5 @@ public class settings {
             STATICS.FULLPERMS = toml.getString(SCONT.FULL_PERMISSION_ROLES).split(", ");
         }
     }
+
 }

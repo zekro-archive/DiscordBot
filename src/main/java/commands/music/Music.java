@@ -488,6 +488,8 @@ public class Music implements Command {
                             String out = reader.readLine();
 
                             loadTrack(out, event.getMember(), event.getMessage());
+                            if (getPlayer(guild).isPaused())
+                                getPlayer(guild).setPaused(false);
 
                             new Timer().schedule(
                                     new java.util.TimerTask() {
@@ -510,6 +512,8 @@ public class Music implements Command {
 
                     case "clue":
                         loadTrack(clueURL, event.getMember(), event.getMessage());
+                        if (getPlayer(guild).isPaused())
+                            getPlayer(guild).setPaused(false);
                         break;
                 }
 
@@ -526,6 +530,9 @@ public class Music implements Command {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
                             loadTrack(input, event.getMember(), event.getMessage());
+
+                            if (getPlayer(guild).isPaused())
+                                getPlayer(guild).setPaused(false);
 
                             new Timer().schedule(
                                     new java.util.TimerTask() {

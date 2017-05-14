@@ -3,13 +3,15 @@ package utils;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
+import java.util.Date;
+
 public class STATICS {
 
     public static String TOKEN = "";
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.20.2.0";
+    public static String VERSION = "1.21.0.0";
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
@@ -93,5 +95,8 @@ public class STATICS {
         public static final String guildadmin = "Guild Administration";
     }
 
+    public static Date lastRestart;
+
+    public static int reconnectCount = 0;
 
 }

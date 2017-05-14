@@ -15,6 +15,8 @@ public class reconnectListener extends ListenerAdapter {
 
         System.out.println("[INFO] RECONNECT");
 
+        STATICS.reconnectCount++;
+
         restartWarframeAlertsCore();
     }
 

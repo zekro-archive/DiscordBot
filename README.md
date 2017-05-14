@@ -60,6 +60,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
+| **1.21.0.0** | *[IMPROVEMENT]* Improved help command, *[BUGFIX]* automatic unpause after queueing music, *[NEW]* added uptime command |
 | 1.20.2.0 | Improved move all command |
 | 1.20.1.0 | Better messages, overworked user info command, overworked clear command, added Moveall command |
 | 1.19.18.0 | Overworked Info Command |

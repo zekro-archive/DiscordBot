@@ -8,6 +8,7 @@ import commands.administration.testCMD;
 import commands.chat.*;
 import commands.essentials.*;
 import commands.etc.Dev;
+import commands.etc.Uptime;
 import commands.etc.tttServerStatus;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.Moveall;
@@ -111,6 +112,7 @@ public class Main {
         commands.put("stop", new Stop());
         commands.put("moveall", new Moveall());
         commands.put("mvall", new Moveall());
+        commands.put("uptime", new Uptime());
 
     }
 

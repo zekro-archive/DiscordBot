@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -69,6 +70,8 @@ public class readyListener extends ListenerAdapter {
     public void onReady(ReadyEvent event) {
 
         readyEvent = event;
+
+        STATICS.lastRestart = new Date();
 
         handleStartArgs();
 
