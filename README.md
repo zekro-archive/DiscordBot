@@ -100,4 +100,4 @@ Special thanks to <a href="https://github.com/jagrosh">@jagrosh</a> for helping 
 
 Also a special thanks to Sophie, who helped me a lot developing some features of that bot and better performance coding. <3
 
-Another lovely thanks to all of our "Trupp Lätzl"-Discord members and team for testing the bot and using it.
+Another lovely thanks to all of our "Trupp Lätzl"-Discord members and team for testing the bot and using it and also a special lovley thanks to all members on my Dev Discord helping me a lot with new experiences and a lot of helpful hints. :)
