@@ -19,23 +19,20 @@ import java.util.Arrays;
 public class Perms {
 
 
-    public static int getLvl(MessageReceivedEvent event) {
+    public static int getLvl(Member member) {
 
-        Member member = event.getMember();
-
-        if (member.getRoles().stream().anyMatch(role -> Arrays.stream(STATICS.PERMS).anyMatch(s -> role.getName().equals(s)))) {
-            if (member.getRoles().stream().anyMatch(role -> Arrays.stream(STATICS.FULLPERMS).anyMatch(s1 -> role.getName().equals(s1)))) {
-                return 2;
-            }
+        if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_2(member.getGuild())).anyMatch(s1 -> role.getName().equals(s1)))) {
+            return 2;
+        } else if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_1(member.getGuild())).anyMatch(s -> role.getName().equals(s)))) {
             return 1;
         }
         return 0;
     }
 
     public static boolean check(int required, MessageReceivedEvent event) {
-        if (required > getLvl(event)) {
+        if (required > getLvl(event.getMember())) {
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(
-                    "Sorry but you need permission level `" + required + "` or above!"
+                    "Sorry but you need permission level `" + required + "` or above!\n(Your current permission level is `" + getLvl(event.getMember()) + "`)."
             ).build()).queue();
             return true;
         }

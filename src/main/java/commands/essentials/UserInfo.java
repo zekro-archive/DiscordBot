@@ -71,6 +71,7 @@ public class UserInfo implements Command {
                 .addField("Current Status", STATUS, false)
                 .addField("Current Game", GAME, false)
                 .addField("Roles", ROLES, false)
+                .addField("Guild Permission Level", core.Perms.getLvl(memb) + "", false)
                 .addField("Guild Joined", GUILD_JOIN_DATE, false)
                 .addField("Discord Joined", DISCORD_JOINED_DATE, false)
                 .addField("Avatar-URL", AVATAR, false)

@@ -40,7 +40,7 @@ public class Info implements Command {
                         .setDescription(":robot:   __**zekroBot** JDA Discord Bot__")
                         .addField("Current Version", STATICS.VERSION, true)
                         .addField("Latest Version", version, true)
-                        //.addField("Release", STATICS.BUILDTYPE.STABLE, true)
+                        .addField("Release", STATICS.BUILDTYPE.STABLE, true)
                         .addField("Copyright",
                                 "Coded by zekro Development Team.\n" +
                                       "© 2016 - 2017 Ringo Hoffmann and Sophie Lorenz.", false)
@@ -54,8 +54,9 @@ public class Info implements Command {
                                       " -  Toml4J  *(https://github.com/mwanji/toml4j)*\n" +
                                       " -  lavaplayer  *(https://github.com/sedmelluq/lavaplayer)*\n" +
                                       " -  Steam-Condenser  *(https://github.com/koraktor/steam-condenser-java)*", false)
-                        .addField("Bugreporting",
+                        .addField("Bug Reporting / Idea Suggestion",
                                 "If you got some bugs, please contact us here:\n" +
+                                      "**Please use this document to report a bug or suggest an idea: http://s.zekro.de/botsubs**\n" +
                                       " -  E-Mail:  zekrotja@gmail.com\n" +
                                       " -  Discord:  http://discord.zekro.de (or directly: `zekro#9131` & `Sophie#4538`)", false)
 

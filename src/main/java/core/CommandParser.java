@@ -11,7 +11,7 @@ public class CommandParser {
         ArrayList<String> split = new ArrayList<>();
 
         String raw = rw;
-        String beheaded = raw.replaceFirst(STATICS.PREFIX, "");
+        String beheaded = raw.substring(1, raw.length());
         String[] splitBeheaded = beheaded.split(" ");
 
         for (String s : splitBeheaded) {

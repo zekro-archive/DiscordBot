@@ -16,11 +16,13 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import commands.Command;
+import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
@@ -216,19 +218,11 @@ public class Music implements Command {
         return s.isEmpty() ? "N/A" : s;
     }
 
-    private String getAudioInfo(AudioTrack track) {
-        return
-            ":cd:  " + getOrNull(track.getInfo().title) + "\n" +
-            ":stopwatch:  " + "`[ " + getTimestamp(track.getPosition()) + " / " + getTimestamp(track.getInfo().length) + " ]` \n" +
-            ":microphone:  " + getOrNull(track.getInfo().author) + "\n"
-        ;
-    }
-
     private AudioEventListener audioEventListener = new AudioEventAdapter() {
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
-            if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
-                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
+            if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0) {
+                guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).getManager().setTopic(
                         track.getInfo().title
                 ).queue();
 
@@ -241,7 +235,7 @@ public class Music implements Command {
                         .setDescription(NOTE + "   **Now Playing**   ")
                         .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
                         .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
-                guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).sendMessage(
+                guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
                         eb.build()
                 ).queue();
             }
@@ -254,8 +248,8 @@ public class Music implements Command {
                 @Override
                 public void run() {
                     if (player.getPlayingTrack() == null) {
-                        if (guild.getTextChannelsByName(STATICS.musicChannel, true).size() > 0) {
-                            guild.getTextChannelsByName(STATICS.musicChannel, true).get(0).getManager().setTopic(
+                        if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0) {
+                            guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).getManager().setTopic(
                                     "-music help"
                             ).queue();
                         }
@@ -278,7 +272,7 @@ public class Music implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (STATICS.musicCommandsOnlyInMusicChannel && !event.getTextChannel().getName().equals(STATICS.musicChannel)) {
+        if (SSSS.getLOCKMUSICCHANNEL(guild) && !event.getTextChannel().getName().equals(SSSS.getMUSICCHANNEL(guild))) {
             Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(":warning:  " + event.getAuthor().getAsMention() + ", please only send music commands in the #" + STATICS.musicChannel + " channel!").build()).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
@@ -311,6 +305,31 @@ public class Music implements Command {
 
                     case "help":
                         sendHelpMessage(event);
+                        break;
+
+                    case "channel":
+                        if (core.Perms.check(2, event)) return;
+                        if (args.length < 2) {
+                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            return;
+                        }
+                        SSSS.setMUSICCHANNEL(args[1].toLowerCase(), guild);
+                        event.getTextChannel().sendMessage(MSGS.success.setDescription("Music channel successfully changed to `" + args[1].toLowerCase() + "`.").build()).queue();
+
+                        break;
+
+                    case "lockchannel":
+                        if (core.Perms.check(2, event)) return;
+                        if (args.length < 2) {
+                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            return;
+                        }
+                        try {
+                            SSSS.setLOCKMUSICCHANNEL(Boolean.parseBoolean(args[1]), guild);
+                            event.getTextChannel().sendMessage(MSGS.success.setDescription("Music channel lock successfully set to `" + Boolean.parseBoolean(args[1]) + "`.").build()).queue();
+                        } catch (Exception e) {
+                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                        }
                         break;
 
                     case "now":
@@ -593,7 +612,9 @@ public class Music implements Command {
                 "` -music save <name> `  -  Save playing playlist in a file\n" +
                 "` -music list `  -  Get a list of saved playlists\n" +
                 "` -music load <name> `  -  play a saved list\n" +
-                "` -music stop `  -  Stop the music player"
+                "` -music stop `  -  Stop the music player\n" +
+                "` -music channel <text channel> `  -  Set the channel where now playing will shown (use a channel that does not exist to disable messages)\n" +
+                "` -music lockchannel <true | false> `  -  Only allow music commands in the music channel"
         ;
     }
 

@@ -1,10 +1,7 @@
 package core;
 
 import commands.*;
-import commands.administration.Restart;
-import commands.administration.Stop;
-import commands.administration.Update;
-import commands.administration.testCMD;
+import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
 import commands.etc.Dev;
@@ -14,8 +11,10 @@ import commands.guildAdministration.Kick;
 import commands.guildAdministration.Moveall;
 import commands.guildAdministration.VoiceKick;
 import commands.music.Music;
+import commands.settings.*;
 import listeners.*;
 import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.STATICS;
@@ -33,6 +32,8 @@ public class Main {
     public static final CommandParser parser = new CommandParser();
 
     public static HashMap<String, Command> commands = new HashMap<>();
+
+    public static JDA jda;
 
     public static void main(String[] args) throws IOException {
 
@@ -56,17 +57,15 @@ public class Main {
         builder.setToken(STATICS.TOKEN);
         builder.setAudioEnabled(true);
         builder.setAutoReconnect(true);
-        //builder.setEnableShutdownHook(true);
 
         builder.setStatus(STATICS.STATUS);
         builder.setGame(STATICS.GAME);
 
         initializeListeners();
         initializeCommands();
-        //settings.initializeSettings();
 
         try {
-            builder.buildBlocking();
+            jda = builder.buildBlocking();
         } catch (LoginException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -74,6 +73,8 @@ public class Main {
         } catch (RateLimitedException e) {
             e.printStackTrace();
         }
+
+        SSSS.checkFolders(jda.getGuilds());
 
     }
 
@@ -90,7 +91,7 @@ public class Main {
         commands.put("help", new Help());
         commands.put("info", new Info());
         commands.put("alerts", new Alerts());
-        commands.put("testcmd", new testCMD());
+        commands.put("test", new testCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
         commands.put("poll", new Vote());
@@ -113,6 +114,11 @@ public class Main {
         commands.put("moveall", new Moveall());
         commands.put("mvall", new Moveall());
         commands.put("uptime", new Uptime());
+        commands.put("botmsg", new Botmessage());
+        commands.put("prefix", new Prefix());
+        commands.put("joinmsg", new ServerJoinMessage());
+        commands.put("leavemsg", new ServerLeftMessage());
+        commands.put("permlvl", new PermLvls());
 
     }
 

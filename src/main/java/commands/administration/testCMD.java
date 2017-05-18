@@ -1,6 +1,7 @@
 package commands.administration;
 
 import commands.Command;
+import core.SSSS;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
@@ -16,7 +17,7 @@ public class testCMD implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        System.out.println(event.getGuild().getMember(event.getAuthor()).getRoles());
+        System.out.println("LVL1: " + SSSS.getPERMROLES_1(event.getGuild()) + "\nLVL2: " + SSSS.getPERMROLES_2(event.getGuild()));
     }
 
     @Override

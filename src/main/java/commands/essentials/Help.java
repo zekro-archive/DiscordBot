@@ -119,6 +119,15 @@ public class Help implements Command {
                     ));
             pc.sendMessage(new EmbedBuilder().setColor(new Color(0, 255, 126)).setDescription(ciams.toString()).build()).queue();
 
+            ciams.delete(0, ciams.length());
+            ciams.append("**" + STATICS.CMDTYPE.settings + "**\n");
+            cmds.keySet().stream()
+                    .filter(s -> Main.commands.get(s).commandType().equals(STATICS.CMDTYPE.settings))
+                    .forEach(s1 -> ciams.append(
+                            ":white_small_square:  **" + s1 + "**   -   `" + cmds.get(s1) + "`\n"
+                    ));
+            pc.sendMessage(new EmbedBuilder().setColor(new Color(255, 233, 0)).setDescription(ciams.toString()).build()).queue();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

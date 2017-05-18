@@ -11,7 +11,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.21.0.0";
+    public static String VERSION = "1.22.4.0";
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
@@ -93,6 +93,7 @@ public class STATICS {
         public static final String etc = "Etc";
         public static final String music = "Music";
         public static final String guildadmin = "Guild Administration";
+        public static final String settings = "Settings";
     }
 
     public static Date lastRestart;

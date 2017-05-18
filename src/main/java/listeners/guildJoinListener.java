@@ -1,5 +1,6 @@
 package listeners;
 
+import core.SSSS;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
@@ -19,9 +20,11 @@ public class guildJoinListener extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
-        event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
-            STATICS.discordJoinMessage.replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
-        ).queue();
+        if (!SSSS.getSERVERJOINMESSAGE(event.getGuild()).toLowerCase().equals("off")) {
+            event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
+                SSSS.getSERVERJOINMESSAGE(event.getGuild()).replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
+            ).queue();
+        }
 
         if (!STATICS.guildJoinRole.equals(""))
             if (event.getGuild().getRolesByName(STATICS.guildJoinRole, true).size() > 0) {
@@ -39,9 +42,11 @@ public class guildJoinListener extends ListenerAdapter {
 
     public void onGuildMemberLeave(GuildMemberLeaveEvent event) {
 
-        event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
-                "Tschüss, " + event.getMember().getAsMention() + "...  :cry: "
-        ).queue();
+        if (!SSSS.getSERVERLEAVEMESSAGE(event.getGuild()).toLowerCase().equals("off")) {
+            event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
+                    SSSS.getSERVERLEAVEMESSAGE(event.getGuild()).replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
+            ).queue();
+        }
 
     }
 

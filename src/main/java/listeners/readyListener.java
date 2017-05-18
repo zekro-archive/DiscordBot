@@ -88,7 +88,6 @@ public class readyListener extends ListenerAdapter {
 
                 warframeAlertsCore.pasteAlertsInChat(event);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
-                System.out.println(STATICS.TTT_SERVER_IP);
                 if (!STATICS.TTT_SERVER_IP.equals(""))
                     testOnlineState(readyEvent.getJDA().getGuilds());
 
