@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/logo%20-%20title.png" />
 <br/>
 
-Current version: ```1.21.0.0```
+Current version: ```1.22.4.0```
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
@@ -60,7 +60,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| 1.22.4.0 | <ul><li>- *[NEW]* Server Specific Settings System </li><li>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg </li><li>- *[UPDATED]* Permission Level System </li><li>- *[UPDATED]* User Info Command </li><li>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel</li></ul> |
+| **1.22.4.0** | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
 | 1.21.0.0 | *[IMPROVEMENT]* Improved help command, *[BUGFIX]* automatic unpause after queueing music, *[NEW]* added uptime command |
 | 1.20.2.0 | Improved move all command |
 | 1.20.1.0 | Better messages, overworked user info command, overworked clear command, added Moveall command |
