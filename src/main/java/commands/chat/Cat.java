@@ -2,6 +2,7 @@ package commands.chat;
 
 import commands.Command;
 import commands.chat.BJokeCancle;
+import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +44,7 @@ public class Cat implements Command {
                             return;
                         }
                         event.getTextChannel().sendMessage("CAT NUMBER: " + counter).queue();
-                        throwCat(event);
+                        throwCat(event.getTextChannel());
 
                     }},0, Integer.parseInt(args[1])*1000);
             } else if (Integer.parseInt(args[1]) < 10) {
@@ -54,7 +55,7 @@ public class Cat implements Command {
             }
 
         } catch (Exception e) {
-            throwCat(event);
+            throwCat(event.getTextChannel());
         }
     }
 
@@ -97,7 +98,7 @@ public class Cat implements Command {
         }
     }
 
-    public static void throwCat(MessageReceivedEvent event) {
+    public static void throwCat(TextChannel channel) {
 
         JSONObject json = null;
         try {
@@ -115,6 +116,6 @@ public class Cat implements Command {
             e.printStackTrace();
         }
 
-        event.getTextChannel().sendMessage(outputMessage).queue();
+        channel.sendMessage(outputMessage).queue();
     }
 }

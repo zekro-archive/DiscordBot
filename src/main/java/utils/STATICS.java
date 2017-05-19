@@ -11,12 +11,13 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.22.4.0";
+    public static String VERSION = "1.22.5.1";
+    public static String THISBUILDTYPE = BUILDTYPE.TESTING_RELEASE;
 
     public static class BUILDTYPE {
         public static final String STABLE = "STABLE";
         public static final String UNSTABLE = "UNSTABLE";
-        public static final String TESTING_RELEASE = "TESTING RELEASE";
+        public static final String TESTING_RELEASE = "TESTING_RELEASE";
     }
 
     public static String PREFIX = "-";
@@ -27,7 +28,7 @@ public class STATICS {
 
     public static Game GAME = new Game()  {
         public String getName() {
-            return CUSTOM_MESSAGE + " | -help | v." + VERSION;
+            return CUSTOM_MESSAGE + " | -help | v." + VERSION + "_" + THISBUILDTYPE;
         }
         public String getUrl() {
             return "http://zekro.de";

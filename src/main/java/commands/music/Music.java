@@ -193,9 +193,7 @@ public class Music implements Command {
     }
 
     private void sendHelpMessage(MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage(
-                new EmbedBuilder().setColor(new Color(22, 138, 233)).setDescription(help()).build()
-        ).queue();
+        helpOut(event);
     }
 
     private String buildQueueMessage(AudioInfo info) {
@@ -310,7 +308,7 @@ public class Music implements Command {
                     case "channel":
                         if (core.Perms.check(2, event)) return;
                         if (args.length < 2) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            helpOut(event);
                             return;
                         }
                         SSSS.setMUSICCHANNEL(args[1].toLowerCase(), guild);
@@ -321,17 +319,18 @@ public class Music implements Command {
                     case "lockchannel":
                         if (core.Perms.check(2, event)) return;
                         if (args.length < 2) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            helpOut(event);
                             return;
                         }
                         try {
                             SSSS.setLOCKMUSICCHANNEL(Boolean.parseBoolean(args[1]), guild);
                             event.getTextChannel().sendMessage(MSGS.success.setDescription("Music channel lock successfully set to `" + Boolean.parseBoolean(args[1]) + "`.").build()).queue();
                         } catch (Exception e) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            helpOut(event);
                         }
                         break;
 
+                    case "n":
                     case "now":
                     case "current":
                     case "nowplaying":
@@ -390,6 +389,7 @@ public class Music implements Command {
                         }
                         break;
 
+                    case "s":
                     case "skip":
                         if (isCurrentDj(event.getMember()) || isDj(event.getMember())) {
                             for (int skip = (args.length > 1 ? Integer.parseInt(args[1]) : 1); skip > 0; skip--) {
@@ -418,6 +418,7 @@ public class Music implements Command {
                         }
                         break;
 
+                    case "rand":
                     case "shuffle":
                         if (isIdle(guild, event)) return;
 
@@ -431,8 +432,6 @@ public class Music implements Command {
 
                     case "pause":
                     case "resume":
-                    case "r":
-                    case "p":
                         if (getPlayer(guild).isPaused()) {
                             getPlayer(guild).setPaused(false);
                             event.getTextChannel().sendMessage(
@@ -542,8 +541,12 @@ public class Music implements Command {
                     STATICS.input = input;
 
                 switch (args[0].toLowerCase()) {
+
+                    case "yp":
                     case "ytplay": // Query YouTube for a music video
                         input = "ytsearch: " + input;
+
+                    case "p":
                     case "play": // Play a track
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
@@ -568,7 +571,35 @@ public class Music implements Command {
                         }
                         break;
 
-                    case "queuenext":
+                    case "playshuffle":
+                    case "ps":
+                        if (args.length <= 1) {
+                            event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
+                        } else {
+                            loadTrack(input, event.getMember(), event.getMessage());
+
+                            getTrackManager(guild).shuffleQueue();
+
+                            if (getPlayer(guild).isPaused())
+                                getPlayer(guild).setPaused(false);
+
+                            new Timer().schedule(
+                                    new java.util.TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            int tracks = getTrackManager(guild).getQueuedTracks().size();
+                                            event.getTextChannel().sendMessage(
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
+                                            ).queue();
+                                        }
+                                    },
+                                    5000
+                            );
+                        }
+                        break;
+
+                    case "pn":
+                    case "playnext":
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
@@ -601,21 +632,102 @@ public class Music implements Command {
 
     @Override
     public String help() {
-        return
-                ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
-                "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
-                "` -music queuenext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
-                "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
-                "` -music queue <Side>`  -  Show the current music queue\n" +
-                "` -music skip `  -  Skip the current track in queue\n" +
-                "` -music now `  -  Show info about the now playing track\n" +
-                "` -music save <name> `  -  Save playing playlist in a file\n" +
-                "` -music list `  -  Get a list of saved playlists\n" +
-                "` -music load <name> `  -  play a saved list\n" +
-                "` -music stop `  -  Stop the music player\n" +
-                "` -music channel <text channel> `  -  Set the channel where now playing will shown (use a channel that does not exist to disable messages)\n" +
-                "` -music lockchannel <true | false> `  -  Only allow music commands in the music channel"
-        ;
+        return null;
+    }
+
+
+    public void helpOut(MessageReceivedEvent event) {
+
+        String pre = SSSS.getPREFIX(guild);
+
+        event.getTextChannel().sendMessage(
+                new EmbedBuilder()
+                        .setColor(new Color(0, 82, 255))
+                        .setDescription(NOTE + "  **MUSIC PLAYER DESCRIPTION**\n___")
+
+                        .addField(pre + "m play <INPUT>",
+                                        "**`Short:`   " + pre + "m p <INPUT>**\n" +
+                                        "`INPUT` = YouTube/SoundCloud/Twitch/Bandcamp - URL of single song or playlist\n\n" +
+                                        "*If queue empty:*    Start playlist.\n" +
+                                        "*If queue playing:*    Add input at the end of the queue.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m ytplay <INPUT>",
+                                "**`Short:`   " + pre + "m yp <INPUT>**\n" +
+                                        "`INPUT` = YouTube Search string for a youtube video\n\n" +
+                                        "*If queue empty:*    Start playing the first result of the YouTube search.\n" +
+                                        "*If queue playing:*    Adds the first result of the YouTube search to the queue.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m playshuffle <INPUT>",
+                                "**`Short:`   " + pre + "m ps <INPUT>**\n" +
+                                        "`INPUT` = YouTube Search string for a youtube video\n\n" +
+                                        "*If queue empty:*    Like `m play`, after queueing the queue will be shuffled.\n" +
+                                        "*If queue playing:*    Like `m play`, after queueing the queue will be shuffled.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m playnext <INPUT>",
+                                "**`Short:`   " + pre + "m pn <INPUT>**\n" +
+                                        "`INPUT` = YouTube/SoundCloud/Twitch/Bandcamp - URL of single song or playlist\n\n" +
+                                        "Enqueue a track or playlist after the current playing track. Queue will play following songs defaultly after enqueued track/s.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m queue <OPTIONAL INPUT>",
+                                        "`OPTIONAL INPUT` = Side of queue if there are more than 20 tracks queued. *Without:* First side of queue.\n\n" +
+                                        "Shows the current playing queue.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m skip <OPTIONAL INPUT>",
+                                "**`Short:`   " + pre + "m s <OPTIONAL INPUT>**\n" +
+                                        "`OPTIONAL INPUT` = Number of skips. *Without:* Only skips the now playing track.\n\n" +
+                                        "Enqueue a track or playlist after the current playing track. Queue will play following songs defaultly after enqueued track/s.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m shuffle",
+                                "**`Short:`   " + pre + "m rand**\n\n" +
+                                        "Shuffle the current queue.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m now",
+                                "**`Short:`   " + pre + "m n**\n\n" +
+                                        "Shows information about the now playing track and displays the next track in queue.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m pause  |  m resume",
+                                "Pauses/resumes the current player. Bot stays in voice channel. (Both command can be used for resume and pause.)\n" +
+                                        "___", false)
+
+                        .addField(pre + "m stop",
+                                "Stop the player. Queue will be reset. Bot leaves voice channel.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m save <INPUT>",
+                                        "`INPUT` = Name of the save.\n\n" +
+                                        "Save the last added playlists/tracks URL to load it with `m load` command.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m list",
+                                        "Show a list of all saved playlists/tracks.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m load <INPUT>",
+                                        "`INPUT` = Name of the save.\n\n" +
+                                        "Add a saved playlist/track to the queue or start the player with it.\n" +
+                                        "___", false)
+
+                        .addField(pre + "m channel <INPUT>",
+                                        "`INPUT` = Text channel name.\n\n" +
+                                        "Sets the text channel where the bot will post now playing information (also in channel description).\n" +
+                                        "*Hint: Enter a not existing voice channel to disable this function.*\n" +
+                                        "___", false)
+
+                        .addField(pre + "m lockchannel <INPUT>",
+                                "`INPUT` = true / false\n\n" +
+                                        "Toggle if members should only be allowed to post music commands in the set music channel.\n" +
+                                        "___", false)
+
+                .build()
+        ).queue();
     }
 
     @Override
