@@ -119,6 +119,7 @@ public class Main {
         commands.put("joinmsg", new ServerJoinMessage());
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
+        commands.put("autorole", new AutoRole());
 
     }
 

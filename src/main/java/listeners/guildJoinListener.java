@@ -6,8 +6,10 @@ import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import org.json.JSONException;
 import utils.STATICS;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,27 +22,36 @@ public class guildJoinListener extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
+        if (event.getMember().getUser().isBot()) return;
+
         if (!SSSS.getSERVERJOINMESSAGE(event.getGuild()).toLowerCase().equals("off")) {
             event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(
                 SSSS.getSERVERJOINMESSAGE(event.getGuild()).replace("[USER]", event.getMember().getAsMention()).replace("[GUILD]", event.getGuild().getName())
             ).queue();
         }
 
-        if (!STATICS.guildJoinRole.equals(""))
-            if (event.getGuild().getRolesByName(STATICS.guildJoinRole, true).size() > 0) {
-                event.getGuild().getController().addRolesToMember(
-                        event.getMember(), event.getGuild().getRolesByName(STATICS.guildJoinRole, true)
-                ).queue();
-            }
+        if (!SSSS.getAUTOROLE(event.getGuild()).equals("")) {
+
+            event.getGuild().getController().addRolesToMember(event.getMember(), event.getGuild().getRolesByName(SSSS.getAUTOROLE(event.getGuild()), true)).queue();
 
             PrivateChannel pc = event.getMember().getUser().openPrivateChannel().complete();
-            pc.sendMessage("Hey, " + event.getMember().getUser().getAsMention() + "! Willkommen auf dem '" + event.getGuild().getName() + "' - Discord Server!\n\n" +
-                    "Dir wurde automatisch die Rolle `  " + event.getGuild().getRolesByName(STATICS.guildJoinRole, true).get(0).getName() + "  ` zugeteilt!\n\n" +
-                    "Viel Spaß noch auf dem Server! :*"
+            pc.sendMessage(
+                    "**Hey,** " + event.getMember().getAsMention() + " **and welcome on the " + event.getGuild().getName() + " Discord server!**   :wave:\n\n" +
+                         "You automatically got assigned the server role `" + SSSS.getAUTOROLE(event.getGuild()) + "` by me.\n\n" +
+                         "Now, have a nice day and a lot of fun on the server! ;)"
             ).queue();
+
+            try {
+                pc.sendMessage("*And here a nice cat pic. ^^*\n" + commands.chat.Cat.readJsonFromUrl("http://random.cat/meow").get("file").toString()).queue();
+            } catch (Exception e) {
+                pc.sendMessage("Ooops. I just wanted to attach a little nice cat pic, but the occurred an unexpected error. :(").queue();
+            }
+        }
     }
 
     public void onGuildMemberLeave(GuildMemberLeaveEvent event) {
+
+        if (event.getMember().getUser().isBot()) return;
 
         if (!SSSS.getSERVERLEAVEMESSAGE(event.getGuild()).toLowerCase().equals("off")) {
             event.getGuild().getTextChannelsByName("general", true).get(0).sendMessage(

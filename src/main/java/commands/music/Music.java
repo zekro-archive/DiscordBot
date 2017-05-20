@@ -83,7 +83,7 @@ public class Music implements Command {
         guild.getAudioManager().closeAudioConnection();
     }
 
-    public void loadTrackNext(String identifier, Member author, Message msg) {
+    private void loadTrackNext(String identifier, Member author, Message msg) {
 
 
         Guild guild = author.getGuild();
@@ -133,7 +133,7 @@ public class Music implements Command {
         });
     }
 
-    public void loadTrack(String identifier, Member author, Message msg) {
+    private void loadTrack(String identifier, Member author, Message msg) {
 
 
         Guild guild = author.getGuild();
@@ -193,8 +193,89 @@ public class Music implements Command {
     }
 
     private void sendHelpMessage(MessageReceivedEvent event) {
+
+        String pre = SSSS.getPREFIX(guild);
+
         event.getTextChannel().sendMessage(
-                new EmbedBuilder().setColor(new Color(22, 138, 233)).setDescription(help()).build()
+                new EmbedBuilder()
+                        .setColor(new Color(22, 138, 233))
+                        .setDescription(NOTE + "  __**MUSIC PLAYER GUIDE**__\n\n")
+
+                        .addField(pre + "m play <INPUT>",
+                                "`SHORT:`  **" + pre + "m p <INPUT>**\n" +
+                                        "`INPUT:`  YouTube/SoundCloud/Twitch/BandCamp - URL of track or playlist\n\n" +
+                                        "*If queue is empty:*  Starts the player with the entered track / playlist.\n" +
+                                        "*If queue is playing:*  Attaches the entered track or playlist at the end of the queue.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m ytplay <INPUT>",
+                                "`SHORT:`  **" + pre + "m yp <INPUT>**\n" +
+                                        "`INPUT:`  Search query string for YouTube\n\n" +
+                                        "*If queue is empty:*  Starts the player with the first result of the search.\n" +
+                                        "*If queue is playing:*  Attaches the first result of the search at the end of the queue.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m playshuffle <INPUT>",
+                                "`SHORT:`  **" + pre + "m ps <INPUT>**\n" +
+                                        "`INPUT:`  YouTube/SoundCloud/Twitch/BandCamp - URL of track or playlist\n\n" +
+                                        "Same behaviour like play, but shuffleing the whole queue after attaching.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m playnext <INPUT>",
+                                "`SHORT:`  **" + pre + "m pn <INPUT>**\n" +
+                                        "`INPUT:`  YouTube/SoundCloud/Twitch/BandCamp - URL of track or playlist\n\n" +
+                                        "Enqueues the entered track/playlist after the now playing track without reset of the default queue.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m skip <OPTIONAL INPUT>",
+                                "`SHORT:`  **" + pre + "m s <OPTIONAL INPUT>**\n" +
+                                        "`OPTIONAL INPUT:`  Count to skip. *Without:* Skips current playing track.\n\n" +
+                                        "Skip current or multiple tracks in queue.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m now",
+                                "`SHORT:`  **" + pre + "m n**\n\n" +
+                                        "Shows information about the current playing track and shows the next track in queue.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m stop",
+                                        "Stops the current playing. The current queue will be reset after this!\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m queue <OPTIONAL INPUT>",
+                                        "`OPTIONAL INPUT:`  Side of list.\n\n" +
+                                        "\nShows the current queue. Displays only 20 tracks on one side. Use Optional input to switch between sides.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addBlankField(false)
+                        .addField(pre + "m save <INPUT>",
+                                        "`INPUT:`  Custom name of the save.\n\n" +
+                                        "Saves the last attached track/playlist URL to a save with a custom name.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m list",
+                                        "Displays a list of the names of all saved tracks/playlists.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m load <INPUT>",
+                                "`INPUT:`  Name of an existing save.\n\n" +
+                                        "Adds or starts playing the saves track/playlist.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addBlankField(false)
+                        .addField(pre + "m channel <INPUT>",
+                                "`INPUT:`  Text channel name.\n\n" +
+                                        "Set the channel where now playing will shown. \n" +
+                                        "*Hint: Use a channel that does not exist to disable this function*\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+                        .addField(pre + "m lockchannel <INPUT>",
+                                "`INPUT:`  'true' / 'false'\n\n" +
+                                        "Only allow members to use music commands in the set music channel.\n" +
+                                        ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
+
+
+                        .build()
         ).queue();
     }
 
@@ -332,6 +413,7 @@ public class Music implements Command {
                         }
                         break;
 
+                    case "n":
                     case "now":
                     case "current":
                     case "nowplaying":
@@ -431,8 +513,6 @@ public class Music implements Command {
 
                     case "pause":
                     case "resume":
-                    case "r":
-                    case "p":
                         if (getPlayer(guild).isPaused()) {
                             getPlayer(guild).setPaused(false);
                             event.getTextChannel().sendMessage(
@@ -542,9 +622,13 @@ public class Music implements Command {
                     STATICS.input = input;
 
                 switch (args[0].toLowerCase()) {
-                    case "ytplay": // Query YouTube for a music video
+
+                    case "yp":
+                    case "ytplay":
                         input = "ytsearch: " + input;
-                    case "play": // Play a track
+
+                    case "p":
+                    case "play":
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
@@ -568,7 +652,35 @@ public class Music implements Command {
                         }
                         break;
 
-                    case "queuenext":
+                    case "ps":
+                    case "playshuffle":
+                        if (args.length <= 1) {
+                            event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
+                        } else {
+                            loadTrack(input, event.getMember(), event.getMessage());
+
+                            getTrackManager(guild).shuffleQueue();
+
+                            if (getPlayer(guild).isPaused())
+                                getPlayer(guild).setPaused(false);
+
+                            new Timer().schedule(
+                                    new java.util.TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            int tracks = getTrackManager(guild).getQueuedTracks().size();
+                                            event.getTextChannel().sendMessage(
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
+                                            ).queue();
+                                        }
+                                    },
+                                    5000
+                            );
+                        }
+                        break;
+
+                    case "pn":
+                    case "playnext":
                         if (args.length <= 1) {
                             event.getTextChannel().sendMessage(":warning:  Please include a valid source.").queue();
                         } else {
@@ -604,7 +716,7 @@ public class Music implements Command {
         return
                 ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
                 "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
-                "` -music queuenext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
+                "` -music playnext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
                 "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
                 "` -music queue <Side>`  -  Show the current music queue\n" +
                 "` -music skip `  -  Skip the current track in queue\n" +

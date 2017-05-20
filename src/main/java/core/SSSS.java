@@ -220,4 +220,32 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
         }
     }
 
+
+    public static String getAUTOROLE(Guild guild) {
+
+        try {
+            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/autorole");
+            if (f.exists()) {
+                try {
+                    return new BufferedReader(new FileReader(f)).readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {}
+        return "";
+    }
+
+    public static void setAUTOROLE(String entry, Guild guild) {
+
+        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/autorole");
+        try {
+            BufferedWriter r = new BufferedWriter(new FileWriter(f));
+            r.write(entry);
+            r.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
