@@ -2,8 +2,8 @@
 <br/>
 
 <a href="https://github.com/zekroTJA/DiscordBot/tree/0593d26e9826902ce433ab06d3c0dc449feeb44d">
-<img src="https://img.shields.io/badge/Stable%20Build-1.22.4-green.svg"></a>
-
+<img src="https://img.shields.io/badge/Stable%20Build-1.22.4.0-green.svg"></a>
+&nbsp;
 <a href="https://github.com/zekroTJA/DiscordBot">
 <img src="https://img.shields.io/badge/Test%20Build-1.22.5.1-orange.svg"></a><br>
 
