@@ -89,6 +89,25 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 | 1.14.0.0 | Updated JDA, added auto update service |
 
 -----
+### Future Implementations
+
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Music endless queue mode</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Bug report / suggestion command</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
+&nbsp;&nbsp; Server specific autorole system</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
+&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
+
+-----
 ### Used libraries
 
 - <a href="https://github.com/DV8FromTheWorld/JDA">JDA</a>
