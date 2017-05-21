@@ -1,7 +1,12 @@
 <img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/logo%20-%20title.png" />
 <br/>
 
-Current version: ```1.22.4.0```
+<a href="https://github.com/zekroTJA/DiscordBot/tree/0593d26e9826902ce433ab06d3c0dc449feeb44d">
+<img src="https://img.shields.io/badge/Stable%20Build-1.22.4-green.svg"></a>
+
+<a href="https://github.com/zekroTJA/DiscordBot">
+<img src="https://img.shields.io/badge/Test%20Build-1.22.5.1-orange.svg"></a><br>
+
 </br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
