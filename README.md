@@ -67,7 +67,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 |--|--|
 | **1.22.5.1** | - *[NEW]* Autorole Setting<br>- *[UPDATED]* Guild join private message on autorole reworked<br>- *[UPDATED]* Complete rework of the music help guide |
 | 1.22.4.0 | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
-| 1.21.0.0 | *[IMPROVEMENT]* Improved help command, *[BUGFIX]* automatic unpause after queueing music, *[NEW]* added uptime command |
+| 1.21.0.0 | - *[IMPROVEMENT]* Improved help command<br>- *[BUGFIX]* automatic unpause after queueing music<br>- *[NEW]* added uptime command |
 | 1.20.2.0 | Improved move all command |
 | 1.20.1.0 | Better messages, overworked user info command, overworked clear command, added Moveall command |
 | 1.19.18.0 | Overworked Info Command |
