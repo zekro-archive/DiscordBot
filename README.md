@@ -94,8 +94,10 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 | 1.14.0.0 | Updated JDA, added auto update service |
 
 -----
-### Future Implementations
+### Future Intends
 
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Improve `update` and `restart` commands</p>
 
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
 &nbsp;&nbsp; Music endless queue mode</p>
@@ -105,6 +107,15 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
 &nbsp;&nbsp; Twitter Tweets to textchannel function</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Rework `vote` command</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Rework `cat` command</p>
+
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+&nbsp;&nbsp; Rework `badjoke` command</p>
 
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
 &nbsp;&nbsp; Server specific autorole system</p>
