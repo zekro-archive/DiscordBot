@@ -49,6 +49,10 @@ public class Music implements Command {
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
 
+    private boolean endlessMode = false;
+    private Set<AudioInfo> endlessQueue;
+
+
     private boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
     }
@@ -325,6 +329,12 @@ public class Music implements Command {
         @Override
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
 
+            if (getTrackManager(guild).getQueuedTracks().size() < 2 && endlessMode) {
+                endlessQueue.forEach(audioInfo -> getTrackManager(guild).queue(audioInfo.getTrack(), audioInfo.getAuthor()));
+                if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0)
+                    guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(MSGS.success.setDescription("Repeated queue. *(endless mode)*").build()).queue();
+            }
+
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -472,6 +482,7 @@ public class Music implements Command {
                         }
                         break;
 
+                    case "s":
                     case "skip":
                         if (isCurrentDj(event.getMember()) || isDj(event.getMember())) {
                             for (int skip = (args.length > 1 ? Integer.parseInt(args[1]) : 1); skip > 0; skip--) {
@@ -489,7 +500,20 @@ public class Music implements Command {
                         forceSkipTrack(guild);
                         guild.getAudioManager().closeAudioConnection();
 
+                        endlessMode = false;
+                        endlessQueue = null;
+
                         break;
+
+
+                    case "endless":
+
+                        endlessQueue = getTrackManager(guild).getQueuedTracks();
+                        endlessMode = true;
+                        event.getTextChannel().sendMessage(MSGS.success.setDescription(":repeat:  Endless mode activated.").build()).queue();
+
+                        break;
+
 
                     case "reset":
                         if (!isDj(event.getMember())) {
@@ -643,7 +667,7 @@ public class Music implements Command {
                                         public void run() {
                                             int tracks = getTrackManager(guild).getQueuedTracks().size();
                                             event.getTextChannel().sendMessage(
-                                                    NOTE + "Queued `" + tracks + "` Tracks."
+                                                    new EmbedBuilder().setDescription(NOTE + "Queued `" + tracks + "` Tracks.").setColor(new Color(0, 255, 151)).build()
                                             ).queue();
                                         }
                                     },

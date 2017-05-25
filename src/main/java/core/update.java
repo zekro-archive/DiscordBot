@@ -10,6 +10,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by zekro on 22.03.2017 / 15:59
@@ -66,7 +68,9 @@ public class update {
                 else
                     Runtime.getRuntime().exec("wincmd.exe -update");
 
+
                 System.exit(0);
+
 
             } catch (IOException e) {
                 e.printStackTrace();

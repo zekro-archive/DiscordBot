@@ -94,8 +94,8 @@ public class Main {
         commands.put("test", new testCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
-        commands.put("poll", new Vote());
-        commands.put("vote", new Vote());
+        commands.put("poll", new Vote2());
+        commands.put("vote", new Vote2());
         commands.put("stats", new Stats());
         commands.put("joke", new Joke());
         commands.put("userinfo", new UserInfo());
@@ -131,6 +131,7 @@ public class Main {
         builder.addListener(new voiceChannelListener());
         builder.addListener(new guildJoinListener());
         builder.addListener(new privateMessageListener());
+        builder.addListener(new reactionListener());
 
     }
 

@@ -5,6 +5,11 @@ import core.SSSS;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
+import java.io.IOException;
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by Ringo Hoffmann on 20.02.2017.
  */
@@ -17,7 +22,7 @@ public class testCMD implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        System.out.println("LVL1: " + SSSS.getPERMROLES_1(event.getGuild()) + "\nLVL2: " + SSSS.getPERMROLES_2(event.getGuild()));
+
     }
 
     @Override
