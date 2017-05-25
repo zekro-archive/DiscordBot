@@ -11,7 +11,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.22.6.0";
+    public static String VERSION = "1.22.6.1";
     public static String THISBUILD = BUILDTYPE.UNTESTED;
 
     public static class BUILDTYPE {

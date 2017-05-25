@@ -94,6 +94,7 @@ public class Music implements Command {
         getPlayer(guild);
 
         msg.getTextChannel().sendTyping().queue();
+        myManager.setFrameBufferDuration(100);
         myManager.loadItemOrdered(guild, identifier, new AudioLoadResultHandler() {
 
             @Override
@@ -144,6 +145,7 @@ public class Music implements Command {
         getPlayer(guild);
 
         msg.getTextChannel().sendTyping().queue();
+        myManager.setFrameBufferDuration(100);
         myManager.loadItemOrdered(guild, identifier, new AudioLoadResultHandler() {
 
             @Override
