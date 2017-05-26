@@ -65,7 +65,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.22.6.1</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improves music player buffer |
+| <center><b>1.22.6.1</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
 | <center>1.22.5.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[NEW]* Autorole Setting<br>- *[UPDATED]* Guild join private message on autorole reworked<br>- *[UPDATED]* Complete rework of the music help guide |
 | 1.22.4.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/> | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
 | 1.21.0.0 | - *[IMPROVEMENT]* Improved help command<br>- *[BUGFIX]* automatic unpause after queueing music<br>- *[NEW]* added uptime command |
@@ -100,7 +100,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
 &nbsp;&nbsp; Improve update and restart commands</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
 &nbsp;&nbsp; Music endless queue mode</p>
 
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
@@ -109,7 +109,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
 &nbsp;&nbsp; Twitter Tweets to textchannel function</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
+<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
 &nbsp;&nbsp; Rework vote command</p>
 
 <p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
