@@ -2,14 +2,18 @@ package commands.chat;
 
 import commands.Command;
 import commands.chat.BJokeCancle;
+import core.SSSS;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.MSGS;
 import utils.STATICS;
 
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,42 +24,55 @@ public class Cat implements Command {
         return false;
     }
 
-    public static String HELP =
-            "USAGE: \n" +
-            "` ~cat ` to post a single cat picture\n" +
-            "` ~cat spam <time preiod in seconds> ` to post periodically cat pictures (stop with ` ~c `) =^..^=";
+    Timer spamTimer = new Timer();
 
-    int counter = 0;
     public void action(String[] args, MessageReceivedEvent event) {
 
-        try {
+        switch (args.length > 0 ? args[0].toLowerCase() : "") {
 
-            Timer timer = new Timer();
-            if (args[0].equals("spam") && Integer.parseInt(args[1]) >= 10) {
-                timer.schedule(new TimerTask() {
+            case "spam":
 
+                int delay;
+                try {
+                    delay = Integer.parseInt(args[1]);
+                    if (delay < 5) {
+                        delay = 5;
+                        event.getTextChannel().sendMessage(MSGS.error.setDescription("The minumum time period is 5 seconds because of spam protection. ;)").build()).queue();
+                    }
+                } catch (Exception e) {
+                    delay = 10;
+                }
+
+                List<String> counter = new ArrayList<>();
+                spamTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-
-                        counter++;
-
-                        if (BJokeCancle.canceled) {
-                            return;
+                        counter.add("");
+                        event.getTextChannel().sendMessage("Cat number: `[" + (counter.size() + 1) + "]`\n" + getCat()).queue();
+                        if (counter.size() > 999) {
+                            spamTimer.cancel();
+                            spamTimer = new Timer();
                         }
-                        event.getTextChannel().sendMessage("CAT NUMBER: " + counter).queue();
-                        throwCat(event);
+                    }
+                }, 0, delay * 1000);
 
-                    }},0, Integer.parseInt(args[1])*1000);
-            } else if (Integer.parseInt(args[1]) < 10) {
-                event.getTextChannel().sendMessage("Please enter a period over 9 seconds to avoid overspam.").queue();
-                return;
-            } else if (!args[0].equals("spam")) {
-                event.getTextChannel().sendMessage(help()).queue();
-            }
+                break;
 
-        } catch (Exception e) {
-            throwCat(event);
+            case "s":
+            case "stop":
+
+                spamTimer.cancel();
+                spamTimer = new Timer();
+
+                break;
+
+            default:
+                event.getTextChannel().sendMessage(getCat()).queue();
+                event.getMessage().delete().queue();
+                break;
+
         }
+
     }
 
     public void executed(boolean success, MessageReceivedEvent event) {
@@ -63,7 +80,10 @@ public class Cat implements Command {
     }
 
     public String help() {
-        return HELP;
+        return "USAGE:\n" +
+                "**cat**  -  `Returns a cute cat picture`\n" +
+                "**cat spam <period in secs>**  -  `Spams cat pictures automatically`\n" +
+                "**cat stop**  -  `Stops the cat spam`";
     }
 
     @Override
@@ -97,7 +117,7 @@ public class Cat implements Command {
         }
     }
 
-    public static void throwCat(MessageReceivedEvent event) {
+    public static String getCat() {
 
         JSONObject json = null;
         try {
@@ -115,6 +135,6 @@ public class Cat implements Command {
             e.printStackTrace();
         }
 
-        event.getTextChannel().sendMessage(outputMessage).queue();
+        return outputMessage;
     }
 }

@@ -132,6 +132,7 @@ public class Main {
         builder.addListener(new guildJoinListener());
         builder.addListener(new privateMessageListener());
         builder.addListener(new reactionListener());
+        builder.addListener(new vkickListener());
 
     }
 

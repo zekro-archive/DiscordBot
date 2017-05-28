@@ -54,7 +54,7 @@ public class Help implements Command {
 
         StringBuilder ciams = new StringBuilder();
 
-        String[] ignorers = {"c", "m", "bj", "ttt", "userinfo", "dev"};
+        String[] ignorers = {"c", "m", "bj", "ttt", "userinfo", "dev", "nudge", "poll", "moveall"};
         Arrays.stream(ignorers).forEach(s -> cmds.remove(s));
 
 
