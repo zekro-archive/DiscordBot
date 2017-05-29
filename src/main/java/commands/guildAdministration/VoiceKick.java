@@ -60,7 +60,9 @@ public class VoiceKick implements Command {
 
             int timeout;
             try {
-                timeout = Integer.parseInt(args[1]);
+                StringBuilder sb = new StringBuilder();
+                Arrays.stream(args).forEach(s -> sb.append(" " + s));
+                timeout = Integer.parseInt(sb.toString().substring(1).replace("@" + event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0)).getEffectiveName(), "").replaceAll(" ", ""));
             } catch (Exception e) {
                 timeout = 0;
             }

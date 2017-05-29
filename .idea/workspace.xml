@@ -12,15 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec8a6ed-933b-4b23-bc5d-d18f42bea619" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/DiscordBot_jar/DiscordBot.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LATESTVERSION.txt" afterPath="$PROJECT_DIR$/LATESTVERSION.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SETTINGS.txt" afterPath="$PROJECT_DIR$/SETTINGS.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" afterPath="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" afterPath="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" afterPath="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" afterPath="$PROJECT_DIR$/src/main/java/core/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/SSSS.java" afterPath="$PROJECT_DIR$/src/main/java/core/SSSS.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" afterPath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
     </list>
     <ignored path="DiscordBot.iws" />
@@ -51,38 +46,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="STATICS.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="STATICS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LATESTVERSION.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LATESTVERSION.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cat.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/chat/Cat.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-              <folding>
-                <element signature="e#1335#1811#0" expanded="true" />
-                <element signature="e#1810#1811#0" expanded="true" />
-                <element signature="method#readAll#0;class#Cat#0" expanded="false" />
-                <element signature="method#readJsonFromUrl#0;class#Cat#0" expanded="false" />
-                <element signature="method#getCat#0;class#Cat#0" expanded="false" />
-              </folding>
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoiceKick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="63" column="69" lean-forward="false" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="69" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -193,11 +172,11 @@
         <option value="$PROJECT_DIR$/src/main/java/core/SSSS.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/vkickListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
         <option value="$PROJECT_DIR$/LATESTVERSION.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" />
       </list>
     </option>
   </component>
@@ -257,8 +236,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -679,6 +656,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -691,7 +670,7 @@
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="ToolWindowTerminal.ShowToolbar" value="false" />
     <property name="ToolWindowAnt Build.ShowToolbar" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="STAT&#9;PSI&#9;JAVA://utils.STATICS&#10;Cat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/chat/Cat.java&#10;Help&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/essentials/Help.java&#10;ListenerA&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;SSSS&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/SSSS.java&#10;voice&#9;PSI&#9;JAVA://commands.guildAdministration.VoiceKick&#10;ListenerAd&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;listenerA&#9;PSI&#9;JAVA://net.dv8tion.jda.core.hooks.ListenerAdapter&#10;Vote&#9;PSI&#9;JAVA://commands.chat.Vote&#10;Main&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Main.java&#10;perms&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Perms.java&#10;setAudioSendFactory&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.impl.JDAImpl#setAudioSendFactory&#10;Settings&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/settings.java" />
+    <property name="SearchEverywhereHistoryKey" value="Voicekick&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/guildAdministration/VoiceKick.java&#10;STAT&#9;PSI&#9;JAVA://utils.STATICS&#10;Cat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/chat/Cat.java&#10;Help&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/essentials/Help.java&#10;ListenerA&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;SSSS&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/SSSS.java&#10;voice&#9;PSI&#9;JAVA://commands.guildAdministration.VoiceKick&#10;ListenerAd&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;listenerA&#9;PSI&#9;JAVA://net.dv8tion.jda.core.hooks.ListenerAdapter&#10;Vote&#9;PSI&#9;JAVA://commands.chat.Vote&#10;Main&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Main.java&#10;perms&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Perms.java&#10;setAudioSendFactory&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.impl.JDAImpl#setAudioSendFactory&#10;Settings&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/settings.java" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -1101,12 +1080,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2822165" sideWeight="0.5083333" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21007502" sideWeight="0.49166667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21007502" sideWeight="0.49166667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25479743" sideWeight="0.49624866" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25746268" sideWeight="0.49624866" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496474" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1429,17 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="74" column="60" lean-forward="true" selection-start-line="74" selection-start-column="60" selection-end-line="74" selection-end-column="60" />
-          <folding>
-            <element signature="e#3665#4099#0" expanded="false" />
-            <element signature="e#4098#4099#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Help.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
@@ -1448,13 +1416,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LATESTVERSION.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/chat/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        <state relative-caret-position="17">
+          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding>
-            <element signature="e#1335#1811#0" expanded="true" />
-            <element signature="e#1810#1811#0" expanded="true" />
             <element signature="method#readAll#0;class#Cat#0" expanded="false" />
             <element signature="method#readJsonFromUrl#0;class#Cat#0" expanded="false" />
             <element signature="method#getCat#0;class#Cat#0" expanded="false" />
@@ -1462,18 +1436,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="true" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+        <state relative-caret-position="313">
+          <caret line="63" column="69" lean-forward="false" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LATESTVERSION.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state relative-caret-position="306">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding />
         </state>
       </provider>
