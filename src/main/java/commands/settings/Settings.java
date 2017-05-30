@@ -2,6 +2,7 @@ package commands.settings;
 
 import commands.Command;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -33,16 +34,17 @@ public class Settings implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "USING:\n" +
+               "**settings**  -  `List all current settings values of the current guild`";
     }
 
     @Override
     public String description() {
-        return null;
+        return "List all current settings values of the current guild";
     }
 
     @Override
     public String commandType() {
-        return null;
+        return STATICS.CMDTYPE.settings;
     }
 }
