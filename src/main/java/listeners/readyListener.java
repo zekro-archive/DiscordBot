@@ -69,6 +69,20 @@ public class readyListener extends ListenerAdapter {
     @Override
     public void onReady(ReadyEvent event) {
 
+        StringBuilder sb = new StringBuilder();
+        event.getJDA().getGuilds().forEach(guild -> sb.append("|  - \"" + guild.getName() + "\" - {@" + guild.getOwner().getUser().getName() + "#" + guild.getOwner().getUser().getDiscriminator() + "} - [" + guild.getId() + "] \n"));
+
+        System.out.println(
+                "\n\n" +
+                "#--------------------------------------------------------------------------------- - -  -  -\n" +
+                "| zekroBot - v." + STATICS.VERSION + "                              \n" +
+                "#--------------------------------------------------------------------------------- - -  -  -\n" +
+                "| Running on " + event.getJDA().getGuilds().size() + " guilds.      \n" +
+                sb.toString() +
+                "#--------------------------------------------------------------------------------- - -  -  -\n\n"
+        );
+
+
         readyEvent = event;
 
         STATICS.lastRestart = new Date();

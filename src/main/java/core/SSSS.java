@@ -1,9 +1,13 @@
 package core;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
+import java.awt.*;
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,6 +27,27 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
             }
         });
     }
+
+    public static void listSettings(MessageReceivedEvent event) {
+
+        Guild g = event.getGuild();
+
+        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xE9D7D6))
+            .setDescription("**SETTINGS FOR GUILD `\"" + g.getName() + "\"`**")
+            .addField("Prefix", "`\"" + getPREFIX(g) + "\"`", false)
+            .addField("Server Join Message", "`\"" + getSERVERJOINMESSAGE(g) + "\"`", false)
+            .addField("Server Leave Message", "`\"" + getSERVERLEAVEMESSAGE(g) + "\"`", false)
+            .addField("Music Channel", "`\"" + getMUSICCHANNEL(g) + "\"`", false)
+            .addField("Music Channel Lock", "`\"" + getLOCKMUSICCHANNEL(g) + "\"`", false)
+            .addField("Permission Level", "**Lvl 1:**   `\"" + Arrays.toString(getPERMROLES_1(g)).replaceAll("\\[", "").replaceAll("]", "") + "\"`\n**Lvl 2:**   `\"" + Arrays.toString(getPERMROLES_2(g)).replaceAll("\\[", "").replaceAll("]", "") + "\"`", false)
+            .addField("Autorole", "`\"" + getAUTOROLE(g) + "\"`", false)
+            .addField("vkick Channel", "`\"" + getVKICKCHANNEL(g) + "\"`", false)
+            .build()
+        ).queue();
+
+    }
+
+
 
 
     public static String getPREFIX(Guild guild) {
@@ -107,6 +132,7 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
             e.printStackTrace();
         }
     }
+
 
     public static String getMUSICCHANNEL(Guild guild) {
 

@@ -120,6 +120,7 @@ public class Main {
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
+        commands.put("settings", new Settings());
 
     }
 
