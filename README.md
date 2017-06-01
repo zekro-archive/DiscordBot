@@ -7,10 +7,8 @@
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
 <img src="https://img.shields.io/badge/Test%20Build-1.22.8.1-orange.svg"></a><br>
 
-</br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
-
 So you have some questions or want to join my developer community discord? Take a look! :^)
-<br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"/></a>
+<br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
 ### Features
