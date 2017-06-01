@@ -5,12 +5,12 @@
 <img src="https://img.shields.io/badge/Stable%20Build-1.22.7.1-green.svg"></a>
 &nbsp;
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Test%20Build-1.22.8.0-orange.svg"></a><br>
+<img src="https://img.shields.io/badge/Test%20Build-1.22.8.1-orange.svg"></a><br>
 
-</br><img src="http://image.prntscr.com/image/9ba947b3f2c74c86b62ccaced5f783fe.png" />
+-----
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
-<br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" width="100"/></a>
+<br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
 ### Features
@@ -65,7 +65,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.22.8.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
+| <center><b>1.22.8.1</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[BUGFIX]* fixed mission cmd type in settings command |
+| <center>1.22.8.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
 | <center>1.22.7.1<img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUG FIX]* in vkick command |
 | <center>1.22.7.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Cat command rework<br>- *[UPDATED]* Extended vkick command with timeout function<br>- *[UPDATED]* Help command update |
 | <center>1.22.6.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
