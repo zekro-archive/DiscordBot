@@ -13,6 +13,11 @@ So you have some questions or want to join my developer community discord? Take 
 <br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
+### Get it!
+
+<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
+
+-----
 ### Features
 
 - **Server administration** </br> Typical commands like `-kick`, `-vkick` (voice channel kick), `-clear` and some more!
