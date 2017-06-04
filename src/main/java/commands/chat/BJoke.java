@@ -35,7 +35,18 @@ public class BJoke implements Command {
 
         if (core.Perms.check(1, event)) return;
 
-        if (args[0].toLowerCase().equals("c") && !victim.equals(null) && !victim.equals(event.getAuthor())) {
+        if (args[0].toLowerCase().equals("c")) {
+
+            if (victim == null) {
+                event.getTextChannel().sendMessage(MSGS.error.setDescription("There is currently no victim to save. :^)").build()).queue();
+                return;
+            }
+
+            if (event.getMember().equals(victim)) {
+                event.getTextChannel().sendMessage(MSGS.error.setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can't free yourself from your fate...").build()).queue();
+                return;
+            }
+
             timer.cancel();
             timer = new Timer();
             countdown.cancel();
