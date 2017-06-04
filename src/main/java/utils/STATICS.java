@@ -2,8 +2,13 @@ package utils;
 
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Member;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class STATICS {
 
@@ -11,7 +16,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.22.8.1";
+    public static String VERSION = "1.23.0.1";
     public static String THISBUILD = BUILDTYPE.STABLE;
 
     public static class BUILDTYPE {
@@ -101,5 +106,7 @@ public class STATICS {
     public static Date lastRestart;
 
     public static int reconnectCount = 0;
+
+    public static ArrayList<ArrayList<String>> cmdLog = new ArrayList<>();
 
 }

@@ -4,6 +4,7 @@ import commands.*;
 import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
+import commands.etc.CmdLog;
 import commands.etc.Dev;
 import commands.etc.Uptime;
 import commands.etc.tttServerStatus;
@@ -87,7 +88,6 @@ public class Main {
         commands.put("purge", new Clear());
         commands.put("bjoke", new BJoke());
         commands.put("bj", new BJoke());
-        commands.put("c", new BJokeCancle());
         commands.put("help", new Help());
         commands.put("info", new Info());
         commands.put("alerts", new Alerts());
@@ -121,6 +121,7 @@ public class Main {
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
         commands.put("settings", new Settings());
+        commands.put("cmdlog", new CmdLog());
 
     }
 
@@ -138,6 +139,7 @@ public class Main {
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
+
         if (commands.containsKey(cmd.invoke)) {
 
             boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);

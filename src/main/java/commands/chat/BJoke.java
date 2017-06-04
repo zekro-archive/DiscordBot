@@ -1,94 +1,80 @@
 package commands.chat;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import net.dv8tion.jda.core.managers.GuildController;
+import utils.MSGS;
 import utils.STATICS;
 
+import java.awt.*;
 import java.util.*;
 
 public class BJoke implements Command {
 
-    public static String HELP = "USAGE: ` ~bjoke @user ` OR ` ~bj @user `";
+    Timer timer = new Timer();
+    Timer countdown = new Timer();
+    Member victim = null;
+    int count = 10;
 
-    static boolean called = false;
-    static Member victim;
-
+    private void countdownMessage(Message message) {
+        count--;
+        if (count < 0)
+            count = 0;
+        message.editMessage("**COUNTDONW:  `" + count + "`**").queue();
+    }
 
     public boolean called(String[] args, MessageReceivedEvent event) {
 
         return false;
     }
 
-    int sec = 10;
-
     public void action(String[] args, final MessageReceivedEvent event) {
 
-        VoiceChannel kickToChannel = event.getGuild().getAfkChannel();
-        if (event.getGuild().getVoiceChannelsByName(STATICS.KICK_VOICE_CHANNEL, true).size() > 1)
-            kickToChannel = event.getGuild().getVoiceChannelsByName(STATICS.KICK_VOICE_CHANNEL, true).get(0);
+        if (core.Perms.check(1, event)) return;
 
-        try {
-            String a = args[0];
-        } catch (Exception e) {
-            event.getTextChannel().sendMessage(help()).queue();
+        if (args[0].toLowerCase().equals("c") && !victim.equals(null) && !victim.equals(event.getAuthor())) {
+            timer.cancel();
+            timer = new Timer();
+            countdown.cancel();
+            countdown = new Timer();
+            count = 10;
+            event.getTextChannel().sendMessage(MSGS.success.setDescription("You had luck, " + victim.getAsMention() + ". " + event.getAuthor().getAsMention() + " freed you from the kick.").build()).queue();
+            victim = null;
             return;
         }
-
-        GuildController gc = new GuildController(event.getGuild());
 
         try {
             victim = event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(help()).queue();
+            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
             return;
         }
 
-        called = true;
-        event.getTextChannel().sendMessage(
-                event.getMessage().getMentionedUsers().get(0).getAsMention() + " hat einen schlechten Witz gerissen!\n\n" +
-                        "Wenn nach 10 Sekunden keiner lacht (wenn doch: '~c') wird er vom Voice Channel gekickt!\n"
+        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xFF6100)).setDescription(
+                "Because " + victim.getAsMention() + " throwed a bad joke, he will be kicked out of the channel in 10 seconds if no one types `-bj c` to free " + victim.getAsMention() + "."
+        ).build()).queue();
 
-        ).queue();
+        Message cdMessage = event.getTextChannel().sendMessage("**COUNTDONW:  `10`**").complete();
 
-        Timer timer = new Timer();
-
-        VoiceChannel finalKickToChannel = kickToChannel;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (!BJokeCancle.canceled && sec >= 0) {
-                    event.getMessage().getTextChannel().sendMessage(sec + "...").queue();
-                    sec--;
-                } else if (!BJokeCancle.canceled) {
+                event.getGuild().getController().moveVoiceMember(victim, event.getGuild().getAfkChannel()).queue();
+                countdown.cancel();
+                countdown = new Timer();
+                count = 10;
+            }
+        }, 10*1000);
 
-                    called = false;
-                    event.getMessage().getTextChannel().sendMessage(
-                            "Haha, " + event.getMessage().getMentionedUsers().get(0).getAsMention() + ", nieman hat über deinen schlechten Witz gelacht!"
-                    ).queue();
-
-                    gc.moveVoiceMember(victim, finalKickToChannel).queue();
-
-
-                    try {
-                        gc.setNickname(victim, victim.getEffectiveName() + " der Unlustige").queue();
-                    } catch (PermissionException e) {
-                        event.getMessage().getTextChannel().sendMessage("[ERROR] Can't modify a member with higher or equal highest role than the bot!").queue();
-                    }
-                    timer.cancel();
-                    sec = 10;
-                } else {
-                    timer.cancel();
-                    sec = 10;
-                }
+        countdown.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                countdownMessage(cdMessage);
             }
         }, 0, 1000);
-
-
-        BJokeCancle.canceled = false;
-        sec = 10;
 
 
     }
@@ -98,7 +84,9 @@ public class BJoke implements Command {
     }
 
     public String help() {
-        return HELP;
+        return "USAGE:\n" +
+               "**bjoke <@mention>**  -  `Kicks a member out of the voice channel because of a bad joke after 10 seconds counter`\n" +
+               "**bjoke c**  -  `If someone laughed he can cancel the bad joke kick`";
     }
 
     @Override

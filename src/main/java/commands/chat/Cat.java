@@ -1,8 +1,6 @@
 package commands.chat;
 
 import commands.Command;
-import commands.chat.BJokeCancle;
-import core.SSSS;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
