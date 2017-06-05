@@ -11,6 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: fr.bmartel:jspeedtest:1.30.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-net:commons-net:3.6" level="project" />
+    <orderEntry type="library" name="Maven: fr.bmartel:http-endec:1.04" level="project" />
     <orderEntry type="library" name="Maven: com.moandjiezana.toml:toml4j:0.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.sedmelluq:lavaplayer:1.2.34" level="project" />

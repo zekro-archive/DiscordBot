@@ -4,10 +4,7 @@ import commands.*;
 import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
-import commands.etc.CmdLog;
-import commands.etc.Dev;
-import commands.etc.Uptime;
-import commands.etc.tttServerStatus;
+import commands.etc.*;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.Moveall;
 import commands.guildAdministration.VoiceKick;
@@ -122,6 +119,9 @@ public class Main {
         commands.put("autorole", new AutoRole());
         commands.put("settings", new Settings());
         commands.put("cmdlog", new CmdLog());
+        commands.put("speed", new Speedtest());
+        commands.put("speedtest", new Speedtest());
+        commands.put("quote", new Quote());
 
     }
 
