@@ -16,7 +16,7 @@ So you have some questions or want to join my developer community discord? Take 
 ### Get it!
 
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
-<br>
+<br><br>**uptimerobot.com Stats:**<br>
 [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779076054-f3bb0f94fa4ffbf129dc44c9.svg)](https://stats.uptimerobot.com/jYJrOCD0D)&nbsp;[![Uptime Robot ratio](https://img.shields.io/uptimerobot/ratio/m778918918-3e92c097147760ee39d02d36.svg)](https://stats.uptimerobot.com/jYJrOCD0D)
 
 -----
