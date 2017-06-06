@@ -25,7 +25,7 @@ public class Rand6 implements Command {
     private final String[] attc = {"Blitz", "IQ", "Twitch", "Montagne", "Ashe", "Thermite", "Sledge", "Thatcher", "Capitão", "Jackal", "Hibana", "Blackbeard", "Glaz", "Fuze", "Buck", "Recruit"};
     private final String[] def = {"Jäger", "Bandit", "Rook", "Doc", "Pulse", "Castle", "Tachanka", "Kapkan", "Frost", "Smoke", "Mute", "Caveira", "Echo", "Valkyrie", "Mira", "Recruit"};
 
-    private List<String> current = new ArrayList<>();
+    private List<String> current;
 
 
     private String getRandOp() {
@@ -58,6 +58,7 @@ public class Rand6 implements Command {
             return;
         }
 
+        current = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         String title;
         Color color;
