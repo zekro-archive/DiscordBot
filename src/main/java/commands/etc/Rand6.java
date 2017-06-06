@@ -30,7 +30,7 @@ public class Rand6 implements Command {
 
     private String getRandOp() {
 
-        int rand = new Random().nextInt(15);
+        int rand = new Random().nextInt(current.size() - 1);
 
         String out = current.get(rand);
         current.remove(rand);
