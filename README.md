@@ -2,10 +2,10 @@
 <br/>
 
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Stable%20Build-1.23.0.2-green.svg"></a>
+<img src="https://img.shields.io/badge/Stable%20Build-1.24.0.0-green.svg"></a>
 &nbsp;
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Test%20Build-1.24.0.0-orange.svg"></a><br>
+<img src="https://img.shields.io/badge/Test%20Build-1.25.0.0-orange.svg"></a><br>
 
 -----
 
@@ -14,10 +14,10 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-
+<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-5%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
-<br><br>**uptimerobot.com Stats:**<br>
-[![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779076054-f3bb0f94fa4ffbf129dc44c9.svg)](https://stats.uptimerobot.com/jYJrOCD0D)&nbsp;[![Uptime Robot ratio](https://img.shields.io/uptimerobot/ratio/m778918918-3e92c097147760ee39d02d36.svg)](https://stats.uptimerobot.com/jYJrOCD0D)
+
+> INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
 
 -----
 ### Features
@@ -72,7 +72,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.24.0.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
+| <center><b>1.25.0.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[NEW]* added "rand6" command |
+| <center><b>1.24.0.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
 | <center>1.23.0.2<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* in "bjoke" command |
 | <center>1.23.0.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
 | <center>1.22.8.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* fixed missing cmd type in settings command |
