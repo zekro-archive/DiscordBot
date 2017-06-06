@@ -122,6 +122,8 @@ public class Main {
         commands.put("speed", new Speedtest());
         commands.put("speedtest", new Speedtest());
         commands.put("quote", new Quote());
+        commands.put("r6", new Rand6());
+        commands.put("rand6", new Rand6());
 
     }
 
