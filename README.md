@@ -16,6 +16,8 @@ So you have some questions or want to join my developer community discord? Take 
 ### Get it!
 
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
+<br><br>**uptimerobot.com Stats:**<br>
+[![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779076054-f3bb0f94fa4ffbf129dc44c9.svg)](https://stats.uptimerobot.com/jYJrOCD0D)&nbsp;[![Uptime Robot ratio](https://img.shields.io/uptimerobot/ratio/m778918918-3e92c097147760ee39d02d36.svg)](https://stats.uptimerobot.com/jYJrOCD0D)
 
 -----
 ### Features
@@ -70,11 +72,11 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.23.0.2</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
+| <center><b>1.24.0.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
 | <center>1.23.0.2<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* in "bjoke" command |
-| <center>1.23.0.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
+| <center>1.23.0.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
 | <center>1.22.8.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* fixed missing cmd type in settings command |
-| <center>1.22.8.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
+| <center>1.22.8.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
 | <center>1.22.7.1<img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUG FIX]* in vkick command |
 | <center>1.22.7.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Cat command rework<br>- *[UPDATED]* Extended vkick command with timeout function<br>- *[UPDATED]* Help command update |
 | <center>1.22.6.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
