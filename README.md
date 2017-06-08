@@ -72,7 +72,9 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.25.0.2</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
+| <center><b>1.26.0.0</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "mute" command<br>- *[UPDATE]* optimized reroll function and added rule function to "rand6" command |
+| <center>1.25.1.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - **[NEW]** - added reroll function for "rand6" command<br>- *[NEW]* - added clear by timestamp and clear all function to "clear" command |
+| <center>1.25.0.2<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
 | <center>1.25.0.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "rand6" command |
 | <center>1.24.0.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
 | <center>1.23.0.2<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* in "bjoke" command |
