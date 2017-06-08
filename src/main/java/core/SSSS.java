@@ -302,4 +302,32 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
         }
     }
 
+
+    public static String getR6OPSID(Guild guild) {
+
+        try {
+            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
+            if (f.exists()) {
+                try {
+                    return new BufferedReader(new FileReader(f)).readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {}
+        return "OFF";
+    }
+
+    public static void setR6OPSID(String entry, Guild guild) {
+
+        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
+        try {
+            BufferedWriter r = new BufferedWriter(new FileWriter(f));
+            r.write(entry);
+            r.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

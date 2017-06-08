@@ -18,6 +18,8 @@ import java.util.TimerTask;
  * Created by zekro on 18.03.2017 / 01:29
  * DiscordBot / commands
  * © zekro 2017
+ *
+ * Contributor: Skillkiller
  */
 
 
