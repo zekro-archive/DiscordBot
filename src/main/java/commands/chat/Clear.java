@@ -1,17 +1,12 @@
 package commands.chat;
 
 import commands.Command;
-import core.Perms;
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-
-import core.coreCommands;
 import utils.MSGS;
 import utils.STATICS;
 
-import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +28,7 @@ public class Clear implements Command {
         return false;
     }
 
-    public static String HELP = "USAGE: ` ~clear <amount ob messages (>2)> to clear an amount of chat messages`";
+    public static String HELP = "USAGE: ` ~clear <amount ob messages (>2) || all || TIMESTAMP>  to clear an amount of chat messages`";
 
 
     private int getInt(String arg) {
