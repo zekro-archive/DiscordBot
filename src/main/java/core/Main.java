@@ -7,6 +7,7 @@ import commands.essentials.*;
 import commands.etc.*;
 import commands.guildAdministration.Kick;
 import commands.guildAdministration.Moveall;
+import commands.guildAdministration.Mute;
 import commands.guildAdministration.VoiceKick;
 import commands.music.Music;
 import commands.settings.*;
@@ -124,6 +125,7 @@ public class Main {
         commands.put("quote", new Quote());
         commands.put("r6", new Rand6());
         commands.put("rand6", new Rand6());
+        commands.put("mute", new Mute());
 
     }
 
