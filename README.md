@@ -2,7 +2,7 @@
 <br/>
 
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Stable%20Build-1.24.0.0-green.svg"></a>
+<img src="https://img.shields.io/badge/Stable%20Build-1.26.0.0-green.svg"></a>
 &nbsp;
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
 <img src="https://img.shields.io/badge/Test%20Build-1.25.0.2-orange.svg"></a><br>
