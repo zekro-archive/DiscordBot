@@ -2,16 +2,15 @@ package commands.etc;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -30,12 +29,49 @@ public class Rand6 implements Command {
 
     private String getRandOp() {
 
-        int rand = new Random().nextInt(current.size() - 1);
+        int rand = new Random().nextInt(current.size());
 
         String out = current.get(rand);
         current.remove(rand);
 
         return out;
+
+    }
+
+    private void reroll(Member member, MessageReceivedEvent event) throws IOException {
+
+        File f = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/r6rerolls");
+        BufferedReader fr;
+        Date date = new Date();
+
+        HashMap<Member, String> rollMap = new HashMap<>();
+
+        if (f.exists()) {
+            fr = new BufferedReader(new FileReader(f));
+            fr.lines().forEach(s -> rollMap.put(event.getGuild().getMemberById(s.split(":")[0]), s.split(":")[1]));
+            fr.close();
+        }
+
+        if ((date.getTime()) < Long.parseLong((rollMap.get(member) == null) ? (date.getTime()-1) + "" : rollMap.get(member))) {
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription("Your reroll is still consumed.").build()).queue();
+            return;
+        } else {
+            rollMap.put(member, (date.getTime() + 24*60*60*1000) + "");
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.orange).setDescription(member.getAsMention() + " USED A REROLL.").build()).queue();
+        }
+
+        FileWriter fw = new FileWriter(f);
+
+        rollMap.keySet().stream().forEach(m -> {
+            try {
+                fw.write(m.getUser().getId() + ":" + rollMap.get(m) + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+                event.getTextChannel().sendMessage(MSGS.error.setDescription("AN ERROR OCCURED WHILE WRITING SAVE FILE...").build()).queue();
+            }
+        });
+
+        fw.close();
 
     }
 
@@ -63,6 +99,8 @@ public class Rand6 implements Command {
         String title;
         Color color;
 
+        event.getMessage().delete().queue();
+
         switch (args[0]) {
 
             case "d":
@@ -77,13 +115,22 @@ public class Rand6 implements Command {
             case "atc":
                 Arrays.stream(attc).forEach(s -> current.add(s));
                 title = "ATTACKERS";
-                color = new Color(0x0043FF);
+                color = new Color(0x0073FF);
                 break;
+
+            case "r":
+            case "reroll":
+            case "re":
+                if (args.length < 2) {
+                    event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                    return;
+                }
+                reroll(event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0)), event);
+                return;
 
             default:
                 event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
                 return;
-
         }
 
         event.getMember().getVoiceState().getChannel().getMembers()
