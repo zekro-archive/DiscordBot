@@ -12,6 +12,15 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.List;
 
+/**
+ * Created by zekro on 14.05.2017 / 10:34
+ * DiscordBot/commands.etc
+ * © zekro 2017
+ *
+ * THIS COMMAND IS CREATED BY CONTRIBUTOR naix (https://github.com/NaixTimo)
+ */
+
+
 public class Mute implements Command {
 
 	//DISCLAIMER: ICH WEIß NICHT OB ES FUNKTIONIERT x)
@@ -130,7 +139,8 @@ public class Mute implements Command {
 
     @Override
     public String help() {
-        return null;
+         return "USAGE:\n" +                                                    // EDIT BY zekro
+                "**mute <userID> <reason>**  -  `Mute/Unmute a Member`";        //
     }
 
     @Override
