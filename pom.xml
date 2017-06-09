@@ -10,11 +10,6 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <name>bintray</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
             <id>notfab</id>
             <url>http://nexus.notfab.net/content/repositories/JDA3</url>
         </repository>
