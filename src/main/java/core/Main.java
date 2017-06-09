@@ -126,6 +126,7 @@ public class Main {
         commands.put("r6", new Rand6());
         commands.put("rand6", new Rand6());
         commands.put("mute", new Mute());
+        commands.put("log", new Log());
 
     }
 
