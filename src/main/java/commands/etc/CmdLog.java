@@ -42,8 +42,7 @@ public class CmdLog implements Command {
                     ));
 
             event.getTextChannel().sendMessage(
-                    new EmbedBuilder().addField("Last 50 Commands:", sb.toString(),false)
-                    .build()
+                    "**Last 50 Commands:**\n\n" + sb.toString()
             ).queue();
 
         } else if (args[0].toLowerCase().equals("all")) {

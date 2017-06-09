@@ -150,6 +150,6 @@ public class Mute implements Command {
 
     @Override
     public String commandType() {
-        return STATICS.CMDTYPE.chatutils;
+        return STATICS.CMDTYPE.guildadmin;
     }
 }
