@@ -95,7 +95,7 @@ public class Main {
         commands.put("poll", new Vote2());
         commands.put("vote", new Vote2());
         commands.put("stats", new Stats());
-        commands.put("joke", new Joke());
+        commands.put("joke", new JokeV2());
         commands.put("userinfo", new UserInfo());
         commands.put("user", new UserInfo());
         commands.put("nudge", new Stups());
