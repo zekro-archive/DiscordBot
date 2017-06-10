@@ -72,8 +72,9 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.26.0.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added "mute" command<br>- *[UPDATE]* optimized reroll function and added rule function to "rand6" command |
-| <center>1.25.1.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - **[NEW]** - added reroll function for "rand6" command<br>- *[NEW]* - added clear by timestamp and clear all function to "clear" command |
+| <center><b>1.27.1.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added log command<br>- *[UPDATE]* added bot onwer check to perms core<br>- *[UPDATE]* changed perms of bot cotrolling command to bot owner only |
+| <center><b>1.26.0.0</b><br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "mute" command<br>- *[UPDATE]* optimized reroll function and added rule function to "rand6" command |
+| <center>1.25.1.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* - added reroll function for "rand6" command<br>- *[NEW]* - added clear by timestamp and clear all function to "clear" command |
 | <center>1.25.0.2<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
 | <center>1.25.0.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* added "rand6" command |
 | <center>1.24.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
