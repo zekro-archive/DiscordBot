@@ -8,3 +8,6 @@ SERVER_SETTINGS/
 .idea/
 *.class
 *.class
+DiscordBot.jar
+DiscordBot.iml
+_config.yml
