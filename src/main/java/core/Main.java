@@ -39,7 +39,12 @@ public class Main {
         startArgumentHandler.args = args;
 
         settings.loadSettings();
-        if (!settings.testForToken()) {
+        try {
+            if (!settings.testForToken()) {
+                System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
+                System.exit(0);
+            }
+        } catch (Exception e) {
             System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
             System.exit(0);
         }

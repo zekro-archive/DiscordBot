@@ -1,6 +1,7 @@
 package commands.administration;
 
 import commands.Command;
+import core.Perms;
 import core.SSSS;
 import net.dv8tion.jda.client.managers.EmoteManager;
 import net.dv8tion.jda.core.entities.Emote;
@@ -28,8 +29,9 @@ public class testCMD implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        Message msg = event.getTextChannel().sendMessage("TEST").complete();
-        msg.addReaction("\uD83D\uDE29").queue();
+        if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
+
+        System.out.println("TEST");
 
     }
 

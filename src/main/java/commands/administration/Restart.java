@@ -1,6 +1,7 @@
 package commands.administration;
 
 import commands.Command;
+import core.Perms;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
@@ -29,7 +30,7 @@ public class Restart implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
         event.getTextChannel().sendMessage(":warning:  Bot will restart now...").queue();
 
