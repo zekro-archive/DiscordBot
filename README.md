@@ -2,10 +2,13 @@
 <br/>
 
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Stable%20Build-1.25.0.2-green.svg"></a>
+<img src="https://img.shields.io/badge/Stable%20Build-1.26.0.0-green.svg"></a>
 &nbsp;
-<a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Test%20Build-1.26.0.0-orange.svg"></a><br>
+<a href="https://github.com/zekroTJA/DiscordBot/tree/dev/out/artifacts/DiscordBot_jar">
+<img src="https://img.shields.io/badge/Test%20Build-1.27.1.0-orange.svg"></a>
+&nbsp;
+<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
+<img src="https://img.shields.io/badge/currently%20running%20on-1.27.1.0-3cd0d8.svg"></a><br>
 
 -----
 
