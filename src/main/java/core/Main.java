@@ -132,6 +132,8 @@ public class Main {
         commands.put("rand6", new Rand6());
         commands.put("mute", new Mute());
         commands.put("log", new Log());
+        commands.put("broadcast", new Broadcast());
+        commands.put("guilds", new Guilds());
 
     }
 
