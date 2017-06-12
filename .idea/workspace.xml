@@ -10,15 +10,14 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/commands/music/Music.java" line="510" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/commands/music/Music.java" line="334" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/commands/etc/Rand6.java" line="45" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/commands/administration/Broadcast.java" line="36" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec8a6ed-933b-4b23-bc5d-d18f42bea619" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_dv8tion_JDA_3_0_0_157.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_dv8tion_JDA_3_0_0_157.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/DiscordBot_jar/DiscordBot_1.28.0.0_PRE.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SETTINGS.txt" afterPath="$PROJECT_DIR$/SETTINGS.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/commands/etc/Rand6.java" afterPath="$PROJECT_DIR$/src/main/java/commands/etc/Rand6.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Main.java" afterPath="$PROJECT_DIR$/src/main/java/core/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" afterPath="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
     </list>
     <ignored path="DiscordBot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,7 +47,27 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Report.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/commands/guildAdministration/Report.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#768#769#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#844#845#0" expanded="true" />
+                <element signature="e#893#894#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,12 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/listeners/privateMessageListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/settings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/listeners/reconnectListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/etc/Uptime.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/botmessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Botmessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/CommandParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/Prefix.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/ServerJoinMessage.java" />
@@ -121,12 +134,10 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/essentials/UserInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/Botmessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/PermLvls.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Perms.java" />
         <option value="$PROJECT_DIR$/SERVER_SETTINGS/287535046762561536/lockmusicchannel" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/AutoRole.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/guildJoinListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/essentials/Info.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/update.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/essentials/Ping.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/chat/Vote2.java" />
@@ -136,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/essentials/Help.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/chat/Cat.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/guildAdministration/VoiceKick.java" />
-        <option value="$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java" />
         <option value="$PROJECT_DIR$/src/main/java/listeners/reactionListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/settings.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/settings/Settings.java" />
@@ -147,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/etc/Speedtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/chat/Quote.java" />
         <option value="$PROJECT_DIR$/SERVER_SETTINGS/287535046762561536/r6rerolls" />
-        <option value="$PROJECT_DIR$/SETTINGS.txt" />
         <option value="$PROJECT_DIR$/src/main/java/core/SSSS.java" />
         <option value="$PROJECT_DIR$/SERVER_SETTINGS/297298167634853890/r6rerolls" />
         <option value="$PROJECT_DIR$/src/main/java/commands/chat/Clear.java" />
@@ -156,9 +165,19 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/etc/CmdLog.java" />
         <option value="$PROJECT_DIR$/LATESTVERSION.txt" />
         <option value="$PROJECT_DIR$/src/main/java/commands/etc/Rand6.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/settings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Restart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Stop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Update.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Perms.java" />
+        <option value="$PROJECT_DIR$/SETTINGS.txt" />
         <option value="$PROJECT_DIR$/src/main/java/commands/etc/Log.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Broadcast.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/administration/Guilds.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/STATICS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/commands/guildAdministration/Report.java" />
       </list>
     </option>
   </component>
@@ -218,6 +237,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -636,13 +657,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -650,7 +669,7 @@
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="ToolWindowTerminal.ShowToolbar" value="false" />
     <property name="ToolWindowAnt Build.ShowToolbar" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="rand6&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/etc/Rand6.java&#10;stat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;Main&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Main.java&#10;Mute&#9;PSI&#9;JAVA://commands.guildAdministration.Mute&#10;Clear&#9;PSI&#9;JAVA://commands.chat.Clear&#10;user&#9;PSI&#9;JAVA://commands.essentials.UserInfo&#10;LATE&#9;FILE&#9;file://E:/dev/DiscordBot/LATESTVERSION.txt&#10;SSSS&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/SSSS.java&#10;read&#9;PSI&#9;JAVA://listeners.readyListener&#10;STA&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;Settings&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/settings/Settings.java&#10;Static&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;ready&#9;PSI&#9;JAVA://listeners.readyListener&#10;Emote&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.Emote&#10;Voicekick&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/guildAdministration/VoiceKick.java&#10;STAT&#9;PSI&#9;JAVA://utils.STATICS&#10;Cat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/chat/Cat.java&#10;Help&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/essentials/Help.java&#10;ListenerA&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;voice&#9;PSI&#9;JAVA://commands.guildAdministration.VoiceKick&#10;ListenerAd&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;listenerA&#9;PSI&#9;JAVA://net.dv8tion.jda.core.hooks.ListenerAdapter&#10;Vote&#9;PSI&#9;JAVA://commands.chat.Vote&#10;perms&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Perms.java&#10;setAudioSendFactory&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.impl.JDAImpl#setAudioSendFactory" />
+    <property name="SearchEverywhereHistoryKey" value="Main&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Main.java&#10;STAT&#9;PSI&#9;JAVA://utils.STATICS&#10;SETT&#9;FILE&#9;file://E:/dev/DiscordBot/SETTINGS.txt&#10;Stat&#9;PSI&#9;JAVA://commands.essentials.Stats&#10;Log&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/etc/Log.java&#10;perms&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/Perms.java&#10;S&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;sett&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/settings.java&#10;test&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/administration/testCMD.java&#10;Per&#9;PSI&#9;JAVA://core.Perms&#10;rand6&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/etc/Rand6.java&#10;stat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;Mute&#9;PSI&#9;JAVA://commands.guildAdministration.Mute&#10;Clear&#9;PSI&#9;JAVA://commands.chat.Clear&#10;user&#9;PSI&#9;JAVA://commands.essentials.UserInfo&#10;LATE&#9;FILE&#9;file://E:/dev/DiscordBot/LATESTVERSION.txt&#10;SSSS&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/core/SSSS.java&#10;read&#9;PSI&#9;JAVA://listeners.readyListener&#10;STA&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;Settings&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/settings/Settings.java&#10;Static&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/utils/STATICS.java&#10;ready&#9;PSI&#9;JAVA://listeners.readyListener&#10;Emote&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.Emote&#10;Voicekick&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/guildAdministration/VoiceKick.java&#10;Cat&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/chat/Cat.java&#10;Help&#9;FILE&#9;file://E:/dev/DiscordBot/src/main/java/commands/essentials/Help.java&#10;ListenerA&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;voice&#9;PSI&#9;JAVA://commands.guildAdministration.VoiceKick&#10;ListenerAd&#9;FILE&#9;jar://C:/Users/Ringo Hoffmann/.m2/repository/net/dv8tion/jda/3.0.0_157/JDA-3.0.0_157.jar!/net/dv8tion/jda/core/hooks/ListenerAdapter.class&#10;listenerA&#9;PSI&#9;JAVA://net.dv8tion.jda.core.hooks.ListenerAdapter&#10;Vote&#9;PSI&#9;JAVA://commands.chat.Vote&#10;setAudioSendFactory&#9;PSI&#9;JAVA://net.dv8tion.jda.core.entities.impl.JDAImpl#setAudioSendFactory" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -659,17 +678,17 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="audioCore" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\dev\DiscordBot\SERVER_SETTINGS\307084334198816769" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\dev\DiscordBot\saves_playlists" />
+      <recent name="E:\dev\DiscordBot" />
+      <recent name="E:\dev\DiscordBot\src" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="music" />
       <recent name="audioCore" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\dev\DiscordBot\saves_playlists" />
-      <recent name="E:\dev\DiscordBot" />
-      <recent name="E:\dev\DiscordBot\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\dev\DiscordBot\SERVER_SETTINGS\307084334198816769" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1055,7 +1074,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1067,7 +1085,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791044" sideWeight="0.49624866" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18070363" sideWeight="0.49624866" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496474" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1079,6 +1097,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1146,76 +1165,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/settings/AutoRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="40" column="64" lean-forward="false" selection-start-line="40" selection-start-column="64" selection-end-line="40" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SERVER_SETTINGS/287535046762561536/prefix">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/guildJoinListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="53" column="56" lean-forward="false" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Update.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Ping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="21" column="58" lean-forward="false" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/update.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Restart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="36" column="55" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/chat/Vote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/listeners/tttServerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/listeners/reconnectListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1283,13 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Help.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="60" column="13" lean-forward="true" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/chat/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1322,13 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1387,13 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="701">
           <caret line="58" column="3" lean-forward="false" selection-start-line="58" selection-start-column="3" selection-end-line="58" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SETTINGS.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1467,7 +1395,7 @@
         <state relative-caret-position="2142">
           <caret line="140" column="26" lean-forward="false" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1477,7 +1405,7 @@
         <state relative-caret-position="663">
           <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1494,7 +1422,7 @@
         <state relative-caret-position="392">
           <caret line="193" column="0" lean-forward="true" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#getRandOp#0;class#Rand6#0" expanded="false" />
             <element signature="method#executed#0;class#Rand6#0" expanded="false" />
             <element signature="method#help#0;class#Rand6#0" expanded="false" />
@@ -1503,36 +1431,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="e#1955#1956#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Restart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Stop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="78" lean-forward="false" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Update.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="78" lean-forward="false" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/testCMD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenlog.0" />
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/etc/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#2037#2038#0" expanded="true" />
-            <element signature="e#2064#2065#0" expanded="true" />
-            <element signature="e#2113#2114#0" expanded="true" />
-            <element signature="e#2140#2141#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="157">
+          <caret line="79" column="19" lean-forward="false" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Stats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SETTINGS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Perms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/essentials/Help.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/STATICS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        <state relative-caret-position="527">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Guilds.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/administration/Broadcast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="104" column="41" lean-forward="true" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+        <state relative-caret-position="573">
+          <caret line="133" column="43" lean-forward="false" selection-start-line="133" selection-start-column="43" selection-end-line="133" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/guildAdministration/Report.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
