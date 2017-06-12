@@ -28,7 +28,7 @@ public class Rand6 implements Command {
 
     private List<String> current;
 
-
+    private File saveFile;
 
     private String getRandOp() {
 
@@ -43,14 +43,13 @@ public class Rand6 implements Command {
 
     private void reroll(Member member, MessageReceivedEvent event) throws IOException {
 
-        File f = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/r6rerolls");
         BufferedReader fr;
         Date date = new Date();
 
         HashMap<Member, String> rollMap = new HashMap<>();
 
-        if (f.exists()) {
-            fr = new BufferedReader(new FileReader(f));
+        if (saveFile.exists()) {
+            fr = new BufferedReader(new FileReader(saveFile));
             fr.lines().forEach(s -> rollMap.put(event.getGuild().getMemberById(s.split(":")[0]), s.split(":")[1]));
             fr.close();
         }
@@ -63,7 +62,7 @@ public class Rand6 implements Command {
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.orange).setDescription(member.getAsMention() + " USED A REROLL.\n\nYour new operator, " + member.getAsMention() + ", is `" + getRandOp() + "`").build()).queue();
         }
 
-        FileWriter fw = new FileWriter(f);
+        FileWriter fw = new FileWriter(saveFile);
 
         rollMap.keySet().stream().forEach(m -> {
             try {
@@ -86,6 +85,8 @@ public class Rand6 implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
+
+        saveFile = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/r6rerolls");
 
         String urlS;
         if (!(urlS = SSSS.getR6OPSID(event.getGuild())).equalsIgnoreCase("OFF")) {
@@ -169,6 +170,16 @@ public class Rand6 implements Command {
                              "*¹ Recruit can be played with every available combination of weapons and gadgets. That is also valid for every other assigned operator.*\n\n" +
                              "*² Ace means that all enemies got killed by one player, also if one or more enemies left the match. (That does not count if there are only less than 3 enemies in the enemy team.)*"
                 ).queue();
+                return;
+
+            case "list":
+            case "rerolls":
+            case "rlist":
+                if (saveFile.exists()) {
+                    StringBuilder rollist = new StringBuilder();
+                    BufferedReader br = new BufferedReader(new FileReader(saveFile));
+                    br.lines().forEach(s -> rollist.append(event.getGuild().getMemberById(s.split(":")[0])));
+                }
                 return;
 
             default:

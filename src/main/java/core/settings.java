@@ -6,9 +6,7 @@ import com.moandjiezana.toml.TomlWriter;
 import net.dv8tion.jda.core.entities.Guild;
 import utils.STATICS;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -28,7 +26,6 @@ public class settings {
         static final String TOKEN = "TOKEN";
         static final String PREFIX = "CMD_PREFIX";
         static final String CUSTOM_MESSAGE = "CUSTOM_PLAYING_MESSAGE";
-        static final String VOICE_LOG_TEXTCHANNEL = "VOICE_LOG_TEXTCHANNEL";
         static final String WARFRAME_ALERTS_TEXTCHANNEL = "WARFRAME_ALERTS_TEXTCHANNEL";
         static final String WARFRAME_ALERTS_REFRESHTIME = "WARFRAME_ALERTS_REFRESHTIME";
         static final String PERMISSION_ROLES = "PERMISSION_ROLES";
@@ -45,6 +42,7 @@ public class settings {
         static final String MUSIC_VOLUME = "MUSIC_VOLUME";
         static final String DISCORD_JOIN_MESSAGE = "DISCORD_JOIN_MESSAGE";
         static final String FULL_PERMISSION_ROLES = "FULL_PERMISSION_ROLES";
+        static final String BOT_OWNER_ID = "BOT_OWNER_ID";
     }
 
     public static boolean testForToken() {
@@ -55,6 +53,88 @@ public class settings {
 
         if (!sfile.exists()) {
 
+            BufferedWriter br = new BufferedWriter(new FileWriter(sfile));
+
+            br.write(
+
+                        "#########################\n" +
+                            "# SETTINGS FILE FOR BOT #\n" +
+                            "#  PLEASE DON'T DELETE  #\n" +
+                            "#########################\n" +
+                            "\n" +
+                            "# GENERAL SERVER SETTINGS #\n" +
+                            "\n" +
+                            "    # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me\n" +
+                            "        TOKEN = \"\"\n" +
+                            "    # Prefix to send bot commands (like -help or ~help or .help, what ever you want)\n" +
+                            "        CMD_PREFIX = \"-\"\n" +
+                            "    # Bot owners user ID\n" +
+                            "        BOT_OWNER_ID = \"\"\n" +
+                            "    # Custom message shown as \"Now Playing: ...\" text\n" +
+                            "        CUSTOM_PLAYING_MESSAGE = \"zekro.de\"\n" +
+                            "    # Log entered command in console of the bot\n" +
+                            "        COMMAND_CONSOLE_OUTPUT = true\n" +
+                            "    # Automatically check for updates\n" +
+                            "        AUTO_UPDATE = false\n" +
+                            "    # Only allow members to use music commands in music channel\n" +
+                            "        MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false\n" +
+                            "    # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)\n" +
+                            "        MUSIC_VOLUME = 0\n" +
+                            "\n" +
+                            "# PERMISSION SETTINGS #\n" +
+                            "\n" +
+                            "    # List roles that can use Moderator+ Commands\n" +
+                            "        PERMISSION_ROLES = \"Admin, Moderator, Owner, Bot Commander\"\n" +
+                            "    # Super Permission roles\n" +
+                            "        FULL_PERMISSION_ROLES = \"Admin, Owner\"\n" +
+                            "    # Automatically assign that role to joined users (Let free for nothing)\n" +
+                            "        GUILD_JOIN_ROLE = \"Member\"\n" +
+                            "\n" +
+                            "# SOURCES SETTINGS (GOOGLE DOCS) #\n" +
+                            "\n" +
+                            "    # Create a Google Docs Doc for this, publish it and enter doc id here\n" +
+                            "        DOCID_WARFRAME_ALERTS_FILTER = \"\"\n" +
+                            "    # Same here as above\n" +
+                            "        DOCID_JOKES = \"\"\n" +
+                            "\n" +
+                            "# CHANNEL SETTINGS #\n" +
+                            "\n" +
+                            "    # Music channel for displaying now playing info\n" +
+                            "        MUSIC_CHANNEL = \"music\"\n" +
+                            "    # Alternative voice channel vor vkicks\n" +
+                            "        KICK_VOICE_CHANNEL = \"Lobby\"\n" +
+                            "\n" +
+                            "# WARFRAME ALERTS SETTINGS #\n" +
+                            "\n" +
+                            "    # Refresh of alerts list in seconds\n" +
+                            "        WARFRAME_ALERTS_REFRESHTIME = 10\n" +
+                            "    # Text channel for warframe alerts list\n" +
+                            "        WARFRAME_ALERTS_TEXTCHANNEL = \"\"\n" +
+                            "\n" +
+                            "\n" +
+                            "# MESSAGE SETTINGS #\n" +
+                            "\n" +
+                            "       # Message, that appears, if user joins discord first time\n" +
+                            "       # \"[USER]\" stand for the @user - mention\n" +
+                            "       # \"[GUILD]\" stand for the guild name\n" +
+                            "           DISCORD_JOIN_MESSAGE = \":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:\"\n" +
+                            "\n" +
+                            "\n" +
+                            "# OTHER SETTINGS #\n" +
+                            "\n" +
+                            "    # THIS IS STILL IN ALPHA TESTING PHASE!\n" +
+                            "\n" +
+                            "    # Static server IP of TTT server\n" +
+                            "        TTT_SERVER_IP = \"\"\n" +
+                            "    # Port of server (defaultly 27015)\n" +
+                            "        TTT_SERVER_PORT = 27015\n" +
+                            "\n"
+
+            );
+
+            br.close();
+
+            /*
             Map<String, Object> map = new HashMap<>();
 
             map.put(SCONT.COMMAND_CONSOLE_OUTPUT, true);
@@ -75,8 +155,10 @@ public class settings {
             map.put(SCONT.MUSIC_VOLUME, 0);
             map.put(SCONT.DISCORD_JOIN_MESSAGE, ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:");
             map.put(SCONT.FULL_PERMISSION_ROLES, "Admin, Owner");
+            map.put(SCONT.BOT_OWNER_ID, "");
 
             tomlw.write(map, new File("SETTINGS.txt"));
+            */
 
         } else {
 
@@ -101,6 +183,7 @@ public class settings {
             STATICS.music_volume = Math.toIntExact(toml.getLong(SCONT.MUSIC_VOLUME));
             STATICS.discordJoinMessage = toml.getString(SCONT.DISCORD_JOIN_MESSAGE);
             STATICS.FULLPERMS = toml.getString(SCONT.FULL_PERMISSION_ROLES).split(", ");
+            STATICS.BOT_OWNER_ID = toml.getString(SCONT.BOT_OWNER_ID);
         }
     }
 

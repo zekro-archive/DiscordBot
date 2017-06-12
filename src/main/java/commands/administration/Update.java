@@ -26,7 +26,7 @@ public class Update implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
         if (!core.update.checkIfUpdate()) {
             event.getTextChannel().sendMessage(

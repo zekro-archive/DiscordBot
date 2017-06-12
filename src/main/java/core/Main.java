@@ -39,7 +39,12 @@ public class Main {
         startArgumentHandler.args = args;
 
         settings.loadSettings();
-        if (!settings.testForToken()) {
+        try {
+            if (!settings.testForToken()) {
+                System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
+                System.exit(0);
+            }
+        } catch (Exception e) {
             System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
             System.exit(0);
         }
@@ -126,6 +131,9 @@ public class Main {
         commands.put("r6", new Rand6());
         commands.put("rand6", new Rand6());
         commands.put("mute", new Mute());
+        commands.put("log", new Log());
+        commands.put("broadcast", new Broadcast());
+        commands.put("guilds", new Guilds());
 
     }
 
