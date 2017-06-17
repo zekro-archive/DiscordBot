@@ -119,32 +119,25 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Future Intends
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Improve update and restart commands</p>
+<p>🔲&nbsp;&nbsp; Improve update and restart commands</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Music endless queue mode</p>
+<p>🔲&nbsp;&nbsp; Rework warframe alerts listener</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Bug report / suggestion command</p>
+<p>🔲&nbsp;&nbsp; Bug report / suggestion command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
+<p>✅&nbsp;&nbsp; Music endless queue mode</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework vote command</p>
+<p>✅&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework cat command</p>
+<p>✅&nbsp;&nbsp; Rework vote command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework badjoke command</p>
+<p>✅&nbsp;&nbsp; Rework cat command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Server specific autorole system</p>
+<p>✅&nbsp;&nbsp; Rework badjoke command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
+<p>✅&nbsp;&nbsp; Server specific autorole system</p>
+
+<p>✅&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
 
 -----
 ### Used libraries
