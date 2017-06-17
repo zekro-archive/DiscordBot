@@ -14,14 +14,14 @@ So you have some questions or want to join my developer community discord? Take 
 <br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
-### 🔸 Get it!
+### Get it!
 <img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-9%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
 
 -----
-### 🔹 Features
+### Features
 
 - **Server administration** </br> Typical commands like `-kick`, `-vkick` (voice channel kick), `-clear` and some more!
 
@@ -39,7 +39,7 @@ So you have some questions or want to join my developer community discord? Take 
 - **TTT Server Listener** </br> You can enter your Gmod Server IP and port in the settings file to auto send a message when the server is online for members. Also usable with command `-tttserver`.
 
 -----
-### 🔸 Installation
+### Installation
 
 If you want to install this bot for yourself, use this command on your linux system to install:
 ```bash
@@ -64,12 +64,12 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 ```
 
 -----
-### 🔹 Commands
+### Commands
 
 <a href="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing" target="_blank"><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/1033926355/original/GoogleSheets.png" width="200"/></a>
 
 -----
-### 🔸 Latest Changelogs
+### Latest Changelogs
 
 | Released Version  | Changes |
 |--|--|
@@ -117,7 +117,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 | 1.14.0.0 | Updated JDA, added auto update service |
 
 -----
-### 🔹 Future Intends
+### Future Intends
 
 <p>🔲&nbsp;&nbsp; Improve update and restart commands</p>
 
@@ -140,7 +140,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 <p>✅&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
 
 -----
-### 🔸 Used libraries
+### Used libraries
 
 - <a href="https://github.com/DV8FromTheWorld/JDA">JDA</a>
 - <a href="https://github.com/mwanji/toml4j">Toml4j</a>
@@ -149,7 +149,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 - <a href="https://github.com/bertrandmartel/speed-test-lib">JSpeedTest</a>
 
 -----
-### 🔹 Mentions
+### Mentions
 Special thanks to <a href="https://github.com/jagrosh">@jagrosh</a> for helping me with fixing the combatibility bug of lava player on linux system.
 
 Also a special thanks to Sophie, who helped me a lot developing some features of that bot and better performance coding. <3
