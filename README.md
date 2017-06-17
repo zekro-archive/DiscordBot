@@ -2,10 +2,11 @@
 <br/>
 
 <a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Stable%20Build-1.24.0.0-green.svg"></a>
-&nbsp;
-<a href="https://github.com/zekroTJA/DiscordBot/tree/master/out/artifacts/DiscordBot_jar">
-<img src="https://img.shields.io/badge/Test%20Build-1.25.0.2-orange.svg"></a><br>
+<img src="https://img.shields.io/badge/Stable%20Build-1.28.0.0-green.svg"></a>&nbsp;
+<a href="https://github.com/zekroTJA/DiscordBot/tree/dev/out/artifacts/DiscordBot_jar">
+<img src="https://img.shields.io/badge/Test%20Build-1.29.0.0-orange.svg"></a>&nbsp;
+<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
+<img src="https://img.shields.io/badge/currently%20running%20on-1.29.0.0-3cd0d8.svg"></a><br>
 
 -----
 
@@ -14,7 +15,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-5%2F25-3cc482.svg"><br>
+<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-9%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
@@ -72,18 +73,23 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 
 | Released Version  | Changes |
 |--|--|
-| <center><b>1.25.0.2</b><br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/untested.png"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
-| <center>1.25.0.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "rand6" command |
-| <center>1.24.0.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
-| <center>1.23.0.2<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* in "bjoke" command |
-| <center>1.23.0.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
-| <center>1.22.8.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUGFIX]* fixed missing cmd type in settings command |
-| <center>1.22.8.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/unstable.png"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
-| <center>1.22.7.1<img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[BUG FIX]* in vkick command |
-| <center>1.22.7.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Cat command rework<br>- *[UPDATED]* Extended vkick command with timeout function<br>- *[UPDATED]* Help command update |
-| <center>1.22.6.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
-| <center>1.22.5.1<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/></center> | - *[NEW]* Autorole Setting<br>- *[UPDATED]* Guild join private message on autorole reworked<br>- *[UPDATED]* Complete rework of the music help guide |
-| 1.22.4.0<br><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/tested.png"/> | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
+| <center><b>1.28.0.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added command "-report" |
+| <center>1.28.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added command "-broadcast"<br>- *[NEW]* added command "-guilds" |
+| <center>1.27.1.0<br><img src="https://img.shields.io/badge/build-test%20in%20progress-orange.svg"/></center> | - *[NEW]* added log command<br>- *[UPDATE]* added bot onwer check to perms core<br>- *[UPDATE]* changed perms of bot cotrolling command to bot owner only |
+| <center>1.26.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "mute" command<br>- *[UPDATE]* optimized reroll function and added rule function to "rand6" command |
+| <center>1.25.1.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* - added reroll function for "rand6" command<br>- *[NEW]* - added clear by timestamp and clear all function to "clear" command |
+| <center>1.25.0.2<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
+| <center>1.25.0.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* added "rand6" command |
+| <center>1.24.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
+| <center>1.23.0.2<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* in "bjoke" command |
+| <center>1.23.0.1<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
+| <center>1.22.8.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* fixed missing cmd type in settings command |
+| <center>1.22.8.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
+| <center>1.22.7.1<img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUG FIX]* in vkick command |
+| <center>1.22.7.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[REWORKED]* Cat command rework<br>- *[UPDATED]* Extended vkick command with timeout function<br>- *[UPDATED]* Help command update |
+| <center>1.22.6.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
+| <center>1.22.5.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* Autorole Setting<br>- *[UPDATED]* Guild join private message on autorole reworked<br>- *[UPDATED]* Complete rework of the music help guide |
+| 1.22.4.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/> | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
 | 1.21.0.0 | - *[IMPROVEMENT]* Improved help command<br>- *[BUGFIX]* automatic unpause after queueing music<br>- *[NEW]* added uptime command |
 | 1.20.2.0 | Improved move all command |
 | 1.20.1.0 | Better messages, overworked user info command, overworked clear command, added Moveall command |
@@ -113,32 +119,25 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Future Intends
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Improve update and restart commands</p>
+<p>🔲&nbsp;&nbsp; Improve update and restart commands</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Music endless queue mode</p>
+<p>🔲&nbsp;&nbsp; Rework warframe alerts listener</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Bug report / suggestion command</p>
+<p>🔲&nbsp;&nbsp; Bug report / suggestion command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/un_checked.png" height="14" />
-&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
+<p>✅&nbsp;&nbsp; Music endless queue mode</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework vote command</p>
+<p>✅&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework cat command</p>
+<p>✅&nbsp;&nbsp; Rework vote command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Rework badjoke command</p>
+<p>✅&nbsp;&nbsp; Rework cat command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; Server specific autorole system</p>
+<p>✅&nbsp;&nbsp; Rework badjoke command</p>
 
-<p><img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/checked.png" height="14" />
-&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
+<p>✅&nbsp;&nbsp; Server specific autorole system</p>
+
+<p>✅&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
 
 -----
 ### Used libraries
