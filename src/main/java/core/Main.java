@@ -5,10 +5,7 @@ import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
 import commands.etc.*;
-import commands.guildAdministration.Kick;
-import commands.guildAdministration.Moveall;
-import commands.guildAdministration.Mute;
-import commands.guildAdministration.VoiceKick;
+import commands.guildAdministration.*;
 import commands.music.Music;
 import commands.settings.*;
 import listeners.*;
@@ -134,6 +131,7 @@ public class Main {
         commands.put("log", new Log());
         commands.put("broadcast", new Broadcast());
         commands.put("guilds", new Guilds());
+        commands.put("report", new Report());
 
     }
 

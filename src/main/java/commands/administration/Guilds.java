@@ -8,6 +8,7 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -79,6 +80,6 @@ public class Guilds implements Command {
 
     @Override
     public String commandType() {
-        return null;
+        return STATICS.CMDTYPE.administration;
     }
 }
