@@ -50,7 +50,8 @@ public class Music implements Command {
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
 
     private boolean endlessMode = false;
-    private Set<AudioInfo> endlessQueue;
+    private List<AudioTrack> endlessList = new ArrayList<>();
+    private Member endlessAuthor;
 
 
     private boolean hasPlayer(Guild guild) {
@@ -332,7 +333,7 @@ public class Music implements Command {
         public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
 
             if (getTrackManager(guild).getQueuedTracks().size() < 2 && endlessMode) {
-                endlessQueue.forEach(audioInfo -> getTrackManager(guild).queue(audioInfo.getTrack(), audioInfo.getAuthor()));
+                endlessList.forEach(t -> getTrackManager(guild).queue(t, endlessAuthor));
                 if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0)
                     guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(MSGS.success.setDescription("Repeated queue. *(endless mode)*").build()).queue();
             }
@@ -503,15 +504,17 @@ public class Music implements Command {
                         guild.getAudioManager().closeAudioConnection();
 
                         endlessMode = false;
-                        endlessQueue = null;
+                        endlessList.clear();
 
                         break;
 
 
                     case "endless":
 
-                        endlessQueue = getTrackManager(guild).getQueuedTracks();
+                        getTrackManager(guild).getQueuedTracks().stream().skip(1).forEach(t -> endlessList.add(t.getTrack()));
                         endlessMode = true;
+                        endlessAuthor = event.getMember();
+
                         event.getTextChannel().sendMessage(MSGS.success.setDescription(":repeat:  Endless mode activated.").build()).queue();
 
                         break;
@@ -643,15 +646,14 @@ public class Music implements Command {
                 }
 
             default:
+
                 String input = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
-                if (input != null && input.contains("http"))
+                if (input != null && input.startsWith("http"))
                     STATICS.input = input;
+                else
+                    input = "ytsearch: " + input;
 
                 switch (args[0].toLowerCase()) {
-
-                    case "yp":
-                    case "ytplay":
-                        input = "ytsearch: " + input;
 
                     case "p":
                     case "play":
