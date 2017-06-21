@@ -22,6 +22,8 @@ public class guildJoinListener extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
+        commands.settings.Botmessage.setSupplyingMessage(event.getJDA());
+
         if (event.getMember().getUser().isBot()) return;
 
         if (!SSSS.getSERVERJOINMESSAGE(event.getGuild()).toLowerCase().equals("off")) {
@@ -50,6 +52,8 @@ public class guildJoinListener extends ListenerAdapter {
     }
 
     public void onGuildMemberLeave(GuildMemberLeaveEvent event) {
+
+        commands.settings.Botmessage.setSupplyingMessage(event.getJDA());
 
         if (event.getMember().getUser().isBot()) return;
 

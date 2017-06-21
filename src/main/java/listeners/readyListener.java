@@ -82,6 +82,7 @@ public class readyListener extends ListenerAdapter {
                 "#--------------------------------------------------------------------------------- - -  -  -\n\n"
         );
 
+        commands.settings.Botmessage.setSupplyingMessage(event.getJDA());
 
         readyEvent = event;
 

@@ -1,8 +1,12 @@
 package commands.settings;
 
 import commands.Command;
+import core.Perms;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
@@ -10,6 +14,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * Created by zekro on 17.05.2017 / 13:55
@@ -20,6 +25,23 @@ import java.util.Arrays;
 public class Botmessage implements Command {
 
 
+    private static boolean custom = false;
+    private static int members = 0;
+
+    private static void count() {
+        members++;
+    }
+
+    public static void setSupplyingMessage(JDA jda) {
+
+        if (!custom) {
+            jda.getGuilds().forEach(g -> g.getMembers().forEach(m -> count()));
+            jda.getPresence().setGame(Game.of("Supplying " + members + " users" + " | -help | v." + STATICS.VERSION));
+            members = 0;
+        }
+    }
+
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -28,11 +50,11 @@ public class Botmessage implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
-        StringBuilder message = new StringBuilder();
-        Arrays.stream(args).forEach(s -> message.append(s + " "));
-        String messageString = message.substring(0, message.length() - 1);
+        custom = true;
+
+        String messageString = Arrays.stream(args).collect(Collectors.joining(" ")).substring(1);
         event.getJDA().getPresence().setGame(Game.of(messageString + " | -help | v." + STATICS.VERSION));
         event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN).setDescription("Successfully set bot message to `" + messageString + "`!").build()).queue();
 
