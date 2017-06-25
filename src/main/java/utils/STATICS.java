@@ -111,4 +111,6 @@ public class STATICS {
 
     public static String BOT_OWNER_ID = "";
 
+    public static int MUSIC_BUFFER = 1000;
+
 }
