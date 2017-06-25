@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import sun.security.x509.AVA;
 import utils.STATICS;
 
 import java.awt.*;
@@ -62,9 +63,12 @@ public class UserInfo implements Command {
         else
             ROLES = "No roles on this server.";
 
-        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN)
-                .setDescription(":spy:   **User information for " + memb.getUser().getName() + ":**")
-                .setThumbnail(AVATAR)
+        if (AVATAR == null) {
+            AVATAR = "No Avatar";
+        }
+
+        EmbedBuilder em = new EmbedBuilder().setColor(Color.GREEN);
+        em.setDescription(":spy:   **User information for " + memb.getUser().getName() + ":**")
                 .addField("Name", NAME, false)
                 .addField("User", NAME + "#" + DISCRIMINATOR, false)
                 .addField("ID", ID, false)
@@ -74,9 +78,14 @@ public class UserInfo implements Command {
                 .addField("Guild Permission Level", core.Perms.getLvl(memb) + "", false)
                 .addField("Guild Joined", GUILD_JOIN_DATE, false)
                 .addField("Discord Joined", DISCORD_JOINED_DATE, false)
-                .addField("Avatar-URL", AVATAR, false)
-                .build()
+                .addField("Avatar-URL", AVATAR, false);
 
+        if (AVATAR != "No Avatar") {
+            em.setThumbnail(AVATAR);
+        }
+
+        event.getTextChannel().sendMessage(
+                em.build()
         ).queue();
 
     }
