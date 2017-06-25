@@ -69,6 +69,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Latest Changelogs
 
+**THIS LIST WILL NOT BE UPDATED ANYMORE! PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS!**
+
 | Released Version  | Changes |
 |--|--|
 | <center><b>1.28.0.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added command "-report" |
