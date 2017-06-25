@@ -5,9 +5,7 @@ import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
 import commands.etc.*;
-import commands.guildAdministration.Kick;
-import commands.guildAdministration.Moveall;
-import commands.guildAdministration.VoiceKick;
+import commands.guildAdministration.*;
 import commands.music.Music;
 import commands.settings.*;
 import listeners.*;
@@ -38,7 +36,12 @@ public class Main {
         startArgumentHandler.args = args;
 
         settings.loadSettings();
-        if (!settings.testForToken()) {
+        try {
+            if (!settings.testForToken()) {
+                System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
+                System.exit(0);
+            }
+        } catch (Exception e) {
             System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
             System.exit(0);
         }
@@ -94,7 +97,7 @@ public class Main {
         commands.put("poll", new Vote2());
         commands.put("vote", new Vote2());
         commands.put("stats", new Stats());
-        commands.put("joke", new Joke());
+        commands.put("joke", new JokeV2());
         commands.put("userinfo", new UserInfo());
         commands.put("user", new UserInfo());
         commands.put("nudge", new Stups());
@@ -124,6 +127,11 @@ public class Main {
         commands.put("quote", new Quote());
         commands.put("r6", new Rand6());
         commands.put("rand6", new Rand6());
+        commands.put("mute", new Mute());
+        commands.put("log", new Log());
+        commands.put("broadcast", new Broadcast());
+        commands.put("guilds", new Guilds());
+        commands.put("report", new Report());
 
     }
 

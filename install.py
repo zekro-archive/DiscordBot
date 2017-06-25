@@ -39,7 +39,7 @@ print "##############################\n" \
       "# (C) 2017 by zekro          #\n" \
       "##############################\n\n"
 
-print "Please enter a path to install. Enter nothing for default path (~/Programs/zekroBot/)..."
+print "Please enter a path to install. Enter nothing for default installation path (~/Programs/zekroBot/)..."
 installPath = raw_input()
 installPath += "/"
 

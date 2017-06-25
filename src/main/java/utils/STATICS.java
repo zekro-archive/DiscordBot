@@ -16,7 +16,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.25.0.2";
+    public static String VERSION = "1.29.1.0";
     public static String THISBUILD = BUILDTYPE.STABLE;
 
     public static class BUILDTYPE {
@@ -108,5 +108,7 @@ public class STATICS {
     public static int reconnectCount = 0;
 
     public static ArrayList<ArrayList<String>> cmdLog = new ArrayList<>();
+
+    public static String BOT_OWNER_ID = "";
 
 }

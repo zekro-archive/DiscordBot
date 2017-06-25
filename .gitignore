@@ -3,5 +3,13 @@ target/classes/utils/SECRETS.class
 src/main/java/utils/SECRETS.java
 target/test-classes/utils/SECRETS.class
 SETTINGS.txt
+out/artifacts/DiscordBot_jar/libconnector.so
+SERVER_SETTINGS/
+.idea/
 *.class
 *.class
+DiscordBot.jar
+DiscordBot.iml
+_config.yml
+SETTINGS.txt
+.idea/workspace.xml
