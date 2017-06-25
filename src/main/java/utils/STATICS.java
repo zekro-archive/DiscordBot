@@ -16,7 +16,7 @@ public class STATICS {
 
     //######### GENERAL BOT SETTINGS #########//
 
-    public static String VERSION = "1.29.1.0";
+    public static String VERSION = "1.29.2.0";
     public static String THISBUILD = BUILDTYPE.STABLE;
 
     public static class BUILDTYPE {
@@ -110,5 +110,7 @@ public class STATICS {
     public static ArrayList<ArrayList<String>> cmdLog = new ArrayList<>();
 
     public static String BOT_OWNER_ID = "";
+
+    public static int MUSIC_BUFFER = 1000;
 
 }
