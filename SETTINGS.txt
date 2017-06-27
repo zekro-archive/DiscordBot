@@ -9,6 +9,8 @@
         TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DCppvg.lNnxUM-y_P7kSaRhmVZlevQ5m3I"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
+
+        BOT_OWNER_ID = "221905671296253953"
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
