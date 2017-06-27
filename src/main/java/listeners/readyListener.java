@@ -81,6 +81,7 @@ public class readyListener extends ListenerAdapter {
                 "#--------------------------------------------------------------------------------- - -  -  -\n\n"
         );
 
+        commands.settings.Botmessage.setSupplyingMessage(event.getJDA());
 
         WarframeAlerts.startTimer(event.getJDA());
 
