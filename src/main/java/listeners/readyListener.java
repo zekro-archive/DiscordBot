@@ -1,7 +1,7 @@
 package listeners;
 
+import commands.chat.WarframeAlerts;
 import core.update;
-import core.warframeAlertsCore;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -25,7 +25,6 @@ public class readyListener extends ListenerAdapter {
             @Override
             public void run() {
 
-                warframeAlertsCore.pasteAlertsInChat(readyEvent);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
                 if (!STATICS.TTT_SERVER_IP.equals(""))
                     testOnlineState(readyEvent.getJDA().getGuilds());
@@ -83,6 +82,8 @@ public class readyListener extends ListenerAdapter {
         );
 
 
+        WarframeAlerts.startTimer(event.getJDA());
+
         readyEvent = event;
 
         STATICS.lastRestart = new Date();
@@ -100,7 +101,6 @@ public class readyListener extends ListenerAdapter {
             @Override
             public void run() {
 
-                warframeAlertsCore.pasteAlertsInChat(event);
                 update.getUpdate(readyEvent.getJDA().getGuilds());
                 if (!STATICS.TTT_SERVER_IP.equals(""))
                     testOnlineState(readyEvent.getJDA().getGuilds());

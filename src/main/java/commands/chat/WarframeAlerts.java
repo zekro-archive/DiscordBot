@@ -2,6 +2,8 @@ package commands.chat;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
@@ -12,6 +14,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -26,10 +29,10 @@ public class WarframeAlerts implements Command {
 
 
     private static final String ALERTS_API = "https://deathsnacks.com/wf/data/alerts_raw.txt";
-    private static Timer timer;
-    private ArrayList<String> lastList;
+    private static Timer timer = new Timer();
+    private static ArrayList<String> lastList = new ArrayList<>();
 
-    public class AlertsParser {
+    public static class AlertsParser {
 
         String ID;
         String location;
@@ -62,7 +65,7 @@ public class WarframeAlerts implements Command {
 
     }
 
-    private ArrayList<String> getAlertsRaw() throws IOException {
+    private static ArrayList<String> getAlertsRaw() throws IOException {
 
         Scanner sc = new Scanner(new URL(ALERTS_API).openStream());
         ArrayList<String> out = new ArrayList<>();
@@ -71,10 +74,11 @@ public class WarframeAlerts implements Command {
             out.add(sc.nextLine());
         }
 
+        lastList = out;
         return out;
     }
 
-    private ArrayList<AlertsParser> getAlerts() throws IOException {
+    private static ArrayList<AlertsParser> getAlerts() throws IOException {
 
         ArrayList<AlertsParser> out = new ArrayList<>();
         getAlertsRaw().forEach(s -> out.add(new AlertsParser(s)));
@@ -82,7 +86,7 @@ public class WarframeAlerts implements Command {
         return out;
     }
 
-    private String getCurrentTime() {
+    private static String getCurrentTime() {
 
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss - MM/dd/yyyy");
@@ -90,7 +94,7 @@ public class WarframeAlerts implements Command {
         return format.format(date);
     }
 
-    private String getStartEndTime(long start, long end) {
+    private static String getStartEndTime(long start, long end) {
 
         Date date = new Date();
         String out;
@@ -114,7 +118,7 @@ public class WarframeAlerts implements Command {
 
     }
 
-    private EmbedBuilder createMessage(ArrayList<AlertsParser> inputList) {
+    private static EmbedBuilder createMessage(ArrayList<AlertsParser> inputList) {
 
         EmbedBuilder eb = new EmbedBuilder()
                 .setColor(new Color(0x0088FF))
@@ -136,11 +140,44 @@ public class WarframeAlerts implements Command {
 
     }
 
-    private boolean hasUpdated() throws IOException {
+    public static void startTimer(JDA jda) {
 
-        return lastList.size() > 0 && !lastList.equals(getAlertsRaw());
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+            ArrayList<TextChannel> textChans = new ArrayList<>();
+            jda.getGuilds().forEach(g -> {
+                List<TextChannel> chans = g.getTextChannelsByName(STATICS.warframeAlertsChannel, true);
+                if (chans.size() > 0)
+                    textChans.add(chans.get(0));
+            });
+
+            textChans.forEach(chan -> {
+
+                List<Message> history = chan.getHistory().retrievePast(1).complete();
+
+                if (history.size() == 0) {
+                    try {
+                        chan.sendMessage(createMessage(getAlerts()).build()).queue();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        history.get(0).editMessage(createMessage(getAlerts()).build()).queue();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+
+            }
+        }, 0, STATICS.refreshTime * 1000);
 
     }
+
 
 
     @Override
@@ -153,19 +190,31 @@ public class WarframeAlerts implements Command {
 
         if (args.length < 1) {
 
-            // TODO: Clear Test Outputs
-            System.out.println(
-            );
-
             event.getTextChannel().sendMessage(createMessage(getAlerts()).build()).queue();
-
             return;
+
         }
 
         switch (args[0].toLowerCase()) {
 
-            case "":
+            case "restart":
 
+                Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Restarting warframe alerts timer...").build()).complete();
+
+                try {
+                    timer.cancel();
+                    timer.purge();
+                } catch (Exception e) {}
+
+                timer = new Timer();
+                startTimer(event.getJDA());
+
+                msg.editMessage(new EmbedBuilder().setDescription("Restart finished!").build()).queue(m -> new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        m.delete().queue();
+                    }
+                }, 5000));
         }
 
     }
