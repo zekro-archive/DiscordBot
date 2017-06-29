@@ -1,11 +1,13 @@
 package commands.chat;
 
 import commands.Command;
+import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
@@ -148,7 +150,7 @@ public class WarframeAlerts implements Command {
 
             ArrayList<TextChannel> textChans = new ArrayList<>();
             jda.getGuilds().forEach(g -> {
-                List<TextChannel> chans = g.getTextChannelsByName(STATICS.warframeAlertsChannel, true);
+                List<TextChannel> chans = g.getTextChannelsByName(SSSS.getWARFRAMELAERTSCHAN(g), true);
                 if (chans.size() > 0)
                     textChans.add(chans.get(0));
             });
@@ -215,6 +217,18 @@ public class WarframeAlerts implements Command {
                         m.delete().queue();
                     }
                 }, 5000));
+
+                break;
+
+            case "channel":
+
+                if (args.length < 2) {
+                    event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid text channel!").build()).queue();
+                    return;
+                }
+
+                SSSS.setWARFRAMELAERTSCHAN(args[1].toLowerCase(), event.getGuild());
+                event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set warframe alerts channel to `" + args[1].toLowerCase() + "`").build()).queue();
         }
 
     }
