@@ -55,6 +55,7 @@ public class Guilds implements Command {
 
         StringBuilder sb = new StringBuilder();
 
+        sb.append("**Running on `" + event.getJDA().getGuilds().size() + "` guilds.**\n\n");
         event.getJDA().getGuilds().forEach(g -> sb.append(
                 ":white_small_square:   **" + g.getName() + "**  -  `" + g.getId() + "`  -  " + g.getOwner().getAsMention() + "\n"
         ));
