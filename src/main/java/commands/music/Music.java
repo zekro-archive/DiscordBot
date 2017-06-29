@@ -21,6 +21,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
 import utils.STATICS;
@@ -43,22 +44,24 @@ public class Music implements Command {
 
     private static final String NOTE = ":musical_note:  ";
 
-    private static Guild guild;
+    public static Guild guild;
 
     private static final int PLAYLIST_LIMIT = 1000;
     private static final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
     private static final Map<String, Map.Entry<AudioPlayer, TrackManager>> players = new HashMap<>();
+
+    public static Message PLAYERMESSAGE;
 
     private boolean endlessMode = false;
     private List<AudioTrack> endlessList = new ArrayList<>();
     private Member endlessAuthor;
 
 
-    private boolean hasPlayer(Guild guild) {
+    private static boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
     }
 
-    private AudioPlayer getPlayer(Guild guild) {
+    public static AudioPlayer getPlayer(Guild guild) {
         AudioPlayer p;
         if (hasPlayer(guild)) {
             p = players.get(guild.getId()).getKey();
@@ -72,7 +75,7 @@ public class Music implements Command {
         return players.get(guild.getId()).getValue();
     }
 
-    private AudioPlayer createPlayer(Guild guild) {
+    private static AudioPlayer createPlayer(Guild guild) {
         AudioPlayer nPlayer = myManager.createPlayer();
         TrackManager manager = new TrackManager(nPlayer);
         nPlayer.addListener(manager);
@@ -310,22 +313,38 @@ public class Music implements Command {
         @Override
         public void onTrackStart(AudioPlayer player, AudioTrack track) {
             if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0) {
+
                 guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).getManager().setTopic(
                         track.getInfo().title
                 ).queue();
 
-                Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
-                ArrayList<AudioInfo> tracks = new ArrayList<>();
-                queue.forEach(audioInfo -> tracks.add(audioInfo));
 
-                EmbedBuilder eb = new EmbedBuilder()
-                        .setColor(Color.CYAN)
-                        .setDescription(NOTE + "   **Now Playing**   ")
-                        .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
-                        .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
-                guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
-                        eb.build()
-                ).queue();
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
+                        ArrayList<AudioInfo> tracks = new ArrayList<>();
+                        queue.forEach(audioInfo -> tracks.add(audioInfo));
+
+                        TextChannel musicChan = guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0);
+
+                        if (PLAYERMESSAGE == null) {
+                            PLAYERMESSAGE = musicChan.sendMessage(createPlayerBuilder(track, tracks.get(1).getTrack())
+                                    .build()).complete();
+                            PLAYERMESSAGE.addReaction("\uD83D\uDD36").queue();
+                            PLAYERMESSAGE.addReaction("➡").queue();
+                        }
+                        else {
+                            PLAYERMESSAGE.editMessage(createPlayerBuilder(track, tracks.get(1).getTrack())
+                                    .build()).queue();
+                        }
+                    }
+                }, 1000);
+
+
+
+
             }
         }
 
@@ -358,6 +377,15 @@ public class Music implements Command {
         AudioSourceManagers.registerRemoteSources(myManager);
     }
 
+    private EmbedBuilder createPlayerBuilder(AudioTrack current, AudioTrack next) {
+        return new EmbedBuilder()
+                .setColor(new Color(0x00FFE9))
+                .setTitle("\uD83C\uDFB5  MUSIC PLAYER", null)
+                .addField("Currently playing", "`[" + getTimestamp(current.getDuration()) + "]`  " + current.getInfo().title, false)
+                .addField("Next playing", "`[" + getTimestamp(next.getDuration()) + "]`  " + next.getInfo().title, false);
+    }
+
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -387,6 +415,7 @@ public class Music implements Command {
 
         if (STATICS.music_volume > 0)
             getPlayer(guild).setVolume(STATICS.music_volume);
+
 
         switch (args.length) {
             case 0:
@@ -678,6 +707,8 @@ public class Music implements Command {
                                     5000
                             );
                         }
+
+
                         break;
 
                     case "ps":

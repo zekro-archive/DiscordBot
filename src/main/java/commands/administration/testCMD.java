@@ -16,9 +16,6 @@ import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by Ringo Hoffmann on 20.02.2017.
- */
 
 public class testCMD implements Command {
     @Override
@@ -31,7 +28,7 @@ public class testCMD implements Command {
 
         if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
-        System.out.println("TEST");
+        event.getTextChannel().sendMessage("TESTMSG").queue(m -> System.out.println(m.getId()));
 
     }
 
