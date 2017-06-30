@@ -28,14 +28,7 @@ public class Update implements Command {
 
         if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
-        if (!core.update.checkIfUpdate()) {
-            event.getTextChannel().sendMessage(
-                    ":warning:   The bot is up to date! ;)"
-            ).queue();
-            return;
-        }
-
-        core.update.getUpdate(event.getJDA().getGuilds());
+        update.manualCheck(event.getMessage().getTextChannel());
 
     }
 

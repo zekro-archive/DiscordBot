@@ -1,9 +1,13 @@
 package listeners;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,6 +21,39 @@ import java.util.TimerTask;
 public class privateMessageListener extends ListenerAdapter {
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
+
+        if (event.getMessage().getContent().equalsIgnoreCase("-disable")) {
+
+            try {
+                new File("SERVER_SETTINGS/no_update_info").createNewFile();
+                event.getChannel().sendMessage(new EmbedBuilder()
+                        .setColor(Color.red)
+                        .setDescription("You disabled update notifications.\n" +
+                                        "Now, you wont get automatically notified if there are new versions of the bot available.")
+                        .setFooter("Re-enable this function with enetring '-enable'.", null)
+                        .build()).queue();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
+        if (event.getMessage().getContent().equalsIgnoreCase("-enable")) {
+
+
+            File f = new File("SERVER_SETTINGS/no_update_info");
+            if (f.exists())
+                f.delete();
+
+            event.getChannel().sendMessage(new EmbedBuilder()
+                    .setColor(Color.green)
+                    .setDescription("You re-enabled update notification.")
+                    .setFooter("Disable this function with enetring '-disable'.", null)
+                    .build()).queue();
+
+            return;
+        }
+
 
         String[] answers = {
                 "Hey, " + event.getAuthor().getName() + "! What's going on?",
@@ -68,17 +105,6 @@ public class privateMessageListener extends ListenerAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-        //PrivateChannel pc = null;
-        //try {
-        //    pc = event.getAuthor().openPrivateChannel().complete();
-        //    pc.sendMessage(
-        //            ":warning:  Hey! Please don't send private messages to the bot's account! Sorry, but nobody will receive them. :crying_cat_face: "
-        //    ).queue();
-        //} catch (Exception e) {}
-
 
     }
 
