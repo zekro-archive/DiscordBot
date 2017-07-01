@@ -49,8 +49,8 @@ public class Report implements Command {
         admins.forEach(m -> m.getUser().openPrivateChannel().complete().sendMessage(
                 new EmbedBuilder()
                         .setAuthor(m.getEffectiveName() + " submitted a report.", null, m.getUser().getAvatarUrl())
-                        .addField("Author", author.getAsMention(), true)
-                        .addField("Reported Member", traitor.getAsMention(), true)
+                        .addField("Author", author.getEffectiveName() + " (" + author.getAsMention() + ")", true)
+                        .addField("Reported Member", traitor.getEffectiveAvatarUrl() + " (" + traitor.getAsMention() + ")", true)
                         .addField("Reason", reason, false)
                         .build()
         ).queue());

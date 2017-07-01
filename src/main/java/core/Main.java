@@ -133,6 +133,8 @@ public class Main {
         commands.put("broadcast", new Broadcast());
         commands.put("guilds", new Guilds());
         commands.put("report", new Report());
+        commands.put("bug", new Bug());
+        commands.put("suggestion", new Bug());
 
     }
 
