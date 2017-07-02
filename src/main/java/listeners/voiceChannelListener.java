@@ -1,5 +1,6 @@
 package listeners;
 
+import net.dv8tion.jda.core.events.channel.voice.update.VoiceChannelUpdatePositionEvent;
 import net.dv8tion.jda.core.events.guild.voice.*;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
@@ -8,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class voiceChannelListener extends ListenerAdapter {
+
+    private int posold;
 
     public String logChannel = STATICS.voiceLogChannel;
     public String getTime() {
@@ -19,6 +22,9 @@ public class voiceChannelListener extends ListenerAdapter {
     @Override
     public void onGuildVoiceJoin(GuildVoiceJoinEvent event) {
 
+        if (event.getChannelJoined().getName().equals("-------------------------")) {
+            event.getGuild().getController().moveVoiceMember(event.getMember(), event.getGuild().getVoiceChannels().get(event.getChannelJoined().getPosition() - 1)).queue();
+        }
 
         if (event.getGuild().getTextChannelsByName(logChannel, false).isEmpty())
             return;
@@ -31,6 +37,10 @@ public class voiceChannelListener extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceMove(GuildVoiceMoveEvent event) {
+
+        if (event.getChannelJoined().getName().equals("-------------------------")) {
+            event.getGuild().getController().moveVoiceMember(event.getMember(), event.getChannelLeft()).queue();
+        }
 
         if (event.getGuild().getTextChannelsByName(logChannel, false).isEmpty())
             return;

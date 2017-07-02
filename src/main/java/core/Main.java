@@ -135,6 +135,7 @@ public class Main {
         commands.put("report", new Report());
         commands.put("bug", new Bug());
         commands.put("suggestion", new Bug());
+        commands.put("spacer", new Spacer());
 
     }
 

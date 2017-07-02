@@ -19,7 +19,6 @@ public class settings {
 
 
     private static File sfile = new File("SETTINGS.txt");
-    private static TomlWriter tomlw = new TomlWriter();
     private static Toml toml;
 
     public static class SCONT {
@@ -35,7 +34,7 @@ public class settings {
         static final String KICK_VOICE_CHANNEL = "KICK_VOICE_CHANNEL";
         static final String TTT_SERVER_IP = "TTT_SERVER_IP";
         static final String TTT_SERVER_PORT = "TTT_SERVER_PORT";
-        static final String AUTO_UPDATE = "AUTO_UPDATE";
+        static final String UPDATE_INFO = "UPDATE_INFO";
         static final String MUSIC_CHANNEL = "MUSIC_CHANNEL";
         static final String GUILD_JOIN_ROLE = "GUILD_JOIN_ROLE";
         static final String MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = "MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL";
@@ -75,14 +74,14 @@ public class settings {
                             "        CUSTOM_PLAYING_MESSAGE = \"zekro.de\"\n" +
                             "    # Log entered command in console of the bot\n" +
                             "        COMMAND_CONSOLE_OUTPUT = true\n" +
-                            "    # Automatically check for updates\n" +
-                            "        AUTO_UPDATE = false\n" +
+                            "    # Automatically check for updates and inform you if there is a new update available\n" +
+                            "        UPDATE_INFO = true\n" +
                             "    # Only allow members to use music commands in music channel\n" +
                             "        MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false\n" +
                             "    # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)\n" +
                             "        MUSIC_VOLUME = 0\n" +
                             "    # Music buffer in milliseconds\n" +
-                            "            MUSIC_BUFFER = 5000" +
+                            "        MUSIC_BUFFER = 5000" +
                             "\n" +
                             "# PERMISSION SETTINGS #\n" +
                             "\n" +
@@ -137,31 +136,6 @@ public class settings {
 
             br.close();
 
-            /*
-            Map<String, Object> map = new HashMap<>();
-
-            map.put(SCONT.COMMAND_CONSOLE_OUTPUT, true);
-            map.put(SCONT.DOCID_JOKES, "");
-            map.put(SCONT.DOCID_WARFRAME_ALERTS_FILTER, "");
-            map.put(SCONT.PERMISSION_ROLES, "Admin, Moderator, Owner");
-            map.put(SCONT.WARFRAME_ALERTS_REFRESHTIME, 10);
-            map.put(SCONT.WARFRAME_ALERTS_TEXTCHANNEL, "");
-            map.put(SCONT.VOICE_LOG_TEXTCHANNEL, "");
-            map.put(SCONT.CUSTOM_MESSAGE, "ゼクロ");
-            map.put(SCONT.PREFIX, "-");
-            map.put(SCONT.TOKEN, "");
-            map.put(SCONT.KICK_VOICE_CHANNEL, "");
-            map.put(SCONT.AUTO_UPDATE, "true");
-            map.put(SCONT.MUSIC_CHANNEL, "mucke");
-            map.put(SCONT.GUILD_JOIN_ROLE, "Member");
-            map.put(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL, false);
-            map.put(SCONT.MUSIC_VOLUME, 0);
-            map.put(SCONT.DISCORD_JOIN_MESSAGE, ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:");
-            map.put(SCONT.FULL_PERMISSION_ROLES, "Admin, Owner");
-            map.put(SCONT.BOT_OWNER_ID, "");
-
-            tomlw.write(map, new File("SETTINGS.txt"));
-            */
 
         } else {
 
@@ -179,7 +153,7 @@ public class settings {
             STATICS.KICK_VOICE_CHANNEL = toml.getString(SCONT.KICK_VOICE_CHANNEL);
             STATICS.TTT_SERVER_IP = toml.getString(SCONT.TTT_SERVER_IP);
             STATICS.TTT_SERVER_PORT = Math.toIntExact(toml.getLong(SCONT.TTT_SERVER_PORT));
-            STATICS.autoUpdate = toml.getBoolean(SCONT.AUTO_UPDATE);
+            STATICS.autoUpdate = toml.getBoolean(SCONT.UPDATE_INFO);
             STATICS.musicChannel = toml.getString(SCONT.MUSIC_CHANNEL);
             STATICS.guildJoinRole = toml.getString(SCONT.GUILD_JOIN_ROLE);
             STATICS.musicCommandsOnlyInMusicChannel = toml.getBoolean(SCONT.MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL);

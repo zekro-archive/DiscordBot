@@ -105,13 +105,13 @@ public class readyListener extends ListenerAdapter {
             STATICS.enableWarframeAlerts = true;
         }
 
-
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                update.checkIfUpdate(event.getJDA());
-            }
-        }, 0, 60000);
+        if (STATICS.autoUpdate)
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    update.checkIfUpdate(event.getJDA());
+                }
+            }, 0, 60000);
 
         timerOnReady = new Timer();
         timerAction = new TimerTask() {
