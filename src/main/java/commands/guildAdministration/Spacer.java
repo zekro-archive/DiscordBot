@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
+import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -64,11 +65,16 @@ public class Spacer implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Create spacer voice channels";
     }
 
     @Override
     public String commandType() {
-        return null;
+        return STATICS.CMDTYPE.guildadmin;
+    }
+
+    @Override
+    public int permission() {
+        return 1;
     }
 }

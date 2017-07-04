@@ -245,11 +245,16 @@ public class WarframeAlerts implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Manage warframe alerts function";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.chatutils;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }

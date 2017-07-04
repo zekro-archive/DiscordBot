@@ -12,6 +12,7 @@ import utils.STATICS;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Comparator;
 
 /**
  * Created by zekro on 11.06.2017 / 11:02
@@ -56,8 +57,10 @@ public class Guilds implements Command {
         StringBuilder sb = new StringBuilder();
 
         sb.append("**Running on `" + event.getJDA().getGuilds().size() + "` guilds.**\n\n");
-        event.getJDA().getGuilds().forEach(g -> sb.append(
-                ":white_small_square:   **" + g.getName() + "**  -  `" + g.getId() + "`  -  " + g.getOwner().getAsMention() + "\n"
+        event.getJDA().getGuilds().stream()
+                .sorted(Comparator.comparingInt(s -> s.getMembers().size()))
+                .forEach(g -> sb.append(
+                ":white_small_square:   *[" + g.getMembers().size() + "]*  -  **" + g.getName() + "**  -  `" + g.getId() + "`  -  " + g.getOwner().getEffectiveName() + "\n"
         ));
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds", null).setDescription(sb.toString()).build()).queue();
@@ -76,11 +79,16 @@ public class Guilds implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Get list of guilds bot is running on";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.administration;
+    }
+
+    @Override
+    public int permission() {
+        return 3;
     }
 }

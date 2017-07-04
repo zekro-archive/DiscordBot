@@ -131,4 +131,9 @@ public class VoiceKick implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.guildadmin;
     }
+
+    @Override
+    public int permission() {
+        return 1;
+    }
 }

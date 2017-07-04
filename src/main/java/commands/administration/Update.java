@@ -51,4 +51,9 @@ public class Update implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.administration;
     }
+
+    @Override
+    public int permission() {
+        return 3;
+    }
 }

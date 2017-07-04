@@ -104,4 +104,9 @@ public class Stats implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.essentials;
     }
+
+    @Override
+    public int permission() {
+        return 0;
+    }
 }

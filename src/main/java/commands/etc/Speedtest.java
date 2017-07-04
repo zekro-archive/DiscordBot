@@ -107,4 +107,9 @@ public class Speedtest implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.etc;
     }
+
+    @Override
+    public int permission() {
+        return 0;
+    }
 }

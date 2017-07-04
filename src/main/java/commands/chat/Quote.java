@@ -79,11 +79,16 @@ public class Quote implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Quote a message in any channel on guild";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.chatutils;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }

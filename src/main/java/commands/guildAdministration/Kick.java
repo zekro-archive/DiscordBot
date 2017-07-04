@@ -23,7 +23,7 @@ public class Kick implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(1, event)) return;
+        if (core.Perms.check(2, event)) return;
 
         String reason = "none";
         if (args.length > 1) {
@@ -67,5 +67,10 @@ public class Kick implements Command {
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.guildadmin;
+    }
+
+    @Override
+    public int permission() {
+        return 2;
     }
 }

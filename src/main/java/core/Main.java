@@ -149,6 +149,7 @@ public class Main {
         builder.addListener(new privateMessageListener());
         builder.addListener(new reactionListener());
         builder.addListener(new vkickListener());
+        builder.addListener(new botJoinListener());
 
     }
 
