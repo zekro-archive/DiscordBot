@@ -37,6 +37,8 @@ public class Main {
 
         settings.loadSettings();
 
+        BotStats.load();
+
         try {
             if (!settings.testForToken()) {
                 System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
@@ -136,6 +138,7 @@ public class Main {
         commands.put("bug", new Bug());
         commands.put("suggestion", new Bug());
         commands.put("spacer", new Spacer());
+        commands.put("botstats", new BotStats());
 
     }
 
@@ -157,6 +160,7 @@ public class Main {
 
         if (commands.containsKey(cmd.invoke)) {
 
+            BotStats.commandsExecuted++;
             boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);
 
             if (!safe) {
