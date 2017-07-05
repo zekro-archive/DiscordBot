@@ -13,7 +13,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-18%2F25-3cc482.svg"><br>
+<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%21Capacity-18%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
