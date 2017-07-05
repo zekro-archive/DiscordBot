@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.29.3.0-3cd0d8.svg"></a><br>
+<img src="https://img.shields.io/badge/currently%20running%20on-1.32.0.0-3cd0d8.svg"></a><br>
 
 -----
 
