@@ -137,14 +137,14 @@ public class Main {
 
     public static void initializeListeners() {
 
-        builder.addListener(new readyListener());
-        builder.addListener(new botListener());
-        builder.addListener(new reconnectListener());
-        builder.addListener(new voiceChannelListener());
-        builder.addListener(new guildJoinListener());
-        builder.addListener(new privateMessageListener());
-        builder.addListener(new reactionListener());
-        builder.addListener(new vkickListener());
+        builder.addEventListener(new botListener());
+        builder.addEventListener(new reconnectListener());
+        builder.addEventListener(new voiceChannelListener());
+        builder.addEventListener(new guildJoinListener());
+        builder.addEventListener(new privateMessageListener());
+        builder.addEventListener(new reactionListener());
+        builder.addEventListener(new vkickListener());
+        builder.addEventListener(new readyListener());
 
     }
 
