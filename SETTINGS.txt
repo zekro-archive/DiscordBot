@@ -6,9 +6,11 @@
 # GENERAL SERVER SETTINGS #
 
     # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
-        TOKEN = ""
+        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DCppvg.lNnxUM-y_P7kSaRhmVZlevQ5m3I"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
-        CMD_PREFIX = "-"
+        CMD_PREFIX = "."
+
+        BOT_OWNER_ID = "221905671296253953"
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
@@ -19,6 +21,8 @@
         MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false
     # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)
         MUSIC_VOLUME = 0
+    # Music buffer in milliseconds
+        MUSIC_BUFFER = 5000
 
 # PERMISSION SETTINGS #
 
@@ -50,7 +54,7 @@
     # Refresh of alerts list in seconds
         WARFRAME_ALERTS_REFRESHTIME = 10
     # Text channel for warframe alerts list
-        WARFRAME_ALERTS_TEXTCHANNEL = ""
+        WARFRAME_ALERTS_TEXTCHANNEL = "test"
 
 
 # MESSAGE SETTINGS #

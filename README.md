@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.29.1.0-3cd0d8.svg"></a><br>
+<img src="https://img.shields.io/badge/currently%20running%20on-1.32.0.0-3cd0d8.svg"></a><br>
 
 -----
 
@@ -13,7 +13,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-17%2F25-3cc482.svg"><br>
+<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-21%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
@@ -69,6 +69,8 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Latest Changelogs
 
+**THIS LIST WILL NOT BE UPDATED ANYMORE! PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS!**
+
 | Released Version  | Changes |
 |--|--|
 | <center><b>1.28.0.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added command "-report" |
@@ -117,25 +119,7 @@ https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
 -----
 ### Future Intends
 
-<p>🔲&nbsp;&nbsp; Improve update and restart commands</p>
-
-<p>🔲&nbsp;&nbsp; Rework warframe alerts listener</p>
-
-<p>🔲&nbsp;&nbsp; Bug report / suggestion command</p>
-
-<p>✅&nbsp;&nbsp; Music endless queue mode</p>
-
-<p>✅&nbsp;&nbsp; Twitter Tweets to textchannel function</p>
-
-<p>✅&nbsp;&nbsp; Rework vote command</p>
-
-<p>✅&nbsp;&nbsp; Rework cat command</p>
-
-<p>✅&nbsp;&nbsp; Rework badjoke command</p>
-
-<p>✅&nbsp;&nbsp; Server specific autorole system</p>
-
-<p>✅&nbsp;&nbsp; "playshuffle" Command to directly shuffle the queue while starting it</p>
+**SEE CURRENT TODO-LIST <a href="https://github.com/zekroTJA/DiscordBot/projects/1">HERE</a>**
 
 -----
 ### Used libraries

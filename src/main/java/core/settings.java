@@ -43,6 +43,7 @@ public class settings {
         static final String DISCORD_JOIN_MESSAGE = "DISCORD_JOIN_MESSAGE";
         static final String FULL_PERMISSION_ROLES = "FULL_PERMISSION_ROLES";
         static final String BOT_OWNER_ID = "BOT_OWNER_ID";
+        static final String MUSIC_BUFFER = "MUSIC_BUFFER";
     }
 
     public static boolean testForToken() {
@@ -80,6 +81,8 @@ public class settings {
                             "        MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false\n" +
                             "    # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)\n" +
                             "        MUSIC_VOLUME = 0\n" +
+                            "    # Music buffer in milliseconds\n" +
+                            "            MUSIC_BUFFER = 5000" +
                             "\n" +
                             "# PERMISSION SETTINGS #\n" +
                             "\n" +
@@ -184,6 +187,7 @@ public class settings {
             STATICS.discordJoinMessage = toml.getString(SCONT.DISCORD_JOIN_MESSAGE);
             STATICS.FULLPERMS = toml.getString(SCONT.FULL_PERMISSION_ROLES).split(", ");
             STATICS.BOT_OWNER_ID = toml.getString(SCONT.BOT_OWNER_ID);
+            STATICS.MUSIC_BUFFER = Math.toIntExact(toml.getLong(SCONT.MUSIC_BUFFER));
         }
     }
 
