@@ -5,6 +5,7 @@ import core.Main;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.PermissionException;
 import utils.STATICS;
 
 import java.awt.*;
@@ -56,7 +57,6 @@ public class Help implements Command {
 
         String[] ignorers = {"c", "m", "bj", "ttt", "userinfo", "dev", "nudge", "poll", "moveall"};
         Arrays.stream(ignorers).forEach(s -> cmds.remove(s));
-
 
         try {
 

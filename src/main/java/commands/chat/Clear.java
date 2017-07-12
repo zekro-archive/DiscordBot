@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zekro on 18.03.2017 / 01:29
@@ -60,16 +61,9 @@ public class Clear implements Command {
                     //Nichts tun
                 }
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                event.getTextChannel().sendMessage(MSGS.success.setDescription(
                         "Successfully deleted all messages!"
-                ).build()).complete();
-
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        answer.delete().queue();
-                    }
-                }, 3000);
+                ).build()).queue( message -> message.delete().queueAfter(3, TimeUnit.SECONDS));
 
             }else if (args.length < 1 || (args.length > 0 ? getInt(args[0]) : 1) == 1 && (args.length > 0 ? getInt(args[0]) : 1) < 2) {
 
@@ -77,16 +71,9 @@ public class Clear implements Command {
                 msgs = history.retrievePast(2).complete();
                 msgs.get(0).delete().queue();
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                event.getTextChannel().sendMessage(MSGS.success.setDescription(
                         "Successfully deleted last message!"
-                ).build()).complete();
-
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        answer.delete().queue();
-                    }
-                }, 3000);
+                ).build()).queue( message -> message.delete().queueAfter(3, TimeUnit.SECONDS));
 
             } else if(args.length == 2) {
                 // 24/03/2013 21:54
@@ -112,17 +99,10 @@ public class Clear implements Command {
                             }
 
                         }
-
-                        Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                        event.getTextChannel().sendMessage(MSGS.success.setDescription(
                                 "Successfully deleted " + args[0] + " messages!"
-                        ).build()).complete();
+                        ).build()).queue( message -> message.delete().queueAfter(3, TimeUnit.SECONDS));
 
-                        new Timer().schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                answer.delete().queue();
-                            }
-                        }, 3000);
                     } catch (Exception ex) {
                         //Nichts tun
                     }
@@ -142,16 +122,10 @@ public class Clear implements Command {
                 msgs = history.retrievePast(getInt(args[0])).complete();
                 event.getTextChannel().deleteMessages(msgs).queue();
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                event.getTextChannel().sendMessage(MSGS.success.setDescription(
                         "Successfully deleted " + args[0] + " messages!"
-                ).build()).complete();
+                ).build()).queue( message -> message.delete().queueAfter(3, TimeUnit.SECONDS));
 
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        answer.delete().queue();
-                    }
-                }, 3000);
             } else {
                 event.getTextChannel().sendMessage(MSGS.error
                         .addField("Error Type", "Message value out of bounds.", false)

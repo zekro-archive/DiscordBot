@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zekro on 07.05.2017 / 10:55
@@ -54,15 +55,9 @@ public class Moveall implements Command {
                             .forEach(member -> event.getGuild().getController().moveVoiceMember(member, vc).queue());
 
                     event.getMessage().delete().queue();
-                    Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0, 169, 255))
+                    event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0, 169, 255))
                             .setDescription("Moved **" + membersInChannel + "** members from `" + VCfrom + "` to `" + VCto + "`.")
-                            .build()).complete();
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            msg.delete().queue();
-                        }
-                    }, 5000);
+                            .build()).queue(m -> m.delete().queueAfter(5, TimeUnit.SECONDS));
 
                 } else {
                     event.getTextChannel().sendMessage(

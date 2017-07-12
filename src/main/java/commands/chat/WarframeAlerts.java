@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -209,12 +210,7 @@ public class WarframeAlerts implements Command {
                 timer = new Timer();
                 startTimer(event.getJDA());
 
-                msg.editMessage(new EmbedBuilder().setDescription("Restart finished!").build()).queue(m -> new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        m.delete().queue();
-                    }
-                }, 5000));
+                msg.editMessage(new EmbedBuilder().setDescription("Restart finished!").build()).queue(m -> m.delete().completeAfter(5, TimeUnit.SECONDS));
         }
 
     }
