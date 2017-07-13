@@ -72,9 +72,9 @@ public class Log implements Command {
             if (f.exists()) {
                 if (f.delete()) {
                     f.createNewFile();
-                    event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully cleared log file.").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully cleared log file.").build()).queue();
                 } else {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription("Failed while attempting to clear log file.").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription("Failed while attempting to clear log file.").build()).queue();
                 }
             }
             return;
@@ -114,7 +114,7 @@ public class Log implements Command {
 
         } else {
 
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("There is no file `'screenlog.0'` available to get log from.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("There is no file `'screenlog.0'` available to get log from.").build()).queue();
 
         }
 

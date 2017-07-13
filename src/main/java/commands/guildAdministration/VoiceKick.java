@@ -43,15 +43,15 @@ public class VoiceKick implements Command {
                 String vc = sb.toString().substring(1);
                 if (event.getGuild().getVoiceChannelsByName(vc, true).size() > 0) {
                     SSSS.setVKICKCHANNEL(vc, event.getGuild());
-                    event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set voice kick channel to `" + vc + "`").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set voice kick channel to `" + vc + "`").build()).queue();
                     return;
                 } else {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid voice channel existing on this guild.").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription("Please enter a valid voice channel existing on this guild.").build()).queue();
                     return;
                 }
 
             } else {
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid voice channel existing on this guild.").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("Please enter a valid voice channel existing on this guild.").build()).queue();
                 return;
             }
         }
@@ -70,7 +70,7 @@ public class VoiceKick implements Command {
             List<VoiceChannel> vc = event.getGuild().getVoiceChannelsByName(SSSS.getVKICKCHANNEL(event.getGuild()), true);
 
             if (vc.size() == 0) {
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("There is no voice channel set or it is no more existent on this guild.\nPlease set a valid voice channel with `-vkick channel <channel name>`.").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("There is no voice channel set or it is no more existent on this guild.\nPlease set a valid voice channel with `-vkick channel <channel name>`.").build()).queue();
                 return;
             }
 

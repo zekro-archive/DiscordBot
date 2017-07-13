@@ -60,7 +60,7 @@ public class Clear implements Command {
                     //Nichts tun
                 }
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                Message answer = event.getTextChannel().sendMessage(MSGS.success().setDescription(
                         "Successfully deleted all messages!"
                 ).build()).complete();
 
@@ -77,7 +77,7 @@ public class Clear implements Command {
                 msgs = history.retrievePast(2).complete();
                 msgs.get(0).delete().queue();
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                Message answer = event.getTextChannel().sendMessage(MSGS.success().setDescription(
                         "Successfully deleted last message!"
                 ).build()).complete();
 
@@ -113,7 +113,7 @@ public class Clear implements Command {
 
                         }
 
-                        Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                        Message answer = event.getTextChannel().sendMessage(MSGS.success().setDescription(
                                 "Successfully deleted " + args[0] + " messages!"
                         ).build()).complete();
 
@@ -129,7 +129,7 @@ public class Clear implements Command {
                 }
                 catch (ParseException ex)
                 {
-                    event.getTextChannel().sendMessage(MSGS.error
+                    event.getTextChannel().sendMessage(MSGS.error()
                             .addField("Error Type", "Wrong Timeformat.", false)
                             .addField("Description", "Pleas enter the Time in the right Timeformat:\n" + simpleDateFormat.format(new Date()), false)
                             .build()
@@ -142,7 +142,7 @@ public class Clear implements Command {
                 msgs = history.retrievePast(getInt(args[0])).complete();
                 event.getTextChannel().deleteMessages(msgs).queue();
 
-                Message answer = event.getTextChannel().sendMessage(MSGS.success.setDescription(
+                Message answer = event.getTextChannel().sendMessage(MSGS.success().setDescription(
                         "Successfully deleted " + args[0] + " messages!"
                 ).build()).complete();
 
@@ -153,7 +153,7 @@ public class Clear implements Command {
                     }
                 }, 3000);
             } else {
-                event.getTextChannel().sendMessage(MSGS.error
+                event.getTextChannel().sendMessage(MSGS.error()
                         .addField("Error Type", "Message value out of bounds.", false)
                         .addField("Description", "The entered number if messages can not be more than 100 messages!", false)
                         .build()
@@ -162,7 +162,7 @@ public class Clear implements Command {
 
 
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(MSGS.error
+            event.getTextChannel().sendMessage(MSGS.error()
                     .addField("Error Type", e.getLocalizedMessage(), false)
                     .addField("Message", e.getMessage(), false)
                     .build()

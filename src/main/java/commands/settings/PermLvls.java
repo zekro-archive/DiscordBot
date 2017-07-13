@@ -26,10 +26,10 @@ public class PermLvls implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (core.Perms.check(permission(), event)) return;
 
         if (args.length < 2) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
@@ -40,16 +40,16 @@ public class PermLvls implements Command {
 
             case "1":
                 SSSS.setPERMROLES_1(sb.toString().substring(0, sb.toString().length() - 1), event.getGuild());
-                event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set roles `" + sb.toString().substring(0, sb.toString().length() - 1) + "` to permission level `" + args[0] + "`").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set roles `" + sb.toString().substring(0, sb.toString().length() - 1) + "` to permission level `" + args[0] + "`").build()).queue();
                 break;
 
             case "2":
                 SSSS.setPERMROLES_2(sb.toString().substring(0, sb.toString().length() - 1), event.getGuild());
-                event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set roles `" + sb.toString().substring(0, sb.toString().length() - 1) + "` to permission level `" + args[0] + "`").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set roles `" + sb.toString().substring(0, sb.toString().length() - 1) + "` to permission level `" + args[0] + "`").build()).queue();
                 break;
 
             default:
-                event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                 break;
 
         }
@@ -78,6 +78,6 @@ public class PermLvls implements Command {
 
     @Override
     public int permission() {
-        return 2;
+        return 3;
     }
 }

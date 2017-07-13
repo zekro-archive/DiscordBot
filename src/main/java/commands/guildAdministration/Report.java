@@ -50,14 +50,14 @@ public class Report implements Command {
                 new EmbedBuilder()
                         .setAuthor(m.getEffectiveName() + " submitted a report.", null, m.getUser().getAvatarUrl())
                         .addField("Author", author.getEffectiveName() + " (" + author.getAsMention() + ")", true)
-                        .addField("Reported Member", traitor.getEffectiveAvatarUrl() + " (" + traitor.getAsMention() + ")", true)
+                        .addField("Reported Member", traitor.getName() + " (" + traitor.getAsMention() + ")", true)
                         .addField("Reason", reason, false)
                         .build()
         ).queue());
 
         author.getUser().openPrivateChannel().complete().sendMessage(
                 new EmbedBuilder()
-                    .setDescription("Thanks for your report submit.\nYour report got send by direct message to " + sendTo.substring(2) + ".")
+                    .setDescription("Thanks for your report submit.\nYour report got send by direct message to " + sendTo.toString() + ".")
                     .build()
         ).queue();
 

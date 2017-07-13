@@ -35,7 +35,7 @@ public class Cat implements Command {
                     delay = Integer.parseInt(args[1]);
                     if (delay < 5) {
                         delay = 5;
-                        event.getTextChannel().sendMessage(MSGS.error.setDescription("The minumum time period is 5 seconds because of spam protection. ;)").build()).queue();
+                        event.getTextChannel().sendMessage(MSGS.error().setDescription("The minumum time period is 5 seconds because of spam protection. ;)").build()).queue();
                     }
                 } catch (Exception e) {
                     delay = 10;

@@ -36,7 +36,7 @@ public class Guilds implements Command {
             try {
                 g = event.getJDA().getGuildById(args[1]);
             } catch (Exception e) {
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("There is no guild with the entered ID.").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("There is no guild with the entered ID.").build()).queue();
                 return;
             }
 

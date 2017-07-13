@@ -34,7 +34,7 @@ public class Bug implements Command {
 
 
     public static void sendConfMessage() {
-        MESSAGE.getTextChannel().sendMessage(MSGS.success.setDescription("Submit sucesfully send!").build()).queue();
+        MESSAGE.getTextChannel().sendMessage(MSGS.success().setDescription("Submit sucesfully send!").build()).queue();
     }
 
 
@@ -58,7 +58,7 @@ public class Bug implements Command {
                 ).build()).queue();
                 return;
             }
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(
                     "Sorry, the expandet version of this command is only available on the public version of the bot!\n\n" +
                     "If you want to submit a bug or a suggestion, please use the public **[google sheet](https://s.zekro.de/botsubs)**."
             ).build()).queue();

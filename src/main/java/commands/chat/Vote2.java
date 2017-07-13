@@ -52,7 +52,7 @@ public class Vote2 implements Command  {
     private void createPoll(String[] args, MessageReceivedEvent event) {
 
         if (voteHash.containsKey(event.getGuild())) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("A poll is currently running! Please close that poll before opening another one!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("A poll is currently running! Please close that poll before opening another one!").build()).queue();
             return;
         }
 
@@ -82,13 +82,13 @@ public class Vote2 implements Command  {
     private void votePoll(String[] args, MessageReceivedEvent event) {
 
         if (args.length < 2) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         } else if (!voteHash.containsKey(event.getGuild())) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("There is currently no poll running to vote for!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("There is currently no poll running to vote for!").build()).queue();
             return;
         } else if (voteHash.get(event.getGuild()).votes.containsKey(event.getMember())) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can only vote **once** for a poll!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can only vote **once** for a poll!").build()).queue();
             return;
         }
 
@@ -96,12 +96,12 @@ public class Vote2 implements Command  {
         try {
             votenumb = Integer.parseInt(args[1]);
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid number as vote.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("Please enter a valid number as vote.").build()).queue();
             return;
         }
 
         if (votenumb > voteHash.get(event.getGuild()).content.stream().skip(1).count()) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid number as vote.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("Please enter a valid number as vote.").build()).queue();
             return;
         }
 
@@ -114,7 +114,7 @@ public class Vote2 implements Command  {
     private void statsPoll(MessageReceivedEvent event) {
 
         if (!voteHash.containsKey(event.getGuild())) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("There is currently no poll running!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("There is currently no poll running!").build()).queue();
             return;
         }
 
@@ -137,7 +137,7 @@ public class Vote2 implements Command  {
     private void closePoll(MessageReceivedEvent event) {
 
         if (!voteHash.containsKey(event.getGuild())) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("There is currently no poll running to vote for!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("There is currently no poll running to vote for!").build()).queue();
             return;
         }
 
@@ -146,7 +146,7 @@ public class Vote2 implements Command  {
             voteHash.remove(event.getGuild());
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xFF5600)).setDescription("Vote closed by " + event.getMember().getAsMention() + ".").build()).queue();
         } else {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("Sorry, " + event.getMember().getAsMention() + ", only the creator of the poll or a member with at least permission level 1 can close a running poll.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("Sorry, " + event.getMember().getAsMention() + ", only the creator of the poll or a member with at least permission level 1 can close a running poll.").build()).queue();
         }
 
     }
@@ -161,7 +161,7 @@ public class Vote2 implements Command  {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
         }
 
         switch (args[0]) {
@@ -188,7 +188,7 @@ public class Vote2 implements Command  {
                 break;
 
             default:
-                event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
         }
 
     }

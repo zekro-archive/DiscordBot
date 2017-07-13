@@ -27,10 +27,10 @@ public class AutoRole implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (core.Perms.check(permission(), event)) return;
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
@@ -40,13 +40,13 @@ public class AutoRole implements Command {
 
         if (event.getMessage().getMentionedRoles().size() > 0) {
             SSSS.setAUTOROLE(event.getMessage().getMentionedRoles().get(0).getName(), event.getGuild());
-            event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set autorole to `" + event.getMessage().getMentionedRoles().get(0).getName() + "`.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set autorole to `" + event.getMessage().getMentionedRoles().get(0).getName() + "`.").build()).queue();
         } else if (autoRole.size() > 0) {
             SSSS.setAUTOROLE(autoRole.get(0).getName(), event.getGuild());
-            event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set autorole to `" + autoRole.get(0).getName() + "`.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set autorole to `" + autoRole.get(0).getName() + "`.").build()).queue();
         } else {
             SSSS.setAUTOROLE("", event.getGuild());
-            event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully deactivated autorole.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully deactivated autorole.").build()).queue();
         }
 
     }
@@ -73,6 +73,6 @@ public class AutoRole implements Command {
 
     @Override
     public int permission() {
-        return 2;
+        return 3;
     }
 }

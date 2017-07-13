@@ -24,10 +24,10 @@ public class ServerJoinMessage implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (core.Perms.check(permission(), event)) return;
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
@@ -35,7 +35,7 @@ public class ServerJoinMessage implements Command {
         Arrays.stream(args).forEach(s -> sb.append(s + " "));
 
         SSSS.setSERVERJOINMESSAGE(sb.toString().substring(0, sb.toString().length() - 1), event.getGuild());
-        event.getTextChannel().sendMessage(MSGS.success.setDescription("Server join message successfully changed to `" + sb.toString().substring(0, sb.toString().length() - 1) + "`.").build()).queue();
+        event.getTextChannel().sendMessage(MSGS.success().setDescription("Server join message successfully changed to `" + sb.toString().substring(0, sb.toString().length() - 1) + "`.").build()).queue();
     }
 
     @Override
@@ -62,6 +62,6 @@ public class ServerJoinMessage implements Command {
 
     @Override
     public int permission() {
-        return 2;
+        return 3;
     }
 }

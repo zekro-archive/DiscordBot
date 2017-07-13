@@ -38,12 +38,12 @@ public class BJoke implements Command {
         if (args[0].toLowerCase().equals("c")) {
 
             if (victim == null) {
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("There is currently no victim to save. :^)").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("There is currently no victim to save. :^)").build()).queue();
                 return;
             }
 
             if (event.getMember().equals(victim)) {
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can't free yourself from your fate...").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can't free yourself from your fate...").build()).queue();
                 return;
             }
 
@@ -52,7 +52,7 @@ public class BJoke implements Command {
             countdown.cancel();
             countdown = new Timer();
             count = 10;
-            event.getTextChannel().sendMessage(MSGS.success.setDescription("You had luck, " + victim.getAsMention() + ". " + event.getAuthor().getAsMention() + " freed you from the kick.").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.success().setDescription("You had luck, " + victim.getAsMention() + ". " + event.getAuthor().getAsMention() + " freed you from the kick.").build()).queue();
             victim = null;
             return;
         }
@@ -60,7 +60,7 @@ public class BJoke implements Command {
         try {
             victim = event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0));
         } catch (Exception e) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 

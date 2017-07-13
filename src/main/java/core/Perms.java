@@ -23,18 +23,20 @@ public class Perms {
 
     public static boolean isOwner(User user, TextChannel channel) {
         if (STATICS.BOT_OWNER_ID.equals("")) {
-            channel.sendMessage(MSGS.error.setDescription("There is no owner ID set in `SETTINGS.txt`.\nIf you are the owner of this bot, please add your Discord user id in the `SETTINGS.txt`!").build()).queue();
+            channel.sendMessage(MSGS.error().setDescription("There is no owner ID set in `SETTINGS.txt`.\nIf you are the owner of this bot, please add your Discord user id in the `SETTINGS.txt`!").build()).queue();
             return false;
         }
         if (user.getId().equals(STATICS.BOT_OWNER_ID))
             return true;
-        channel.sendMessage(MSGS.error.setDescription("Only the bots owner (" + user.getJDA().getUserById(STATICS.BOT_OWNER_ID).getAsMention() + ") can use this command.").build()).queue();
+        channel.sendMessage(MSGS.error().setDescription("Only the bots owner (" + user.getJDA().getUserById(STATICS.BOT_OWNER_ID).getAsMention() + ") can use this command.").build()).queue();
         return false;
 
     }
 
     public static int getLvl(Member member) {
 
+        if (member.equals(member.getGuild().getOwner()))
+            return 3;
         if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_2(member.getGuild())).anyMatch(s1 -> role.getName().equals(s1)))) {
             return 2;
         } else if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_1(member.getGuild())).anyMatch(s -> role.getName().equals(s)))) {

@@ -28,7 +28,7 @@ public class Quote implements Command {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
@@ -44,7 +44,7 @@ public class Quote implements Command {
         });
 
         if (msg.size() < 1) {
-            chanMSG.editMessage(MSGS.error.setDescription(
+            chanMSG.editMessage(MSGS.error().setDescription(
                     "There is no message in any chat on this guild with the ID `" + args[0] + "`."
             ).build()).queue();
             return;

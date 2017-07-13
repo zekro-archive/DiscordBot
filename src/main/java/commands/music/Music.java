@@ -335,7 +335,7 @@ public class Music implements Command {
             if (getTrackManager(guild).getQueuedTracks().size() < 2 && endlessMode) {
                 endlessList.forEach(t -> getTrackManager(guild).queue(t, endlessAuthor));
                 if (guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).size() > 0)
-                    guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(MSGS.success.setDescription("Repeated queue. *(endless mode)*").build()).queue();
+                    guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(MSGS.success().setDescription("Repeated queue. *(endless mode)*").build()).queue();
             }
 
             new Timer().schedule(new TimerTask() {
@@ -366,6 +366,8 @@ public class Music implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
+        guild = event.getGuild();
+
         if (SSSS.getLOCKMUSICCHANNEL(guild) && !event.getTextChannel().getName().equals(SSSS.getMUSICCHANNEL(guild))) {
             Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(":warning:  " + event.getAuthor().getAsMention() + ", please only send music commands in the #" + STATICS.musicChannel + " channel!").build()).complete();
             new Timer().schedule(new TimerTask() {
@@ -377,8 +379,6 @@ public class Music implements Command {
             }, 3000);
             return;
         }
-
-        guild = event.getGuild();
 
         EmbedBuilder eb = new EmbedBuilder();
 
@@ -404,25 +404,25 @@ public class Music implements Command {
                     case "channel":
                         if (core.Perms.check(2, event)) return;
                         if (args.length < 2) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                             return;
                         }
                         SSSS.setMUSICCHANNEL(args[1].toLowerCase(), guild);
-                        event.getTextChannel().sendMessage(MSGS.success.setDescription("Music channel successfully changed to `" + args[1].toLowerCase() + "`.").build()).queue();
+                        event.getTextChannel().sendMessage(MSGS.success().setDescription("Music channel successfully changed to `" + args[1].toLowerCase() + "`.").build()).queue();
 
                         break;
 
                     case "lockchannel":
                         if (core.Perms.check(2, event)) return;
                         if (args.length < 2) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                             return;
                         }
                         try {
                             SSSS.setLOCKMUSICCHANNEL(Boolean.parseBoolean(args[1]), guild);
-                            event.getTextChannel().sendMessage(MSGS.success.setDescription("Music channel lock successfully set to `" + Boolean.parseBoolean(args[1]) + "`.").build()).queue();
+                            event.getTextChannel().sendMessage(MSGS.success().setDescription("Music channel lock successfully set to `" + Boolean.parseBoolean(args[1]) + "`.").build()).queue();
                         } catch (Exception e) {
-                            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                         }
                         break;
 
@@ -515,7 +515,7 @@ public class Music implements Command {
                         endlessMode = true;
                         endlessAuthor = event.getMember();
 
-                        event.getTextChannel().sendMessage(MSGS.success.setDescription(":repeat:  Endless mode activated.").build()).queue();
+                        event.getTextChannel().sendMessage(MSGS.success().setDescription(":repeat:  Endless mode activated.").build()).queue();
 
                         break;
 

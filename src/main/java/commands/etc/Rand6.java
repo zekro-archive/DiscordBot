@@ -69,7 +69,7 @@ public class Rand6 implements Command {
                 fw.write(m.getUser().getId() + ":" + rollMap.get(m) + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
-                event.getTextChannel().sendMessage(MSGS.error.setDescription("AN ERROR OCCURED WHILE WRITING SAVE FILE...").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription("AN ERROR OCCURED WHILE WRITING SAVE FILE...").build()).queue();
             }
         });
 
@@ -97,12 +97,12 @@ public class Rand6 implements Command {
         }
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
         if (!event.getMember().getVoiceState().inVoiceChannel()) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription("You need to be in a voice channel to use this command!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription("You need to be in a voice channel to use this command!").build()).queue();
             return;
         }
 
@@ -135,7 +135,7 @@ public class Rand6 implements Command {
             case "reroll":
             case "re":
                 if (args.length < 2) {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                     return;
                 }
                 reroll(event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0)), event);
@@ -144,9 +144,9 @@ public class Rand6 implements Command {
             case "setops":
                 if (args.length > 1) {
                     SSSS.setR6OPSID(args[1], event.getGuild());
-                    event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set Ops source URL to `" + args[1] + "`.").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set Ops source URL to `" + args[1] + "`.").build()).queue();
                 } else {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                 }
                 return;
 
@@ -183,7 +183,7 @@ public class Rand6 implements Command {
                 return;
 
             default:
-                event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+                event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
                 return;
         }
 
