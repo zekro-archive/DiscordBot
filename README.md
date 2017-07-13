@@ -39,27 +39,19 @@ So you have some questions or want to join my developer community discord? Take 
 -----
 ### Installation
 
-If you want to install this bot for yourself, use this command on your linux system to install:
-```bash
-cd ~ && wget "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/install.py" && python install.py && rm install.py
-```
-Included in the installation, there will be a settings file in the bots direction named *SETTINGS.txt*. Open it and enter yout Discord API token, you will get from <a href="https://discordapp.com/developers/applications/me" target="_blank">this page<a/>.
+Just download the latest version from **[Releases](https://github.com/zekroTJA/DiscordBot/releases)** and save it somewhere on your pc or server.
 
+First start the JAR file with:
 ```bash
-sudo nano ~/Programs/zekroBot/SETTINGS.txt
+java -jar DiscordBot.jar
 ```
+The bot will create a `SETTINGS.txt` file. Open it and enter your settings.
+The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its realy important to set yout Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
+![img](https://image.prntscr.com/image/Jmf2FssPSdKEb9jNOTra-g.png)
+![img](https://image.prntscr.com/image/UrxT_eI7SbqmZIcbQs1QvQ.png)
 
-If everything of the installation is done, start the bot with:
-```bash
-bash zb
-```
-
-Finally, you can add the bot to your server.
-Replace "ENTERYOURIDHERE" with your id you got from the API Page.
-<img src="http://image.prntscr.com/image/20c2b10a189049eeab0191452483838a.png"/>
-```
-https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
-```
+After that, use the guild settings commands to configure the bot for your guild(s)
+![img](https://image.prntscr.com/image/VKw6mpxPS8in40ZB4sTOMQ.png)
 
 -----
 ### Commands
