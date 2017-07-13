@@ -70,4 +70,9 @@ public class AutoRole implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.settings;
     }
+
+    @Override
+    public int permission() {
+        return 2;
+    }
 }

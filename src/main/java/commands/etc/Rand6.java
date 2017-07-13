@@ -226,4 +226,9 @@ public class Rand6 implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.etc;
     }
+
+    @Override
+    public int permission() {
+        return 0;
+    }
 }

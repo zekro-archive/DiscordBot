@@ -32,17 +32,29 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         Guild g = event.getGuild();
 
-        event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xE9D7D6))
-            .setDescription("**SETTINGS FOR GUILD `\"" + g.getName() + "\"`**")
-            .addField("Prefix", "`\"" + getPREFIX(g) + "\"`", false)
-            .addField("Server Join Message", "`\"" + getSERVERJOINMESSAGE(g) + "\"`", false)
-            .addField("Server Leave Message", "`\"" + getSERVERLEAVEMESSAGE(g) + "\"`", false)
-            .addField("Music Channel", "`\"" + getMUSICCHANNEL(g) + "\"`", false)
-            .addField("Music Channel Lock", "`\"" + getLOCKMUSICCHANNEL(g) + "\"`", false)
-            .addField("Permission Level", "**Lvl 1:**   `\"" + Arrays.toString(getPERMROLES_1(g)).replaceAll("\\[", "").replaceAll("]", "") + "\"`\n**Lvl 2:**   `\"" + Arrays.toString(getPERMROLES_2(g)).replaceAll("\\[", "").replaceAll("]", "") + "\"`", false)
-            .addField("Autorole", "`\"" + getAUTOROLE(g) + "\"`", false)
-            .addField("vkick Channel", "`\"" + getVKICKCHANNEL(g) + "\"`", false)
-            .build()
+        StringBuilder keys = new StringBuilder();
+        StringBuilder values = new StringBuilder();
+
+        File[] files = new File("SERVER_SETTINGS/" + g.getId() + "/").listFiles();
+        System.out.println(files.length);
+
+        Arrays.stream(files).forEach(f -> {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(f));
+                keys.append("**" + f.getName() + "**\n");
+                values.append("`" + br.readLine() + "`\n");
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        event.getTextChannel().sendMessage(new EmbedBuilder()
+                .setTitle("Settings for guild \"" + g.getName() + "\" (" + g.getId() + ")", null)
+                .addBlankField(false)
+                .addField("Keys", keys.toString(), true)
+                .addField("Values", values.toString(), true)
+                .build()
         ).queue();
 
     }
@@ -321,6 +333,33 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
     public static void setR6OPSID(String entry, Guild guild) {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
+        try {
+            BufferedWriter r = new BufferedWriter(new FileWriter(f));
+            r.write(entry);
+            r.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getWARFRAMELAERTSCHAN(Guild guild) {
+
+        try {
+            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/warframealertschan");
+            if (f.exists()) {
+                try {
+                    return new BufferedReader(new FileReader(f)).readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {}
+        return STATICS.warframeAlertsChannel;
+    }
+
+    public static void setWARFRAMELAERTSCHAN(String entry, Guild guild) {
+
+        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/warframealertschan");
         try {
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);

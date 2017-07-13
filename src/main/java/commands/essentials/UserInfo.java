@@ -110,4 +110,9 @@ public class UserInfo implements Command {
         return STATICS.CMDTYPE.essentials;
     }
 
+    @Override
+    public int permission() {
+        return 0;
+    }
+
 }

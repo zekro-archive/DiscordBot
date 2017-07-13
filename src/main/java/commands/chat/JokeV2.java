@@ -77,11 +77,16 @@ public class JokeV2 implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Throw around with some yo mama jokes";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.chatutils;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }

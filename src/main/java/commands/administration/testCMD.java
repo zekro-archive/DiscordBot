@@ -54,4 +54,9 @@ public class testCMD implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.administration;
     }
+
+    @Override
+    public int permission() {
+        return 3;
+    }
 }

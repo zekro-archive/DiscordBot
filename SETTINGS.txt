@@ -6,7 +6,7 @@
 # GENERAL SERVER SETTINGS #
 
     # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
-        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DCppvg.lNnxUM-y_P7kSaRhmVZlevQ5m3I"
+        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DD0qvg.XN0l_ZRmwnl3uixRq5Vonrp3OMo"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
 
@@ -16,7 +16,7 @@
     # Log entered command in console of the bot
         COMMAND_CONSOLE_OUTPUT = true
     # Automatically check for updates
-        AUTO_UPDATE = false
+        UPDATE_INFO = false
     # Only allow members to use music commands in music channel
         MUSIC_COMMANDS_ONLY_IN_MUSIC_CHANNEL = false
     # Volume in percent (0 - 100, 0 -> Disabled -> 100% volume)

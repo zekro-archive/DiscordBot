@@ -760,11 +760,16 @@ public class Music implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Play music";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.music;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }

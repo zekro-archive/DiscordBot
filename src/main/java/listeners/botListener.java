@@ -1,5 +1,6 @@
 package listeners;
 
+import commands.etc.BotStats;
 import commands.etc.CmdLog;
 import core.Main;
 import core.SSSS;
@@ -24,6 +25,8 @@ public class botListener extends ListenerAdapter{
 
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
+
+        BotStats.messagesProcessed++;
 
         if (e.getChannelType().equals(ChannelType.PRIVATE)) return;
 

@@ -25,7 +25,6 @@ public class readyListener extends ListenerAdapter {
             @Override
             public void run() {
 
-                update.getUpdate(readyEvent.getJDA().getGuilds());
                 if (!STATICS.TTT_SERVER_IP.equals(""))
                     testOnlineState(readyEvent.getJDA().getGuilds());
 
@@ -81,6 +80,16 @@ public class readyListener extends ListenerAdapter {
                 "#--------------------------------------------------------------------------------- - -  -  -\n\n"
         );
 
+        if (STATICS.BOT_OWNER_ID.isEmpty()) {
+            System.out.println(
+                    "#######################################################\n" +
+                    "# PLEASE INSERT YOUR DISCORD USER ID IN SETTINGS.TXT  #\n" +
+                    "# AS ENTRY 'BOT_OWNER_ID' TO SPECIFY THAT YOU ARE THE #\n" +
+                    "# BOTS OWNER!                                         #\n" +
+                    "#######################################################"
+            );
+        }
+
         commands.settings.Botmessage.setSupplyingMessage(event.getJDA());
 
         WarframeAlerts.startTimer(event.getJDA());
@@ -96,13 +105,19 @@ public class readyListener extends ListenerAdapter {
             STATICS.enableWarframeAlerts = true;
         }
 
-        timerOnReady = new Timer();
+        if (STATICS.autoUpdate)
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    update.checkIfUpdate(event.getJDA());
+                }
+            }, 0, 60000);
 
+        timerOnReady = new Timer();
         timerAction = new TimerTask() {
             @Override
             public void run() {
 
-                update.getUpdate(readyEvent.getJDA().getGuilds());
                 if (!STATICS.TTT_SERVER_IP.equals(""))
                     testOnlineState(readyEvent.getJDA().getGuilds());
 

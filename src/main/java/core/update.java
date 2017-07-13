@@ -1,17 +1,22 @@
 package core;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.ReadyEvent;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import utils.STATICS;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.*;
 import java.util.List;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by zekro on 22.03.2017 / 15:59
@@ -22,63 +27,134 @@ import java.util.TimerTask;
 
 public class update {
 
+    private static String lastUpdate = "";
+
     public static String versionURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/LATESTVERSION.txt";
 
-    public static boolean checkIfUpdate() {
+    private static HashMap<String, Map.Entry<String, String>> getVersionInfo() throws IOException {
 
-        String version = STATICS.VERSION;
+        String API_URL = "https://api.github.com/repos/zekrotja/DiscordBot/releases";
+
+        HashMap<String, Map.Entry<String, String>> out = new HashMap<>();
+
+        URL url = new URL(API_URL);
+        Scanner s = new Scanner(url.openStream());
+        String output = "";
+        while (s.hasNextLine()) {
+            output += s.nextLine();
+        }
 
         try {
 
-            URL url = new URL(versionURL);
-            Scanner s = new Scanner(url.openStream());
-            version = s.nextLine();
+            JSONArray jsonarray = new JSONArray(output);
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            List<JSONObject> jsonobs = new ArrayList<>();
+            for (int i = 0; i < jsonarray.length(); i++) {
+                jsonobs.add(jsonarray.getJSONObject(i));
+            }
+
+
+            JSONObject pre = jsonobs.stream().filter(j -> {
+                try {
+                    return j.getString("prerelease").equals("true");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }).findFirst().orElse(null);
+
+            JSONObject stable = jsonobs.stream().filter(j -> {
+                try {
+                    return j.getString("prerelease").equals("false");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }).findFirst().orElse(null);
+
+            out.put("pre", new AbstractMap.SimpleEntry<>(pre.getString("tag_name"), pre.getString("html_url")));
+            out.put("stable", new AbstractMap.SimpleEntry<>(stable.getString("tag_name"), stable.getString("html_url")));
+
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return !STATICS.VERSION.equals(version);
+        return out;
+    }
+
+    public static void manualCheck(TextChannel channel) {
+
+        try {
+
+            if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION)) {
+
+                if (!STATICS.BOT_OWNER_ID.isEmpty()) {
+
+                    channel.sendMessage(
+                            new EmbedBuilder()
+                                    .setColor(new Color(0x7EFF00))
+                                    .setDescription(
+                                            "**New bot update is available!**\n" +
+                                                    "Download the latest version and install it manually on your vServer.\n\n" +
+                                                    "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
+                                    .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)
+                                    .addField("Latest Stable Build", "Version: " + getVersionInfo().get("stable").getKey() + "\nDownload: " + getVersionInfo().get("stable").getValue(), false)
+                                    .setFooter("Enter '-disable' to disable this message on new updates.", null)
+                                    .build()
+                    ).queue();
+
+                }
+            } else {
+
+                channel.sendMessage(new EmbedBuilder().setColor(Color.green)
+                    .setDescription("The bot is currently up to date!")
+                    .build()
+                ).queue();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
 
     }
 
+    public static boolean checkIfUpdate(JDA jda) {
 
-    public static void getUpdate(List<Guild> guilds) {
+        if (new File("SERVER_SETTINGS/no_update_info").exists())
+            return false;
 
-        if (checkIfUpdate() && STATICS.autoUpdate) {
+        try {
 
-            File f = new File("update.py");
-            if (!f.exists() || f.isDirectory()) {
-                System.out.println(coreCommands.getCurrentSystemTime() + " [INFO] File 'update.py' does not exist! Please download it from 'github.zekro.de/DiscordBot'!");
-                return;
-            }
+            if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION) && !lastUpdate.equals(getVersionInfo().get("pre").getKey())) {
+                lastUpdate = getVersionInfo().get("pre").getKey();
 
-            try {
+                if (!STATICS.BOT_OWNER_ID.isEmpty()) {
 
-                for ( Guild g : guilds ) {
-                    try {
-                        g.getTextChannelsByName("general", true).get(0).sendMessage(":warning:   The bot will be shut down for a short while for updating! C U later :kissing_heart:").queue();
-                    } catch (Exception e) {}
+                    jda.getUserById(STATICS.BOT_OWNER_ID).openPrivateChannel().complete().sendMessage(
+                            new EmbedBuilder()
+                                    .setColor(new Color(0x7EFF00))
+                                    .setDescription(
+                                            "**New bot update is available!**\n" +
+                                            "Download the latest version and install it manually on your vServer.\n\n" +
+                                            "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
+                                    .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)
+                                    .addField("Latest Stable Build", "Version: " + getVersionInfo().get("stable").getKey() + "\nDownload: " + getVersionInfo().get("stable").getValue(), false)
+                                    .setFooter("Enter '-disable' to disable this message on new updates.", null)
+                                    .build()
+                    ).queue();
+
                 }
 
-                if (System.getProperty("os.name").toLowerCase().contains("linux"))
-                    Runtime.getRuntime().exec("sudo screen sudo python update.py");
-                else
-                    Runtime.getRuntime().exec("wincmd.exe -update");
-
-
-                System.exit(0);
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                return true;
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
 
-
-
+        return false;
     }
 }

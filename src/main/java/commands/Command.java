@@ -13,5 +13,6 @@ public interface Command {
     String help();
     String description();
     String commandType();
+    int permission();
 }
 

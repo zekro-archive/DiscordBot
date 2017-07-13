@@ -253,4 +253,9 @@ public class Vote implements Command {
         return STATICS.CMDTYPE.chatutils;
     }
 
+    @Override
+    public int permission() {
+        return 0;
+    }
+
 }

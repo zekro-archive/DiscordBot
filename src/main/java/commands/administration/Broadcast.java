@@ -64,11 +64,16 @@ public class Broadcast implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Send a message to all servers general chats";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.etc;
+    }
+
+    @Override
+    public int permission() {
+        return 3;
     }
 }
