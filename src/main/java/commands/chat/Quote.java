@@ -74,7 +74,7 @@ public class Quote implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "**USAGE:** `-quote <msg id>`";
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zekro on 06.06.2017 / 10:52
@@ -55,11 +56,11 @@ public class Rand6 implements Command {
         }
 
         if ((date.getTime()) < Long.parseLong((rollMap.get(member) == null) ? (date.getTime()-1) + "" : rollMap.get(member))) {
-            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription("Your reroll is still consumed.").build()).queue();
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription("Your reroll is still consumed.\nReset in `" + timeToReset(rollMap.get(member)) + "`.").build()).queue();
             return;
         } else {
-            rollMap.put(member, (date.getTime() + 24*60*60*1000) + "");
-            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.orange).setDescription(member.getAsMention() + " USED A REROLL.\n\nYour new operator, " + member.getAsMention() + ", is `" + getRandOp() + "`").build()).queue();
+            rollMap.put(member, (date.getTime() + 12*60*60*1000) + "");
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.orange).setDescription(member.getAsMention() + " USED A REROLL. (Reset in `" + timeToReset(rollMap.get(member)) + "`)\n\nYour new operator, " + member.getAsMention() + ", is `" + getRandOp() + "`").build()).queue();
         }
 
         FileWriter fw = new FileWriter(saveFile);
@@ -75,6 +76,47 @@ public class Rand6 implements Command {
 
         fw.close();
 
+    }
+
+    private void resetReroll(Member member, MessageReceivedEvent event) throws IOException {
+
+        BufferedReader fr;
+        Date date = new Date();
+
+        HashMap<Member, String> rollMap = new HashMap<>();
+
+        if (saveFile.exists()) {
+            fr = new BufferedReader(new FileReader(saveFile));
+            fr.lines().forEach(s -> rollMap.put(event.getGuild().getMemberById(s.split(":")[0]), s.split(":")[1]));
+            fr.close();
+        }
+
+        if (rollMap.containsKey(member)) {
+            rollMap.remove(member);
+
+            FileWriter fw = new FileWriter(saveFile);
+
+            rollMap.keySet().stream().forEach(m -> {
+                try {
+                    fw.write(m.getUser().getId() + ":" + rollMap.get(m) + "\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription("AN ERROR OCCURED WHILE WRITING SAVE FILE...").build()).queue();
+                }
+            });
+
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.cyan).setDescription("**Reseted reroll from " + member.getAsMention() + "**").build()).queue();
+        } else
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(member.getAsMention() + " has no active reroll timeouts.").build()).queue();
+
+    }
+
+    private String timeToReset(String reset) {
+        Date date = new Date();
+        long timetoreset = Long.parseLong(reset) - date.getTime();
+        return String.format("%d h, %d m",
+                TimeUnit.MILLISECONDS.toHours(timetoreset),
+                TimeUnit.MILLISECONDS.toMinutes(timetoreset) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(timetoreset)));
     }
 
 
@@ -135,7 +177,7 @@ public class Rand6 implements Command {
             case "reroll":
             case "re":
                 if (args.length < 2) {
-                    event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
+                    reroll(event.getMember(), event);
                     return;
                 }
                 reroll(event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0)), event);
@@ -176,11 +218,31 @@ public class Rand6 implements Command {
             case "rerolls":
             case "rlist":
                 if (saveFile.exists()) {
-                    StringBuilder rollist = new StringBuilder();
-                    BufferedReader br = new BufferedReader(new FileReader(saveFile));
-                    br.lines().forEach(s -> rollist.append(event.getGuild().getMemberById(s.split(":")[0])));
+                    HashMap<Member, String> rollMap = new HashMap<>();
+                    StringBuilder outStr = new StringBuilder();
+                    if (saveFile.exists()) {
+                        BufferedReader fr = new BufferedReader(new FileReader(saveFile));
+                        fr.lines().forEach(s -> rollMap.put(event.getGuild().getMemberById(s.split(":")[0]), s.split(":")[1]));
+                        fr.close();
+                        rollMap.keySet().forEach(k ->
+                            outStr.append("**" + k.getEffectiveName() + "**  -  *expires:*  `" + timeToReset(rollMap.get(k)) + "`\n")
+                        );
+                        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("**USED REROLLS:**\n\n" + outStr.toString()).build()).queue();
+                    }
                 }
                 return;
+
+            case "reset":
+                if (args.length < 2) {
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
+                    return;
+                }
+                if (core.Perms.check(2, event)) return;
+
+                resetReroll(event.getGuild().getMember(event.getMessage().getMentionedUsers().get(0)), event);
+
+                return;
+
 
             default:
                 event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
@@ -209,10 +271,12 @@ public class Rand6 implements Command {
     @Override
     public String help() {
         return "USAGE:\n" +
-                "**rand6 rules**  -  `Display RANDOM6SIEGE© game rules`" +
+                "**rand6 rules**  -  `Display RANDOM6SIEGE© game rules`\n" +
                 "**rand6 d**  -  `Get random ops for defenders side`\n" +
                 "**rand6 a**  -  `Get random ops for attackers side`\n" +
-                "**rand6 r <@mention>**  -  `Use a reroll - Reusable after 24 hours`\n" +
+                "**rand6 r (<@mention>)**  -  `Use a reroll`\n" +
+                "**rand6 list**  -  `List all outtiming rerolls`\n" +
+                "**rand6 reset <@mention>**  -  `Reset an outtiming reroll`\n" +
                 "**rand6 setops <URL>**  -  `Set URL for a online text file with operators list for randomizing - set to OFF for default list`\n" +
                 "**rand6 listops**  -  `Get current operators lists`";
     }
