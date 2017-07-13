@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/logo%20-%20title.png" />
 <br/>
-
+[![Github All Releases](https://img.shields.io/github/downloads/zekroTJA/DiscordBot/total.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
