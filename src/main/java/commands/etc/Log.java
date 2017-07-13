@@ -132,11 +132,16 @@ public class Log implements Command {
 
     @Override
     public String description() {
-        return null;
+        return "Show bots log file";
     }
 
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.etc;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }

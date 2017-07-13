@@ -83,4 +83,9 @@ public class Stups implements Command {
     public String commandType() {
         return STATICS.CMDTYPE.chatutils;
     }
+
+    @Override
+    public int permission() {
+        return 0;
+    }
 }

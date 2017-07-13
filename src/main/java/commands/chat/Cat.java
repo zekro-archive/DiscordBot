@@ -135,4 +135,10 @@ public class Cat implements Command {
 
         return outputMessage;
     }
+
+
+    @Override
+    public int permission() {
+        return 0;
+    }
 }

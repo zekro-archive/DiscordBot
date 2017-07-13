@@ -56,7 +56,7 @@ public class Info implements Command {
                                       " -  Steam-Condenser  *(https://github.com/koraktor/steam-condenser-java)*", false)
                         .addField("Bug Reporting / Idea Suggestion",
                                 "If you got some bugs, please contact us here:\n" +
-                                      " - **Please use this document to report a bug or suggest an idea: http://s.zekro.de/botsubs**\n" +
+                                      " - **Please use this document to report a Bug or suggest an idea: http://s.zekro.de/botsubs**\n" +
                                       " -  E-Mail:  zekrotja@gmail.com\n" +
                                       " -  Discord:  http://discord.zekro.de (or directly: `zekro#9131` & `Sophie#4538`)", false)
 
@@ -90,5 +90,10 @@ public class Info implements Command {
     @Override
     public String commandType() {
         return STATICS.CMDTYPE.essentials;
+    }
+
+    @Override
+    public int permission() {
+        return 0;
     }
 }
