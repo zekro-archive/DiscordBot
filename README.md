@@ -50,6 +50,27 @@ The most important is to set first the API token you'll get from [this page](htt
 ![img](https://image.prntscr.com/image/Jmf2FssPSdKEb9jNOTra-g.png)
 ![img](https://image.prntscr.com/image/UrxT_eI7SbqmZIcbQs1QvQ.png)
 
+Then restart the bot with
+```bash
+java -jar DiscordBot.jar
+```
+
+If you are running the bot on a Linux server via SSH, use **[screen](https://wiki.ubuntuusers.de/Screen/)** to run the bot as background process:
+```bash
+$ sudo screen -L -S zekroBot sudo java -jar DiscordBot.jar
+```
+*(`-L` generates a logfile `screenlog.0` and `-S zekroBot` set a name to the screen so you can reopen the screen with `sudo screen -r zekroBot`)*
+
+You also can create a bash file like this to start (and restart) the bot:
+```bash
+# resume running screen (if there is a screen running) to stop it with [STRG] + [C]
+sudo screen -r zekroBot
+# cd to bot JAR location (enter YOUR path there)
+cd Programs/zekroBot
+# start the bot in screen
+sudo screen -L -S zekroBot sudo java -jar DiscordBot.jar
+```
+
 After that, use the guild settings commands to configure the bot for your guild(s)
 ![img](https://image.prntscr.com/image/VKw6mpxPS8in40ZB4sTOMQ.png)
 
