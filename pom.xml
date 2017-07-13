@@ -10,13 +10,14 @@
 
     <repositories>
         <repository>
-            <id>notfab</id>
-            <url>http://nexus.notfab.net/content/repositories/JDA3</url>
+            <id>jitpack.io</id>
+            <name>JitPack</name>
+            <url>https://jitpack.io</url>
         </repository>
         <repository>
-            <id>central</id>
-            <name>bintray</name>
-            <url>http://jcenter.bintray.com</url>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>https://jcenter.bintray.com</url>
         </repository>
     </repositories>
 
@@ -49,7 +50,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.0.0_157</version>
+            <version>3.1.1_219</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
