@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.29.3.0-3cd0d8.svg"></a><br>
+<img src="https://img.shields.io/badge/currently%20running%20on-1.32.2.0-3cd0d8.svg"></a><br>
 
 -----
 
@@ -13,7 +13,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-18%2F25-3cc482.svg"><br>
+<img src="https://img.shields.io/badge/Status-up-green.svg">&nbsp;<img src="https://img.shields.io/badge/Server%20Capacity-23%2F25-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
@@ -39,27 +39,40 @@ So you have some questions or want to join my developer community discord? Take 
 -----
 ### Installation
 
-If you want to install this bot for yourself, use this command on your linux system to install:
-```bash
-cd ~ && wget "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/install.py" && python install.py && rm install.py
-```
-Included in the installation, there will be a settings file in the bots direction named *SETTINGS.txt*. Open it and enter yout Discord API token, you will get from <a href="https://discordapp.com/developers/applications/me" target="_blank">this page<a/>.
+Just download the latest version from **[Releases](https://github.com/zekroTJA/DiscordBot/releases)** and save it somewhere on your pc or server.
 
+First start the JAR file with:
 ```bash
-sudo nano ~/Programs/zekroBot/SETTINGS.txt
+java -jar DiscordBot.jar
+```
+The bot will create a `SETTINGS.txt` file. Open it and enter your settings.
+The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its realy important to set yout Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
+![img](https://image.prntscr.com/image/Jmf2FssPSdKEb9jNOTra-g.png)
+![img](https://image.prntscr.com/image/UrxT_eI7SbqmZIcbQs1QvQ.png)
+
+Then restart the bot with
+```bash
+java -jar DiscordBot.jar
 ```
 
-If everything of the installation is done, start the bot with:
+If you are running the bot on a Linux server via SSH, use **[screen](https://wiki.ubuntuusers.de/Screen/)** to run the bot as background process:
 ```bash
-bash zb
+$ sudo screen -L -S zekroBot sudo java -jar DiscordBot.jar
+```
+*(`-L` generates a logfile `screenlog.0` and `-S zekroBot` set a name to the screen so you can reopen the screen with `sudo screen -r zekroBot`)*
+
+You also can create a bash file like this to start (and restart) the bot:
+```bash
+# resume running screen (if there is a screen running) to stop it with [STRG] + [C]
+sudo screen -r zekroBot
+# cd to bot JAR location (enter YOUR path there)
+cd Programs/zekroBot
+# start the bot in screen
+sudo screen -L -S zekroBot sudo java -jar DiscordBot.jar
 ```
 
-Finally, you can add the bot to your server.
-Replace "ENTERYOURIDHERE" with your id you got from the API Page.
-<img src="http://image.prntscr.com/image/20c2b10a189049eeab0191452483838a.png"/>
-```
-https://discordapp.com/oauth2/authorize?client_id=ENTERYOURIDHERE&scope=bot
-```
+After that, use the guild settings commands to configure the bot for your guild(s)
+![img](https://image.prntscr.com/image/VKw6mpxPS8in40ZB4sTOMQ.png)
 
 -----
 ### Commands
