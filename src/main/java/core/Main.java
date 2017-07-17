@@ -130,6 +130,7 @@ public class Main {
         commands.put("quote", new Quote());
         commands.put("r6", new Rand6());
         commands.put("rand6", new Rand6());
+        commands.put("r", new Rand6());
         commands.put("mute", new Mute());
         commands.put("log", new Log());
         commands.put("broadcast", new Broadcast());

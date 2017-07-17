@@ -25,15 +25,15 @@ public class Prefix implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(2, event)) return;
+        if (core.Perms.check(permission(), event)) return;
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(":warning: Please enter a valid prefix!").build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(":warning: Please enter a valid prefix!").build()).queue();
             return;
         }
 
         SSSS.setPREFIX(args[0], event.getGuild());
-        event.getTextChannel().sendMessage(MSGS.success.setDescription("Prefix successfully changed to `" + args[0] + "`.").build()).queue();
+        event.getTextChannel().sendMessage(MSGS.success().setDescription("Prefix successfully changed to `" + args[0] + "`.").build()).queue();
     }
 
     @Override
@@ -58,6 +58,6 @@ public class Prefix implements Command {
 
     @Override
     public int permission() {
-        return 2;
+        return 3;
     }
 }

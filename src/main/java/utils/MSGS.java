@@ -12,7 +12,12 @@ import java.awt.*;
 
 public class MSGS {
 
-    public static EmbedBuilder success = new EmbedBuilder().setColor(Color.green);
-    public static EmbedBuilder error = new EmbedBuilder().setColor(Color.red).setDescription(":warning:  **Can not run command because an error occurred.**");
+    public static EmbedBuilder success() {
+        return new EmbedBuilder().setColor(Color.green);
+    }
+
+    public static EmbedBuilder error() {
+        return new EmbedBuilder().setColor(Color.red);
+    }
 
 }

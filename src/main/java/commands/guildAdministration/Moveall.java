@@ -66,21 +66,21 @@ public class Moveall implements Command {
 
                 } else {
                     event.getTextChannel().sendMessage(
-                            MSGS.error.setDescription("You don't need to move everyone in the same channel you are still in...").build()
+                            MSGS.error().setDescription("You don't need to move everyone in the same channel you are still in...").build()
                     ).queue();
                 }
             } else
                 event.getTextChannel().sendMessage(
-                        MSGS.error.setDescription("You need to be in a voice channel to use this command!").build()
+                        MSGS.error().setDescription("You need to be in a voice channel to use this command!").build()
                 ).queue();
 
         } catch (NoSuchElementException e) {
             event.getTextChannel().sendMessage(
-                    MSGS.error.setDescription("Please enter a valid voice channel existing on this guild!").build()
+                    MSGS.error().setDescription("Please enter a valid voice channel existing on this guild!").build()
             ).queue();
         } catch (Exception e) {
             event.getTextChannel().sendMessage(
-                    MSGS.error
+                    MSGS.error()
                         .addField("Error Message", e.getMessage(), false)
                     .build()
             ).queue();

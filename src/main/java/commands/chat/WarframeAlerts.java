@@ -223,12 +223,12 @@ public class WarframeAlerts implements Command {
             case "channel":
 
                 if (args.length < 2) {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription("Please enter a valid text channel!").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription("Please enter a valid text channel!").build()).queue();
                     return;
                 }
 
                 SSSS.setWARFRAMELAERTSCHAN(args[1].toLowerCase(), event.getGuild());
-                event.getTextChannel().sendMessage(MSGS.success.setDescription("Successfully set warframe alerts channel to `" + args[1].toLowerCase() + "`").build()).queue();
+                event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully set warframe alerts channel to `" + args[1].toLowerCase() + "`").build()).queue();
         }
 
     }

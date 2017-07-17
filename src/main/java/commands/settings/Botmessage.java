@@ -82,6 +82,6 @@ public class Botmessage implements Command {
 
     @Override
     public int permission() {
-        return 2;
+        return 3;
     }
 }

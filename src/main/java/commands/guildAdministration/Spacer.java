@@ -31,7 +31,7 @@ public class Spacer implements Command {
         if (core.Perms.check(1, event)) return;
 
         if (args.length < 1) {
-            event.getTextChannel().sendMessage(MSGS.error.setDescription(help()).build()).queue();
+            event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
@@ -40,7 +40,7 @@ public class Spacer implements Command {
             case "add":
 
                 if (!event.getMember().getVoiceState().inVoiceChannel()) {
-                    event.getTextChannel().sendMessage(MSGS.error.setDescription("You need to be in a voice channel to add a spacer.").build()).queue();
+                    event.getTextChannel().sendMessage(MSGS.error().setDescription("You need to be in a voice channel to add a spacer.").build()).queue();
                     return;
                 }
 
