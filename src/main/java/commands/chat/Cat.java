@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 
@@ -41,13 +42,13 @@ public class Cat implements Command {
                     delay = 10;
                 }
 
-                List<String> counter = new ArrayList<>();
+                AtomicInteger counter = new AtomicInteger();
                 spamTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        counter.add("");
-                        event.getTextChannel().sendMessage("Cat number: `[" + (counter.size() + 1) + "]`\n" + getCat()).queue();
-                        if (counter.size() > 999) {
+                        counter.getAndAdd(1);
+                        event.getTextChannel().sendMessage("Cat number: `[" + counter.get() + "]`\n" + getCat()).queue();
+                        if (counter.get() > 999) {
                             spamTimer.cancel();
                             spamTimer = new Timer();
                         }
@@ -107,8 +108,7 @@ public class Cat implements Command {
         InputStream is = new URL(url).openStream();
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String jsonText = readAll(rd);
-            JSONObject json = new JSONObject(jsonText);
+            JSONObject json = new JSONObject(readAll(rd));
             return json;
         } finally {
             is.close();
@@ -116,20 +116,13 @@ public class Cat implements Command {
     }
 
     public static String getCat() {
-
-        JSONObject json = null;
+        
+        String outputMessage = null; //Might be redudant
+        JSONObject json = null; //Might be redudant
         try {
             json = readJsonFromUrl("http://random.cat/meow");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        String outputMessage = null;
-        try {
-            outputMessage = json.get("file").toString();
-        } catch (JSONException e) {
+            outputMessage = json.getString("file");
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
