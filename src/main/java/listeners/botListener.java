@@ -34,7 +34,7 @@ public class botListener extends ListenerAdapter{
         if (!logFile.exists())
             logFile.createNewFile();
 
-        bw.write(String.format("%s [%s (%s)] [%s (%s)] '%s'",
+        bw.write(String.format("%s [%s (%s)] [%s (%s)] '%s'\n",
                 coreCommands.getCurrentSystemTime(),
                 e.getGuild().getName(),
                 e.getGuild().getId(),
