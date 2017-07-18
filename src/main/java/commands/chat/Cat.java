@@ -48,7 +48,7 @@ public class Cat implements Command {
                     public void run() {
                         counter.getAndAdd(1);
                         event.getTextChannel().sendMessage("Cat number: `[" + counter.get() + "]`\n" + getCat()).queue();
-                        if (counter.get() > 999) {
+                        if (counter.get() > 99) {
                             spamTimer.cancel();
                             spamTimer = new Timer();
                         }
