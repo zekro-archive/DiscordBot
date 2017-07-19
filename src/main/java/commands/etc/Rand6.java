@@ -104,6 +104,7 @@ public class Rand6 implements Command {
             });
             fw.close();
 
+
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.cyan).setDescription("**Reseted reroll from " + member.getAsMention() + "**").build()).queue();
         } else
             event.getTextChannel().sendMessage(MSGS.error().setDescription(member.getAsMention() + " has no active reroll timeouts.").build()).queue();
