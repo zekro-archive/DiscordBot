@@ -7,8 +7,11 @@ import utils.STATICS;
 
 import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by zekro on 17.05.2017 / 14:12
@@ -363,6 +366,37 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
         try {
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
+            r.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<String> getBLACKLIST(Guild guild) {
+
+        try {
+            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/blacklist");
+            if (f.exists()) {
+                try {
+                    return new BufferedReader(new FileReader(f)).lines().map(s -> s.replace("\n", "")).collect(Collectors.toList());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {}
+        return new ArrayList<>();
+    }
+
+    public static void setBLACKLIST(List<String> entry, Guild guild) {
+
+        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/blacklist");
+        try {
+            BufferedWriter r = new BufferedWriter(new FileWriter(f));
+            entry.forEach(l -> {
+                try {
+                    r.write(l + "\n");
+                } catch (IOException e) {}
+            });
             r.close();
         } catch (IOException e) {
             e.printStackTrace();

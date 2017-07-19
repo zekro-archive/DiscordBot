@@ -13,7 +13,7 @@ import java.util.Date;
 public class coreCommands {
 
     public static String getCurrentSystemTime() {
-        DateFormat dateFormat = new SimpleDateFormat("[HH:mm:ss]");
+        DateFormat dateFormat = new SimpleDateFormat("[dd.MM.yyyy - HH:mm:ss]");
         Date date = new Date();
 
         return dateFormat.format(date);

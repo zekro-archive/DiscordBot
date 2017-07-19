@@ -165,7 +165,7 @@ public class WarframeAlerts implements Command {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                } else {
+                } else if (history.get(0).getAuthor().equals(jda.getSelfUser())) {
                     try {
                         history.get(0).editMessage(createMessage(getAlerts()).build()).queue();
                     } catch (IOException e) {

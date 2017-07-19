@@ -140,6 +140,7 @@ public class Main {
         commands.put("suggestion", new Bug());
         commands.put("spacer", new Spacer());
         commands.put("botstats", new BotStats());
+        commands.put("blacklist", new Blacklist());
 
     }
 
@@ -154,7 +155,6 @@ public class Main {
         builder.addListener(new reactionListener());
         builder.addListener(new vkickListener());
         builder.addListener(new botJoinListener());
-
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
