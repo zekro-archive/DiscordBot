@@ -81,8 +81,6 @@ public class Rand6 implements Command {
     private void resetReroll(Member member, MessageReceivedEvent event) throws IOException {
 
         BufferedReader fr;
-        Date date = new Date();
-
         HashMap<Member, String> rollMap = new HashMap<>();
 
         if (saveFile.exists()) {
@@ -93,10 +91,10 @@ public class Rand6 implements Command {
 
         if (rollMap.containsKey(member)) {
             rollMap.remove(member);
-
+            rollMap.forEach((member1, s) -> System.out.println(member1.getEffectiveName() + " - " + s));
             FileWriter fw = new FileWriter(saveFile);
 
-            rollMap.keySet().stream().forEach(m -> {
+            rollMap.keySet().forEach(m -> {
                 try {
                     fw.write(m.getUser().getId() + ":" + rollMap.get(m) + "\n");
                 } catch (IOException e) {
@@ -104,6 +102,7 @@ public class Rand6 implements Command {
                     event.getTextChannel().sendMessage(MSGS.error().setDescription("AN ERROR OCCURED WHILE WRITING SAVE FILE...").build()).queue();
                 }
             });
+            fw.close();
 
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.cyan).setDescription("**Reseted reroll from " + member.getAsMention() + "**").build()).queue();
         } else
@@ -249,7 +248,8 @@ public class Rand6 implements Command {
                 return;
         }
 
-        event.getMember().getVoiceState().getChannel().getMembers()
+        event.getMember().getVoiceState().getChannel().getMembers().stream()
+                .filter(m -> !m.getUser().isBot())
                 .forEach(m -> sb.append(
                         "**" + m.getEffectiveName() + "**  -  **`" + getRandOp() + "`**\n"
                 ));
