@@ -60,7 +60,7 @@ public class Guilds implements Command {
         event.getJDA().getGuilds().stream()
                 .sorted(Comparator.comparingInt(s -> s.getMembers().size()))
                 .forEach(g -> sb.append(
-                "*[" + g.getMembers().size() + "]*  -  **" + g.getName() + "**  -  `" + g.getId() + "\n"
+                "*[" + g.getMembers().size() + "]*  -  **" + g.getName() + "**  -  `" + g.getId() + "`\n"
         ));
 
         if (sb.toString().length() > 2000)
