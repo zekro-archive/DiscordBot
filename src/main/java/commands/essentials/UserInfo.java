@@ -29,8 +29,6 @@ public class UserInfo implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss (z)");
-
         Member memb;
 
         if (args.length > 0) {
@@ -40,10 +38,10 @@ public class UserInfo implements Command {
         }
 
         String NAME = memb.getEffectiveName();
+        String TAG = memb.getUser().getName() + "#" + memb.getUser().getDiscriminator();
         String GUILD_JOIN_DATE = memb.getJoinDate().format(DateTimeFormatter.RFC_1123_DATE_TIME);
         String DISCORD_JOINED_DATE = memb.getUser().getCreationTime().format(DateTimeFormatter.RFC_1123_DATE_TIME);
         String ID = memb.getUser().getId();
-        String DISCRIMINATOR = memb.getUser().getDiscriminator();
         String STATUS = memb.getOnlineStatus().getKey();
         String ROLES = "";
         String GAME;
@@ -69,8 +67,8 @@ public class UserInfo implements Command {
 
         EmbedBuilder em = new EmbedBuilder().setColor(Color.GREEN);
         em.setDescription(":spy:   **User information for " + memb.getUser().getName() + ":**")
-                .addField("Name", NAME, false)
-                .addField("User", NAME + "#" + DISCRIMINATOR, false)
+                .addField("Name / Nickname", NAME, false)
+                .addField("User Tag", TAG, false)
                 .addField("ID", ID, false)
                 .addField("Current Status", STATUS, false)
                 .addField("Current Game", GAME, false)
