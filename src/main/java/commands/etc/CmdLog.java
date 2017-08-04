@@ -18,6 +18,13 @@ import java.util.List;
 
 public class CmdLog implements Command {
 
+    private String saveCut(String input) {
+        System.out.println(input);
+        if (input.length() > 1900)
+            return input.substring(0, 1900);
+        return input;
+    }
+
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -42,7 +49,7 @@ public class CmdLog implements Command {
                     ));
 
             event.getTextChannel().sendMessage(
-                    "**Last 50 Commands:**\n\n" + sb.toString()
+                    "**Last 50 Commands:**\n\n" + saveCut(sb.toString())
             ).queue();
 
         } else if (args[0].toLowerCase().equals("all")) {
@@ -60,8 +67,7 @@ public class CmdLog implements Command {
                     ));
 
             event.getTextChannel().sendMessage(
-                    new EmbedBuilder().addField("Last 50 Commands (all guilds):", sb.toString(),false)
-                            .build()
+                    "**Last 50 Commands (all guilds):** \n\n" + saveCut(sb.toString())
             ).queue();
         }
 

@@ -126,5 +126,7 @@ public class readyListener extends ListenerAdapter {
 
         timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
 
+        commands.chat.Vote2.loadAllPolls(event);
+
     }
 }

@@ -60,10 +60,13 @@ public class Guilds implements Command {
         event.getJDA().getGuilds().stream()
                 .sorted(Comparator.comparingInt(s -> s.getMembers().size()))
                 .forEach(g -> sb.append(
-                ":white_small_square:   *[" + g.getMembers().size() + "]*  -  **" + g.getName() + "**  -  `" + g.getId() + "`  -  " + g.getOwner().getEffectiveName() + "\n"
+                "*[" + g.getMembers().size() + "]*  -  **" + g.getName() + "**  -  `" + g.getId() + "`\n"
         ));
 
-        event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds", null).setDescription(sb.toString()).build()).queue();
+        if (sb.toString().length() > 2000)
+            event.getTextChannel().sendMessage("**Guilds:**\n\n" + sb.toString()).queue();
+        else
+            event.getTextChannel().sendMessage(new EmbedBuilder().setTitle("Guilds", null).setDescription(sb.toString()).build()).queue();
 
     }
 
