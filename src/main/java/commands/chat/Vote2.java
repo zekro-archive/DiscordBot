@@ -3,15 +3,17 @@ package commands.chat;
 import commands.Command;
 import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,29 +27,51 @@ import java.util.List;
  */
 
 
-public class Vote2 implements Command  {
+public class Vote2 implements Command, Serializable  {
 
     public static HashMap<Guild, Poll> voteHash = new HashMap<>();
 
     private String[] emoti = {":one:", ":two:", ":three:", ":four:", ":five:", ":six:", ":seven:", ":eight:", ":nine:", ":keycap_ten:"};
 
-    public class Poll {
+    public class Poll implements Serializable {
 
-        public Guild guild;
-        public Message message;
-        public Member creator;
+        public static final long serialVersionUID = 5175645152486303579L;
+        public String guild;
+        public String message;
+        public String creator;
         public List<String> content;
-        public HashMap<Member, Integer> votes;
+        public HashMap<String, Integer> votes;
 
         public Poll(Guild guild, Member creator, Message message, List<String> content) {
-            this.message = message;
-            this.guild = guild;
-            this.creator = creator;
+            this.message = message.getId();
+            this.guild = guild.getId();
+            this.creator = creator.getUser().getId();
             this.content = content;
             this.votes = new HashMap<>();
         }
 
+        public Member getCreator(Guild guild) {
+            return guild.getMember(guild.getJDA().getUserById(creator));
+        }
+
+        public Guild getGuild(JDA jda) {
+            return jda.getGuildById(guild);
+        }
+
+        public Message getMessage(Guild guild) {
+            ArrayList<Message> msgs = new ArrayList<>();
+            guild.getTextChannels().stream().forEach(c -> msgs.add(c.getMessageById(message).complete()));
+            return msgs.get(0);
+        }
+
+        public HashMap<Member, Integer> getVotes(Guild guild) {
+            HashMap<Member, Integer> out = new HashMap<>();
+            votes.forEach((s, integer) -> out.put(guild.getMember(guild.getJDA().getUserById(s)), integer));
+            return out;
+        }
+
     }
+
 
     private void createPoll(String[] args, MessageReceivedEvent event) {
 
@@ -87,7 +111,7 @@ public class Vote2 implements Command  {
         } else if (!voteHash.containsKey(event.getGuild())) {
             event.getTextChannel().sendMessage(MSGS.error().setDescription("There is currently no poll running to vote for!").build()).queue();
             return;
-        } else if (voteHash.get(event.getGuild()).votes.containsKey(event.getMember())) {
+        } else if (voteHash.get(event.getGuild()).getVotes(event.getGuild()).containsKey(event.getMember())) {
             event.getTextChannel().sendMessage(MSGS.error().setDescription("Sorry, " + event.getAuthor().getAsMention() + ", you can only vote **once** for a poll!").build()).queue();
             return;
         }
@@ -105,7 +129,7 @@ public class Vote2 implements Command  {
             return;
         }
 
-        voteHash.get(event.getGuild()).votes.put(event.getMember(), votenumb);
+        voteHash.get(event.getGuild()).votes.put(event.getMember().getUser().getId(), votenumb);
 
         event.getMessage().delete().queue();
 
@@ -124,7 +148,7 @@ public class Vote2 implements Command  {
         voteHash.get(event.getGuild()).content.stream().skip(1).forEach(s -> thisconv.add(s));
         for ( String s : thisconv ) {
             int thiscount = count;
-            sb.append("" + emoti[count] + "  -  " + s + "  -  Votes: `" + voteHash.get(event.getGuild()).votes.entrySet().stream().filter(memberIntegerEntry -> memberIntegerEntry.getValue().equals(thiscount + 1)).count() + "` " + "\n");
+            sb.append("" + emoti[count] + "  -  " + s + "  -  Votes: `" + voteHash.get(event.getGuild()).getVotes(event.getGuild()).entrySet().stream().filter(memberIntegerEntry -> memberIntegerEntry.getValue().equals(thiscount + 1)).count() + "` " + "\n");
             count++;
         }
 
@@ -141,13 +165,61 @@ public class Vote2 implements Command  {
             return;
         }
 
-        if (core.Perms.getLvl(event.getMember()) >= 1 || event.getMember().equals(voteHash.get(event.getGuild()).creator)) {
+        if (core.Perms.getLvl(event.getMember()) >= 1 || event.getMember().equals(voteHash.get(event.getGuild()).getCreator(event.getGuild()))) {
             statsPoll(event);
             voteHash.remove(event.getGuild());
+            new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/vote").delete();
             event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0xFF5600)).setDescription("Vote closed by " + event.getMember().getAsMention() + ".").build()).queue();
         } else {
             event.getTextChannel().sendMessage(MSGS.error().setDescription("Sorry, " + event.getMember().getAsMention() + ", only the creator of the poll or a member with at least permission level 1 can close a running poll.").build()).queue();
         }
+
+    }
+
+    private void savePoll(Guild guild) throws IOException {
+
+        if (!voteHash.containsKey(guild))
+            return;
+
+        String saveFileName = "SERVER_SETTINGS/" + guild.getId() + "/vote";
+        Poll currPoll = voteHash.get(guild);
+
+        FileOutputStream fos = new FileOutputStream(saveFileName);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(currPoll);
+        oos.close();
+
+    }
+
+    private static Poll getPoll(Guild guild) throws IOException, ClassNotFoundException {
+
+        if (voteHash.containsKey(guild))
+            return null;
+
+        String saveFileName = "SERVER_SETTINGS/" + guild.getId() + "/vote";
+
+        FileInputStream fis = new FileInputStream(saveFileName);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Poll out = (Poll) ois.readObject();
+        ois.close();
+        return out;
+
+    }
+
+    public static void loadAllPolls(ReadyEvent event) {
+
+        event.getJDA().getGuilds().forEach(g -> {
+
+            File voteSave = new File("SERVER_SETTINGS/" + g.getId() + "/vote");
+            if (voteSave.exists()) {
+                try {
+                    voteHash.put(g, getPoll(g));
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
 
     }
 
@@ -190,6 +262,14 @@ public class Vote2 implements Command  {
             default:
                 event.getTextChannel().sendMessage(MSGS.error().setDescription(help()).build()).queue();
         }
+
+        voteHash.forEach((guild, poll) -> {
+            try {
+                savePoll(guild);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 

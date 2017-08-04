@@ -14,3 +14,5 @@ _config.yml
 SETTINGS.txt
 .idea/workspace.xml
 SETTINGS.txt
+CMDLOG.txt
+out/artifacts/*
