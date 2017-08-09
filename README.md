@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.32.3.1-3cd0d8.svg"></a><br>
+<img src="https://img.shields.io/badge/currently%20running%20on-1.33.4.1-3cd0d8.svg"></a><br>
 
 -----
 
@@ -25,20 +25,35 @@ So you have some questions or want to join my developer community discord? Take 
 -----
 ### Features
 
-- **Server administration** </br> Typical commands like `-kick`, `-vkick` (voice channel kick), `-clear` and some more!
+```
+Here are just listed some of the various functions and 57 commands of the bot.
+```
+**Here you can find a full list of commands:**<br>
+<a href="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing" target="_blank"><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/1033926355/original/GoogleSheets.png" width="150"/></a>
 
-- **Fun commands** </br> Chat commands like `-vote`, `-8ball` (yes/no - generator), `-cat` (also with the feature to spam cats in a defined period of time with command `-cat spam <time>`) and some server info commands like `-userinfo` or `-stats` (Server statistics)
-</br><img src="http://image.prntscr.com/image/755bdfce30de4ea8bd40d174d77a53f5.png"/>
-
-- **Warframe alerts** </br> Create a text channel where the bot will post warframe alerts in (name of channel defined in SETTINGS.txt). You can also enter there the ID of a public google docs document where you can enter item filters for the alerts.
-</br><img src="http://image.prntscr.com/image/cc2e323ef8c04123971062fcbe493024.png"/>
-
-- **Voicelog** </br> Do you want to have a nice voice channel log like in teamspeak chat? So just create a text channel (name definable in SETTINGS.txt) and the bot will log all voice channel activity in that channel.
-</br><img src="http://image.prntscr.com/image/2aef2f6f55de4aaaa806fe2fbf57988d.png"/>
-
-- **Music** </br> Yay! Now you can also play msuic with the command `-music play <yt-url>` (or `-m play <yt-url>`)! Get more information about in in commands document or use `-music help`.
-
-- **TTT Server Listener** </br> You can enter your Gmod Server IP and port in the settings file to auto send a message when the server is online for members. Also usable with command `-tttserver`.
+- **Fun / Chat commands**
+  - `-8ball` - typical 8ball yes/no generator
+  - `-cat` - send cute cat pictures (also with a spam function to send them in time periods)
+  - `-clear` - typical clear command to clear messages
+  - `-joke` - throw a yomama joke :^)
+  - `-quote` - quote messages from channels on the guild<br>
+  &nbsp;![](https://image.prntscr.com/image/g3-ctAYBSlu1eS9qoFTSSQ.png)
+  - `-stups` - nudge someone on the guild
+  - `-vote` - create polls<br>
+  &nbsp;![](https://image.prntscr.com/image/5_avzZNQRUijY2rUgc1XgQ.png)
+  
+  
+- **Server administration**
+  - `-kick` - kick someone from the server
+  - `-vkick` - kick someone out of the voice channel, also for a specific time period
+  - `-mute` - mute members in text channels
+  - `-blacklist` - disallow users to use the bot
+  
+- **Other functions**
+  - `-music` - Music player with many functions
+  - `-scpacer` - Create spacer voice channels wich can not be joined
+  - `-rand6` - Random operators for rainbow six<br>
+  &nbsp;![](https://image.prntscr.com/image/WHZh5l76TKupvWUmoIQBpA.png)
 
 -----
 ### Installation
@@ -77,11 +92,6 @@ sudo screen -L -S zekroBot sudo java -jar DiscordBot.jar
 
 After that, use the guild settings commands to configure the bot for your guild(s)
 ![img](https://image.prntscr.com/image/VKw6mpxPS8in40ZB4sTOMQ.png)
-
------
-### Commands
-
-<a href="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing" target="_blank"><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/1033926355/original/GoogleSheets.png" width="200"/></a>
 
 -----
 ### Latest Changelogs
