@@ -28,7 +28,7 @@ So you have some questions or want to join my developer community discord? Take 
 ```
 Here are just listed some of the various functions and 57 commands of the bot.
 ```
-**Here you can find a full list of commands:**<br>
+**Here you can find a full list of commands:**<br><br>
 <a href="https://docs.google.com/spreadsheets/d/1vDsZgn49s6D1OCfyJE0aAixgbMfHb1n6ybHPG8g2Ing/edit?usp=sharing" target="_blank"><img src="https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/1033926355/original/GoogleSheets.png" width="150"/></a>
 
 - **Fun / Chat commands**
