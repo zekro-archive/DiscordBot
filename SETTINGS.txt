@@ -6,11 +6,11 @@
 # GENERAL SERVER SETTINGS #
 
     # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
-        TOKEN = "MzI4NTc5NjU2MzIyMjUyODAx.DHCLFQ.__3vfy_tbkyZA_Irqfm2dbPBkqI"
+        TOKEN = "##########################################"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
 
-        BOT_OWNER_ID = "221905671296253953"
+        BOT_OWNER_ID = "##############"
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
