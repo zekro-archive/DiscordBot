@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 
+
 public class Main {
 
     static JDABuilder builder;
@@ -141,6 +142,7 @@ public class Main {
         commands.put("spacer", new Spacer());
         commands.put("botstats", new BotStats());
         commands.put("blacklist", new Blacklist());
+        commands.put("count", new Count());
 
     }
 
