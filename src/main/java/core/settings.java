@@ -15,7 +15,7 @@ import java.util.*;
  * @author zekro
  */
 
-public class settings {
+public class Settings {
 
 
     private static File sfile = new File("SETTINGS.txt");

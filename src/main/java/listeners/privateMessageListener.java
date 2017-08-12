@@ -18,7 +18,7 @@ import java.util.TimerTask;
  * @author zekro
  */
 
-public class privateMessageListener extends ListenerAdapter {
+public class PrivateMessageListener extends ListenerAdapter {
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
 

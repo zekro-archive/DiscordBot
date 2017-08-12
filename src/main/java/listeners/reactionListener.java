@@ -9,7 +9,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * DiscordBot/listeners
  * © zekro 2017
  */
-public class reactionListener extends ListenerAdapter {
+public class ReactionListener extends ListenerAdapter {
 
     @Override
     public void onMessageReactionAdd(net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent event) {

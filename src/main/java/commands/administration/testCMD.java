@@ -20,7 +20,7 @@ import java.util.TimerTask;
  * Created by Ringo Hoffmann on 20.02.2017.
  */
 
-public class testCMD implements Command {
+public class TestCMD implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

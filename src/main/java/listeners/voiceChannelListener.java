@@ -8,7 +8,7 @@ import utils.STATICS;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class voiceChannelListener extends ListenerAdapter {
+public class VoiceChannelListener extends ListenerAdapter {
 
     private int posold;
 

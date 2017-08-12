@@ -1,7 +1,9 @@
 package listeners;
 
 import commands.chat.WarframeAlerts;
-import core.update;
+import core.StartArgumentHandler;
+import core.UpdateClient;
+import core.UpdateClient;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -11,32 +13,14 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static listeners.tttServerListener.testOnlineState;
 
-public class readyListener extends ListenerAdapter {
+public class ReadyListener extends ListenerAdapter {
 
-    static Timer timerOnReady;
-    static TimerTask timerAction;
     static ReadyEvent readyEvent;
-
-    public static void restartWarframeAlertsCore() {
-        timerOnReady.cancel();
-        timerAction = new TimerTask() {
-            @Override
-            public void run() {
-
-                if (!STATICS.TTT_SERVER_IP.equals(""))
-                    testOnlineState(readyEvent.getJDA().getGuilds());
-
-            }
-        };
-        timerOnReady = new Timer();
-        timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
-    }
 
     private static void handleStartArgs() {
 
-        String[] args = core.startArgumentHandler.args;
+        String[] args = StartArgumentHandler.args;
 
         if (args.length > 0) {
             switch (args[0]) {
@@ -109,24 +93,13 @@ public class readyListener extends ListenerAdapter {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    update.checkIfUpdate(event.getJDA());
+                    UpdateClient.checkIfUpdate(event.getJDA());
                 }
             }, 0, 60000);
 
-        timerOnReady = new Timer();
-        timerAction = new TimerTask() {
-            @Override
-            public void run() {
 
-                if (!STATICS.TTT_SERVER_IP.equals(""))
-                    testOnlineState(readyEvent.getJDA().getGuilds());
 
-            }
-        };
-
-        timerOnReady.schedule(timerAction, 0, STATICS.refreshTime * 1000);
-
-        commands.chat.Vote2.loadAllPolls(event);
+        commands.chat.Vote2.loadPolls(event.getJDA());
 
     }
 }

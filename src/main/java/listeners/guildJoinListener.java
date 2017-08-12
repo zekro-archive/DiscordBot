@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author zekro
  */
 
-public class guildJoinListener extends ListenerAdapter {
+public class GuildJoinListener extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
