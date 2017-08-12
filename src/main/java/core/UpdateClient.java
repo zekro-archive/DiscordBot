@@ -25,7 +25,7 @@ import java.util.List;
  */
 
 
-public class update {
+public class UpdateClient {
 
     private static String lastUpdate = "";
 
@@ -94,7 +94,7 @@ public class update {
                             new EmbedBuilder()
                                     .setColor(new Color(0x7EFF00))
                                     .setDescription(
-                                            "**New bot update is available!**\n" +
+                                            "**New bot UpdateClient is available!**\n" +
                                                     "Download the latest version and install it manually on your vServer.\n\n" +
                                                     "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
                                     .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)
@@ -136,7 +136,7 @@ public class update {
                             new EmbedBuilder()
                                     .setColor(new Color(0x7EFF00))
                                     .setDescription(
-                                            "**New bot update is available!**\n" +
+                                            "**New bot UpdateClient is available!**\n" +
                                             "Download the latest version and install it manually on your vServer.\n\n" +
                                             "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
                                     .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)

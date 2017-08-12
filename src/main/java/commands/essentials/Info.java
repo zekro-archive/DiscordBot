@@ -1,6 +1,7 @@
 package commands.essentials;
 
 import commands.Command;
+import core.UpdateClient;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
@@ -23,7 +24,7 @@ public class Info implements Command {
         String version = "NOT AVAILABLE";
         try {
 
-            URL url = new URL(core.update.versionURL);
+            URL url = new URL(UpdateClient.versionURL);
             Scanner s = new Scanner(url.openStream());
             version = s.nextLine();
 
