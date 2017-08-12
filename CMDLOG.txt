@@ -30,3 +30,8 @@
 [19.07.2017 - 13:58:30] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.r r @zekroBot'
 [19.07.2017 - 13:58:35] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.r reset @zekro'
 [19.07.2017 - 13:58:40] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.r list'
+[12.08.2017 - 16:11:41] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.vote create hey|ho|lel'
+[12.08.2017 - 16:11:48] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.vote v 1'
+[12.08.2017 - 16:13:01] [Developing Test Server (287535046762561536)] [zekro (221905671296253953)] '.vote stats'
+[12.08.2017 - 16:14:28] [Developing Test Server (287535046762561536)] [soρhie (248407593888776194)] '.vote v 1'
+[12.08.2017 - 16:14:35] [Developing Test Server (287535046762561536)] [soρhie (248407593888776194)] '.vote stats'
