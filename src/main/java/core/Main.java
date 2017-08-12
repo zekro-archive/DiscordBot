@@ -1,25 +1,25 @@
 package core;
 
-import commands.*;
-import commands.administration.*;
-import commands.chat.*;
-import commands.essentials.*;
-import commands.etc.*;
-import commands.guildAdministration.*;
-import commands.music.Music;
-import commands.settings.*;
-import listeners.*;
+import commands.Command;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
-import utils.STATICS;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import commands.administration.*;
+import commands.chat.*;
+import commands.essentials.*;
+import commands.etc.*;
+import commands.guildAdministration.*;
+import commands.music.*;
+import commands.settings.*;
+import listeners.*;
+import utils.STATICS;
 
 
 public class Main {
@@ -34,14 +34,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        startArgumentHandler.args = args;
+        StartArgumentHandler.args = args;
 
-        settings.loadSettings();
+        Settings.loadSettings();
 
         BotStats.load();
 
         try {
-            if (!settings.testForToken()) {
+            if (!Settings.testForToken()) {
                 System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
                 System.exit(0);
             }
@@ -57,33 +57,25 @@ public class Main {
             );
         }
 
-        builder = new JDABuilder(AccountType.BOT);
-
-        builder.setToken(STATICS.TOKEN);
-        builder.setAudioEnabled(true);
-        builder.setAutoReconnect(true);
-
-        builder.setStatus(STATICS.STATUS);
-        builder.setGame(STATICS.GAME);
+        builder = new JDABuilder(AccountType.BOT)
+                .setToken(STATICS.TOKEN)
+                .setAudioEnabled(true)
+                .setAutoReconnect(true)
+                .setStatus(STATICS.STATUS)
+                .setGame(STATICS.GAME);
 
         initializeListeners();
         initializeCommands();
 
         try {
-            jda = builder.buildBlocking();
-        } catch (LoginException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (RateLimitedException e) {
+            builder.buildBlocking();
+        } catch (InterruptedException | RateLimitedException | LoginException e) {
             e.printStackTrace();
         }
 
-        SSSS.checkFolders(jda.getGuilds());
-
     }
 
-    public static void initializeCommands() {
+    private static void initializeCommands() {
 
         commands.put("ping", new Ping());
         commands.put("cat", new Cat());
@@ -95,7 +87,7 @@ public class Main {
         commands.put("help", new Help());
         commands.put("info", new Info());
         commands.put("alerts", new WarframeAlerts());
-        commands.put("test", new testCMD());
+        commands.put("test", new TestCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
         commands.put("poll", new Vote2());
@@ -106,11 +98,10 @@ public class Main {
         commands.put("user", new UserInfo());
         commands.put("nudge", new Stups());
         commands.put("stups", new Stups());
-        commands.put("update", new Update());
+        commands.put("UpdateClient", new Update());
         commands.put("restart", new Restart());
         commands.put("kick", new Kick());
         commands.put("vkick", new VoiceKick());
-        commands.put("tttserver", new tttServerStatus());
         commands.put("music", new Music());
         commands.put("m", new Music());
         commands.put("dev", new Dev());
@@ -124,7 +115,7 @@ public class Main {
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
-        commands.put("settings", new Settings());
+        commands.put("Settings", new commands.settings.Settings());
         commands.put("cmdlog", new CmdLog());
         commands.put("speed", new Speedtest());
         commands.put("speedtest", new Speedtest());
@@ -146,17 +137,17 @@ public class Main {
 
     }
 
-    public static void initializeListeners() {
+    private static void initializeListeners() {
 
-        builder.addListener(new readyListener());
-        builder.addListener(new botListener());
-        builder.addListener(new reconnectListener());
-        builder.addListener(new voiceChannelListener());
-        builder.addListener(new guildJoinListener());
-        builder.addListener(new privateMessageListener());
-        builder.addListener(new reactionListener());
-        builder.addListener(new vkickListener());
-        builder.addListener(new botJoinListener());
+        builder.addEventListener(new ReadyListener());
+        builder.addEventListener(new BotListener());
+        builder.addEventListener(new ReconnectListener());
+        builder.addEventListener(new VoiceChannelListener());
+        builder.addEventListener(new GuildJoinListener());
+        builder.addEventListener(new PrivateMessageListener());
+        builder.addEventListener(new ReactionListener());
+        builder.addEventListener(new VkickListener());
+        builder.addEventListener(new BotJoinListener());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
@@ -175,4 +166,5 @@ public class Main {
 
         }
     }
+
 }

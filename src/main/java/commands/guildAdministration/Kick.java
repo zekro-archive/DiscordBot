@@ -1,8 +1,6 @@
 package commands.guildAdministration;
 
 import commands.Command;
-import core.Perms;
-import core.coreCommands;
 import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;

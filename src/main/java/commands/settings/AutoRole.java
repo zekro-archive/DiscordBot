@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Created by zekro on 19.05.2017 / 15:29
- * DiscordBot/commands.settings
+ * DiscordBot/commands.Settings
  * © zekro 2017
  */
 

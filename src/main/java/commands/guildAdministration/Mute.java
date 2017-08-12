@@ -31,7 +31,7 @@ public class Mute implements Command {
         OutputStream outputStream;
         Guild g = event.getGuild();
 
-        outputStream = new FileOutputStream("MUTES/" + member.getUser().getId() + "/mute.settings");
+        outputStream = new FileOutputStream("MUTES/" + member.getUser().getId() + "/mute.Settings");
         properties.setProperty("reason", reason);
         properties.setProperty("muted_by", mutedBy);
         properties.store(outputStream, null);
@@ -45,7 +45,7 @@ public class Mute implements Command {
     private static void Unmute(MessageReceivedEvent event, Member member) throws IOException{
 
         Guild g = event.getGuild();
-        File file = new File("MUTES/" + member.getUser().getId() + "/mute.settings");
+        File file = new File("MUTES/" + member.getUser().getId() + "/mute.Settings");
         ArrayList<Role> mutedRole = new ArrayList<>();
         mutedRole.add(event.getGuild().getRolesByName("Muted", true).get(0));
 
@@ -54,7 +54,7 @@ public class Mute implements Command {
 
     }
     private static boolean isMuted(Member member) {
-        File f = new File("MUTES/" + member.getUser().getId() + "/mute.settings");
+        File f = new File("MUTES/" + member.getUser().getId() + "/mute.Settings");
         if (f.exists()) {
             return true;
         }

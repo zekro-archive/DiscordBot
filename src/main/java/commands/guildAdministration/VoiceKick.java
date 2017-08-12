@@ -2,16 +2,11 @@ package commands.guildAdministration;
 
 
 import commands.Command;
-import core.Perms;
 import core.SSSS;
-import core.coreCommands;
-import listeners.vkickListener;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.core.managers.GuildController;
 import utils.MSGS;
 import utils.STATICS;
 
