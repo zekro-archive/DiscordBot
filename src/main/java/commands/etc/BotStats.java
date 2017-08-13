@@ -116,12 +116,12 @@ public class BotStats implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "**USAGE:**\n`-botstats`";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Displays stats of the bot.";
     }
 
     @Override

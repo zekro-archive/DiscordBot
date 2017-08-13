@@ -80,12 +80,12 @@ public class Blacklist implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "**USAGE: **\n`-blacklist <@menrion>`";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Disallow users to use the bots commands.";
     }
 
     @Override

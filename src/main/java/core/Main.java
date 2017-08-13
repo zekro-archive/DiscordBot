@@ -134,6 +134,8 @@ public class Main {
         commands.put("botstats", new BotStats());
         commands.put("blacklist", new Blacklist());
         commands.put("count", new Count());
+        commands.put("bvote", new Vote3());
+        commands.put("bpoll", new Vote3());
 
     }
 

@@ -66,7 +66,7 @@ public class Help implements Command {
 
         StringBuilder ciams = new StringBuilder();
 
-        String[] ignorers = {"test", "r", "c", "bj", "ttt", "userinfo", "dev", "nudge", "poll", "moveall", "purge", "info", "suggestion", "r6", };
+        String[] ignorers = {"bpoll", "test", "r", "c", "bj", "ttt", "userinfo", "dev", "nudge", "poll", "moveall", "purge", "info", "suggestion", "r6", };
         Arrays.stream(ignorers).forEach(s -> cmds.remove(s));
 
 
@@ -82,7 +82,6 @@ public class Help implements Command {
                                         "  :small_orange_diamond:  -  Only for groups `" + Arrays.toString(SSSS.getPERMROLES_2(event.getGuild())).replace("[", "").replace("]", "") + "`\n" +
                                         "  :small_red_triangle_down:  -  Only for owner of the server\n"
                     + "\n\n___").queue();
-
 
             ciams.delete(0, ciams.length());
             ciams.append("**" + STATICS.CMDTYPE.administration + "**\n");

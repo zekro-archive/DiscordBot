@@ -13,6 +13,8 @@ public class TTT implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
+        if (!event.getGuild().getId().equals("297298167634853890")) return;
+
         event.getTextChannel().sendMessage(
                 ":regional_indicator_t: :regional_indicator_t: :regional_indicator_t:\n\n" +
                 "Servername:    ` GrandHarzer `\n" +
