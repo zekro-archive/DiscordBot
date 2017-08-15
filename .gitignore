@@ -1,19 +1,50 @@
-src/main/java/SECRETS.java
-target/classes/utils/SECRETS.class
-src/main/java/utils/SECRETS.java
-target/test-classes/utils/SECRETS.class
-SETTINGS.txt
-out/artifacts/DiscordBot_jar/libconnector.so
-SERVER_SETTINGS/
-.idea/
-*.class
-*.class
-DiscordBot.jar
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# Sensitive or high-churn files:
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# Gradle:
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# CMake
+cmake-build-debug/
+
+# Mongo Explorer plugin:
+.idea/**/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+
+out/*
+SERVER_SETTINGS/*
 DiscordBot.iml
-_config.yml
-SETTINGS.txt
-.idea/workspace.xml
-SETTINGS.txt
 CMDLOG.txt
-out/artifacts/*
+target/*
+.idea/*
+SETTINGS.txt
 CMDLOG.txt
