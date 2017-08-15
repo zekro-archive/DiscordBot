@@ -8,7 +8,7 @@ package utils;
  */
 
 
-public class ConsoleUtils {
+public class Logger {
 
     /**
      * Class created by http://github.com/itsNaix
@@ -26,8 +26,8 @@ public class ConsoleUtils {
     public static String Underline = (char)27 + "[4m";
     public static String StopUnderline = (char)27 + "[24m";
 
-    public static void sendError(String message) { System.out.println(Red + message + Reset); }
-    public static void sendDebug(String message) { System.out.println(Cyan + message + Reset); }
-    public static void sendSuccess(String message) { System.out.println(Green + message + Reset); }
+    public static void ERROR(String message) { System.out.println(Red + message + Reset); }
+    public static void DEBUG(String message) { System.out.println(Cyan + message + Reset); }
+    public static void SUCCESS(String message) { System.out.println(Green + message + Reset); }
 
 }

@@ -53,11 +53,6 @@ public class Speedtest implements Command {
 
             }
 
-            @Override
-            public void onInterruption() {
-
-            }
-
         });
 
         Uspeed.addSpeedTestListener(new ISpeedTestListener() {
@@ -74,11 +69,6 @@ public class Speedtest implements Command {
 
             @Override
             public void onError(SpeedTestError speedTestError, String s) {
-
-            }
-
-            @Override
-            public void onInterruption() {
 
             }
 

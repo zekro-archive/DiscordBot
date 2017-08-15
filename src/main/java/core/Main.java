@@ -36,12 +36,13 @@ public class Main {
 
         StartArgumentHandler.args = args;
 
-        Settings.loadSettings();
+        SettingsCore.loadSettings();
 
         BotStats.load();
 
+
         try {
-            if (!Settings.testForToken()) {
+            if (!SettingsCore.testForToken()) {
                 System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
                 System.exit(0);
             }
@@ -115,7 +116,7 @@ public class Main {
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
-        commands.put("Settings", new commands.settings.Settings());
+        commands.put("SettingsCore", new commands.settings.Settings());
         commands.put("cmdlog", new CmdLog());
         commands.put("speed", new Speedtest());
         commands.put("speedtest", new Speedtest());

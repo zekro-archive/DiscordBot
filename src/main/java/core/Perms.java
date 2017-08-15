@@ -22,7 +22,7 @@ public class Perms {
 
 
     public static boolean isOwner(User user, TextChannel channel) {
-        if (STATICS.BOT_OWNER_ID.equals("")) {
+        if (STATICS.BOT_OWNER_ID == 0) {
             channel.sendMessage(MSGS.error().setDescription("There is no owner ID set in `SETTINGS.txt`.\nIf you are the owner of this bot, please add your Discord user id in the `SETTINGS.txt`!").build()).queue();
             return false;
         }

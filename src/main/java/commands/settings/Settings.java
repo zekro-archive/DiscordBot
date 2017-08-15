@@ -35,7 +35,7 @@ public class Settings implements Command {
     @Override
     public String help() {
         return "USING:\n" +
-               "**Settings**  -  `List all current Settings values of the current guild`";
+               "**SettingsCore**  -  `List all current SettingsCore values of the current guild`";
     }
 
     @Override

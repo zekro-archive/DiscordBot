@@ -56,7 +56,7 @@ public class UpdateClient {
 
             JSONObject pre = jsonobs.stream().filter(j -> {
                 try {
-                    return j.getString("prerelease").equals("true");
+                    return j.getBoolean("prerelease");
                 } catch (JSONException e) {
                     e.printStackTrace();
                     return false;
@@ -65,15 +65,17 @@ public class UpdateClient {
 
             JSONObject stable = jsonobs.stream().filter(j -> {
                 try {
-                    return j.getString("prerelease").equals("false");
+                    return !j.getBoolean("prerelease");
                 } catch (JSONException e) {
-                    e.printStackTrace();
                     return false;
                 }
             }).findFirst().orElse(null);
 
+
             out.put("pre", new AbstractMap.SimpleEntry<>(pre.getString("tag_name"), pre.getString("html_url")));
             out.put("stable", new AbstractMap.SimpleEntry<>(stable.getString("tag_name"), stable.getString("html_url")));
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -88,7 +90,7 @@ public class UpdateClient {
 
             if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION)) {
 
-                if (!STATICS.BOT_OWNER_ID.isEmpty()) {
+                if ( STATICS.BOT_OWNER_ID != 0) {
 
                     channel.sendMessage(
                             new EmbedBuilder()
@@ -130,7 +132,7 @@ public class UpdateClient {
             if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION) && !lastUpdate.equals(getVersionInfo().get("pre").getKey())) {
                 lastUpdate = getVersionInfo().get("pre").getKey();
 
-                if (!STATICS.BOT_OWNER_ID.isEmpty()) {
+                if (STATICS.BOT_OWNER_ID != 0) {
 
                     jda.getUserById(STATICS.BOT_OWNER_ID).openPrivateChannel().complete().sendMessage(
                             new EmbedBuilder()

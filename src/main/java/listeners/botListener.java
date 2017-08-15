@@ -1,5 +1,6 @@
 package listeners;
 
+import commands.essentials.Ping;
 import commands.etc.BotStats;
 import core.Main;
 import core.SSSS;
@@ -15,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class BotListener extends ListenerAdapter{
 
@@ -47,6 +49,7 @@ public class BotListener extends ListenerAdapter{
         if (e.getChannelType().equals(ChannelType.PRIVATE)) return;
 
         if (e.getMessage().getContent().startsWith(SSSS.getPREFIX(e.getGuild())) && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
+            Ping.setInputTime(new Date().getTime());
             if (!commands.guildAdministration.Blacklist.check(e.getAuthor(), e.getGuild())) return;
             try {
                 Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));

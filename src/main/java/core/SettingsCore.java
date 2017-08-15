@@ -15,7 +15,7 @@ import java.util.*;
  * @author zekro
  */
 
-public class Settings {
+public class SettingsCore {
 
 
     private static File sfile = new File("SETTINGS.txt");
@@ -69,7 +69,7 @@ public class Settings {
                             "    # Prefix to send bot commands (like -help or ~help or .help, what ever you want)\n" +
                             "        CMD_PREFIX = \"-\"\n" +
                             "    # Bot owners user ID\n" +
-                            "        BOT_OWNER_ID = \"\"\n" +
+                            "        BOT_OWNER_ID = 0\n" +
                             "    # Custom message shown as \"Now Playing: ...\" text\n" +
                             "        CUSTOM_PLAYING_MESSAGE = \"zekro.de\"\n" +
                             "    # Log entered command in console of the bot\n" +
@@ -119,18 +119,7 @@ public class Settings {
                             "       # Message, that appears, if user joins discord first time\n" +
                             "       # \"[USER]\" stand for the @user - mention\n" +
                             "       # \"[GUILD]\" stand for the guild name\n" +
-                            "           DISCORD_JOIN_MESSAGE = \":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:\"\n" +
-                            "\n" +
-                            "\n" +
-                            "# OTHER SETTINGS #\n" +
-                            "\n" +
-                            "    # THIS IS STILL IN ALPHA TESTING PHASE!\n" +
-                            "\n" +
-                            "    # Static server IP of TTT server\n" +
-                            "        TTT_SERVER_IP = \"\"\n" +
-                            "    # Port of server (defaultly 27015)\n" +
-                            "        TTT_SERVER_PORT = 27015\n" +
-                            "\n"
+                            "           DISCORD_JOIN_MESSAGE = \":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:\"\n"
 
             );
 
@@ -151,8 +140,6 @@ public class Settings {
             STATICS.DOCID_jokes = toml.getString(SCONT.DOCID_JOKES);
             STATICS.commandConsoleOutout = toml.getBoolean(SCONT.COMMAND_CONSOLE_OUTPUT);
             STATICS.KICK_VOICE_CHANNEL = toml.getString(SCONT.KICK_VOICE_CHANNEL);
-            STATICS.TTT_SERVER_IP = toml.getString(SCONT.TTT_SERVER_IP);
-            STATICS.TTT_SERVER_PORT = Math.toIntExact(toml.getLong(SCONT.TTT_SERVER_PORT));
             STATICS.autoUpdate = toml.getBoolean(SCONT.UPDATE_INFO);
             STATICS.musicChannel = toml.getString(SCONT.MUSIC_CHANNEL);
             STATICS.guildJoinRole = toml.getString(SCONT.GUILD_JOIN_ROLE);
@@ -160,7 +147,7 @@ public class Settings {
             STATICS.music_volume = Math.toIntExact(toml.getLong(SCONT.MUSIC_VOLUME));
             STATICS.discordJoinMessage = toml.getString(SCONT.DISCORD_JOIN_MESSAGE);
             STATICS.FULLPERMS = toml.getString(SCONT.FULL_PERMISSION_ROLES).split(", ");
-            STATICS.BOT_OWNER_ID = toml.getString(SCONT.BOT_OWNER_ID);
+            STATICS.BOT_OWNER_ID = toml.getLong(SCONT.BOT_OWNER_ID);
             STATICS.MUSIC_BUFFER = Math.toIntExact(toml.getLong(SCONT.MUSIC_BUFFER));
         }
     }

@@ -27,6 +27,8 @@ import java.util.stream.Collectors;
 
 public class Vote3 implements Command, Serializable {
 
+    private static HashMap<Guild, Message> tempList = new HashMap<>();
+
     private static TextChannel channel;
     public static HashMap<Guild, Poll> polls = new HashMap<>();
     private static final String[] EMOTI = ( "\uD83C\uDF4F \uD83C\uDF4E \uD83C\uDF50 \uD83C\uDF4A \uD83C\uDF4B \uD83C\uDF4C \uD83C\uDF49 \uD83C\uDF47 \uD83C\uDF53 \uD83C\uDF48 \uD83C\uDF52 \uD83C\uDF51 \uD83C\uDF4D \uD83E\uDD5D " +
@@ -122,13 +124,14 @@ public class Vote3 implements Command, Serializable {
             toAddEmotis.add(randEmoti);
         });
 
-
         Poll poll = new Poll(event.getMember(), heading, answers, toAddEmotis, msg);
-        polls.put(event.getGuild(), poll);
 
         channel.editMessageById(msg.getId(), getParsedPoll(poll, event.getGuild()).build()).queue();
         toAddEmotis.forEach(s -> poll.getMessage(event.getGuild()).addReaction(s).queue());
         channel.pinMessageById(msg.getId()).queue();
+
+        polls.put(event.getGuild(), poll);
+        tempList.put(event.getGuild(), poll.getMessage(event.getGuild()));
 
         try {
             savePoll(event.getGuild());
@@ -142,42 +145,48 @@ public class Vote3 implements Command, Serializable {
         Poll poll = polls.get(guild);
 
         if (poll.votes.containsKey(author.getUser().getId())) {
-            poll.getMessage(guild).getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription("Sorry, " + author.getAsMention() + ", you can only vote once!").build()).queue(m -> {
+            tempList.get(guild).getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.red).setDescription("Sorry, " + author.getAsMention() + ", you can only vote once!").build()).queue(m ->
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
                         m.delete().queue();
                     }
-                }, 4000);
-            });
+                }, 4000)
+            );
             return;
         }
 
         poll.votes.put(author.getUser().getId(), voteIndex);
         polls.replace(guild, poll);
-        poll.getMessage(guild).editMessage(getParsedPoll(poll, guild).build()).queue();
+        tempList.get(guild).editMessage(getParsedPoll(poll, guild).build()).queue();
+
 
         try {
             savePoll(guild);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public static void handleReaction(MessageReactionAddEvent event) {
+
         Guild guild = event.getGuild();
 
         if (polls.containsKey(guild)) {
 
             Message msg = null;
             try {
-                msg = polls.get(guild).getMessage(guild);
+                msg = tempList.get(guild);
             } catch (Exception e) { e.printStackTrace(); }
+
 
             if (event.getMessageId().equals(msg != null ? msg.getId() : "") && !event.getMember().getUser().equals(event.getJDA().getSelfUser())) {
                 List<String> reactions = msg.getReactions().stream().map(r -> r.getEmote().getName()).collect(Collectors.toList());
-                if (reactions.contains(event.getReaction().getEmote().getName()))
+                msg.getReactions().forEach(r -> System.out.println(r.getEmote().getName()));
+                if (reactions.contains(event.getReaction().getEmote().getName())) {
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
+                }
             }
 
         }
@@ -223,8 +232,10 @@ public class Vote3 implements Command, Serializable {
             File f = new File("SERVER_SETTINGS/" + g.getId() + "/betavote.dat");
             if (f.exists())
                 try {
-                    polls.put(g, getPoll(g));
-                } catch (IOException | ClassNotFoundException e) {
+                    Poll poll = getPoll(g);
+                    polls.put(g, poll);
+                    tempList.put(g, poll.getMessage(g));
+                } catch (IOException | ClassNotFoundException | NullPointerException e) {
                     e.printStackTrace();
                 }
 
@@ -257,8 +268,9 @@ public class Vote3 implements Command, Serializable {
             return;
         }
 
-        poll.getMessage(event.getGuild()).delete().queue();
+        tempList.get(event.getGuild()).delete().queue();
         polls.remove(g);
+        tempList.remove(g);
         channel.sendMessage(getParsedPoll(poll, g).build()).queue();
         message("Poll closed by " + event.getAuthor().getAsMention() + ".", new Color(0xFF7000));
 

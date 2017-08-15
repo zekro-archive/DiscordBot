@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 /**
  * Created by zekro on 17.05.2017 / 20:06
- * DiscordBot/commands.Settings
+ * DiscordBot/commands.SettingsCore
  * © zekro 2017
  */
 

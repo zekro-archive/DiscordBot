@@ -7,6 +7,7 @@ import core.UpdateClient;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import utils.Logger;
 import utils.STATICS;
 
 import java.util.Date;
@@ -54,18 +55,18 @@ public class ReadyListener extends ListenerAdapter {
         StringBuilder sb = new StringBuilder();
         event.getJDA().getGuilds().forEach(guild -> sb.append("|  - \"" + guild.getName() + "\" - {@" + guild.getOwner().getUser().getName() + "#" + guild.getOwner().getUser().getDiscriminator() + "} - [" + guild.getId() + "] \n"));
 
-        System.out.println(
+        System.out.println(String.format(
                 "\n\n" +
-                "#--------------------------------------------------------------------------------- - -  -  -\n" +
-                "| zekroBot - v." + STATICS.VERSION + "                              \n" +
-                "#--------------------------------------------------------------------------------- - -  -  -\n" +
-                "| Running on " + event.getJDA().getGuilds().size() + " guilds.      \n" +
-                sb.toString() +
-                "#--------------------------------------------------------------------------------- - -  -  -\n\n"
-        );
+                "#------------------------------------------------------------------------- - - -  -  -  -   -\n" +
+                "| %s - v.%s (JDA: v.%s)\n" +
+                "#------------------------------------------------------------------------- - - -  -  -  -   -\n" +
+                "| Running on %s guilds: \n" +
+                "%s" +
+                "#------------------------------------------------------------------------- - - -  -  -  -   -\n\n",
+        Logger.Cyan + Logger.Bold + "zekroBot" + Logger.Reset, STATICS.VERSION, "3.2.0_242", event.getJDA().getGuilds().size(), sb.toString()));
 
-        if (STATICS.BOT_OWNER_ID.isEmpty()) {
-            System.out.println(
+        if (STATICS.BOT_OWNER_ID == 0) {
+            Logger.ERROR(
                     "#######################################################\n" +
                     "# PLEASE INSERT YOUR DISCORD USER ID IN SETTINGS.TXT  #\n" +
                     "# AS ENTRY 'BOT_OWNER_ID' TO SPECIFY THAT YOU ARE THE #\n" +
