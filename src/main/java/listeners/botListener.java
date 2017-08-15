@@ -1,14 +1,11 @@
 package listeners;
 
+import commands.essentials.Ping;
 import commands.etc.BotStats;
-import commands.etc.CmdLog;
 import core.Main;
 import core.SSSS;
-import core.coreCommands;
+import core.CoreCommands;
 import net.dv8tion.jda.core.entities.ChannelType;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import utils.STATICS;
@@ -18,12 +15,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Date;
 
-public class botListener extends ListenerAdapter{
+public class BotListener extends ListenerAdapter{
 
 
     private void addToLogfile(MessageReceivedEvent e) throws IOException {
@@ -35,7 +30,7 @@ public class botListener extends ListenerAdapter{
             logFile.createNewFile();
 
         bw.write(String.format("%s [%s (%s)] [%s (%s)] '%s'\n",
-                coreCommands.getCurrentSystemTime(),
+                CoreCommands.getCurrentSystemTime(),
                 e.getGuild().getName(),
                 e.getGuild().getId(),
                 e.getAuthor().getName(),
@@ -54,14 +49,15 @@ public class botListener extends ListenerAdapter{
         if (e.getChannelType().equals(ChannelType.PRIVATE)) return;
 
         if (e.getMessage().getContent().startsWith(SSSS.getPREFIX(e.getGuild())) && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
+            Ping.setInputTime(new Date().getTime());
             if (!commands.guildAdministration.Blacklist.check(e.getAuthor(), e.getGuild())) return;
             try {
                 Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));
                 if (STATICS.commandConsoleOutout)
-                    System.out.println(coreCommands.getCurrentSystemTime() + " [Info] [Commands]: Command '" + e.getMessage().getContent() + "' was executed by '" + e.getAuthor() + "' (" + e.getGuild().getName() + ")!");
+                    System.out.println(CoreCommands.getCurrentSystemTime() + " [Info] [Commands]: Command '" + e.getMessage().getContent() + "' was executed by '" + e.getAuthor() + "' (" + e.getGuild().getName() + ")!");
                 ArrayList<String> list = new ArrayList<>();
                 list.add(e.getGuild().getId());
-                list.add(coreCommands.getCurrentSystemTime());
+                list.add(CoreCommands.getCurrentSystemTime());
                 list.add(e.getMember().getEffectiveName());
                 list.add(e.getMessage().getContent());
                 STATICS.cmdLog.add(list);

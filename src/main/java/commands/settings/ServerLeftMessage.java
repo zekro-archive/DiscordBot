@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 /**
  * Created by zekro on 17.05.2017 / 15:12
- * DiscordBot/commands.settings
+ * DiscordBot/commands.SettingsCore
  * © zekro 2017
  */
 public class ServerLeftMessage implements Command {

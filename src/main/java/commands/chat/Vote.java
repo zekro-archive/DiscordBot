@@ -18,6 +18,14 @@ import java.util.HashMap;
 
 public class Vote implements Command {
 
+    /*
+
+        This is the old Vote Command, before the complete rewriting on the new Vote command.
+        Because of documentation, how you should NOT write a Vote command, I thought about
+        letting this old stuff in, but i'ts nowhere used in this bot.
+
+     */
+
     private static HashMap<Guild, GVotes> voteHash = new HashMap<>();
 
     static boolean getHasUserVoted(String username, ArrayList<ArrayList<String>> votesList) {

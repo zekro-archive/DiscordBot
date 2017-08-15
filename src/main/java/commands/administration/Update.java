@@ -2,12 +2,12 @@ package commands.administration;
 
 import commands.Command;
 import core.Perms;
-import core.coreCommands;
+import core.UpdateClient;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.io.IOException;
 import java.text.ParseException;
-import core.update;
+
 import utils.STATICS;
 
 /**
@@ -28,7 +28,7 @@ public class Update implements Command {
 
         if (!Perms.isOwner(event.getAuthor(), event.getTextChannel())) return;
 
-        update.manualCheck(event.getMessage().getTextChannel());
+        UpdateClient.manualCheck(event.getMessage().getTextChannel());
 
     }
 
@@ -39,12 +39,12 @@ public class Update implements Command {
 
     @Override
     public String help() {
-        return "USAGE: -update";
+        return "USAGE: -UpdateClient";
     }
 
     @Override
     public String description() {
-        return "Update discord bot.";
+        return "UpdateClient discord bot.";
     }
 
     @Override

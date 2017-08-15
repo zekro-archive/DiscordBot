@@ -11,7 +11,7 @@ import java.text.ParseException;
 
 /**
  * Created by zekro on 17.05.2017 / 14:10
- * DiscordBot/commands.settings
+ * DiscordBot/commands.SettingsCore
  * © zekro 2017
  */
 

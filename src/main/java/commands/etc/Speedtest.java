@@ -53,10 +53,6 @@ public class Speedtest implements Command {
 
             }
 
-            @Override
-            public void onInterruption() {
-
-            }
         });
 
         Uspeed.addSpeedTestListener(new ISpeedTestListener() {
@@ -76,10 +72,6 @@ public class Speedtest implements Command {
 
             }
 
-            @Override
-            public void onInterruption() {
-
-            }
         });
 
         Dspeed.startDownload("http://2.testdebit.info/fichiers/2Mo.dat");

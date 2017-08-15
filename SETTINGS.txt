@@ -6,11 +6,11 @@
 # GENERAL SERVER SETTINGS #
 
     # Enter here your Discord API Token you'll get from here: https://discordapp.com/developers/applications/me
-        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DD0qvg.XN0l_ZRmwnl3uixRq5Vonrp3OMo"
+        TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DHG07g.UN_vBfvOF-LA52-3JxEhSLWOKAY"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
 
-        BOT_OWNER_ID = "221905671296253953"
+        BOT_OWNER_ID = 221905671296253953
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
@@ -63,14 +63,4 @@
        # "[USER]" stand for the @user - mention
        # "[GUILD]" stand for the guild name
            DISCORD_JOIN_MESSAGE = ":heart: Hey, [USER]! Welcome on the [GUILD]! :heart:"
-
-
-# OTHER SETTINGS #
-
-    # THIS IS STILL IN ALPHA TESTING PHASE!
-
-    # Static server IP of TTT server
-        TTT_SERVER_IP = ""
-    # Port of server (defaultly 27015)
-        TTT_SERVER_PORT = 27015
 

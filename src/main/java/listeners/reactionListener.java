@@ -1,7 +1,15 @@
 package listeners;
 
+import commands.chat.Vote3;
 import commands.etc.Bug;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -9,10 +17,12 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * DiscordBot/listeners
  * © zekro 2017
  */
-public class reactionListener extends ListenerAdapter {
+public class ReactionListener extends ListenerAdapter {
 
     @Override
-    public void onMessageReactionAdd(net.dv8tion.jda.core.events.message.react.MessageReactionAddEvent event) {
+    public void onMessageReactionAdd(MessageReactionAddEvent event) {
+
+        Vote3.handleReaction(event);
 
         try {
             if (event.getMessageId().equals(Bug.MESSAGE.getId()) && event.getUser().equals(Bug.AUTHOR)) {

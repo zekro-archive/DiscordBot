@@ -13,7 +13,7 @@ import java.awt.*;
  * © zekro 2017
  */
 
-public class botJoinListener extends ListenerAdapter {
+public class BotJoinListener extends ListenerAdapter {
 
     @Override
     public void onGuildJoin(GuildJoinEvent event) {

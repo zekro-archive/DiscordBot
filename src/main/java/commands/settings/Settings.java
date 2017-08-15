@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 /**
  * Created by zekro on 30.05.2017 / 11:00
- * DiscordBot/commands.settings
+ * DiscordBot/commands.Settings
  * © zekro 2017
  */
 
@@ -35,12 +35,12 @@ public class Settings implements Command {
     @Override
     public String help() {
         return "USING:\n" +
-               "**settings**  -  `List all current settings values of the current guild`";
+               "**SettingsCore**  -  `List all current SettingsCore values of the current guild`";
     }
 
     @Override
     public String description() {
-        return "List all current settings values of the current guild";
+        return "List all current Settings values of the current guild";
     }
 
     @Override

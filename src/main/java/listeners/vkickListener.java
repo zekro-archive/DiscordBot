@@ -12,7 +12,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * © zekro 2017
  */
 
-public class vkickListener extends ListenerAdapter {
+public class VkickListener extends ListenerAdapter {
 
 
     @Override

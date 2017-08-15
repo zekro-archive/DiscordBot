@@ -1,13 +1,8 @@
 package commands.chat;
 
 import commands.Command;
-import core.Perms;
-import core.coreCommands;
-import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
-
-import java.util.List;
 
 public class Say implements Command {
     @Override

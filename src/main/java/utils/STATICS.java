@@ -17,7 +17,7 @@ public class STATICS {
     //######### GENERAL BOT SETTINGS #########//
 
 
-    public static String VERSION = "1.33.4.1";
+    public static String VERSION = "1.36.1.0";
     public static String THISBUILD = BUILDTYPE.STABLE;
 
     public static class BUILDTYPE {
@@ -80,9 +80,6 @@ public class STATICS {
 
     public static String KICK_VOICE_CHANNEL = "";
 
-    public static String TTT_SERVER_IP = "";
-
-    public static int TTT_SERVER_PORT = 27015;
 
     public static boolean autoUpdate = true;
 
@@ -101,7 +98,7 @@ public class STATICS {
         public static final String etc = "Etc";
         public static final String music = "Music";
         public static final String guildadmin = "Guild Administration";
-        public static final String settings = "Settings";
+        public static final String settings = "SettingsCore";
     }
 
     public static Date lastRestart;
@@ -110,7 +107,7 @@ public class STATICS {
 
     public static ArrayList<ArrayList<String>> cmdLog = new ArrayList<>();
 
-    public static String BOT_OWNER_ID = "";
+    public static long BOT_OWNER_ID = 0;
 
     public static int MUSIC_BUFFER = 1000;
 

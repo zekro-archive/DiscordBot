@@ -53,7 +53,7 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
         });
 
         event.getTextChannel().sendMessage(new EmbedBuilder()
-                .setTitle("Settings for guild \"" + g.getName() + "\" (" + g.getId() + ")", null)
+                .setTitle("SettingsCore for guild \"" + g.getName() + "\" (" + g.getId() + ")", null)
                 .addBlankField(false)
                 .addField("Keys", keys.toString(), true)
                 .addField("Values", values.toString(), true)
