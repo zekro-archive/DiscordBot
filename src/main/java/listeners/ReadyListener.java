@@ -96,7 +96,7 @@ public class ReadyListener extends ListenerAdapter {
                 public void run() {
                     UpdateClient.checkIfUpdate(event.getJDA());
                 }
-            }, 0, 60000);
+            }, 0, 10 * 60 * 1000);
 
 
 

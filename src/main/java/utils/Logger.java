@@ -26,8 +26,8 @@ public class Logger {
     public static String Underline = (char)27 + "[4m";
     public static String StopUnderline = (char)27 + "[24m";
 
-    public static void ERROR(String message) { System.out.println(Red + message + Reset); }
-    public static void DEBUG(String message) { System.out.println(Cyan + message + Reset); }
-    public static void SUCCESS(String message) { System.out.println(Green + message + Reset); }
+    public static void ERROR(Object message) { System.out.println(Red + message.toString() + Reset); }
+    public static void DEBUG(Object message) { System.out.println(Cyan + message.toString() + Reset); }
+    public static void SUCCESS(Object message) { System.out.println(Green + message.toString() + Reset); }
 
 }
