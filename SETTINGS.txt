@@ -10,7 +10,7 @@
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
     # ID of your discord account to identify who is the owner / host of this bot
-        BOT_OWNER_ID = 221905671296253953
+        BOT_OWNER_ID = 123456789013370420
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
     # Log entered command in console of the bot
