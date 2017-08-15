@@ -9,7 +9,7 @@
         TOKEN = "Mjg3NTM4NDM1NjU1MjA0ODY0.DHG07g.UN_vBfvOF-LA52-3JxEhSLWOKAY"
     # Prefix to send bot commands (like -help or ~help or .help, what ever you want)
         CMD_PREFIX = "."
-
+    # ID of your discord account to identify who is the owner / host of this bot
         BOT_OWNER_ID = 221905671296253953
     # Custom message shown as "Now Playing: ..." text
         CUSTOM_PLAYING_MESSAGE = "???"
