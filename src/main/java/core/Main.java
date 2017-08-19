@@ -40,6 +40,9 @@ public class Main {
 
         BotStats.load();
 
+        if (!new File("WILDCARDS.txt").exists())
+            ServerLimitListener.createTokenList(50);
+
 
         try {
             if (!SettingsCore.testForToken()) {
@@ -150,7 +153,7 @@ public class Main {
         builder.addEventListener(new PrivateMessageListener());
         builder.addEventListener(new ReactionListener());
         builder.addEventListener(new VkickListener());
-        builder.addEventListener(new BotJoinListener());
+        builder.addEventListener(new ServerLimitListener());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
