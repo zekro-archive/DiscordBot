@@ -17,7 +17,7 @@ public class STATICS {
     //######### GENERAL BOT SETTINGS #########//
 
 
-    public static String VERSION = "1.36.2.0";
+    public static String VERSION = "1.36.2.1";
     public static String THISBUILD = BUILDTYPE.STABLE;
 
     public static class BUILDTYPE {
@@ -111,6 +111,6 @@ public class STATICS {
 
     public static int MUSIC_BUFFER = 1000;
 
-    public static int SERVER_LIMIT = 1;
+    public static int SERVER_LIMIT = 30;
 
 }

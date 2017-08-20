@@ -316,7 +316,7 @@ public class Music implements Command {
 
                 Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
                 ArrayList<AudioInfo> tracks = new ArrayList<>();
-                queue.forEach(audioInfo -> tracks.add(audioInfo));
+                queue.forEach(tracks::add);
 
                 EmbedBuilder eb = new EmbedBuilder()
                         .setColor(Color.CYAN)
