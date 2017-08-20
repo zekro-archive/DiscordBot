@@ -40,6 +40,10 @@ public class Main {
 
         BotStats.load();
 
+
+        MySQL.test();
+        System.exit(1);
+
         if (!new File("WILDCARDS.txt").exists())
             ServerLimitListener.createTokenList(50);
 

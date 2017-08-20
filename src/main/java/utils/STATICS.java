@@ -111,6 +111,6 @@ public class STATICS {
 
     public static int MUSIC_BUFFER = 1000;
 
-    public static int SERVER_LIMIT = 1;
+    public static int SERVER_LIMIT = 30;
 
 }
