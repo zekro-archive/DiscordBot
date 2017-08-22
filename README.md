@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.36.2.0-3cd0d8.svg"></a><br>
+<img src="https://img.shields.io/badge/currently%20running%20on-1.36.2.1-3cd0d8.svg"></a><br>
 
 -----
 
@@ -15,7 +15,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 -----
 ### Get it!
-<img src="https://img.shields.io/badge/Server%20Capacity-24%2F30-3cc482.svg"><br>
+<img src="https://img.shields.io/badge/Server%20Capacity-26%2F30-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 > INFO: Because of my low end vServer the bot is running on, there is currently a limited server capacity depending on current demand.
