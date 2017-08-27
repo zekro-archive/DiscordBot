@@ -7,6 +7,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import net.dv8tion.jda.core.managers.GuildController;
 import utils.MSGS;
+import utils.Messages;
 import utils.STATICS;
 
 import java.awt.*;
@@ -73,7 +74,11 @@ public class BJoke implements Command {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getGuild().getController().moveVoiceMember(victim, event.getGuild().getAfkChannel()).queue();
+                try {
+                    event.getGuild().getController().moveVoiceMember(victim, event.getGuild().getAfkChannel()).queue();
+                } catch (Exception e) {
+                    Messages.error(event.getTextChannel(), "Can not kick a user witch is not in any voice channel.");
+                }
                 countdown.cancel();
                 countdown = new Timer();
                 count = 10;

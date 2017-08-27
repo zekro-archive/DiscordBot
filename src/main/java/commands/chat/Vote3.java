@@ -41,6 +41,7 @@ public class Vote3 implements Command, Serializable {
 
     public class Poll implements Serializable {
 
+        private static final long serialVersionUID = -4410308390500314827L;
         private String creator;
         private String heading;
         private List<String> answers;
@@ -126,12 +127,12 @@ public class Vote3 implements Command, Serializable {
 
         Poll poll = new Poll(event.getMember(), heading, answers, toAddEmotis, msg);
 
-        channel.editMessageById(msg.getId(), getParsedPoll(poll, event.getGuild()).build()).queue();
-        toAddEmotis.forEach(s -> poll.getMessage(event.getGuild()).addReaction(s).queue());
-        channel.pinMessageById(msg.getId()).queue();
-
         polls.put(event.getGuild(), poll);
         tempList.put(event.getGuild(), poll.getMessage(event.getGuild()));
+
+        channel.editMessageById(msg.getId(), getParsedPoll(poll, event.getGuild()).build()).queue();
+        toAddEmotis.forEach(s -> tempList.get(event.getGuild()).addReaction(s).queue());
+        channel.pinMessageById(msg.getId()).queue();
 
         try {
             savePoll(event.getGuild());
