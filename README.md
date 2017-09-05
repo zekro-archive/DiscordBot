@@ -8,7 +8,7 @@
 
 -----
 
-If you wnat to use the code of this project for your own ones, please read **[this](http://s.zekro.de/codepolicy)** before!
+If you want to use the code of this project for your own ones, please read **[this](http://s.zekro.de/codepolicy)** before!
 
 So you have some questions or want to join my developer community discord? Take a look! :^)
 <br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
