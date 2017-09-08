@@ -24,10 +24,6 @@ import java.util.List;
  * © zekro 2017
  */
 
-/*
-    TODO: If a channel gets deleted, remove it from the list.
- */
-
 
 public class Autochannel implements Command, Serializable {
 
@@ -82,6 +78,14 @@ public class Autochannel implements Command, Serializable {
     public static void unsetChan(VoiceChannel vc) {
         autochans.remove(vc);
         save();
+    }
+
+    private void listChans(Guild guild, TextChannel tc) {
+        StringBuilder sb = new StringBuilder().append("**Auto Channel**\n\n");
+        autochans.keySet().stream()
+                .filter(c -> autochans.get(c).equals(guild))
+                .forEach(c -> sb.append(String.format(":white_small_square:   `%s` *(%s)*\n", c.getName(), c.getId())));
+        tc.sendMessage(new EmbedBuilder().setDescription(sb.toString()).build()).queue();
     }
 
     private static VoiceChannel getVchan(String id, Guild g) {
@@ -143,29 +147,40 @@ public class Autochannel implements Command, Serializable {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (args.length < 1) {
-            return;
-        }
-
         Guild g = event.getGuild();
         TextChannel tc = event.getTextChannel();
 
+        if (args.length < 1) {
+            tc.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(help()).build()).queue();
+            return;
+        }
+
         switch (args[0]) {
 
-            /*
-                TODO: Check args length in "set" and "unset".
-             */
+            case "list":
+            case "show":
+                listChans(g, tc);
+                break;
 
             case "add":
             case "set":
-                setChan(args[1], g, tc);
+                if (args.length < 2)
+                    tc.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(help()).build()).queue();
+                else
+                    setChan(args[1], g, tc);
                 break;
 
             case "remove":
             case "delete":
             case "unset":
-                unsetChan(args[1], g, tc);
+                if (args.length < 2)
+                    tc.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(help()).build()).queue();
+                else
+                    unsetChan(args[1], g, tc);
                 break;
+
+            default:
+                tc.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(help()).build()).queue();
         }
 
     }
@@ -177,12 +192,15 @@ public class Autochannel implements Command, Serializable {
 
     @Override
     public String help() {
-        return null;
+        return "**USAGE:**\n" +
+               ":white_small_square:  `-autochannel set <Chan ID>`  -  Set voice chan as auto channel\n" +
+               ":white_small_square:  `-autochannel unset <Chan ID>`  -  Unset voice chan as auto chan\n" +
+               ":white_small_square:  `-autochannel list`  -  Display all registered auto chans\n";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Manage auto channel function";
     }
 
     @Override
