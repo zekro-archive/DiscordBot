@@ -142,6 +142,7 @@ public class Main {
         commands.put("poll", new Vote3());
         commands.put("counter", new Counter());
         commands.put("c", new Counter());
+        commands.put("autochannel", new Autochannel());
 
     }
 
@@ -156,6 +157,7 @@ public class Main {
         builder.addEventListener(new ReactionListener());
         builder.addEventListener(new VkickListener());
         builder.addEventListener(new ServerLimitListener());
+        builder.addEventListener(new AutochannelHandler());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
