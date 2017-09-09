@@ -102,6 +102,7 @@ public class ReadyListener extends ListenerAdapter {
 
         commands.chat.Vote3.loadPolls(event.getJDA());
         commands.chat.Counter.loadAll(event.getJDA());
+        commands.guildAdministration.Autochannel.load(event.getJDA());
         // commands.chat.Vote2.loadPolls(event.getJDA());
 
     }
