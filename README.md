@@ -27,7 +27,7 @@ Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich
 
 🏆 Goal *(this year payment cicle)*  **`€0 / €20`**
 
-**List of donators**
+**List of donators**<br>
 *Here will be your name, if you donate (and if you want to get mentioned)*
 
 -----
