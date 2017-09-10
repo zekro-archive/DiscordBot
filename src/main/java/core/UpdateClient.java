@@ -1,13 +1,17 @@
 package core;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.PrivateChannel;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.Logger;
 import utils.STATICS;
 
 import java.awt.*;
@@ -17,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by zekro on 22.03.2017 / 15:59
@@ -29,134 +34,99 @@ public class UpdateClient {
 
     private static String lastUpdate = "";
 
-    public static String versionURL = "https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/LATESTVERSION.txt";
+    private static final String API_URL = "https://api.github.com/repos/zekrotja/DiscordBot/releases";
 
-    private static HashMap<String, Map.Entry<String, String>> getVersionInfo() throws IOException {
+    private static final Release PRE = new Release(getRelease(true));
+    private static final Release STABLE = new Release(getRelease(false));
 
-        String API_URL = "https://api.github.com/repos/zekrotja/DiscordBot/releases";
+    static class Release {
 
-        HashMap<String, Map.Entry<String, String>> out = new HashMap<>();
+        private String tag;
+        private String url;
 
-        URL url = new URL(API_URL);
-        Scanner s = new Scanner(url.openStream());
-        String output = "";
-        while (s.hasNextLine()) {
-            output += s.nextLine();
+        private Release(JSONObject object) {
+            tag = object.getString("tag_name");
+            url = object.getString("html_url");
         }
 
+    }
+
+    private static JSONObject getRelease(boolean prerelease) {
+
+        Scanner sc;
         try {
-
-            JSONArray jsonarray = new JSONArray(output);
-
-            List<JSONObject> jsonobs = new ArrayList<>();
-            for (int i = 0; i < jsonarray.length(); i++) {
-                jsonobs.add(jsonarray.getJSONObject(i));
-            }
-
-
-            JSONObject pre = jsonobs.stream().filter(j -> {
-                try {
-                    return j.getBoolean("prerelease");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return false;
-                }
-            }).findFirst().orElse(null);
-
-            JSONObject stable = jsonobs.stream().filter(j -> {
-                try {
-                    return !j.getBoolean("prerelease");
-                } catch (JSONException e) {
-                    return false;
-                }
-            }).findFirst().orElse(null);
-
-
-            out.put("pre", new AbstractMap.SimpleEntry<>(pre.getString("tag_name"), pre.getString("html_url")));
-            out.put("stable", new AbstractMap.SimpleEntry<>(stable.getString("tag_name"), stable.getString("html_url")));
-
-
-
-        } catch (JSONException e) {
+            sc = new Scanner(new URL(API_URL).openStream());
+        } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
 
-        return out;
+        StringBuilder output = new StringBuilder();
+        sc.forEachRemaining(output::append);
+
+        JSONArray jsonarray = new JSONArray(output.toString());
+
+        List<JSONObject> jsonobs = new ArrayList<>();
+        for (int i = 0; i < jsonarray.length(); i++)
+            jsonobs.add(jsonarray.getJSONObject(i));
+
+        return jsonobs.stream().filter(o -> {
+            try {
+                return prerelease == o.getBoolean("prerelease");
+            } catch (JSONException e) {
+                return false;
+            }
+        }).findFirst().orElse(null);
+
     }
 
     public static void manualCheck(TextChannel channel) {
 
-        try {
-
-            if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION)) {
-
-                if ( STATICS.BOT_OWNER_ID != 0) {
-
-                    channel.sendMessage(
-                            new EmbedBuilder()
-                                    .setColor(new Color(0x7EFF00))
-                                    .setDescription(
-                                            "**New bot UpdateClient is available!**\n" +
-                                                    "Download the latest version and install it manually on your vServer.\n\n" +
-                                                    "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
-                                    .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)
-                                    .addField("Latest Stable Build", "Version: " + getVersionInfo().get("stable").getKey() + "\nDownload: " + getVersionInfo().get("stable").getValue(), false)
-                                    .setFooter("Enter '-disable' to disable this message on new updates.", null)
-                                    .build()
-                    ).queue();
-
-                }
-            } else {
-
-                channel.sendMessage(new EmbedBuilder().setColor(Color.green)
-                    .setDescription("The bot is currently up to date!")
-                    .build()
-                ).queue();
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
+        if (isUdate())
+            sendUpdateMsg(channel);
+        else
+            channel.sendMessage(new EmbedBuilder().setColor(Color.green).setDescription("Your bor version is up to date!").build()).queue();
 
     }
 
-    public static boolean checkIfUpdate(JDA jda) {
 
-        if (new File("SERVER_SETTINGS/no_update_info").exists())
-            return false;
+    private static boolean isUdate() {
+        return !PRE.tag.equals(STATICS.VERSION);
+    }
+
+    private static void sendUpdateMsg(Object channel) {
+        EmbedBuilder eb = new EmbedBuilder()
+                .setColor(Color.cyan)
+                .setTitle("New bot update is available!")
+                .setDescription("Download the latest version and install it manually on your vServer.\n\n**Current version:  ** `" + STATICS.VERSION + "`")
+                .addField("Latest Pre Release Build", String.format(
+                        "Version:  `%s`\n" +
+                                "Download & Changelogs:  [GitHub Release](%s)\n", PRE.tag, PRE.url
+                ), false)
+                .addField("Latest Stable Release Build", String.format(
+                        "Version:  `%s`\n" +
+                                "Download & Changelogs:  [GitHub Release](%s)\n", STABLE.tag, STABLE.url
+                ), false)
+                .setFooter("Enter '-disable' to disable this message on new updates.", null);
 
         try {
-
-            if (!getVersionInfo().get("pre").getKey().equals(STATICS.VERSION) && !lastUpdate.equals(getVersionInfo().get("pre").getKey())) {
-                lastUpdate = getVersionInfo().get("pre").getKey();
-
-                if (STATICS.BOT_OWNER_ID != 0) {
-
-                    jda.getUserById(STATICS.BOT_OWNER_ID).openPrivateChannel().complete().sendMessage(
-                            new EmbedBuilder()
-                                    .setColor(new Color(0x7EFF00))
-                                    .setDescription(
-                                            "**New bot UpdateClient is available!**\n" +
-                                            "Download the latest version and install it manually on your vServer.\n\n" +
-                                            "You are currently running on version: **" + STATICS.VERSION + "**\n\n")
-                                    .addField("Latest Prerelease Build", "Version: " + getVersionInfo().get("pre").getKey() + "\nDownload: " + getVersionInfo().get("pre").getValue(), false)
-                                    .addField("Latest Stable Build", "Version: " + getVersionInfo().get("stable").getKey() + "\nDownload: " + getVersionInfo().get("stable").getValue(), false)
-                                    .setFooter("Enter '-disable' to disable this message on new updates.", null)
-                                    .build()
-                    ).queue();
-
-                }
-
-                return true;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-
+            TextChannel tc = (TextChannel) channel;
+            tc.sendMessage(eb.build()).queue();
+        } catch (Exception e) {
+            PrivateChannel pc = (PrivateChannel) channel;
+            pc.sendMessage(eb.build()).queue();
         }
 
-        return false;
+
+    }
+
+    public static void checkIfUpdate(JDA jda) {
+
+        if (new File("SERVER_SETTINGS/no_update_info").exists())
+            return;
+
+        if (STATICS.BOT_OWNER_ID != 0 && isUdate()) {
+            jda.getUserById(STATICS.BOT_OWNER_ID).openPrivateChannel().queue(c -> sendUpdateMsg(c));
+        }
     }
 }

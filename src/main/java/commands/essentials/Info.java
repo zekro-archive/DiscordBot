@@ -24,13 +24,11 @@ public class Info implements Command {
         String version = "NOT AVAILABLE";
         try {
 
-            URL url = new URL(UpdateClient.versionURL);
-            Scanner s = new Scanner(url.openStream());
-            version = s.nextLine();
+            //URL url = new URL(UpdateClient.versionURL);
+            //Scanner s = new Scanner(url.openStream());
+            version = "null"; //s.nextLine();
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
