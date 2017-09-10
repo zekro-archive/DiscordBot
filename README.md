@@ -18,6 +18,13 @@ So you have some questions or want to join my developer community discord? Take 
 <img src="https://img.shields.io/badge/Server%20Capacity-32%2F250-3cc482.svg"><br>
 <a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
+---
+### Donate
+
+Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
+
+[![](https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png)](https://www.paypal.me/zekro)
+
 -----
 ### Features
 
