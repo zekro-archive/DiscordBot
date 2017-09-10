@@ -25,6 +25,11 @@ Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich
 
 <a href="https://www.paypal.me/zekro"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" height="50"/></a>
 
+🏆 Goal *(this year payment cicle)*  **`€0 / €20`**
+
+**List of donators**
+*Here will be your name, if you donate (and if you want to get mentioned)*
+
 -----
 ### Features
 
