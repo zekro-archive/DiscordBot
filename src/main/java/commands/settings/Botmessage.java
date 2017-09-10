@@ -54,7 +54,14 @@ public class Botmessage implements Command {
 
         custom = true;
 
-        String messageString = Arrays.stream(args).collect(Collectors.joining(" ")).substring(1);
+        String messageString = String.join(" ", args);
+
+        if (messageString.equals("off")) {
+            custom = false;
+            event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN).setDescription("Successfully set botmsg to standard setting!").build()).queue();
+            return;
+        }
+
         event.getJDA().getPresence().setGame(Game.of(messageString + " | -help | v." + STATICS.VERSION));
         event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.GREEN).setDescription("Successfully set bot message to `" + messageString + "`!").build()).queue();
 

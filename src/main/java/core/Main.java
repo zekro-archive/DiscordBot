@@ -40,6 +40,9 @@ public class Main {
 
         BotStats.load();
 
+        if (!new File("WILDCARDS.txt").exists())
+            ServerLimitListener.createTokenList(50);
+
 
         try {
             if (!SettingsCore.testForToken()) {
@@ -91,8 +94,8 @@ public class Main {
         commands.put("test", new TestCMD());
         commands.put("ttt", new TTT());
         commands.put("say", new Say());
-        commands.put("poll", new Vote2());
-        commands.put("vote", new Vote2());
+        commands.put("poll2", new Vote2());
+        commands.put("vote2", new Vote2());
         commands.put("stats", new Stats());
         commands.put("joke", new JokeV2());
         commands.put("userinfo", new UserInfo());
@@ -135,8 +138,13 @@ public class Main {
         commands.put("botstats", new BotStats());
         commands.put("blacklist", new Blacklist());
         commands.put("count", new Count());
-        commands.put("bvote", new Vote3());
-        commands.put("bpoll", new Vote3());
+        commands.put("vote", new Vote3());
+        commands.put("poll", new Vote3());
+        commands.put("counter", new Counter());
+        commands.put("c", new Counter());
+        commands.put("autochannel", new Autochannel());
+        commands.put("donate", new Donate());
+        commands.put("support", new Donate());
 
     }
 
@@ -150,7 +158,8 @@ public class Main {
         builder.addEventListener(new PrivateMessageListener());
         builder.addEventListener(new ReactionListener());
         builder.addEventListener(new VkickListener());
-        builder.addEventListener(new BotJoinListener());
+        builder.addEventListener(new ServerLimitListener());
+        builder.addEventListener(new AutochannelHandler());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {

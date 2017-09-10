@@ -96,11 +96,13 @@ public class ReadyListener extends ListenerAdapter {
                 public void run() {
                     UpdateClient.checkIfUpdate(event.getJDA());
                 }
-            }, 0, 10 * 60 * 1000);
+            }, 0, 60000);
 
 
 
         commands.chat.Vote3.loadPolls(event.getJDA());
+        commands.chat.Counter.loadAll(event.getJDA());
+        commands.guildAdministration.Autochannel.load(event.getJDA());
         // commands.chat.Vote2.loadPolls(event.getJDA());
 
     }

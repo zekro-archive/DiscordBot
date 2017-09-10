@@ -22,6 +22,9 @@ public class PrivateMessageListener extends ListenerAdapter {
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
 
+        if (event.getMessage().getContent().startsWith("token_"))
+            return;
+
         if (event.getMessage().getContent().equalsIgnoreCase("-disable")) {
 
             try {

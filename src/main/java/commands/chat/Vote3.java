@@ -41,6 +41,7 @@ public class Vote3 implements Command, Serializable {
 
     public class Poll implements Serializable {
 
+        private static final long serialVersionUID = -4410308390500314827L;
         private String creator;
         private String heading;
         private List<String> answers;
@@ -126,12 +127,13 @@ public class Vote3 implements Command, Serializable {
 
         Poll poll = new Poll(event.getMember(), heading, answers, toAddEmotis, msg);
 
+        polls.put(event.getGuild(), poll);
+
         channel.editMessageById(msg.getId(), getParsedPoll(poll, event.getGuild()).build()).queue();
-        toAddEmotis.forEach(s -> poll.getMessage(event.getGuild()).addReaction(s).queue());
+        toAddEmotis.forEach(s -> msg.addReaction(s).queue());
         channel.pinMessageById(msg.getId()).queue();
 
-        polls.put(event.getGuild(), poll);
-        tempList.put(event.getGuild(), poll.getMessage(event.getGuild()));
+        tempList.put(event.getGuild(), polls.get(event.getGuild()).getMessage(event.getGuild()));
 
         try {
             savePoll(event.getGuild());
@@ -173,8 +175,8 @@ public class Vote3 implements Command, Serializable {
 
         Guild guild = event.getGuild();
 
-        if (polls.containsKey(guild)) {
 
+        if (polls.containsKey(guild)) {
             Message msg = null;
             try {
                 msg = tempList.get(guild);
@@ -183,8 +185,10 @@ public class Vote3 implements Command, Serializable {
 
             if (event.getMessageId().equals(msg != null ? msg.getId() : "") && !event.getMember().getUser().equals(event.getJDA().getSelfUser())) {
                 List<String> reactions = msg.getReactions().stream().map(r -> r.getEmote().getName()).collect(Collectors.toList());
+                System.out.println(msg.getReactions().size());
                 msg.getReactions().forEach(r -> System.out.println(r.getEmote().getName()));
                 if (reactions.contains(event.getReaction().getEmote().getName())) {
+                    System.out.println("TEST 4");
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
                 }
             }

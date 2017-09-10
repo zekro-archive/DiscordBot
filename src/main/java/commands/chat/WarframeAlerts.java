@@ -148,30 +148,30 @@ public class WarframeAlerts implements Command {
             @Override
             public void run() {
 
-            ArrayList<TextChannel> textChans = new ArrayList<>();
-            jda.getGuilds().forEach(g -> {
-                List<TextChannel> chans = g.getTextChannelsByName(SSSS.getWARFRAMELAERTSCHAN(g), true);
-                if (chans.size() > 0)
-                    textChans.add(chans.get(0));
-            });
+                ArrayList<TextChannel> textChans = new ArrayList<>();
+                jda.getGuilds().forEach(g -> {
+                    List<TextChannel> chans = g.getTextChannelsByName(SSSS.getWARFRAMELAERTSCHAN(g), true);
+                    if (chans.size() > 0)
+                        textChans.add(chans.get(0));
+                });
 
-            textChans.forEach(chan -> {
+                textChans.forEach(chan -> {
 
-                List<Message> history = chan.getHistory().retrievePast(1).complete();
+                    List<Message> history = chan.getHistory().retrievePast(1).complete();
 
-                if (history.size() == 0) {
-                    try {
-                        chan.sendMessage(createMessage(getAlerts()).build()).queue();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (history.size() == 0) {
+                        try {
+                            chan.sendMessage(createMessage(getAlerts()).build()).queue();
+                        } catch (Exception e) {
+                            // e.printStackTrace();
+                        }
+                    } else if (history.get(0).getAuthor().equals(jda.getSelfUser())) {
+                        try {
+                            history.get(0).editMessage(createMessage(getAlerts()).build()).queue();
+                        } catch (Exception e) {
+                            // e.printStackTrace();
+                        }
                     }
-                } else if (history.get(0).getAuthor().equals(jda.getSelfUser())) {
-                    try {
-                        history.get(0).editMessage(createMessage(getAlerts()).build()).queue();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
 
             });
 

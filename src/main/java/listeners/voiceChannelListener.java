@@ -10,7 +10,6 @@ import java.util.Date;
 
 public class VoiceChannelListener extends ListenerAdapter {
 
-    private int posold;
 
     public String logChannel = STATICS.voiceLogChannel;
     public String getTime() {

@@ -38,6 +38,7 @@ public class Spacer implements Command {
         switch (args[0]) {
 
             case "add":
+            case "create":
 
                 if (!event.getMember().getVoiceState().inVoiceChannel()) {
                     event.getTextChannel().sendMessage(MSGS.error().setDescription("You need to be in a voice channel to add a spacer.").build()).queue();
@@ -60,7 +61,7 @@ public class Spacer implements Command {
 
     @Override
     public String help() {
-        return null;
+        return "**USAGE:\n**Create a spacer under the voice channel you are in with\n`-spacer create` or `-spacer add`";
     }
 
     @Override

@@ -18,9 +18,12 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import commands.Command;
 import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.VoiceChannel;
+import net.dv8tion.jda.core.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.MSGS;
 import utils.STATICS;
@@ -316,16 +319,18 @@ public class Music implements Command {
 
                 Set<AudioInfo> queue = getTrackManager(guild).getQueuedTracks();
                 ArrayList<AudioInfo> tracks = new ArrayList<>();
-                queue.forEach(audioInfo -> tracks.add(audioInfo));
+                queue.forEach(tracks::add);
 
-                EmbedBuilder eb = new EmbedBuilder()
-                        .setColor(Color.CYAN)
-                        .setDescription(NOTE + "   **Now Playing**   ")
-                        .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
-                        .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
-                guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
-                        eb.build()
-                ).queue();
+                try {
+                    EmbedBuilder eb = new EmbedBuilder()
+                            .setColor(Color.CYAN)
+                            .setDescription(NOTE + "   **Now Playing**   ")
+                            .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
+                            .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
+                    guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
+                            eb.build()
+                    ).queue();
+                } catch (Exception e) {}
             }
         }
 

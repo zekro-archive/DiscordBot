@@ -97,7 +97,7 @@ public class BotStats implements Command {
                         "**zekroBot STATS**\n\n" +
                         "```\n" +
                         "Registered commands:  " + commandsSize + "\n" +
-                        "Running on servers:   " + serversRunning + "\n" +
+                        "Running on servers:   " + serversRunning + " / " + STATICS.SERVER_LIMIT + "\n" +
                         "Deserving members:    " + membersDeserving + "\n" +
                         "Messages processed:   " + messagesProcessed + "\n" +
                         "Commands executed:    " + commandsExecuted + "\n" +
