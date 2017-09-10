@@ -45,12 +45,11 @@ public class Speedtest implements Command {
 
             @Override
             public void onProgress(float percent, SpeedTestReport report) {
-
             }
 
             @Override
             public void onError(SpeedTestError speedTestError, String s) {
-
+                System.out.println(speedTestError);
             }
 
         });
@@ -69,12 +68,12 @@ public class Speedtest implements Command {
 
             @Override
             public void onError(SpeedTestError speedTestError, String s) {
-
+                System.out.println(speedTestError);
             }
 
         });
 
-        Dspeed.startDownload("http://2.testdebit.info/fichiers/2Mo.dat");
+        Dspeed.startDownload("http://2.testdebit.info/10M.iso");
 
 
     }
