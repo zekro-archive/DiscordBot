@@ -79,8 +79,9 @@ public class Broadcast implements Command {
         event.getJDA().getGuilds().stream()
                 .filter(g -> !ignores.contains(g))
                 .forEach(g -> {
-                    g.getPublicChannel().sendMessage(eb.build()).queue();
-                    System.out.println(g.getName());
+                    try {
+                        g.getPublicChannel().sendMessage(eb.build()).queue();
+                    } catch (Exception e) { }
                 });
 
     }

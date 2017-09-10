@@ -143,6 +143,8 @@ public class Main {
         commands.put("counter", new Counter());
         commands.put("c", new Counter());
         commands.put("autochannel", new Autochannel());
+        commands.put("donate", new Donate());
+        commands.put("support", new Donate());
 
     }
 

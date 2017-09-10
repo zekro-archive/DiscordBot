@@ -321,14 +321,16 @@ public class Music implements Command {
                 ArrayList<AudioInfo> tracks = new ArrayList<>();
                 queue.forEach(tracks::add);
 
-                EmbedBuilder eb = new EmbedBuilder()
-                        .setColor(Color.CYAN)
-                        .setDescription(NOTE + "   **Now Playing**   ")
-                        .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
-                        .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
-                guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
-                        eb.build()
-                ).queue();
+                try {
+                    EmbedBuilder eb = new EmbedBuilder()
+                            .setColor(Color.CYAN)
+                            .setDescription(NOTE + "   **Now Playing**   ")
+                            .addField("Current Track", "`(" + getTimestamp(track.getDuration()) + ")`  " + track.getInfo().title, false)
+                            .addField("Next Track", "`(" + getTimestamp(tracks.get(1).getTrack().getDuration()) + ")`  " + tracks.get(1).getTrack().getInfo().title, false);
+                    guild.getTextChannelsByName(SSSS.getMUSICCHANNEL(guild), true).get(0).sendMessage(
+                            eb.build()
+                    ).queue();
+                } catch (Exception e) {}
             }
         }
 

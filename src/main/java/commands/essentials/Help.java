@@ -73,7 +73,7 @@ public class Help implements Command {
         try {
 
             PrivateChannel pc = event.getAuthor().openPrivateChannel().complete();
-            pc.sendMessage(":clipboard:  __**COMMAD LIST**__  :clipboard: \n\n" +
+            pc.sendMessage(":clipboard:  __**COMMAND LIST**__  :clipboard: \n\n" +
                                         "If you want a full list of commands with description, please take a look there:\n" +
                                         ":point_right:   **http://zekrosbot.zekro.de**\n\n" +
                                         "***Legend:***\n" +

@@ -90,8 +90,6 @@ public class ServerLimitListener extends ListenerAdapter {
         Guild guild = event.getGuild();
         wildcards = getWilrdcards();
 
-        System.out.println("TEST");
-
         if (guild.getJDA().getGuilds().size() > STATICS.SERVER_LIMIT) {
             guild.getOwner().getUser().openPrivateChannel().queue(pc -> pc.sendMessage(
                     new EmbedBuilder().setColor(Color.ORANGE).setTitle("Server Limit Reached", null).setDescription(

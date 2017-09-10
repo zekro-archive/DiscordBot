@@ -1,14 +1,18 @@
 package commands.chat;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.PrivateChannel;
+import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import utils.STATICS;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
 
 /**
  * © zekro 2017
@@ -26,10 +30,25 @@ public class Stups implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        String message = "";
+        String message = String.join(" ", args).split("@")[0];
+        User memb = event.getMessage().getMentionedUsers().size() > 0 ?  event.getMessage().getMentionedUsers().get(0) : null;
+        User author = event.getAuthor();
+        TextChannel chan = event.getTextChannel();
 
+        if (args.length < 2 || memb == null) {
+            chan.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(help()).build()).queue();
+            return;
+        }
 
+        memb.openPrivateChannel().queue(pc -> pc.sendMessage(
+                new EmbedBuilder()
+                .setColor(Color.ORANGE)
+                .setAuthor(author.getName(), null, author.getAvatarUrl())
+                .setDescription(":love_letter:  Nachicht: \"" + message.substring(0, message.length() - 1) + "\"")
+                .build()
+        ).queue());
 
+        /*
         if (args.length > 0) {
 
             if (args[0].startsWith("@")) {
@@ -59,7 +78,7 @@ public class Stups implements Command {
             event.getTextChannel().sendMessage(
                     ":warning:   Please mention a user from this guild you want to send a nudge!"
             ).queue();
-
+        */
 
 
     }
@@ -71,7 +90,7 @@ public class Stups implements Command {
 
     @Override
     public String help() {
-        return "USAGE: -stups <@user> Message";
+        return "**USAGE**:\n `-stups <Message> <@user>`";
     }
 
     @Override
