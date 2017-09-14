@@ -160,6 +160,7 @@ public class Main {
         builder.addEventListener(new VkickListener());
         builder.addEventListener(new ServerLimitListener());
         builder.addEventListener(new AutochannelHandler());
+        builder.addEventListener(new MuteHanlder());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
