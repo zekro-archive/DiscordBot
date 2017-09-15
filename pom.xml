@@ -57,6 +57,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.brunocvcunha.jiphy</groupId>
+            <artifactId>jiphy</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -145,6 +145,7 @@ public class Main {
         commands.put("autochannel", new Autochannel());
         commands.put("donate", new Donate());
         commands.put("support", new Donate());
+        commands.put("gif", new Gif());
 
     }
 

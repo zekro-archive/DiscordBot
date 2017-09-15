@@ -39,7 +39,6 @@ public class Info implements Command {
                         .setDescription(":robot:   __**zekroBot** JDA Discord Bot__")
                         .addField("Current Version", STATICS.VERSION, true)
                         .addField("Latest Version", version, true)
-                        .addField("Build Type", STATICS.THISBUILD, true)
                         .addField("Copyright",
                                 "Coded by zekro Development Team.\n" +
                                       "© 2016 - 2017 Ringo Hoffmann and Sophie Lorenz.", false)
