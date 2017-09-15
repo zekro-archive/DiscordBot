@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
 
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -35,22 +36,30 @@ public class CmdLog implements Command {
 
         if (args.length < 1) {
 
-            StringBuilder sb = new StringBuilder();
+            if (event.getGuild().getTextChannelsByName("cmdlog", true).size() < 1) {
+                event.getGuild().getController().createTextChannel("cmdlog").queue();
+                event.getTextChannel().sendMessage(new EmbedBuilder().setColor(Color.green).setDescription(
+                        "Created channel #cmdlog.\nAll Commands, executed on this guild, will be logged in this channel.\nIf you want to disbale this feature, just delete this channel."
+                ).build()).queue();
+            } else {
+                StringBuilder sb = new StringBuilder();
 
-            List<ArrayList<String>> loglist = STATICS.cmdLog;
+                List<ArrayList<String>> loglist = STATICS.cmdLog;
 
-            if (loglist.size() > 50)
-                loglist = loglist.subList(loglist.size() - 50, loglist.size());
+                if (loglist.size() > 50)
+                    loglist = loglist.subList(loglist.size() - 50, loglist.size());
 
-            loglist.stream()
-                    .filter(strings -> strings.get(0).equals(event.getGuild().getId()))
-                    .forEach(s -> sb.append(
-                            "`" + s.get(1) + "`  **[" + s.get(2) + "]**  \"" + s.get(3) + "\"\n"
-                    ));
+                loglist.stream()
+                        .filter(strings -> strings.get(0).equals(event.getGuild().getId()))
+                        .forEach(s -> sb.append(
+                                "`" + s.get(1) + "`  **[" + s.get(2) + "]**  \"" + s.get(3) + "\"\n"
+                        ));
 
-            event.getTextChannel().sendMessage(
-                    "**Last 50 Commands:**\n\n" + saveCut(sb.toString())
-            ).queue();
+                event.getTextChannel().sendMessage(
+                        "**Last 50 Commands:**\n\n" + saveCut(sb.toString())
+                ).queue();
+            }
+
 
         } else if (args[0].toLowerCase().equals("all")) {
 

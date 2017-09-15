@@ -2,15 +2,21 @@ package core;
 
 import commands.Command;
 import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
+
 import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
@@ -178,6 +184,16 @@ public class Main {
                 commands.get(cmd.invoke).executed(safe, cmd.event);
             }
 
+            List<TextChannel> tcs = cmd.event.getGuild().getTextChannelsByName("cmdlog", true);
+            if (tcs.size() > 0) {
+                User author = cmd.event.getAuthor();
+                EmbedBuilder eb = new EmbedBuilder()
+                        .setColor(Color.orange)
+                        .setAuthor(author.getName() + "#" + author.getDiscriminator(), null, author.getAvatarUrl())
+                        .setDescription("```" + cmd.event.getMessage().getContent() + "```")
+                        .setFooter(CoreCommands.getCurrentSystemTime(), null);
+                tcs.get(0).sendMessage(eb.build()).queue();
+            }
         }
     }
 

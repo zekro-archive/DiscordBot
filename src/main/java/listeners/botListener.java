@@ -51,22 +51,22 @@ public class BotListener extends ListenerAdapter{
         if (e.getMessage().getContent().startsWith(SSSS.getPREFIX(e.getGuild())) && e.getMessage().getAuthor().getId() != e.getJDA().getSelfUser().getId()) {
             Ping.setInputTime(new Date().getTime());
             if (!commands.guildAdministration.Blacklist.check(e.getAuthor(), e.getGuild())) return;
-            try {
-                Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));
-                if (STATICS.commandConsoleOutout)
-                    System.out.println(CoreCommands.getCurrentSystemTime() + " [Info] [Commands]: Command '" + e.getMessage().getContent() + "' was executed by '" + e.getAuthor() + "' (" + e.getGuild().getName() + ")!");
-                ArrayList<String> list = new ArrayList<>();
-                list.add(e.getGuild().getId());
-                list.add(CoreCommands.getCurrentSystemTime());
-                list.add(e.getMember().getEffectiveName());
-                list.add(e.getMessage().getContent());
-                STATICS.cmdLog.add(list);
-                addToLogfile(e);
-            } catch (ParseException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+                try {
+                    Main.handleCommand(Main.parser.parse(e.getMessage().getContent(), e));
+                    if (STATICS.commandConsoleOutout)
+                        System.out.println(CoreCommands.getCurrentSystemTime() + " [Info] [Commands]: Command '" + e.getMessage().getContent() + "' was executed by '" + e.getAuthor() + "' (" + e.getGuild().getName() + ")!");
+                    ArrayList<String> list = new ArrayList<>();
+                    list.add(e.getGuild().getId());
+                    list.add(CoreCommands.getCurrentSystemTime());
+                    list.add(e.getMember().getEffectiveName());
+                    list.add(e.getMessage().getContent());
+                    STATICS.cmdLog.add(list);
+                    addToLogfile(e);
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
         }
     }
 
