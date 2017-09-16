@@ -24,9 +24,7 @@ public class Info implements Command {
         String version = "NOT AVAILABLE";
         try {
 
-            //URL url = new URL(UpdateClient.versionURL);
-            //Scanner s = new Scanner(url.openStream());
-            version = "null"; //s.nextLine();
+            version = UpdateClient.PRE.tag;
 
         } catch (Exception e) {
             e.printStackTrace();

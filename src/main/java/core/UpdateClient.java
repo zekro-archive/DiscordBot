@@ -36,12 +36,12 @@ public class UpdateClient {
 
     private static final String API_URL = "https://api.github.com/repos/zekrotja/DiscordBot/releases";
 
-    private static final Release PRE = new Release(getRelease(true));
-    private static final Release STABLE = new Release(getRelease(false));
+    public static final Release PRE = new Release(getRelease(true));
+    public static final Release STABLE = new Release(getRelease(false));
 
-    static class Release {
+    public static class Release {
 
-        private String tag;
+        public String tag;
         private String url;
 
         private Release(JSONObject object) {

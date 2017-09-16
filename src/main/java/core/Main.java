@@ -125,7 +125,7 @@ public class Main {
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
-        commands.put("SettingsCore", new commands.settings.Settings());
+        commands.put("settings", new commands.settings.Settings());
         commands.put("cmdlog", new CmdLog());
         commands.put("speed", new Speedtest());
         commands.put("speedtest", new Speedtest());
