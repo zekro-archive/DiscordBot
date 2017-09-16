@@ -22,7 +22,7 @@ So you have some questions or want to join my developer community discord? Take 
 
 Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
 
-<a href="https://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" height="50"/></a>
+<a href="https://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
 🏆 Goal *(this year payment cicle)*  **`$9 / $24`**
 
