@@ -104,57 +104,12 @@ After that, use the guild settings commands to configure the bot for your guild(
 -----
 ### Latest Changelogs
 
-**THIS LIST WILL NOT BE UPDATED ANYMORE! PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS!**
-
-| Released Version  | Changes |
-|--|--|
-| <center><b>1.28.0.0</b><br><img src="https://img.shields.io/badge/build-testing%20phase-3cd0d8.svg"/></center> | - *[NEW]* added command "-report" |
-| <center>1.28.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added command "-broadcast"<br>- *[NEW]* added command "-guilds" |
-| <center>1.27.1.0<br><img src="https://img.shields.io/badge/build-test%20in%20progress-orange.svg"/></center> | - *[NEW]* added log command<br>- *[UPDATE]* added bot onwer check to perms core<br>- *[UPDATE]* changed perms of bot cotrolling command to bot owner only |
-| <center>1.26.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "mute" command<br>- *[UPDATE]* optimized reroll function and added rule function to "rand6" command |
-| <center>1.25.1.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* - added reroll function for "rand6" command<br>- *[NEW]* - added clear by timestamp and clear all function to "clear" command |
-| <center>1.25.0.2<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* Hotfixed bug in "rand6" command |
-| <center>1.25.0.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* added "rand6" command |
-| <center>1.24.0.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* added "quote" command<br>- *[NEW]* added "speed" / "speedtest" command |
-| <center>1.23.0.2<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* in "bjoke" command |
-| <center>1.23.0.1<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[NEW]* added "-cmdlog" command<br>- *[UPDATE]* complete rework of the "-bjoke" command |
-| <center>1.22.8.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUGFIX]* fixed missing cmd type in settings command |
-| <center>1.22.8.0<br><img src="https://img.shields.io/badge/build-unstable-orange.svg"/></center> | - *[ADDED]* new command 'settings' to display all settings for current guild<br>- *[UPDATED]* Information will display after startup of the bot about guilds |
-| <center>1.22.7.1<img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[BUG FIX]* in vkick command |
-| <center>1.22.7.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[REWORKED]* Cat command rework<br>- *[UPDATED]* Extended vkick command with timeout function<br>- *[UPDATED]* Help command update |
-| <center>1.22.6.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[REWORKED]* Complete rework of the vote command<br>- *[UPDATE]* Updated music command, added endless mode<br>- *[UPDATED]* Improved music player buffer |
-| <center>1.22.5.1<br><img src="https://img.shields.io/badge/build-stable-green.svg"/></center> | - *[NEW]* Autorole Setting<br>- *[UPDATED]* Guild join private message on autorole reworked<br>- *[UPDATED]* Complete rework of the music help guide |
-| 1.22.4.0<br><img src="https://img.shields.io/badge/build-stable-green.svg"/> | - *[NEW]* Server Specific Settings System <br>- *[NEW]* Settings Commands: -prefix, -permlvl, -joinmsg, -leavemsg, -botmsg <br>- *[UPDATED]* Permission Level System <br>- *[UPDATED]* User Info Command <br>- *[UPDATED]* Updated Music Command: -m channel, -m lockchannel |
-| 1.21.0.0 | - *[IMPROVEMENT]* Improved help command<br>- *[BUGFIX]* automatic unpause after queueing music<br>- *[NEW]* added uptime command |
-| 1.20.2.0 | Improved move all command |
-| 1.20.1.0 | Better messages, overworked user info command, overworked clear command, added Moveall command |
-| 1.19.18.0 | Overworked Info Command |
-| 1.19.17.0 | Overworked some more messages, especially in music command |
-| 1.19.15.0 | Overworked permission system, added command for my private dev server :^) |
-| 1.19.14.2 | Improved some message designs, overworked server stats command |
-| 1.19.12.0 | Better compatibility to linux systems, added volume setting in config file |
-| 1.19.11.4 | Added playlist saving/loading to music command |
-| 1.19.10.0 | Improved some music command methods, fixed some now playing bugs, added setting to allow users only to post music commands in music channel |
-| 1.19.9.0 | Added multiple skips and "queuenext" command to audio player |
-| 1.19.8.0 | Essential performance improvements |
-| 1.19.7.1 | Updated some things in music player, bugfixes |
-| 1.19.6.0 | Added now playing functions to music player |
-| 1.19.5.0 | Added Pasue/Resume function to music bot |
-| 1.19.4.2 | Bugfixes in music player, optimizations stuff |
-| 1.19.4.0 | Updated music command so it's now usable :^) |
-| 1.19.0.0 | Added music player, updated settings so now you can disable auto update |
-| 1.18.0.4 | Added command -tttserver, added TTT Server online status listener |
-| 1.17.0.0 | Added vkick command |
-| 1.16.0.0 | Added kick command, changed some things in settings handling |
-| 1.15.0.1 | Added restart command, updated code structure |
-| 1.14.2.1 | Updated updating service, changed some stuff in API token handling |
-| 1.14.1.0 | Added installation script, new admin command "-stop" |
-| 1.14.0.0 | Updated JDA, added auto update service |
+**PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS.**
 
 -----
 ### Future Intends
 
-**SEE CURRENT TODO-LIST <a href="https://github.com/zekroTJA/DiscordBot/projects/1">HERE</a>**
+**SEE CURRENT TODO-LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
 
 -----
 ### Used libraries
@@ -164,6 +119,7 @@ After that, use the guild settings commands to configure the bot for your guild(
 - <a href="https://github.com/sedmelluq/lavaplayer">lavaplayer</a>
 - <a href="https://github.com/koraktor/steam-condenser-java">steam-condenser</a>
 - <a href="https://github.com/bertrandmartel/speed-test-lib">JSpeedTest</a>
+- <a href="https://github.com/brunocvcunha/jiphy">jiphy</a>
 
 -----
 ### Mentions
