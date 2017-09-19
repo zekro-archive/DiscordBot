@@ -141,6 +141,8 @@ public class Vote3 implements Command, Serializable {
             e.printStackTrace();
         }
 
+        event.getMessage().delete().queue();
+
     }
 
     private static void addVote(Guild guild, Member author, int voteIndex) {

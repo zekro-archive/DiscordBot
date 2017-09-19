@@ -1,8 +1,12 @@
 package commands.chat;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import utils.STATICS;
+
+import java.awt.*;
 
 public class Say implements Command {
     @Override
@@ -15,19 +19,17 @@ public class Say implements Command {
 
         if (core.Perms.check(1, event)) return;
 
-        String serverID = event.getGuild().getId();
-        String channel = event.getTextChannel().getName();
+        String msg = String.join(" ", args);
+        User author = event.getMessage().getAuthor();
 
         event.getMessage().delete().queue();
 
-        String output = "";
-        if (args.length > 0) {
-            for (String e : args) {
-                output += e + " ";
-            }
-        }
-
-        event.getTextChannel().sendMessage(":loudspeaker:   " + output).queue();
+        event.getTextChannel().sendMessage(new EmbedBuilder()
+                .setColor(Color.cyan)
+                .setAuthor(author.getName(), null, author.getAvatarUrl())
+                .setDescription(msg)
+                .build()
+        ).queue();
     }
 
     @Override

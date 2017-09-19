@@ -175,13 +175,13 @@ public class Main {
         if (commands.containsKey(cmd.invoke.toLowerCase())) {
 
             BotStats.commandsExecuted++;
-            boolean safe = commands.get(cmd.invoke.toLowerCase())).called(cmd.args, cmd.event);
+            boolean safe = commands.get(cmd.invoke.toLowerCase()).called(cmd.args, cmd.event);
 
             if (!safe) {
-                commands.get(cmd.invoke.toLowerCase())).action(cmd.args, cmd.event);
-                commands.get(cmd.invoke.toLowerCase())).executed(safe, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).action(cmd.args, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).executed(safe, cmd.event);
             } else {
-                commands.get(cmd.invoke.toLowerCase())).executed(safe, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).executed(safe, cmd.event);
             }
 
             List<TextChannel> tcs = cmd.event.getGuild().getTextChannelsByName("cmdlog", true);

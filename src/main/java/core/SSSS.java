@@ -39,7 +39,6 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
         StringBuilder values = new StringBuilder();
 
         File[] files = new File("SERVER_SETTINGS/" + g.getId() + "/").listFiles();
-        System.out.println(files.length);
 
         Arrays.stream(files).forEach(f -> {
             try {
@@ -84,6 +83,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/prefix");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -112,6 +113,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverjoinmessage");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -140,6 +143,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverleavemessage");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -168,6 +173,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/musicchannel");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -197,6 +204,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_1");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -225,6 +234,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_2");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -253,6 +264,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/lockmusicchannel");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry + "");
             r.close();
@@ -281,6 +294,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/autorole");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -309,6 +324,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/vkickchannel");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -337,6 +354,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -364,6 +383,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/warframealertschan");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             r.write(entry);
             r.close();
@@ -391,6 +412,8 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         File f = new File("SERVER_SETTINGS/" + guild.getId() + "/blacklist");
         try {
+            if (!f.exists())
+                f.createNewFile();
             BufferedWriter r = new BufferedWriter(new FileWriter(f));
             entry.forEach(l -> {
                 try {

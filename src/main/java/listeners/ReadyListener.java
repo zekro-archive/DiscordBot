@@ -1,6 +1,7 @@
 package listeners;
 
 import commands.chat.WarframeAlerts;
+import core.SSSS;
 import core.StartArgumentHandler;
 import core.UpdateClient;
 import core.UpdateClient;
@@ -82,6 +83,8 @@ public class ReadyListener extends ListenerAdapter {
         readyEvent = event;
 
         STATICS.lastRestart = new Date();
+
+        SSSS.checkFolders(event.getJDA().getGuilds());
 
         handleStartArgs();
 
