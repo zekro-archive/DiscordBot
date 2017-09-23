@@ -2,6 +2,7 @@ package commands.chat;
 
 import com.sun.org.apache.xml.internal.serializer.SerializerTrace;
 import commands.Command;
+import core.Perms;
 import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -187,10 +188,7 @@ public class Vote3 implements Command, Serializable {
 
             if (event.getMessageId().equals(msg != null ? msg.getId() : "") && !event.getMember().getUser().equals(event.getJDA().getSelfUser())) {
                 List<String> reactions = msg.getReactions().stream().map(r -> r.getEmote().getName()).collect(Collectors.toList());
-                System.out.println(msg.getReactions().size());
-                msg.getReactions().forEach(r -> System.out.println(r.getEmote().getName()));
                 if (reactions.contains(event.getReaction().getEmote().getName())) {
-                    System.out.println("TEST 4");
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
                 }
             }
@@ -269,7 +267,7 @@ public class Vote3 implements Command, Serializable {
         Guild g = event.getGuild();
         Poll poll = polls.get(g);
 
-        if (!poll.getCreator(g).equals(event.getMember())) {
+        if (!poll.getCreator(g).equals(event.getMember()) && Perms.getLvl(event.getMember()) < 2) {
             message("Only the creator of the poll (" + poll.getCreator(g).getAsMention() + ") can close this poll!", Color.red);
             return;
         }
