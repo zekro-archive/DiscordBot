@@ -32,7 +32,7 @@ Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich
 🏆 Goal *(this year payment cicle)*  **`$15 / $24`**
 
 **List of donators**<br>
-Sydrus (Patreon)  -  $9
+Sydrus (Patreon)  -  $9<br>
 Schlaubi  -  $6
 
 -----
