@@ -29,10 +29,11 @@ Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich
 
 <a href="https://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
-🏆 Goal *(this year payment cicle)*  **`$9 / $24`**
+🏆 Goal *(this year payment cicle)*  **`$15 / $24`**
 
 **List of donators**<br>
 Sydrus (Patreon)  -  $9
+Schlaubi  -  $6
 
 -----
 ### Features
