@@ -1,6 +1,7 @@
 package commands.chat;
 
 import commands.Command;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
@@ -41,39 +42,15 @@ public class Gif implements Command {
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
         TextChannel tc = event.getTextChannel();
-
-        /*
-        File f = new File("giphykey.txt");
-        User owner = event.getJDA().getUserById(STATICS.BOT_OWNER_ID);
-
-        if (!f.exists()) {
-            tc.sendMessage(MSGS.error().setDescription(
-                    String.format("Gif command is disabled because of missing giphy API key!\nPlease contact the bot's host (%s#%s) to add the `giphykey.txt` file with a valid giphy API token!",
-                            owner.getName(), owner.getDiscriminator())
-            ).build()).queue();
-            return;
-        }
-
-        BufferedReader br = new BufferedReader(new FileReader(f));
-        String token = br.readLine().replace("\n", "");
-        if (token.length() < 1) {
-            tc.sendMessage(MSGS.error().setDescription(
-                    String.format("Gif command is disabled because of invalid giphy API key!\nPlease contact the bot's host (%s#%s) to update the giphy key in the `giphykey.txt` file!",
-                            owner.getName(), owner.getDiscriminator())
-            ).build()).queue();
-            return;
-        }
-        */
+        User author = event.getAuthor();
 
         if (args.length < 1) {
             tc.sendMessage(MSGS.error().setDescription(help()).build()).queue();
             return;
         }
 
-        String query = Arrays.stream(args).filter(s -> !s.startsWith("-")).collect(Collectors.joining(" "));
+        String query = Arrays.stream(args).filter(s -> !s.startsWith("-")).collect(Collectors.joining("-"));
         int index = args[args.length - 1].startsWith("-") ? Integer.parseInt(args[args.length - 1].substring(1)) - 1 : 0;
-
-        System.out.println(query + "\n" + index);
 
         Message msg = event.getTextChannel().sendMessage("Collecting data...").complete();
         event.getMessage().delete().queue();
@@ -87,7 +64,11 @@ public class Gif implements Command {
                 gifs.add(g.getUrl())
         );
 
-        msg.editMessage(gifs.get(index)).queue();
+        msg.editMessage(
+                String.format("[%s]\n", author.getName()) +
+                gifs.get(index)
+        ).queue();
+
 
     }
 
