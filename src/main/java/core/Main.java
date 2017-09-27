@@ -157,17 +157,18 @@ public class Main {
 
     private static void initializeListeners() {
 
-        builder.addEventListener(new ReadyListener());
-        builder.addEventListener(new BotListener());
-        builder.addEventListener(new ReconnectListener());
-        builder.addEventListener(new VoiceChannelListener());
-        builder.addEventListener(new GuildJoinListener());
-        builder.addEventListener(new PrivateMessageListener());
-        builder.addEventListener(new ReactionListener());
-        builder.addEventListener(new VkickListener());
-        builder.addEventListener(new ServerLimitListener());
-        builder.addEventListener(new AutochannelHandler());
-        builder.addEventListener(new MuteHanlder());
+        builder .addEventListener(new ReadyListener())
+                .addEventListener(new BotListener())
+                .addEventListener(new ReconnectListener())
+                .addEventListener(new VoiceChannelListener())
+                .addEventListener(new GuildJoinListener())
+                .addEventListener(new PrivateMessageListener())
+                .addEventListener(new ReactionListener())
+                .addEventListener(new VkickListener())
+                .addEventListener(new ServerLimitListener())
+                .addEventListener(new AutochannelHandler())
+                .addEventListener(new MuteHanlder())
+                .addEventListener(new BotGuildJoinListener());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {

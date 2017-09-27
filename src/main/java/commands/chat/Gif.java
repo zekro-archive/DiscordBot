@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.stream.Collectors;
 
 /**
@@ -63,6 +65,22 @@ public class Gif implements Command {
         jiphy.sendRequest(new JiphySearchRequest(query)).getData().forEach(g ->
                 gifs.add(g.getUrl())
         );
+
+        if (gifs.size() == 0) {
+            msg.delete().queue();
+            tc.sendMessage(MSGS.error().setDescription("No gifs found with the search query `" + query + "`!").build()).queue(m ->
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        m.delete().queue();
+                    }
+                }, 4000)
+            );
+            return;
+        }
+        else if (gifs.size() < index)
+            index = gifs.size() - 1;
+
 
         msg.editMessage(
                 String.format("[%s]\n", author.getName()) +
