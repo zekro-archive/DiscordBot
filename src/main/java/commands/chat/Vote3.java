@@ -190,6 +190,7 @@ public class Vote3 implements Command, Serializable {
                 if (reactions.contains(event.getReaction().getEmote().getName())) {
                     System.out.println("TEST 4");
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
+                    event.getReaction().removeReaction(event.getUser()).queue();
                 }
             }
 
