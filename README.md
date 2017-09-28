@@ -127,8 +127,6 @@ After that, use the guild settings commands to configure the bot for your guild(
 
 -----
 ### Mentions
-Special thanks to <a href="https://github.com/jagrosh">@jagrosh</a> for helping me with fixing the combatibility bug of lava player on linux system.
+Special thanks to [@jagrosh](https://github.com/jagrosh) for helping me fixing the combatibility problems of lava player on linux systems.
 
-Also a special thanks to Sophie, who helped me a lot developing some features of that bot and better performance coding. <3
-
-Another lovely thanks to all of our "Trupp Lätzl"-Discord members and team for testing the bot and using it and also a special lovley thanks to all members on my Dev Discord helping me a lot with new experiences and a lot of helpful hints. :)
+Also a very lovely thanks to everyone helping me on my [Development Discord](http:://discord.zekro.de) testing the lastest zekroBot features and reporting bugs or suggesting improvements! <3
