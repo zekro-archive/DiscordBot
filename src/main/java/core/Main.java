@@ -152,6 +152,7 @@ public class Main {
         commands.put("donate", new Donate());
         commands.put("support", new Donate());
         commands.put("gif", new Gif());
+        commands.put("guild", new Stats());
 
     }
 
