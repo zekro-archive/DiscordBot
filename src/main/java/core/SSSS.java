@@ -7,9 +7,7 @@ import utils.STATICS;
 
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,30 +33,37 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         Guild g = event.getGuild();
 
-        StringBuilder keys = new StringBuilder();
-        StringBuilder values = new StringBuilder();
+        HashMap<String, String> sets = new HashMap<>();
+        sets.put("PREFIX                ", getPREFIX(g));
+        sets.put("SERVER_JOIN_MSG       ", getSERVERJOINMESSAGE(g));
+        sets.put("SERVER_LEAVE_MSG      ", getSERVERJOINMESSAGE(g));
+        sets.put("MUSIC_CHANNEL         ", getMUSICCHANNEL(g));
+        sets.put("LOCK_MUSIC_CHANNEL    ", getLOCKMUSICCHANNEL(g) ? "TRUE" : "FALSE");
+        sets.put("AUTOROLE              ", getAUTOROLE(g));
+        sets.put("VKICK_CHANNEL         ", getVKICKCHANNEL(g));
+        sets.put("RAND6_OPS_URL         ", getR6OPSID(g));
+        sets.put("WARFRAMEALERTS_CHANNEL", getWARFRAMELAERTSCHAN(g));
 
-        File[] files = new File("SERVER_SETTINGS/" + g.getId() + "/").listFiles();
+        HashMap<String, String> setsMulti = new HashMap<>();
+        setsMulti.put("PERMROLES_LVL1", String.join(", ", getPERMROLES_1(g)));
+        setsMulti.put("PERMROLES_LVL2", String.join(", ", getPERMROLES_2(g)));
+        setsMulti.put("BLACKLIST", String.join(", ", getBLACKLIST(g)));
 
-        Arrays.stream(files).forEach(f -> {
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(f));
-                keys.append("**" + f.getName() + "**\n");
-                values.append("`" + br.readLine() + "`\n");
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        StringBuilder sb = new StringBuilder()
+                .append("**GUILD SPECIFIC SETTINGS**\n\n")
+                .append("```")
+                .append("SETTINGS KEY            -  VALUE\n\n");
 
-        event.getTextChannel().sendMessage(new EmbedBuilder()
-                .setTitle("SettingsCore for guild \"" + g.getName() + "\" (" + g.getId() + ")", null)
-                .addBlankField(false)
-                .addField("Keys", keys.toString(), true)
-                .addField("Values", values.toString(), true)
-                .build()
-        ).queue();
+        sets.forEach((k, v) -> sb.append(
+                String.format("%s  -  \"%s\"\n", k, v))
+        );
 
+        sb.append("\n- - - - -\n\n");
+        setsMulti.forEach((k, v) -> sb.append(
+                String.format("%s:\n\"%s\"\n\n", k, v))
+        );
+
+        event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(sb.append("```").toString()).build()).queue();
     }
 
 

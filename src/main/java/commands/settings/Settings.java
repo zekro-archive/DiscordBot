@@ -22,17 +22,6 @@ import java.util.Arrays;
 
 public class Settings implements Command {
 
-    //private void resetSettings(Guild g) {
-    //    File[] files = new File("SERVER_SETTINGS/" + g.getId() + "/").listFiles();
-//
-    //    Arrays.stream(files).forEach(f -> {
-    //        try {
-    //            FileDeleteStrategy.FORCE.delete(f);
-    //        } catch (IOException e) {
-    //            e.printStackTrace();
-    //        }
-    //    });
-    //}
 
 
     @Override
@@ -43,23 +32,9 @@ public class Settings implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(1, event)) return;
+        if (core.Perms.check(2, event)) return;
         core.SSSS.listSettings(event);
 
-        // THIS SHIT DOES NOT WORK
-        //if (args.length < 1) {
-        //    if (core.Perms.check(1, event)) return;
-        //    core.SSSS.listSettings(event);
-        //} else if (args[0].equals("reset")) {
-        //    if (core.Perms.check(3, event)) return;
-        //    File path = new File("SERVER_SETTINGS/" + event.getGuild().getId());
-        //    if (path.exists()) {
-        //        resetSettings(event.getGuild());
-        //        event.getTextChannel().sendMessage(MSGS.success().setDescription("Successfully deleted guild specific settings for this server!").build()).queue();
-        //    }
-        //    else
-        //        event.getTextChannel().sendMessage(MSGS.error().setDescription("No server specific settings found for this guild!").build()).queue();
-        //}
     }
 
     @Override
@@ -70,7 +45,7 @@ public class Settings implements Command {
     @Override
     public String help() {
         return "USING:\n" +
-               "**SettingsCore**  -  `List all current SettingsCore values of the current guild`";
+               "**settings**  -  `List all current SettingsCore values of the current guild`";
     }
 
     @Override

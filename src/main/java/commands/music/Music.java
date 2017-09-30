@@ -54,10 +54,6 @@ public class Music implements Command {
     private Member endlessAuthor;
 
 
-    private MessageEmbed embed(String content) {
-        return new EmbedBuilder().setColor(Color.green).setDescription("content").build();
-    }
-
     private boolean hasPlayer(Guild guild) {
         return players.containsKey(guild.getId());
     }
@@ -193,7 +189,7 @@ public class Music implements Command {
 
     private boolean isIdle(Guild guild, MessageReceivedEvent event) {
         if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
-            event.getTextChannel().sendMessage(embed("No music is being played at the moment!")).queue();
+            event.getTextChannel().sendMessage("No music is being played at the moment!").queue();
             return true;
         }
         return false;
@@ -250,22 +246,22 @@ public class Music implements Command {
                                         ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
 
                         .addField(pre + "m stop",
-                                        "Stops the current playing. The current queue will be reset after this!\n" +
+                                "Stops the current playing. The current queue will be reset after this!\n" +
                                         ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
 
                         .addField(pre + "m queue <OPTIONAL INPUT>",
-                                        "`OPTIONAL INPUT:`  Side of list.\n\n" +
+                                "`OPTIONAL INPUT:`  Side of list.\n\n" +
                                         "\nShows the current queue. Displays only 20 tracks on one side. Use Optional input to switch between sides.\n" +
                                         ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
 
                         .addBlankField(false)
                         .addField(pre + "m save <INPUT>",
-                                        "`INPUT:`  Custom name of the save.\n\n" +
+                                "`INPUT:`  Custom name of the save.\n\n" +
                                         "Saves the last attached track/playlist URL to a save with a custom name.\n" +
                                         ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
 
                         .addField(pre + "m list",
-                                        "Displays a list of the names of all saved tracks/playlists.\n" +
+                                "Displays a list of the names of all saved tracks/playlists.\n" +
                                         ":heavy_minus_sign: :heavy_minus_sign: :heavy_minus_sign: ",  false)
 
                         .addField(pre + "m load <INPUT>",
@@ -438,7 +434,7 @@ public class Music implements Command {
                     case "nowplaying":
                     case "info":
                         if (!hasPlayer(guild) || getPlayer(guild).getPlayingTrack() == null) {
-                            event.getTextChannel().sendMessage(embed(NOTE + "No music currently playing!")).queue();
+                            event.getTextChannel().sendMessage(NOTE + "No music currently playing!").queue();
                         } else {
                             AudioTrack track = getPlayer(guild).getPlayingTrack();
                             AudioTrackInfo info = track.getInfo();
@@ -456,7 +452,7 @@ public class Music implements Command {
 
                     case "queue":
                         if (!hasPlayer(guild) || getTrackManager(guild).getQueuedTracks().isEmpty()) {
-                            event.getTextChannel().sendMessage(embed(NOTE + "The queue ist currently empty!")).queue();
+                            event.getTextChannel().sendMessage(NOTE + "The queue ist currently empty!").queue();
                         } else {
 
                             int SideNumbInput = 1;
@@ -480,12 +476,12 @@ public class Music implements Command {
 
                             eb.setColor(Color.GREEN).setDescription(
                                     NOTE + "**QUEUE**\n\n" +
-                                    "*[" + queue.size() + " Tracks | Side " + sideNumb + "/" + sideNumbAll + "]*\n\n" +
-                                    sb
+                                            "*[" + queue.size() + " Tracks | Side " + sideNumb + "/" + sideNumbAll + "]*\n\n" +
+                                            sb
                             );
 
                             event.getTextChannel().sendMessage(
-                                  eb.build()
+                                    eb.build()
                             ).queue();
 
                         }
@@ -540,7 +536,7 @@ public class Music implements Command {
 
                         if (isDj(event.getMember())) {
                             getTrackManager(guild).shuffleQueue();
-                            event.getTextChannel().sendMessage(embed(NOTE + "Shuffled queue.  :twisted_rightwards_arrows: ")).queue();
+                            event.getTextChannel().sendMessage(NOTE + "Shuffled queue.  :twisted_rightwards_arrows: ").queue();
                         } else {
                             //chat.sendMessage("\u26D4 You don't have the permission to do that!");
                         }
@@ -551,12 +547,12 @@ public class Music implements Command {
                         if (getPlayer(guild).isPaused()) {
                             getPlayer(guild).setPaused(false);
                             event.getTextChannel().sendMessage(
-                                    embed(NOTE + "Player resumed.")
+                                    NOTE + "Player resumed."
                             ).queue();
                         } else {
                             getPlayer(guild).setPaused(true);
                             event.getTextChannel().sendMessage(
-                                    embed(NOTE + "Player paused.")
+                                    NOTE + "Player paused."
                             ).queue();
                         }
                         break;
@@ -572,15 +568,22 @@ public class Music implements Command {
                         } else if (args.length < 2) {
                             event.getTextChannel().sendMessage(MSGS.error().setDescription(":warning: Please enter a valid name for your playlist!").build()).queue();
                             return;
+                        } else if (args.length > 3) {
+                            event.getTextChannel().sendMessage(MSGS.error().setDescription(":warning: Please only use single-word names!").build()).queue();
+                            return;
                         }
 
-                        File saveFile = new File("saves_playlists/" + args[1]);
+                        File path = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/saves_playlists");
+                        if (!path.exists())
+                            path.mkdirs();
+
+                        File saveFile = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/saves_playlists/" + args[1]);
 
                         PrintWriter writer = new PrintWriter(saveFile);
                         writer.write(input);
                         writer.close();
 
-                        event.getTextChannel().sendMessage(embed(NOTE + "  Playlist \"" + args[1] + "\" successfully saved!")).queue();
+                        event.getTextChannel().sendMessage(NOTE + "  Playlist \"" + args[1] + "\" successfully saved!").queue();
 
                         break;
 
@@ -590,13 +593,13 @@ public class Music implements Command {
 
                         try {
 
-                            File[] saves = new File("saves_playlists/").listFiles();
+                            File[] saves = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/saves_playlists/").listFiles();
                             StringBuilder list = new StringBuilder();
 
                             if (saves.length > 0) {
                                 Arrays.stream(saves).forEach(file -> list.append("- **" + file.getName() + "**\n"));
                                 event.getTextChannel().sendMessage(
-                                        embed(NOTE + "   **SAVED PLAYLISTS**   " + NOTE + "\n\n" + list.toString())
+                                        NOTE + "   **SAVED PLAYLISTS**   " + NOTE + "\n\n" + list.toString()
                                 ).queue();
                             } else {
                                 event.getTextChannel().sendMessage(MSGS.error().setDescription(":warning:  Sorry, but there are no playlists saved yet!").build()).queue();
@@ -617,7 +620,7 @@ public class Music implements Command {
                         }
 
                         try {
-                            File savedFile = new File("saves_playlists/" + args[1]);
+                            File savedFile = new File("SERVER_SETTINGS/" + event.getGuild().getId() + "/saves_playlists/" + args[1]);
                             BufferedReader reader = new BufferedReader(new FileReader(savedFile));
                             String out = reader.readLine();
 
@@ -631,7 +634,7 @@ public class Music implements Command {
                                         public void run() {
                                             int tracks = getTrackManager(guild).getQueuedTracks().size();
                                             event.getTextChannel().sendMessage(
-                                                    embed(NOTE + "Queued `" + tracks + "` Tracks.")
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
                                             ).queue();
                                         }
                                     },
@@ -704,7 +707,7 @@ public class Music implements Command {
                                         public void run() {
                                             int tracks = getTrackManager(guild).getQueuedTracks().size();
                                             event.getTextChannel().sendMessage(
-                                                    embed(NOTE + "Queued `" + tracks + "` Tracks.")
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
                                             ).queue();
                                         }
                                     },
@@ -726,7 +729,7 @@ public class Music implements Command {
                                         public void run() {
                                             int tracks = getTrackManager(guild).getQueuedTracks().size();
                                             event.getTextChannel().sendMessage(
-                                                    embed(NOTE + "Queued `" + tracks + "` Tracks.")
+                                                    NOTE + "Queued `" + tracks + "` Tracks."
                                             ).queue();
                                         }
                                     },
@@ -749,19 +752,19 @@ public class Music implements Command {
     public String help() {
         return
                 ":musical_note:  **MUSIC PLAYER**  :musical_note: \n\n" +
-                "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
-                "` -music playnext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
-                "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
-                "` -music queue <Side>`  -  Show the current music queue\n" +
-                "` -music skip `  -  Skip the current track in queue\n" +
-                "` -music now `  -  Show info about the now playing track\n" +
-                "` -music save <name> `  -  Save playing playlist in a file\n" +
-                "` -music list `  -  Get a list of saved playlists\n" +
-                "` -music load <name> `  -  play a saved list\n" +
-                "` -music stop `  -  Stop the music player\n" +
-                "` -music channel <text channel> `  -  Set the channel where now playing will shown (use a channel that does not exist to disable messages)\n" +
-                "` -music lockchannel <true | false> `  -  Only allow music commands in the music channel"
-        ;
+                        "` -music play <yt/soundcloud - URL> `  -  Start playing a track / Add a track to queue / Add a playlist to queue\n" +
+                        "` -music playnext <yt/soundcloud - URL>  -  Add track or playlist direct after the current song in queue`\n" +
+                        "` -music ytplay <Search string for yt> `  -  Same like *play*, just let youtube search for a track you enter\n" +
+                        "` -music queue <Side>`  -  Show the current music queue\n" +
+                        "` -music skip `  -  Skip the current track in queue\n" +
+                        "` -music now `  -  Show info about the now playing track\n" +
+                        "` -music save <name> `  -  Save playing playlist in a file\n" +
+                        "` -music list `  -  Get a list of saved playlists\n" +
+                        "` -music load <name> `  -  play a saved list\n" +
+                        "` -music stop `  -  Stop the music player\n" +
+                        "` -music channel <text channel> `  -  Set the channel where now playing will shown (use a channel that does not exist to disable messages)\n" +
+                        "` -music lockchannel <true | false> `  -  Only allow music commands in the music channel"
+                ;
     }
 
     @Override
