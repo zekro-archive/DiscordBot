@@ -190,6 +190,7 @@ public class Vote3 implements Command, Serializable {
                 List<String> reactions = msg.getReactions().stream().map(r -> r.getEmote().getName()).collect(Collectors.toList());
                 if (reactions.contains(event.getReaction().getEmote().getName())) {
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
+                    event.getReaction().removeReaction(event.getUser()).queue();
                 }
             }
 
