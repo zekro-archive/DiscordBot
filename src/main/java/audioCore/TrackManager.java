@@ -46,7 +46,12 @@ public class TrackManager extends AudioEventAdapter {
         try {
             Guild g = queue.poll().getAuthor().getGuild();
             if (queue.isEmpty()) {
-                g.getAudioManager().closeAudioConnection();
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        g.getAudioManager().closeAudioConnection();
+                    }
+                }, 3000);
             } else {
                 player.playTrack(queue.element().getTrack());
             }
