@@ -2,19 +2,20 @@ package commands.guildAdministration;
 
 import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.managers.GuildController;
 import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by zekro on 07.05.2017 / 10:55
@@ -50,8 +51,28 @@ public class Moveall implements Command {
                     String VCfrom = event.getMember().getVoiceState().getChannel().getName();
                     String VCto = vc.getName();
 
-                    event.getMember().getVoiceState().getChannel().getMembers()
-                            .forEach(member -> event.getGuild().getController().moveVoiceMember(member, vc).queue());
+                    HashMap<VoiceChannel, Guild> autochans = commands.guildAdministration.Autochannel.getAutochans();
+
+                    System.out.println(autochans.keySet());
+
+                    if (autochans.containsKey(vc)) {
+                        ArrayList<Member> membs = new ArrayList<>(event.getMember().getVoiceState().getChannel().getMembers());
+                        GuildController controller = event.getGuild().getController();
+
+                        Member firstOne = membs.get(0);
+                        controller.moveVoiceMember(firstOne, vc).queue();
+                        membs.remove(firstOne);
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                System.out.println(membs.get(0));
+                                membs.forEach(m -> controller.moveVoiceMember(m, firstOne.getVoiceState().getChannel()).queue());
+                            }
+                        }, 1000);
+                    } else {
+                        event.getMember().getVoiceState().getChannel().getMembers()
+                                .forEach(member -> event.getGuild().getController().moveVoiceMember(member, vc).queue());
+                    }
 
                     event.getMessage().delete().queue();
                     Message msg = event.getTextChannel().sendMessage(new EmbedBuilder().setColor(new Color(0, 169, 255))

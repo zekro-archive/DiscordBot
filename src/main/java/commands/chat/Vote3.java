@@ -2,6 +2,7 @@ package commands.chat;
 
 import com.sun.org.apache.xml.internal.serializer.SerializerTrace;
 import commands.Command;
+import core.Perms;
 import core.SSSS;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
@@ -48,14 +49,16 @@ public class Vote3 implements Command, Serializable {
         private List<String> emotis;
         private String message;
         private HashMap<String, Integer> votes;
+        private boolean secret;
 
-        public Poll(Member creator, String heading, List<String> answers, List<String> emotis, Message message) {
+        public Poll(Member creator, String heading, List<String> answers, List<String> emotis, Message message, boolean secret) {
             this.creator = creator.getUser().getId();
             this.heading = heading;
             this.answers = answers;
             this.emotis = emotis;
             this.votes = new HashMap<>();
             this.message = message.getId();
+            this.secret = secret;
         }
 
         private Member getCreator(Guild guild) {
@@ -102,7 +105,7 @@ public class Vote3 implements Command, Serializable {
 
     }
 
-    private void createPoll(String[] args, MessageReceivedEvent event) {
+    private void createPoll(String[] args, MessageReceivedEvent event, boolean secret) {
 
         if (polls.containsKey(event.getGuild())) {
             message("There is already a vote running on this guild!", Color.red);
@@ -125,7 +128,7 @@ public class Vote3 implements Command, Serializable {
             toAddEmotis.add(randEmoti);
         });
 
-        Poll poll = new Poll(event.getMember(), heading, answers, toAddEmotis, msg);
+        Poll poll = new Poll(event.getMember(), heading, answers, toAddEmotis, msg, secret);
 
         polls.put(event.getGuild(), poll);
 
@@ -140,6 +143,8 @@ public class Vote3 implements Command, Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        event.getMessage().delete().queue();
 
     }
 
@@ -185,11 +190,9 @@ public class Vote3 implements Command, Serializable {
 
             if (event.getMessageId().equals(msg != null ? msg.getId() : "") && !event.getMember().getUser().equals(event.getJDA().getSelfUser())) {
                 List<String> reactions = msg.getReactions().stream().map(r -> r.getEmote().getName()).collect(Collectors.toList());
-                System.out.println(msg.getReactions().size());
-                msg.getReactions().forEach(r -> System.out.println(r.getEmote().getName()));
                 if (reactions.contains(event.getReaction().getEmote().getName())) {
-                    System.out.println("TEST 4");
                     addVote(guild, event.getMember(), reactions.indexOf(event.getReaction().getEmote().getName()) + 1);
+                    event.getReaction().removeReaction(event.getUser()).queue();
                 }
             }
 
@@ -253,7 +256,16 @@ public class Vote3 implements Command, Serializable {
             message("There is currently no vote running!", Color.red);
             return;
         }
-        channel.sendMessage(getParsedPoll(polls.get(event.getGuild()), event.getGuild()).build()).queue();
+
+        Poll poll = polls.get(event.getGuild());
+        Guild g = event.getGuild();
+
+        if (poll.secret && !poll.getMessage(g).getTextChannel().equals(event.getTextChannel())) {
+            message("The running poll is a `secret` poll and can only be accessed from the channel where it was created from!", Color.red);
+            return;
+        }
+
+        channel.sendMessage(getParsedPoll(poll, g).build()).queue();
 
     }
 
@@ -267,7 +279,12 @@ public class Vote3 implements Command, Serializable {
         Guild g = event.getGuild();
         Poll poll = polls.get(g);
 
-        if (!poll.getCreator(g).equals(event.getMember())) {
+        if (poll.secret && !poll.getMessage(g).getTextChannel().equals(event.getTextChannel())) {
+            message("The running poll is a `secret` poll and can only be accessed from the channel where it was created from!", Color.red);
+            return;
+        }
+
+        if (!poll.getCreator(g).equals(event.getMember()) && Perms.getLvl(event.getMember()) < 2) {
             message("Only the creator of the poll (" + poll.getCreator(g).getAsMention() + ") can close this poll!", Color.red);
             return;
         }
@@ -300,9 +317,13 @@ public class Vote3 implements Command, Serializable {
         switch (args[0]) {
 
             case "create":
-                createPoll(args, event);
+                createPoll(args, event, false);
                 break;
 
+            case "secret":
+                createPoll(args, event, true);
+                message("The created vote is `secret` and can only be accessed from this channel.", Color.yellow);
+                break;
             case "stats":
                 statsPoll(event);
                 break;
@@ -325,6 +346,7 @@ public class Vote3 implements Command, Serializable {
         return  "**ATTENTION:** This vote command is not finished yet and may cause heavy bugs and errors!" +
                 "USAGE:\n" +
                 "**-vote create <question>|<answer 1>|<answer 2>|...**  -  `Create a poll.`\n" +
+                "**-vote secret <question>|<answer 1>|<answer 2>|...**  -  `Create a secret poll.\n`" +
                 "**-vote stats**  -  `Show the stats of the current vote.`\n" +
                 "**-vote close**  -  `Close the current vote.`";
     }

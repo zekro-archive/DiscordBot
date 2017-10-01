@@ -4,6 +4,7 @@ import commands.Command;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import utils.MSGS;
 import utils.STATICS;
 
 import java.awt.*;
@@ -23,88 +24,81 @@ import java.util.List;
 
 public class Mute implements Command {
 
-	//DISCLAIMER: ICH WEIß NICHT OB ES FUNKTIONIERT x)
 
-    private static void Mute(MessageReceivedEvent event, Member member, String reason, String mutedBy) throws IOException {
+    private static HashMap<String, String> mutes = new HashMap<>();
 
-        Properties properties = new Properties();
-        OutputStream outputStream;
-        Guild g = event.getGuild();
+    private static final File SAVE = new File("SERVER_SETTINGS/mutes.dat");
 
-        outputStream = new FileOutputStream("MUTES/" + member.getUser().getId() + "/mute.Settings");
-        properties.setProperty("reason", reason);
-        properties.setProperty("muted_by", mutedBy);
-        properties.store(outputStream, null);
+    private void save() {
 
-        ArrayList<Role> mutedRole = new ArrayList<>();
-        mutedRole.add(event.getGuild().getRolesByName("Muted", true).get(0));
 
-        g.getController().addRolesToMember(member, mutedRole);
-
-    }
-    private static void Unmute(MessageReceivedEvent event, Member member) throws IOException{
-
-        Guild g = event.getGuild();
-        File file = new File("MUTES/" + member.getUser().getId() + "/mute.Settings");
-        ArrayList<Role> mutedRole = new ArrayList<>();
-        mutedRole.add(event.getGuild().getRolesByName("Muted", true).get(0));
-
-        if (file.exists()) file.delete();
-        g.getController().removeRolesFromMember(member, mutedRole);
-
-    }
-    private static boolean isMuted(Member member) {
-        File f = new File("MUTES/" + member.getUser().getId() + "/mute.Settings");
-        if (f.exists()) {
-            return true;
-        }
-        return false;
-    }
-    private static boolean isValidID(MessageReceivedEvent event, String uID) {
-
-        Guild g = event.getGuild();
-
-        List<String> IDs = new ArrayList<>();
-
-        for ( Member member : g.getMembers() ) {
-            IDs.add(member.getUser().getId());
+        if (!SAVE.exists()) {
+            try {
+                SAVE.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        } else {
+            try {
+                BufferedWriter br = new BufferedWriter(new FileWriter(SAVE));
+                mutes.forEach((id, rs) -> {
+                    try {
+                        br.write(String.format("%s:::%s\n", id, rs));
+                    } catch (IOException e) { e.printStackTrace(); }
+                });
+                br.close();
+            } catch (IOException e) { e.printStackTrace(); }
         }
 
-        if (IDs.contains(uID)) return true;
+    }
 
-        return false;
-    }
-    private static boolean isMutable(MessageReceivedEvent event, Member member) {
-        Guild g = event.getGuild();
-        if (member.getRoles().contains(event.getGuild().getRolesByName("Muted", true).get(0))) return false;
-        return true;
-    }
-    private static void sendMsg(MessageReceivedEvent e, String message, String type, int seconds) {
-        EmbedBuilder err = new EmbedBuilder().setColor(Color.WHITE);
-        EmbedBuilder ok = new EmbedBuilder().setColor(e.getMember().getColor());
-        if (type.equalsIgnoreCase("ok")) {
-            Message msg = e.getTextChannel().sendMessage(
-                    ok.setDescription(message).build()
-            ).complete();
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    msg.delete().queue();
-                }
-            }, seconds * 1000);
+    public static void load() {
+
+        if (!SAVE.exists()) return;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(SAVE));
+            br.lines().forEach(l -> {
+                String[] split = l.replace("\n", "").split(":::");
+                mutes.put(split[0], split[1]);
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        if (type.equalsIgnoreCase("err")) {
-            Message msg = e.getTextChannel().sendMessage(
-                    err.setDescription(message).build()
-            ).complete();
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    msg.delete().queue();
-                }
-            }, seconds * 1000);
-        }
+
     }
+
+    public static HashMap<String, String> getMuted() {
+        return mutes;
+    }
+
+
+	private void toggle(String[] args, Message msg, TextChannel tc) {
+
+	    User victim = msg.getMentionedUsers().size() > 0 ? msg.getMentionedUsers().get(0) : msg.getJDA().getUserById(args[0]);
+
+	    if (victim == null) {
+	        tc.sendMessage(MSGS.error().setDescription("Please enter a valid mention or user ID!").build()).queue();
+	        return;
+        }
+
+        String vicid = victim.getId();
+        if (mutes.containsKey(vicid)) {
+	        mutes.remove(vicid);
+	        save();
+	        tc.sendMessage(MSGS.success().setDescription(String.format("%s unmuted %s.", msg.getAuthor().getAsMention(), victim.getAsMention())).build()).queue();
+        } else {
+            String reason = "No reason.";
+            if (args.length > 1)
+                reason = String.join(" ", Arrays.asList(args).subList(1, args.length));
+            mutes.put(vicid, reason);
+            save();
+            tc.sendMessage(new EmbedBuilder().setColor(Color.orange).setDescription(String.format("%s muted %s.\n\nReason: `%s`", msg.getAuthor().getAsMention(), victim.getAsMention(), reason)).build()).queue();
+        }
+
+    }
+
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) { return false; }
@@ -112,23 +106,17 @@ public class Mute implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws ParseException, IOException {
 
-        if (core.Perms.check(1, event)) return;
+        Guild guild = event.getGuild();
+        Member author = event.getMember();
+        TextChannel tc = event.getTextChannel();
+        Message msg = event.getMessage();
 
-        if (args[1].isEmpty()) args[1] = "Unknown";
-
-        if (!args[0].isEmpty() && isValidID(event, args[0])) {
-            Member member = event.getGuild().getMemberById(args[0]);
-            if (isMutable(event, event.getGuild().getMemberById(args[0]))) {
-                if (isMuted(member)) Unmute(event, member);
-                sendMsg(event, "Unmuted " + event.getGuild().getMemberById(args[0]).getEffectiveName() + "(" + args[0] + ")", "ok", 10);
-                if (!isMuted(member)) Mute(event, member, args[1], event.getAuthor().getName());
-                sendMsg(event, "Muted " + event.getGuild().getMemberById(args[0]).getEffectiveName() + "(" + args[0] + ")", "ok", 10);
-            } else {
-                sendMsg(event,"User is not Mutable!", "err", 10);
-            }
-        } else {
-            sendMsg(event, "Please enter a valid UserID!", "err", 10);
+        if (args.length < 1) {
+            tc.sendMessage(MSGS.error().setDescription(help()).build()).queue();
+            return;
         }
+
+        toggle(args, msg, tc);
 
     }
 
@@ -139,8 +127,8 @@ public class Mute implements Command {
 
     @Override
     public String help() {
-         return "USAGE:\n" +                                                    // EDIT BY zekro
-                "**mute <userID> <reason>**  -  `Mute/Unmute a Member`";        //
+         return "USAGE:\n" +
+                "**mute <@mention / userID> <reason>**  -  `Mute/Unmute a Member`";
     }
 
     @Override

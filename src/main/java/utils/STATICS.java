@@ -17,15 +17,8 @@ public class STATICS {
     //######### GENERAL BOT SETTINGS #########//
 
 
-    public static String VERSION = "1.38.3.0";
-    public static String THISBUILD = BUILDTYPE.STABLE;
+    public static String VERSION = "1.42.0.0";
 
-    public static class BUILDTYPE {
-        public static final String STABLE = "STABLE";
-        public static final String UNSTABLE = "UNSTABLE";
-        public static final String UNTESTED = "UNTESTED";
-        public static final String TESTING_BUILD = "TESTING_BUILD";
-    }
 
     public static String PREFIX = "-";
 
@@ -33,17 +26,7 @@ public class STATICS {
 
     public static String CUSTOM_MESSAGE = "ゼクロ";
 
-    public static Game GAME = new Game()  {
-        public String getName() {
-            return CUSTOM_MESSAGE + " | -help | v." + VERSION + "_" + THISBUILD;
-        }
-        public String getUrl() {
-            return "http://zekro.de";
-        }
-        public GameType getType() {
-            return GameType.DEFAULT;
-        }
-    };
+    public static Game GAME = Game.of(CUSTOM_MESSAGE + " | -help | v." + VERSION);
 
 
     //######### WARFRAME ALERTS SETTINGS #########//

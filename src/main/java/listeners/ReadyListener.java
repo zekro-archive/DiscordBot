@@ -1,6 +1,7 @@
 package listeners;
 
 import commands.chat.WarframeAlerts;
+import core.SSSS;
 import core.StartArgumentHandler;
 import core.UpdateClient;
 import core.UpdateClient;
@@ -28,7 +29,7 @@ public class ReadyListener extends ListenerAdapter {
 
                 case "-restart":
                     for (Guild g : readyEvent.getJDA().getGuilds()) {
-                        g.getPublicChannel().sendMessage(
+                        g.getDefaultChannel().sendMessage(
                                 ":ok_hand:  Bot successfully restarted!"
                         ).queue();
                     }
@@ -36,7 +37,7 @@ public class ReadyListener extends ListenerAdapter {
 
                 case "-update":
                     for (Guild g : readyEvent.getJDA().getGuilds()) {
-                        g.getPublicChannel().sendMessage(
+                        g.getDefaultChannel().sendMessage(
                                 ":ok_hand:  Bot successfully updated to version v." + STATICS.VERSION + "!\n\n" +
                                         "**Changelogs:** http://github.zekro.de/DiscordBot/blob/master/README.md#latest-changelogs\n" +
                                         "Github Repository: http://github.zekro.de/DiscordBot"
@@ -63,7 +64,7 @@ public class ReadyListener extends ListenerAdapter {
                 "| Running on %s guilds: \n" +
                 "%s" +
                 "#------------------------------------------------------------------------- - - -  -  -  -   -\n\n",
-        Logger.Cyan + Logger.Bold + "zekroBot" + Logger.Reset, STATICS.VERSION, "3.2.0_242", event.getJDA().getGuilds().size(), sb.toString()));
+        Logger.Cyan + Logger.Bold + "zekroBot" + Logger.Reset, STATICS.VERSION, "3.3.1_276", event.getJDA().getGuilds().size(), sb.toString()));
 
         if (STATICS.BOT_OWNER_ID == 0) {
             Logger.ERROR(
@@ -82,6 +83,8 @@ public class ReadyListener extends ListenerAdapter {
         readyEvent = event;
 
         STATICS.lastRestart = new Date();
+
+        SSSS.checkFolders(event.getJDA().getGuilds());
 
         handleStartArgs();
 
@@ -103,6 +106,7 @@ public class ReadyListener extends ListenerAdapter {
         commands.chat.Vote3.loadPolls(event.getJDA());
         commands.chat.Counter.loadAll(event.getJDA());
         commands.guildAdministration.Autochannel.load(event.getJDA());
+        commands.guildAdministration.Mute.load();
         // commands.chat.Vote2.loadPolls(event.getJDA());
 
     }

@@ -57,6 +57,19 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.brunocvcunha.jiphy</groupId>
+            <artifactId>jiphy</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <!--
+            NEEDED FOR ANOTHER COMMAND NOT IMPLEMENTED YET
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.3</version>
+        </dependency>
+        -->
     </dependencies>
 
     <build>

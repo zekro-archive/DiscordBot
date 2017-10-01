@@ -2,15 +2,21 @@ package core;
 
 import commands.Command;
 import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
+
 import commands.administration.*;
 import commands.chat.*;
 import commands.essentials.*;
@@ -119,7 +125,7 @@ public class Main {
         commands.put("leavemsg", new ServerLeftMessage());
         commands.put("permlvl", new PermLvls());
         commands.put("autorole", new AutoRole());
-        commands.put("SettingsCore", new commands.settings.Settings());
+        commands.put("settings", new commands.settings.Settings());
         commands.put("cmdlog", new CmdLog());
         commands.put("speed", new Speedtest());
         commands.put("speedtest", new Speedtest());
@@ -145,37 +151,51 @@ public class Main {
         commands.put("autochannel", new Autochannel());
         commands.put("donate", new Donate());
         commands.put("support", new Donate());
+        commands.put("gif", new Gif());
+        commands.put("guild", new Stats());
 
     }
 
     private static void initializeListeners() {
 
-        builder.addEventListener(new ReadyListener());
-        builder.addEventListener(new BotListener());
-        builder.addEventListener(new ReconnectListener());
-        builder.addEventListener(new VoiceChannelListener());
-        builder.addEventListener(new GuildJoinListener());
-        builder.addEventListener(new PrivateMessageListener());
-        builder.addEventListener(new ReactionListener());
-        builder.addEventListener(new VkickListener());
-        builder.addEventListener(new ServerLimitListener());
-        builder.addEventListener(new AutochannelHandler());
+        builder .addEventListener(new ReadyListener())
+                .addEventListener(new BotListener())
+                .addEventListener(new ReconnectListener())
+                .addEventListener(new VoiceChannelListener())
+                .addEventListener(new GuildJoinListener())
+                .addEventListener(new PrivateMessageListener())
+                .addEventListener(new ReactionListener())
+                .addEventListener(new VkickListener())
+                .addEventListener(new ServerLimitListener())
+                .addEventListener(new AutochannelHandler())
+                .addEventListener(new MuteHanlder())
+                .addEventListener(new BotGuildJoinListener());
     }
 
     public static void handleCommand(CommandParser.CommandContainer cmd) throws ParseException, IOException {
 
-        if (commands.containsKey(cmd.invoke)) {
+        if (commands.containsKey(cmd.invoke.toLowerCase())) {
 
             BotStats.commandsExecuted++;
-            boolean safe = commands.get(cmd.invoke).called(cmd.args, cmd.event);
+            boolean safe = commands.get(cmd.invoke.toLowerCase()).called(cmd.args, cmd.event);
 
             if (!safe) {
-                commands.get(cmd.invoke).action(cmd.args, cmd.event);
-                commands.get(cmd.invoke).executed(safe, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).action(cmd.args, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).executed(safe, cmd.event);
             } else {
-                commands.get(cmd.invoke).executed(safe, cmd.event);
+                commands.get(cmd.invoke.toLowerCase()).executed(safe, cmd.event);
             }
 
+            List<TextChannel> tcs = cmd.event.getGuild().getTextChannelsByName("cmdlog", true);
+            if (tcs.size() > 0) {
+                User author = cmd.event.getAuthor();
+                EmbedBuilder eb = new EmbedBuilder()
+                        .setColor(Color.orange)
+                        .setAuthor(author.getName() + "#" + author.getDiscriminator(), null, author.getAvatarUrl())
+                        .setDescription("```" + cmd.event.getMessage().getContent() + "```")
+                        .setFooter(CoreCommands.getCurrentSystemTime(), null);
+                tcs.get(0).sendMessage(eb.build()).queue();
+            }
         }
     }
 
