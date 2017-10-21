@@ -24,7 +24,7 @@ So you have some questions or want to join my developer community discord? Take 
 ---
 ### Donate
 
-Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
+Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, which costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
 
 <a href="http://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
@@ -53,17 +53,17 @@ Here are just listed some of the various functions and >64 commands of the bot.
   - `-stups` - nudge someone on the guild
   - `-vote` - create polls<br>
   &nbsp;![](https://image.prntscr.com/image/5_avzZNQRUijY2rUgc1XgQ.png)
-  
-  
+
+
 - **Server administration**
   - `-kick` - kick someone from the server
   - `-vkick` - kick someone out of the voice channel, also for a specific time period
   - `-mute` - mute members in text channels
   - `-blacklist` - disallow users to use the bot
-  
+
 - **Other functions**
   - `-music` - Music player with many functions
-  - `-scpacer` - Create spacer voice channels wich can not be joined
+  - `-scpacer` - Create spacer voice channels which can not be joined
   - `-rand6` - Random operators for rainbow six<br>
   &nbsp;![](https://image.prntscr.com/image/WHZh5l76TKupvWUmoIQBpA.png)
 
@@ -77,7 +77,7 @@ First start the JAR file with:
 java -jar DiscordBot.jar
 ```
 The bot will create a `SETTINGS.txt` file. Open it and enter your settings.
-The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its realy important to set yout Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
+The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its really important to set your Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
 ![img](https://image.prntscr.com/image/Jmf2FssPSdKEb9jNOTra-g.png)
 ![img](https://image.prntscr.com/image/UrxT_eI7SbqmZIcbQs1QvQ.png)
 
