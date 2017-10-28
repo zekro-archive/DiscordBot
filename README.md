@@ -28,7 +28,7 @@ Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, whic
 
 <a href="http://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
-🏆 Goal *(this year payment cicle)*  **`$15 / $24`**
+🏆 Goal *(this year's payment cicle)*  **`$15 / $24`**
 
 **List of donators**<br>
 Sydrus (Patreon)  -  $9<br>
@@ -111,9 +111,9 @@ After that, use the guild settings commands to configure the bot for your guild(
 **PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS.**
 
 -----
-### Future Intends
+### Future Intent
 
-**SEE CURRENT TODO-LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
+**SEE CURRENT TO-DO LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
 
 -----
 ### Used libraries
