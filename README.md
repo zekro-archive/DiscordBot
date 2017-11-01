@@ -9,9 +9,9 @@
 
 -----
 
-If you want to use the code of this project for your own ones, please read **[this](http://s.zekro.de/codepolicy)** before!
+If you want to reuse the code of this project, please read **[this](http://s.zekro.de/codepolicy)** before doing so!
 
-So you have some questions or want to join my developer community discord? Take a look! :^)
+Have some questions or want to join my developer community discord? Take a look! :^)
 <br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
@@ -24,11 +24,11 @@ So you have some questions or want to join my developer community discord? Take 
 ---
 ### Donate
 
-Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, which costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
+Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, which costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a bit to finance the server for the bot :) <3
 
 <a href="http://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
-🏆 Goal *(this year payment cicle)*  **`$15 / $24`**
+🏆 Goal *(this year's payment cicle)*  **`$15 / $24`**
 
 **List of donators**<br>
 Sydrus (Patreon)  -  $9<br>
@@ -111,9 +111,9 @@ After that, use the guild settings commands to configure the bot for your guild(
 **PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS.**
 
 -----
-### Future Intends
+### Future Intent
 
-**SEE CURRENT TODO-LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
+**SEE CURRENT TO-DO LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
 
 -----
 ### Used libraries
