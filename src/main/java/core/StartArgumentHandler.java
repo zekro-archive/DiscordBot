@@ -5,7 +5,7 @@ package core;
  * DiscordBot/core
  * © zekro 2017
  */
-class StartArgumentHandler {
+public class StartArgumentHandler {
 
     public static String[] args;
 
