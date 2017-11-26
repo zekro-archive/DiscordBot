@@ -2,6 +2,7 @@ package commands.guildAdministration;
 
 import com.sun.security.auth.callback.TextCallbackHandler;
 import commands.Command;
+import core.Main;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
@@ -13,6 +14,9 @@ import utils.STATICS;
 
 import java.awt.Color;
 import java.io.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +51,7 @@ public class Autochannel implements Command, Serializable {
             ).build()).queue();
         } else {
             autochans.put(vc, g);
-            save();
+            saveVchan(vc, g);
             tc.sendMessage(new EmbedBuilder().setColor(Color.green).setDescription(
                     String.format("Successfully set voice channel `%s` as auto channel.", vc.getName())
             ).build()).queue();
@@ -67,7 +71,7 @@ public class Autochannel implements Command, Serializable {
             ).build()).queue();
         } else {
             autochans.remove(vc);
-            save();
+            unsetChan(vc);
 
             tc.sendMessage(new EmbedBuilder().setColor(Color.red).setDescription(
                     String.format("Successfully unset auto channel state of `%s`.", vc.getName())
@@ -77,7 +81,7 @@ public class Autochannel implements Command, Serializable {
 
     public static void unsetChan(VoiceChannel vc) {
         autochans.remove(vc);
-        save();
+        Main.getMySql().dropEntry("autochans", "chan", vc.getId());
     }
 
     private void listChans(Guild guild, TextChannel tc) {
@@ -96,45 +100,26 @@ public class Autochannel implements Command, Serializable {
         return jda.getGuildById(id);
     }
 
-    private static void save() {
-
-        File path = new File("SERVER_SETTINGS/");
-        if (!path.exists())
-            path.mkdir();
-
-        HashMap<String, String> out = new HashMap<>();
-
-        System.out.println(autochans.size());
-        autochans.forEach((v, g) -> out.put(v.getId(), g.getId()));
-
+    private void saveVchan(VoiceChannel vc, Guild g) {
         try {
-            FileOutputStream fos = new FileOutputStream("SERVER_SETTINGS/autochannels.dat");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(out);
-            oos.close();
-        } catch (IOException e) {
+            PreparedStatement ps = Main.getMySql().getConn().prepareStatement(String.format("INSERT INTO autochans (chan, guild) VALUES ('%s', '%s')", vc.getId(), g.getId()));
+            ps.execute();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void load(JDA jda) {
-        File file = new File("SERVER_SETTINGS/autochannels.dat");
-        if (file.exists()) {
-            try {
-                FileInputStream fis = new FileInputStream(file);
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                HashMap<String, String> out = (HashMap<String, String>) ois.readObject();
-                ois.close();
 
-                out.forEach((vid, gid) -> {
-                    Guild g = getGuild(gid, jda);
-                    autochans.put(getVchan(vid, g), g);
-                });
-
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+        try {
+            PreparedStatement ps = Main.getMySql().getConn().prepareStatement("SELECT * FROM autochans");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Guild g = getGuild(rs.getString("guild"), jda);
+                autochans.put(getVchan(rs.getString("chan"), g), g);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

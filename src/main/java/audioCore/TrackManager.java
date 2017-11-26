@@ -51,7 +51,7 @@ public class TrackManager extends AudioEventAdapter {
                     public void run() {
                         g.getAudioManager().closeAudioConnection();
                     }
-                }, 3000);
+                }, 500);
             } else {
                 player.playTrack(queue.element().getTrack());
             }

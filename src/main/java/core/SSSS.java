@@ -70,365 +70,148 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
 
     public static String getPREFIX(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/prefix");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return STATICS.PREFIX;
+        String out = Main.getMySql().getString("guilds", "prefix", "id", guild.getId());
+        if (out == null)
+            return STATICS.PREFIX;
+        return out;
     }
 
     public static void setPREFIX(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/prefix");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "prefix", entry, "id", guild.getId());
     }
 
 
     public static String getSERVERJOINMESSAGE(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverjoinmessage");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }  catch (Exception e) {}
-        return "OFF";
+        String out = Main.getMySql().getString("guilds", "joinmsg", "id", guild.getId());
+        if (out == null)
+            return "OFF";
+        return out;
     }
 
     public static void setSERVERJOINMESSAGE(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverjoinmessage");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "joinmsg", entry, "id", guild.getId());
     }
 
 
     public static String getSERVERLEAVEMESSAGE(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverleavemessage");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return "OFF";
+        String out = Main.getMySql().getString("guilds", "leavemsg", "id", guild.getId());
+        if (out == null)
+            return "OFF";
+        return out;
     }
 
     public static void setSERVERLEAVEMESSAGE(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/serverleavemessage");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "leavemsg", entry, "id", guild.getId());
     }
 
 
     public static String getMUSICCHANNEL(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/musicchannel");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return "";
+        String out = Main.getMySql().getString("guilds", "musicchan", "id", guild.getId());
+        if (out == null)
+            return "";
+        return out;
     }
 
     public static void setMUSICCHANNEL(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/musicchannel");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "musicchan", entry, "id", guild.getId());
     }
 
 
     public static String[] getPERMROLES_1(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_1");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine().split(", ");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return STATICS.PERMS;
+        String out = Main.getMySql().getString("guilds", "perm1", "id", guild.getId());
+        if (out == null)
+            return STATICS.PERMS;
+        return out.split(",");
 
     }
 
     public static void setPERMROLES_1(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_1");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "perm1", entry.replace(", ", ","), "id", guild.getId());
     }
 
 
     public static String[] getPERMROLES_2(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_2");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine().split(", ");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return STATICS.FULLPERMS;
+        String out = Main.getMySql().getString("guilds", "perm2", "id", guild.getId());
+        if (out == null)
+            return STATICS.FULLPERMS;
+        return out.split(",");
     }
 
     public static void setPERMROLES_2(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/permroles_2");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "perm2", entry.replace(", ", ","), "id", guild.getId());
     }
 
 
     public static boolean getLOCKMUSICCHANNEL(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/lockmusicchannel");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine().equals("true");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return false;
+        return Main.getMySql().getBool("guilds", "lockmusic", "id", guild.getId());
     }
 
     public static void setLOCKMUSICCHANNEL(boolean entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/lockmusicchannel");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry + "");
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setBool("guilds", "lockmusic", entry, "id", guild.getId());
     }
 
 
     public static String getAUTOROLE(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/autorole");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return "";
+        String out = Main.getMySql().getString("guilds", "autorole", "id", guild.getId());
+        if (out == null)
+            return "";
+        return out;
     }
 
     public static void setAUTOROLE(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/autorole");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "autorole", entry, "id", guild.getId());
     }
 
 
     public static String getVKICKCHANNEL(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/vkickchannel");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return "";
+        String out = Main.getMySql().getString("guilds", "vkick", "id", guild.getId());
+        if (out == null)
+            return "";
+        return out;
     }
 
     public static void setVKICKCHANNEL(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/vkickchannel");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "vkick", entry, "id", guild.getId());
     }
 
 
     public static String getR6OPSID(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return "OFF";
+        String out = Main.getMySql().getString("guilds", "rsops", "id", guild.getId());
+        if (out == null)
+            return "OFF";
+        return out;
     }
 
     public static void setR6OPSID(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/r6opsID");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "rsops", entry, "id", guild.getId());
     }
 
     public static String getWARFRAMELAERTSCHAN(Guild guild) {
-
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/warframealertschan");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return STATICS.warframeAlertsChannel;
+        String out = Main.getMySql().getString("guilds", "warframe", "id", guild.getId());
+        if (out == null)
+            return STATICS.warframeAlertsChannel;
+        return out;
     }
 
     public static void setWARFRAMELAERTSCHAN(String entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/warframealertschan");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            r.write(entry);
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "warframe", entry, "id", guild.getId());
     }
 
     public static List<String> getBLACKLIST(Guild guild) {
 
-        try {
-            File f = new File("SERVER_SETTINGS/" + guild.getId() + "/blacklist");
-            if (f.exists()) {
-                try {
-                    return new BufferedReader(new FileReader(f)).lines().map(s -> s.replace("\n", "")).collect(Collectors.toList());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {}
-        return new ArrayList<>();
+        String out = Main.getMySql().getString("guilds", "blacklist", "id", guild.getId());
+        if (out == null)
+            return new ArrayList<>();
+        return Arrays.asList(out.split(","));
     }
 
     public static void setBLACKLIST(List<String> entry, Guild guild) {
-
-        File f = new File("SERVER_SETTINGS/" + guild.getId() + "/blacklist");
-        try {
-            if (!f.exists())
-                f.createNewFile();
-            BufferedWriter r = new BufferedWriter(new FileWriter(f));
-            entry.forEach(l -> {
-                try {
-                    r.write(l + "\n");
-                } catch (IOException e) {}
-            });
-            r.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Main.getMySql().setString("guilds", "blacklist", entry.stream().collect(Collectors.joining(",")), "id", guild.getId());
     }
 
 }
