@@ -3,6 +3,7 @@
 
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
+[![Servers](http://zekro.de/sharing/zekroBotServerShield.svg)]("https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1610083415")&nbsp;
 [![Github All Releases](https://img.shields.io/github/downloads/zekroTJA/DiscordBot/total.svg)](https://github.com/zekroTJA/DiscordBot)
 <br>
 
