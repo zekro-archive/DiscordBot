@@ -62,6 +62,11 @@
             <artifactId>jiphy</artifactId>
             <version>LATEST</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.8-dmr</version>
+        </dependency>
         <!--
             NEEDED FOR ANOTHER COMMAND NOT IMPLEMENTED YET
         <dependency>

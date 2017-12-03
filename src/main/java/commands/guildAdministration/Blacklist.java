@@ -14,6 +14,7 @@ import utils.STATICS;
 import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,7 @@ public class Blacklist implements Command {
 
         if (core.Perms.check(permission(), event)) return;
 
-        List<String> blackList = SSSS.getBLACKLIST(event.getGuild());
+        ArrayList<String> blackList = new ArrayList<>(SSSS.getBLACKLIST(event.getGuild()));
         User victim;
 
 

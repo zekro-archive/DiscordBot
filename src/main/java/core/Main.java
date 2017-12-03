@@ -38,27 +38,21 @@ public class Main {
 
     public static JDA jda;
 
+    private static MySql mySql;
+
     public static void main(String[] args) throws IOException {
 
         StartArgumentHandler.args = args;
 
         SettingsCore.loadSettings();
 
+        mySql = new MySql(STATICS.SQL_HOST, STATICS.SQL_PORT, STATICS.SQL_USER, STATICS.SQL_PASS, STATICS.SQL_DB).initialize();
+
         BotStats.load();
 
         if (!new File("WILDCARDS.txt").exists())
             ServerLimitListener.createTokenList(50);
 
-
-        try {
-            if (!SettingsCore.testForToken()) {
-                System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
-                System.exit(0);
-            }
-        } catch (Exception e) {
-            System.out.println("[ERROR] PLEASE ENTER YOUR DISCORD API TOKEN FROM 'https://discordapp.com/developers/applications/me' IN THE TEXTFILE 'SETTINGS.txt' AND RESTART!");
-            System.exit(0);
-        }
 
         File savePath = new File("saves_playlists");
         if (!savePath.exists() || !savePath.isDirectory()) {
@@ -153,6 +147,9 @@ public class Main {
         commands.put("support", new Donate());
         commands.put("gif", new Gif());
         commands.put("guild", new Stats());
+        commands.put("leaveguild", new Leaveserver());
+        commands.put("leaveserver", new Leaveserver());
+        commands.put("id", new Id());
 
     }
 
@@ -197,6 +194,10 @@ public class Main {
                 tcs.get(0).sendMessage(eb.build()).queue();
             }
         }
+    }
+
+    public static MySql getMySql() {
+        return mySql;
     }
 
 }

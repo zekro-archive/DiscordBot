@@ -17,7 +17,7 @@ public class STATICS {
     //######### GENERAL BOT SETTINGS #########//
 
 
-    public static String VERSION = "1.42.0.0";
+    public static String VERSION = "1.44.0.0";
 
 
     public static String PREFIX = "-";
@@ -96,4 +96,9 @@ public class STATICS {
 
     public static int SERVER_LIMIT = 250;
 
+    public static String SQL_HOST = "";
+    public static String SQL_PORT = "";
+    public static String SQL_USER = "";
+    public static String SQL_PASS = "";
+    public static String SQL_DB = "";
 }
