@@ -84,7 +84,6 @@ public class ReadyListener extends ListenerAdapter {
 
         STATICS.lastRestart = new Date();
 
-        SSSS.checkFolders(event.getJDA().getGuilds());
 
         handleStartArgs();
 

@@ -21,6 +21,10 @@ import java.util.Arrays;
 public class Perms {
 
 
+    public static boolean isHost(User user) {
+        return Long.parseLong(user.getId()) == STATICS.BOT_OWNER_ID;
+    }
+
     public static boolean isOwner(User user, TextChannel channel) {
         if (STATICS.BOT_OWNER_ID == 0) {
             channel.sendMessage(MSGS.error().setDescription("There is no owner ID set in `SETTINGS.txt`.\nIf you are the owner of this bot, please add your Discord user id in the `SETTINGS.txt`!").build()).queue();
@@ -35,11 +39,13 @@ public class Perms {
 
     public static int getLvl(Member member) {
 
+        if (isHost(member.getUser()))
+            return 4;
         if (member.equals(member.getGuild().getOwner()))
             return 3;
-        if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_2(member.getGuild())).anyMatch(s1 -> role.getName().equals(s1)))) {
+        if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_2(member.getGuild())).anyMatch(s1 -> role.getId().equals(s1)))) {
             return 2;
-        } else if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_1(member.getGuild())).anyMatch(s -> role.getName().equals(s)))) {
+        } else if (member.getRoles().stream().anyMatch(role -> Arrays.stream(SSSS.getPERMROLES_1(member.getGuild())).anyMatch(s -> role.getId().equals(s)))) {
             return 1;
         }
         return 0;

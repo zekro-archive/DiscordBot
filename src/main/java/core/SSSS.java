@@ -19,16 +19,6 @@ import java.util.stream.Collectors;
 
 public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
-    public static void checkFolders(List<Guild> guilds) {
-
-        guilds.forEach(guild -> {
-            File f = new File("SERVER_SETTINGS/" + guild.getId());
-            if (!f.exists() || !f.isDirectory()) {
-                f.mkdirs();
-            }
-        });
-    }
-
     public static void listSettings(MessageReceivedEvent event) {
 
         Guild g = event.getGuild();
@@ -65,9 +55,6 @@ public class SSSS /* Stands for "SERVER SPECIFIC SETTINGS SYSTEM" :^) */ {
 
         event.getTextChannel().sendMessage(new EmbedBuilder().setDescription(sb.append("```").toString()).build()).queue();
     }
-
-
-
 
     public static String getPREFIX(Guild guild) {
         String out = Main.getMySql().getString("guilds", "prefix", "id", guild.getId());

@@ -147,6 +147,9 @@ public class Main {
         commands.put("support", new Donate());
         commands.put("gif", new Gif());
         commands.put("guild", new Stats());
+        commands.put("leaveguild", new Leaveserver());
+        commands.put("leaveserver", new Leaveserver());
+        commands.put("id", new Id());
 
     }
 

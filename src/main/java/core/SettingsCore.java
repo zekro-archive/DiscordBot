@@ -20,9 +20,6 @@ import java.util.stream.Collectors;
 public class SettingsCore {
 
 
-    private static File sfile = new File("SETTINGS.txt");
-
-
     public static void initialize() {
 
         JSONObject main = new JSONObject();
