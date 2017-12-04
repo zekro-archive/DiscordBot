@@ -3,31 +3,36 @@
 
 [![GitHub release](https://img.shields.io/github/release/zekrotja/DiscordBot.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
 [![GitHub (pre-)release](https://img.shields.io/github/release/zekrotja/DiscordBot/all.svg)](https://github.com/zekroTJA/DiscordBot/releases)&nbsp;
-<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134">
-<img src="https://img.shields.io/badge/currently%20running%20on-1.40.1.0-3cd0d8.svg"></a><br>
+[![Github All Releases](https://img.shields.io/github/downloads/zekroTJA/DiscordBot/total.svg)](https://github.com/zekroTJA/DiscordBot)
+<br>
+
 
 -----
 
-If you want to use the code of this project for your own ones, please read **[this](http://s.zekro.de/codepolicy)** before!
+If you want to reuse the code of this project, please read **[this](http://s.zekro.de/codepolicy)** before doing so!
 
-So you have some questions or want to join my developer community discord? Take a look! :^)
+Have some questions or want to join my developer community discord? Take a look! :^)
 <br/><a href="http://discord.zekro.de"><img src="https://discordapp.com/api/guilds/307084334198816769/embed.png"/></a>
 
 -----
 ### Get it!
-<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1882582134"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
+[![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779430970-e7fbeac99e0f5b24c277880c.svg)](https://stats.uptimerobot.com/WPBJjHp26) &nbsp;
+[![Uptime Robot ratio](https://img.shields.io/uptimerobot/ratio/m779430970-e7fbeac99e0f5b24c277880c.svg)](https://stats.uptimerobot.com/WPBJjHp26)
+
+<a href="https://discordapp.com/oauth2/authorize?client_id=272336949841362944&scope=bot&permissions=1610083415"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/add_to_discord.png?raw=true" width="300"/></a>
 
 ---
 ### Donate
 
-Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, wich costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a a bit to finance the server for the bot :) <3
+Not long ago, I've moved the host of the bot from my Raspberry Pi to a VPS, which costs around €20 per year. This bot will be still completely free to use, but I would really appreciate it if you could help a bit to finance the server for the bot :) <3
 
-<a href="https://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
+<a href="http://support.zekro.de"><img src="https://github.com/zekroTJA/DiscordBot/blob/master/.websrc/donate.png" width="300"/></a>
 
-🏆 Goal *(this year payment cicle)*  **`$9 / $24`**
+🏆 Goal *(this year's payment cicle)*  **`$15 / $24`**
 
 **List of donators**<br>
-Sydrus (Patreon)  -  $9
+Sydrus (Patreon)  -  $9<br>
+Schlaubi  -  $6
 
 -----
 ### Features
@@ -48,17 +53,17 @@ Here are just listed some of the various functions and >64 commands of the bot.
   - `-stups` - nudge someone on the guild
   - `-vote` - create polls<br>
   &nbsp;![](https://image.prntscr.com/image/5_avzZNQRUijY2rUgc1XgQ.png)
-  
-  
+
+
 - **Server administration**
   - `-kick` - kick someone from the server
   - `-vkick` - kick someone out of the voice channel, also for a specific time period
   - `-mute` - mute members in text channels
   - `-blacklist` - disallow users to use the bot
-  
+
 - **Other functions**
   - `-music` - Music player with many functions
-  - `-scpacer` - Create spacer voice channels wich can not be joined
+  - `-scpacer` - Create spacer voice channels which can not be joined
   - `-rand6` - Random operators for rainbow six<br>
   &nbsp;![](https://image.prntscr.com/image/WHZh5l76TKupvWUmoIQBpA.png)
 
@@ -72,7 +77,7 @@ First start the JAR file with:
 java -jar DiscordBot.jar
 ```
 The bot will create a `SETTINGS.txt` file. Open it and enter your settings.
-The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its realy important to set yout Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
+The most important is to set first the API token you'll get from [this page](https://discordapp.com/developers/applications/me) *(if you just created an bot account there).* Also its really important to set your Discord account ID as `BOT_OWNER_ID`! You can get your client id by right-clicking on your name in discord and select `Copy ID` *(for that, you need to enable developer mode in Discord!)*
 ![img](https://image.prntscr.com/image/Jmf2FssPSdKEb9jNOTra-g.png)
 ![img](https://image.prntscr.com/image/UrxT_eI7SbqmZIcbQs1QvQ.png)
 
@@ -106,9 +111,9 @@ After that, use the guild settings commands to configure the bot for your guild(
 **PLEASE LOOK IN <a href="https://github.com/zekroTJA/DiscordBot/releases">RELEASES</a> TO SEE LATEST CHANGE LOGS.**
 
 -----
-### Future Intends
+### Future Intent
 
-**SEE CURRENT TODO-LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
+**SEE CURRENT TO-DO LIST <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTPfpbg5fEssYD-X4XaR5ISM_xXrOEoqKnoWO7kUkVVBFARxtf49u4wKfUe0L-tkN2AoNffhebZJ-5R/pubhtml">HERE</a>**
 
 -----
 ### Used libraries
@@ -122,8 +127,6 @@ After that, use the guild settings commands to configure the bot for your guild(
 
 -----
 ### Mentions
-Special thanks to <a href="https://github.com/jagrosh">@jagrosh</a> for helping me with fixing the combatibility bug of lava player on linux system.
+Special thanks to [@jagrosh](https://github.com/jagrosh) for helping me fixing the combatibility problems of lava player on linux systems.
 
-Also a special thanks to Sophie, who helped me a lot developing some features of that bot and better performance coding. <3
-
-Another lovely thanks to all of our "Trupp Lätzl"-Discord members and team for testing the bot and using it and also a special lovley thanks to all members on my Dev Discord helping me a lot with new experiences and a lot of helpful hints. :)
+Also a very lovely thanks to everyone helping me on my [Development Discord](http://discord.zekro.de) testing the lastest zekroBot features and reporting bugs or suggesting improvements! <3
