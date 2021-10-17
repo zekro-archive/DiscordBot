@@ -1,3 +1,9 @@
+# ⚠️ Discontinued
+
+This project is highly outdated and discontinued. Feel free to look through the code or to fork the repository, but no further changes will be added to the project. The successor of this project is my Discord Bot [shinpuru](https://github.com/zekrotja/shinpuru), feel free to take a look into this project. 😉
+
+---
+
 <img src="https://raw.githubusercontent.com/zekroTJA/DiscordBot/master/.websrc/logo%20-%20title.png" />
 <br/>
 
